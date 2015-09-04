@@ -1,0 +1,6 @@
+e:\documenten\visual studio 2015\Projects\FietsApp\FietsApp\bin\Debug\FietsApp.exe.config
+e:\documenten\visual studio 2015\Projects\FietsApp\FietsApp\bin\Debug\FietsApp.exe
+e:\documenten\visual studio 2015\Projects\FietsApp\FietsApp\bin\Debug\FietsApp.pdb
+e:\documenten\visual studio 2015\Projects\FietsApp\FietsApp\obj\Debug\FietsApp.csprojResolveAssemblyReference.cache
+e:\documenten\visual studio 2015\Projects\FietsApp\FietsApp\obj\Debug\FietsApp.exe
+e:\documenten\visual studio 2015\Projects\FietsApp\FietsApp\obj\Debug\FietsApp.pdb
