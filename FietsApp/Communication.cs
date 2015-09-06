@@ -1,49 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Threading;
 
 namespace FietsApp
 {
     class Communication
     {
-        private SerialPort mySerialPort;
-        public Communication(string port)
-        {
-            mySerialPort = new SerialPort(port);
-            mySerialPort.BaudRate = 9600;
-            mySerialPort.Parity = Parity.None;
-            mySerialPort.StopBits = StopBits.One;
-            mySerialPort.DataBits = 8;
-            mySerialPort.Handshake = Handshake.None;
-
-            mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-
-            mySerialPort.Open();
-            sendCommand();
-            Console.WriteLine("Press any key to continue...");
-            Console.WriteLine();
-            Console.ReadKey();
-            mySerialPort.Close();
-        }
-
-        public void sendCommand()
-        {
-            mySerialPort.WriteLine("RS");
-        }
+        private SerialPort port;
         
 
-        public static void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        public Communication(string com)
         {
-            SerialPort sp = (SerialPort)sender;
-            string indata = sp.ReadExisting();
-            Console.WriteLine("Data Received:");
-            Console.WriteLine(indata);
+            port = new SerialPort(com, 9600, Parity.None, 8, StopBits.One);
+            Console.WriteLine("Incoming data");
+            Console.WriteLine("");
+            Console.WriteLine("Insert 'HELP' to see commands");
+            Console.WriteLine("");
+            port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
+            //port.Open();
+            //port.WriteLine("ST");
+            //{
+            //    Thread.Sleep(4000);
+            //    port.WriteLine("ST");
+            //    Thread.Sleep(100);
+            //}
+            //System.Windows.Forms.Application.Run();
         }
 
+        private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string whole = port.ReadLine();
+            string[] parts = whole.Split('\t');
+            Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
+            " Time: " + parts[6] + " actual power: " + parts[7]);
+        }
+
+        public SerialPort GetPort()
+        {
+            return port;
+        }
 
     }
 }

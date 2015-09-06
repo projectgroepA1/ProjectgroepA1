@@ -8,5 +8,10 @@ namespace FietsApp
 {
     class Simulator
     {
+        public Simulator()
+        {
+
+        }
+
     }
 }
