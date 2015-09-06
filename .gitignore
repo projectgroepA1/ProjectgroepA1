@@ -212,5 +212,5 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 #Gilian added
-bin
-obj
+**/bin/Debug/
+**/obj/Debug/
