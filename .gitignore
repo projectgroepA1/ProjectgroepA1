@@ -212,5 +212,5 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 #Gilian added
-FietsApp\bin\Debug\
-FietsApp\obj\Debug\
+bin
+obj
