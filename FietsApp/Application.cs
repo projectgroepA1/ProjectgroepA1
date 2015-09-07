@@ -15,7 +15,7 @@ namespace FietsApp
         public Application(string com)
         {
             communication = new Communication(com);
-            parser = new Parser();
+            parser = new Parser(communication);
             sim = new Simulator();
 
             bool running = true;
@@ -37,19 +37,6 @@ namespace FietsApp
                     Console.WriteLine("");
                     Console.WriteLine("----------------------------------------");
                     Console.WriteLine("");
-                }
-                else
-                {
-                    try
-                    {
-                        communication.GetPort().WriteLine(command);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("");
-                        Console.WriteLine("There is no connection");
-                        Console.WriteLine("");
-                    }
                 }
             }
         }

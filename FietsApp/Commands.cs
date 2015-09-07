@@ -10,7 +10,6 @@ namespace FietsApp
     {
         public String name { get; set; }
         public String command { get; set; }
-        public Action action { get; set; }
 
         public Command(String commandName, String command)
         {
@@ -18,9 +17,9 @@ namespace FietsApp
             this.command = command;
         }
 
-        public void addAction(Action action)
+        public void CommandAction(Communication com)
         {
-            this.action = action;
+            com.GetPort().WriteLine(command);
         }
     }
 }
