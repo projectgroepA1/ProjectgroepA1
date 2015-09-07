@@ -212,4 +212,4 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 #self added
-.cache
+FietsApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
