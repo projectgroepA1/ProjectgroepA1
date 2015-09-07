@@ -12,12 +12,13 @@ namespace FietsApp
         private List<Command> commands;
         private Communication com;
 
+
         public Parser(Communication com)
         {
             this.com = com;
             commands = new List<Command>();
             commands.Add(new Command("Reset", "RS"));
-            commands.Add(new Command("New mode", "NM"));
+            commands.Add(new NewMode());
             commands.Add(new Command("Status report", "ST"));
             commands.Add(new Command("Help", "HELP"));
         }
