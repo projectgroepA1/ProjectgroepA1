@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applicatie.cs" />
+    <Compile Include="Application.cs" />
     <Compile Include="Commands.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Simulator.cs" />

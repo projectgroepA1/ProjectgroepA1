@@ -8,10 +8,10 @@ namespace FietsApp
 {
     class Program
     {
-        private Communication comm;
+        [STAThread]
         static void Main(string[] args)
         {
-            Communication comm = new Communication("COM3");
+            new Application("COM3");
         }
     }
 }
