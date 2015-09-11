@@ -37,7 +37,5 @@ namespace FietsApp
             Debug.Print("Data Received:");
             Debug.Print(indata);
         }
-
-
     }
 }

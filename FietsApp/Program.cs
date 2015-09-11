@@ -11,7 +11,7 @@ namespace FietsApp
         private Communication comm;
         static void Main(string[] args)
         {
-            Communication comm = new Communication("COM3");
+            Communication comm = new Communication("COM2");
         }
     }
 }
