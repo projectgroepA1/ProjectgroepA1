@@ -215,3 +215,4 @@ ModelManifest.xml
 FietsApp/obj/**
 FietsApp/bin/
 .DS_Store
+*.cache
