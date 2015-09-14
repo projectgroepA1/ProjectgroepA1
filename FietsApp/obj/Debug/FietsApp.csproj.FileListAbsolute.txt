@@ -19,3 +19,9 @@ C:\Users\Arjen\Documents\GitHub\ProjectgroepA1\FietsApp\obj\Debug\FietsApp.pdb
 C:\Users\Arjen\Documents\GitHub\ProjectgroepA1\FietsApp\bin\Debug\FietsApp.exe
 C:\Users\Arjen\Documents\GitHub\ProjectgroepA1\FietsApp\bin\Debug\FietsApp.pdb
 C:\Users\Arjen\Documents\GitHub\ProjectgroepA1\FietsApp\obj\Debug\FietsApp.csprojResolveAssemblyReference.cache
+E:\Documenten\GitHub\ProjectgroepA1\FietsApp\bin\Debug\FietsApp.exe.config
+E:\Documenten\GitHub\ProjectgroepA1\FietsApp\obj\Debug\FietsApp.exe
+E:\Documenten\GitHub\ProjectgroepA1\FietsApp\obj\Debug\FietsApp.pdb
+E:\Documenten\GitHub\ProjectgroepA1\FietsApp\bin\Debug\FietsApp.exe
+E:\Documenten\GitHub\ProjectgroepA1\FietsApp\bin\Debug\FietsApp.pdb
+E:\Documenten\GitHub\ProjectgroepA1\FietsApp\obj\Debug\FietsApp.csprojResolveAssemblyReference.cache

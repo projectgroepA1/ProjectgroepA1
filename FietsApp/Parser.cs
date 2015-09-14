@@ -72,14 +72,11 @@ namespace FietsApp
                         }
                     }
                     Console.WriteLine("Type new command in 5...");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("...4");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("...3");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("...2");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("...1");
+                    for(int count = 4; i > 0; i--)
+                    {
+                        Thread.Sleep(1000);
+                        Console.WriteLine(count + "...");
+                    }
                     break;
                 }
             }
