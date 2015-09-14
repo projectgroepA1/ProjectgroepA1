@@ -11,16 +11,21 @@ namespace FietsApp
     {
         private List<Command> commands;
         private Communication com;
+        private DataStorage storage;
 
 
-        public Parser(Communication com)
+        public Parser(Communication com, DataStorage storage)
         {
             this.com = com;
+            this.storage = storage;
             commands = new List<Command>();
             commands.Add(new Command("Reset", "RS"));
             commands.Add(new NewMode());
             commands.Add(new Command("Status report", "ST"));
             commands.Add(new Command("Help", "HELP"));
+            commands.Add(new Command("Write data", "WD"));
+            commands.Add(new Command("Read data", "RD"));
+            commands.Add(new Command("Print data", "PD"));
         }
 
         public void SendCommand(String command)
@@ -35,23 +40,40 @@ namespace FietsApp
                 {
                     recognized = true;
                     //Console.WriteLine(commands.ElementAt(i).name);
-                    
+
                     commands.ElementAt(i).CommandAction(this.com);
                     if (splitCommands[0] == "ST")
                     {
                         try
                         {
-                        string whole = com.GetPort().ReadLine();
-                        string[] parts = whole.Split('\t');
-                        Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
-                        " Time: " + parts[6] + " actual power: " + parts[7]);
-                        }catch(IndexOutOfRangeException ex)
+                            string whole = com.GetPort().ReadLine();
+                            storage.addData(whole);
+                            string[] parts = whole.Split('\t');
+                            Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
+                            " Time: " + parts[6] + " actual power: " + parts[7]);
+                        }
+                        catch (IndexOutOfRangeException ex)
                         {
                             Console.WriteLine("No Data Recieved");
                         }
                     }
+                    if (splitCommands[0] == "WD")
+                    {
+                        storage.writeData();
+                    }
+                    if (splitCommands[0] == "RD")
+                    {
+                        storage.readData();
+                    }
+                    if (splitCommands[0] == "PD")
+                    {
+                        foreach (string line in storage.data)
+                        {
+                            Console.WriteLine(line);
+                        }
+                    }
                     Console.WriteLine("Type new command in 5...");
-                    for(int count = 4; i > 0; i--)
+                    for (int count = 4; i > 0; i--)
                     {
                         Thread.Sleep(1000);
                         Console.WriteLine(count + "...");
@@ -59,7 +81,7 @@ namespace FietsApp
                     break;
                 }
             }
-            
+
             if (!recognized)
             {
                 Console.WriteLine("Command not recognized.");

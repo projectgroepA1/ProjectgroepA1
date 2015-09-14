@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="Commands.cs" />
+    <Compile Include="DataStorage.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Simulator.cs" />
     <Compile Include="Communication.cs" />
