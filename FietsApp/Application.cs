@@ -12,10 +12,12 @@ namespace FietsApp
         private Communication communication;
         private Parser parser;
         private Simulator sim;
+        private DataStorage storage;
         public Application(string com)
         {
             communication = new Communication(com);
-            parser = new Parser(communication);
+            storage = new DataStorage("Dokter harrie", "Tim");
+            parser = new Parser(communication, storage);
             sim = new Simulator();
 
             bool running = true;
