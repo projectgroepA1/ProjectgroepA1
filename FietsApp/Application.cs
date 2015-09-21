@@ -8,7 +8,7 @@ namespace FietsApp
 {
     class Application
     {
-        
+
         private Communication communication;
         private Parser parser;
         private Simulator sim;
@@ -20,15 +20,24 @@ namespace FietsApp
             parser = new Parser(communication, storage);
             sim = new Simulator();
 
+            /*
+            *Running loop
+            */
             bool running = true;
             while (running)
             {
             String command = Console.ReadLine();
              parser.SendCommand(command);
+                /*
+                *If input is 'q' the program stops
+                */
                 if (command == "q")
                 {
                     running = false;
                 }
+                /*
+                *If input is 'HELP' the gives all possible commands
+                */
                 else if (command == "HELP")
                 {
                     Console.WriteLine("");

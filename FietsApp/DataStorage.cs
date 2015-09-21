@@ -9,7 +9,7 @@ namespace FietsApp
 {
     class DataStorage
     {
-        public List<string> data { get;}
+        public List<string> data { get; }
         private string doctor;
         private string user;
         private string destination;

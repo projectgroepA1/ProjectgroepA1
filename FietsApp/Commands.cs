@@ -17,6 +17,9 @@ namespace FietsApp
             this.command = command;
         }
 
+        /*
+        *Write Command
+        */
         public virtual void CommandAction(Communication com)
         {
             com.GetPort().WriteLine(command);
@@ -29,6 +32,10 @@ namespace FietsApp
             : base("New mode", "NM")
         { }
 
+        /*
+        *New Mode Commands
+        *
+        */
         public override void CommandAction(Communication com)
         {
             String answer, mode;

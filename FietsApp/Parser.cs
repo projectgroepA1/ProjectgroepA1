@@ -40,18 +40,19 @@ namespace FietsApp
                 {
                     recognized = true;
                     //Console.WriteLine(commands.ElementAt(i).name);
-                    
+
                     commands.ElementAt(i).CommandAction(this.com);
                     if (splitCommands[0] == "ST")
                     {
                         try
                         {
-                        string whole = com.GetPort().ReadLine();
-                        storage.addData(whole);
-                        string[] parts = whole.Split('\t');
-                        Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
-                        " Time: " + parts[6] + " actual power: " + parts[7]);
-                        }catch(IndexOutOfRangeException ex)
+                            string whole = com.GetPort().ReadLine();
+                            storage.addData(whole);
+                            string[] parts = whole.Split('\t');
+                            Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
+                            " Time: " + parts[6] + " actual power: " + parts[7]);
+                        }
+                        catch (IndexOutOfRangeException ex)
                         {
                             Console.WriteLine("No Data Recieved");
                         }
@@ -72,18 +73,15 @@ namespace FietsApp
                         }
                     }
                     Console.WriteLine("Type new command in 5...");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("...4");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("...3");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("...2");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("...1");
+                    for (int count = 4; i > 0; i--)
+                    {
+                        Thread.Sleep(1000);
+                        Console.WriteLine(count + "...");
+                    }
                     break;
                 }
             }
-            
+
             if (!recognized)
             {
                 Console.WriteLine("Command not recognized.");
