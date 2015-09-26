@@ -215,3 +215,6 @@ ModelManifest.xml
 **/bin/Debug/
 **/obj/Debug/
 *.cache
+
+obj
+debug
