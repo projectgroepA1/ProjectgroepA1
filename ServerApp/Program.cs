@@ -12,6 +12,7 @@ namespace ServerApp
         static void Main(string[] args)
         {
             bool running = true;
+            
             String input = "";
             if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
