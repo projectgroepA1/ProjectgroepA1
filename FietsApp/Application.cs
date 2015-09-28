@@ -8,17 +8,14 @@ namespace FietsApp
 {
     class Application
     {
-
         private Communication communication;
         private Parser parser;
-        private Simulator sim;
         private DataStorage storage;
         public Application(string com)
         {
             communication = new Communication(com);
             storage = new DataStorage("Dokter harrie", "Tim");
             parser = new Parser(communication, storage);
-            sim = new Simulator();
 
             /*
             *Running loop
@@ -51,6 +48,5 @@ namespace FietsApp
                 }
             }
         }
-
     }
 }
