@@ -20,7 +20,15 @@ namespace ServerApp
 
         public void ClientSetUp(Object b)
         {
-            
+            while (true)
+            {
+
+            }
+        }
+
+        public void recieveFromClient()
+        {
+
         }
     }
 }

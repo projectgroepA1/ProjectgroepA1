@@ -30,6 +30,7 @@ namespace ServerApp
             serverListener.Start();
             while(true)
             {
+                //test code, om client toe te kunnen voegen aan de server
                 Thread.Sleep(1000);
                 TcpClient tc = new TcpClient(IP.ToString(), Port);
                 for (int i = 5; i > 0; i--)
@@ -37,7 +38,7 @@ namespace ServerApp
                     Console.WriteLine(i);
                     Thread.Sleep(1000);
                 }
-                
+                //tot hier
 
 
                 TcpClient tcTest = serverListener.AcceptTcpClient();
