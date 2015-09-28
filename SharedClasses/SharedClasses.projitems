@@ -9,5 +9,6 @@
     <Import_RootNamespace>SharedClasses</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Meting.cs" />
   </ItemGroup>
 </Project>
