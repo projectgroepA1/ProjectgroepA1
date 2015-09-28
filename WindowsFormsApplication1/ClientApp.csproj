@@ -88,12 +88,6 @@
   <ItemGroup>
     <Folder Include="serial\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NetLib\NetLib.csproj">
-      <Project>{e51a1eed-2886-43a9-88e5-39aeffd2e0ff}</Project>
-      <Name>NetLib</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

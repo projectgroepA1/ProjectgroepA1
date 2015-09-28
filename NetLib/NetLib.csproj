@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Measurement.cs" />
     <Compile Include="Packet.cs" />
     <Compile Include="ClientInterface.cs" />
     <Compile Include="PacketLogin.cs" />
     <Compile Include="PacketLoginResponse.cs" />
-    <Compile Include="PacketMeting.cs" />
+    <Compile Include="PacketMeasurement.cs" />
+    <Compile Include="PacketMeasurementResponse.cs" />
     <Compile Include="ServerInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

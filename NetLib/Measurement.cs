@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace NetLib
 {
-   public interface ClientInterface
+    public class Measurement
     {
 
-        void loginResponse(bool loginOk);
-        void recieveResponse(bool recieveOk);
 
     }
 }
