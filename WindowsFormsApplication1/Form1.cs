@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClientApp.networking;
 
 namespace ClientApp
 {
     public partial class Client : Form
     {
         private Communication reader;
+
+        private ServerConnection serverConnection;
 
         public Client(Communication reader)
         {
@@ -22,6 +25,8 @@ namespace ClientApp
             Thread thread = new Thread(new ThreadStart(UpdateBox));
             //thread.Start();
 
+            //open up a new connection
+            this.serverConnection = new ServerConnection();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -58,7 +63,7 @@ namespace ClientApp
         {
             while (true)
             {
-                if (reader.parts.Length > 7 && reader.parts != null)
+                if (reader.parts != null && reader.parts.Length > 7)
                 {
                     Console.WriteLine("reader size: " + reader.parts.Length);
                     {

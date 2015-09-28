@@ -15,6 +15,7 @@ namespace ClientApp
         {
             port = new SerialPort(com, 9600, Parity.None, 8, StopBits.One);
             port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
+
             port.Open();
 
             Thread thread = new Thread(new ThreadStart(dataAsker));
