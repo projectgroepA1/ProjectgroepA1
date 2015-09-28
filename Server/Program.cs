@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using NetwerkLib;
+using System.Net;
+using NetLib;
+
 namespace Server
 {
     class Program
     {
+        public IPAddress IP { get; set; }
+        public static readonly int port = 1967;
+
         private static void Main(string[] args)
         {
             new Program();
@@ -20,7 +19,9 @@ namespace Server
 
         Program()
         {
-            TcpListener listener = new TcpListener(1000);
+            IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
+            IP = ipHostInfo.AddressList[0];
+            TcpListener listener = new TcpListener(IP,port);
             listener.Start();
 
             while (true)

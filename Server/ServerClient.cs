@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using NetwerkLib;
+using NetLib;
 
 namespace Server
 {
@@ -37,13 +37,11 @@ namespace Server
 
         public void login(string username, string password)
         {
-            Console.WriteLine("Iemand probeert in te loggen met " + username + ", " + password);
             this.username = username;
-            if (username == password)
+            if (username == "admin" && password == "12345")
             {
                 sendPacket(new PacketLoginResponse() { loginOk = true });
             }
-            //server.broadCast(new Packet....);
 
         }
 

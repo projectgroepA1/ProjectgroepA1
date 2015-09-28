@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NetLib
 {
     [Serializable]
-    class Packet
+    public class Packet
     {
         public virtual void handleClientSide(ClientInterface clientInterface)
         { }

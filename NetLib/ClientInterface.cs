@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetLib
 {
-    interface ClientInterface
+   public interface ClientInterface
     {
 
         void loginResponse(bool loginOk);

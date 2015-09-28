@@ -3,9 +3,8 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace NetLib
 {
-    interface ServerInterface
+    public interface ServerInterface
     {
-
         void login(string username, string password);
     }
 }
