@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApplication1.networking
+namespace ClientApp.networking
 {
     class ServerConnection
     {

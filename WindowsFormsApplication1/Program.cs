@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApplication1.WindowsFormsApplication1;
 
-namespace WindowsFormsApplication1
+
+namespace ClientApp
 {
     static class Program
     {
@@ -17,7 +17,8 @@ namespace WindowsFormsApplication1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Client());
+            Communication reader = new Communication("COM1");
+            Application.Run(new Client(reader));
         }
     }
 }
