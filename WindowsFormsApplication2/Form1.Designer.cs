@@ -223,7 +223,6 @@
             // 
             this.RPMTextBox.Location = new System.Drawing.Point(121, 74);
             this.RPMTextBox.Name = "RPMTextBox";
-            this.RPMTextBox.ReadOnly = true;
             this.RPMTextBox.Size = new System.Drawing.Size(63, 20);
             this.RPMTextBox.TabIndex = 11;
             // 
