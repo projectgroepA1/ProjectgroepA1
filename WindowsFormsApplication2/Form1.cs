@@ -15,27 +15,6 @@ namespace WindowsFormsApplication2
         public Form1()
         {
             InitializeComponent();
-            timeTextBox.Text = "test";
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void RPMTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timeTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
