@@ -64,7 +64,6 @@
             this.label1.Size = new System.Drawing.Size(167, 63);
             this.label1.TabIndex = 0;
             this.label1.Text = "Client";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -98,7 +97,6 @@
             this.label4.Size = new System.Drawing.Size(91, 31);
             this.label4.TabIndex = 3;
             this.label4.Text = "Power";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -132,7 +130,6 @@
             this.label7.Size = new System.Drawing.Size(82, 31);
             this.label7.TabIndex = 6;
             this.label7.Text = "Pulse";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // textBox1
             // 
