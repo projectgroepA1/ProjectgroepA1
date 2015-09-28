@@ -10,41 +10,35 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Client : Form
+    public partial class Form1 : Form, ClientInterface
     {
-        public Client()
+        private TcpClient client;
+        private NetworkStream stream;
+
+        public Form1()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            client = new TcpClient("localhost", 1000);
+            stream = client.GetStream();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            Packet loginPacket = new PacketLogin() { username = "Johan", password = "Johan" };
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, loginPacket);
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        public void loginResponse(bool loginOk)
         {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
+            if (loginOk)
+                MessageBox.Show("Login is ok");
+            else
+                MessageBox.Show("Login is niet ok");
         }
     }
 }
