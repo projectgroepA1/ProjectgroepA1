@@ -40,7 +40,7 @@ namespace Server
             using (Stream stream = File.Open(filePath, FileMode.Create))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                binaryFormatter.Serialize(stream, Measurements);
+                binaryFormatter.Serialize(stream, measurements);
             }
         }
 
