@@ -215,3 +215,9 @@ ModelManifest.xml
 **/bin/Debug/
 **/obj/Debug/
 *.cache
+
+obj
+debug
+*.cache
+FietsApp/bin/Debug/FietsApp.vshost.exe
+FietsApp/bin/Debug/FietsApp.vshost.exe

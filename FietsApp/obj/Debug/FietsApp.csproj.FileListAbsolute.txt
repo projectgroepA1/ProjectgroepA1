@@ -28,3 +28,4 @@ E:\Documenten\GitHub\ProjectgroepA1\FietsApp\bin\Debug\FietsApp.exe
 E:\Documenten\GitHub\ProjectgroepA1\FietsApp\bin\Debug\FietsApp.pdb
 E:\Documenten\GitHub\ProjectgroepA1\FietsApp\obj\Debug\FietsApp.csprojResolveAssemblyReference.cache
 >>>>>>> File-I/O
+E:\Documenten\Avans\Jaar 2\Periode 1\Proftaak\Sprint 4\FietsApp\bin\Debug\FietsApp.exe.config
