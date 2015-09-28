@@ -9,6 +9,7 @@ namespace Server
     {
         public IPAddress IP { get; set; }
         public static readonly int port = 1967;
+        public DataStorage storage;
 
         private static void Main(string[] args)
         {
@@ -21,7 +22,7 @@ namespace Server
         {
             IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
             IP = ipHostInfo.AddressList[0];
-            TcpListener listener = new TcpListener(IP,port);
+            TcpListener listener = new TcpListener(port);
             listener.Start();
 
             while (true)
