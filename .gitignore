@@ -218,3 +218,5 @@ ModelManifest.xml
 
 obj
 bin
+*.cache
+*.sln
