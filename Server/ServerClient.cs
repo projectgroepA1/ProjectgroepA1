@@ -15,11 +15,13 @@ namespace Server
         public NetworkStream stream { get; set; }
         public TcpClient tcpClient { get; set; }
         private Program server;
+        private DataStorage storage;
 
         private string username;
 
         public ServerClient(TcpClient tcpClient, Program server)
         {
+            this.storage = new DataStorage();
             this.server = server;
             this.tcpClient = tcpClient;
             stream = tcpClient.GetStream();
@@ -45,10 +47,32 @@ namespace Server
 
         }
 
+        public void sendMeasurement(Measurement measurement)
+        {
+            if (measurement != null)
+            {
+                sendPacket(new PacketMeasurementResponse() { recieveOk = true });
+                storage.AddMeasurement(measurement);
+            }
+            else
+            {
+                Console.WriteLine("No measurement recieved/measurement recieve error");
+            }
+        }
+
         public void sendPacket(Packet packet)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, packet);
+        }
+
+        public void disconnected(bool disconnect)
+        {
+            if (disconnect)
+            {
+                storage.SaveFile();
+                sendPacket(new PacketDisconnectResponse() { disconnectOk = true });
+            }
         }
     }
 }

@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 namespace NetLib
 {
     [Serializable]
-    public class PacketMeasurementResponse : Packet
+    public class PacketDisconnectResponse : Packet
     {
-        public bool recieveOk { get; set; }
+        public bool disconnectOk { get; set; }
 
         public override void handleClientSide(ClientInterface clientInterface)
         {
-            clientInterface.recieveResponse(recieveOk);
+            clientInterface.disconnectResponse(disconnectOk);
         }
-
     }
 }
