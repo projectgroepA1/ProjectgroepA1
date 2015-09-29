@@ -6,5 +6,8 @@ namespace NetLib
     public interface ServerInterface
     {
         void login(string username, string password);
+        void sendMeasurement(Measurement measurement);
+        void disconnect(bool disconnect);
+
     }
 }

@@ -10,11 +10,17 @@ namespace NetLib
     class PacketMeasurement : Packet
     {
 
+        Measurement measurement;
+        
+        public PacketMeasurement(string RPM, string time, string power, string energy, string AP, string pulse)
+        {
+            this.measurement = new Measurement(RPM, time, power, energy, AP, pulse);
+        }
 
 
         public override void handleServerSide(ServerInterface serverInterface)
         {
-            //serverInterface.login();
+            serverInterface.sendMeasurement(this.measurement);
         }
     }
 }
