@@ -66,7 +66,7 @@ namespace Server
             formatter.Serialize(stream, packet);
         }
 
-        public void disconnected(bool disconnect)
+        public void disconnect(bool disconnect)
         {
             if (disconnect)
             {
