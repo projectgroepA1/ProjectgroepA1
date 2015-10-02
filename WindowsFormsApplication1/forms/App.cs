@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientApp.networking;
+using NetLib;
 
 namespace ClientApp
 {
@@ -25,9 +26,10 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //start the reader
+            this.reader = new Communication("COM2");
 
-            //Thread thread = new Thread(new ThreadStart(UpdateBox));
-            //thread.Start();
+            Thread thread = new Thread(new ThreadStart(UpdateBox));
+            thread.Start();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -66,23 +68,27 @@ namespace ClientApp
             {
                 if (reader.parts != null && reader.parts.Length > 7)
                 {
+                    PacketMeasurement measurement = new PacketMeasurement(int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), reader.parts[0], reader.parts[0], int.Parse(reader.parts[0]), reader.parts[0], int.Parse(reader.parts[0]));
+
+                    this.serverConnection.WritePacket(measurement);
+
                     Console.WriteLine("reader size: " + reader.parts.Length);
                     {
-                        MethodInvoker mi1 = delegate () { this.textBox1.Text = reader.parts[0]; };
+                        MethodInvoker mi1 = delegate () { this.pulse.Text = reader.parts[0]; };
                         this.Invoke(mi1);
-                        MethodInvoker mi2 = delegate () { this.textBox2.Text = reader.parts[1]; };
+                        MethodInvoker mi2 = delegate () { this.rpm.Text = reader.parts[1]; };
                         this.Invoke(mi2);
-                        MethodInvoker mi3 = delegate () { this.textBox3.Text = reader.parts[2]; };
+                        MethodInvoker mi3 = delegate () { this.speed.Text = reader.parts[2]; };
                         this.Invoke(mi3);
-                        MethodInvoker mi4 = delegate () { this.textBox4.Text = reader.parts[3]; };
+                        MethodInvoker mi4 = delegate () { this.distance.Text = reader.parts[3]; };
                         this.Invoke(mi4);
-                        MethodInvoker mi5 = delegate () { this.textBox5.Text = reader.parts[4]; };
+                        MethodInvoker mi5 = delegate () { this.power.Text = reader.parts[4]; };
                         this.Invoke(mi5);
-                        MethodInvoker mi6 = delegate () { this.textBox6.Text = reader.parts[5]; };
+                        MethodInvoker mi6 = delegate () { this.energy.Text = reader.parts[5]; };
                         this.Invoke(mi6);
-                        MethodInvoker mi7 = delegate () { this.textBox9.Text = reader.parts[6]; };
+                        MethodInvoker mi7 = delegate () { this.time.Text = reader.parts[6]; };
                         this.Invoke(mi7);
-                        MethodInvoker mi8 = delegate () { this.textBox10.Text = reader.parts[7]; };
+                        MethodInvoker mi8 = delegate () { this.actualpower.Text = reader.parts[7]; };
                         this.Invoke(mi8);
                         Thread.Sleep(1000);
                     }
