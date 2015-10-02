@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClientApp.forms;
 
 
 namespace ClientApp
@@ -18,8 +19,8 @@ namespace ClientApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Communication reader = new Communication("COM2");
-            Application.Run(new Client(reader));
+            //Communication reader = new Communication("COM2");
+            Application.Run(new Login());
         }
     }
 }

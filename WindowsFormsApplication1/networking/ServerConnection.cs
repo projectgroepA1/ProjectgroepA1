@@ -7,34 +7,55 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using NetLib;
 
 namespace ClientApp.networking
 {
-    class ServerConnection
+    public class ServerConnection:ClientInterface
     {
         private static string HOSTNAME = "127.0.0.1";
         private static int PORT = 1967;
 
+        private NetworkStream stream;
 
         public ServerConnection():base()
         {
             TcpClient client = new TcpClient(HOSTNAME, PORT);
+            this.stream = client.GetStream();
+        }
 
-            //login
-            PacketLogin loginPacket = new PacketLogin() {username = "admin", password = "12345" };
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            binaryFormatter.Serialize(client.GetStream(), loginPacket);
+        public void WritePacket(Packet packet)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(this.stream, packet);
+        }
 
-            //wait to receive a packet
+        public Packet ReadPacket()
+        {
+            Packet packet = (Packet)new BinaryFormatter().Deserialize(this.stream);
+            return packet;
+        }
 
-
-            while (client.Connected)
+        public void loginResponse(bool loginOk)
+        {
+            if (loginOk)
             {
-                //while connected
+                //logged in
+                Console.WriteLine("log in");
 
-                
+                //
+                Application.Run(new Client(this));
             }
+            else
+            {
+                //logged out
+                Console.WriteLine("log in aborted");
+            }
+        }
+
+        public void recieveResponse(bool recieveOk)
+        {
 
         }
     }

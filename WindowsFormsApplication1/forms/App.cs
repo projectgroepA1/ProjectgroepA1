@@ -18,15 +18,16 @@ namespace ClientApp
 
         private ServerConnection serverConnection;
 
-        public Client(Communication reader)
+        public Client(ServerConnection serverConnection)
         {
             InitializeComponent();
-            this.reader = reader;
-            Thread thread = new Thread(new ThreadStart(UpdateBox));
-            //thread.Start();
 
-            //open up a new connection
-            this.serverConnection = new ServerConnection();
+            this.serverConnection = serverConnection;
+
+            //start the reader
+
+            //Thread thread = new Thread(new ThreadStart(UpdateBox));
+            //thread.Start();
         }
 
         private void label1_Click(object sender, EventArgs e)
