@@ -25,7 +25,7 @@ namespace WindowsFormsApplication2
             this.client = client;
             this.stream = stream;
             connection = new Connection(this);
-            chatTextBox.Select();
+            chatInputTextBox.Select();
             this.KeyPreview = true;
             Thread t = new Thread(() => connection.Run());
             t.Start();
@@ -50,6 +50,13 @@ namespace WindowsFormsApplication2
                 e.Handled = true;
                 actualPowerTextBox.Text = "test";
             }
+            if (e.KeyCode == Keys.Enter && chatInputTextBox.Focused)
+            {
+                SelectNextControl(ActiveControl, true, true, true, true);
+                e.Handled = true;
+                sendButton.PerformClick();
+            }
+            chatInputTextBox.Select();
         }
 
         private void sendButton_Click(object sender, EventArgs e)
@@ -61,7 +68,7 @@ namespace WindowsFormsApplication2
                 chatTextBox.Text = chatText;
                 firstTime = false;
             }
-            else
+            else if (!(chatText.Length == 0))
             {
                 chatTextBox.Text = currentText + Environment.NewLine + chatText;
             }
