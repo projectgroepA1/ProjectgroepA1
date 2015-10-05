@@ -25,6 +25,7 @@ namespace WindowsFormsApplication2
             this.stream = stream;
             connection = new Connection(this);
             chatTextBox.Select();
+            this.KeyPreview = true;
             Thread t = new Thread(() => connection.Run());
             t.Start();
         }
@@ -39,11 +40,12 @@ namespace WindowsFormsApplication2
             return actualPowerTextBox;
         }
 
-        private void RpmTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (e.KeyCode == Keys.Enter && RPMTextbox.Focused)
             {
-                string s = RPMTextbox.Text;
+                SelectNextControl(ActiveControl, true, true, true, true);
+                e.Handled = true;
                 actualPowerTextBox.Text = "test";
             }
         }
