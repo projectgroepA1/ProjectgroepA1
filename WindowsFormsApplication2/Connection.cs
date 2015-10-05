@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WindowsFormsApplication2
 {
@@ -19,19 +21,16 @@ namespace WindowsFormsApplication2
 
         public void Run()
         {
+            Random r = new Random();
             while (running)
-            {
-                if (!form.ReturnRPM().Focused)
+            { 
+                form.Invoke((Action)(() =>
                 {
-                    //update rpm data van server
-                    form.ReturnRPM().Text = "test";
-                }
-                else if (form.ReturnRPM().Modified)
-                {
-                    string RPM = form.ReturnRPM().Text;
-                    //verzend rpm naar server
-                }
-                //haal data van server op en weergeef het
+                    if (!form.ReturnRPM().Focused)
+                    {
+                        form.ReturnRPM().Text = r.Next(1, 50).ToString();
+                    }
+                }));
             }
         }
     }

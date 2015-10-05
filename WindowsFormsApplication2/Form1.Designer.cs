@@ -38,7 +38,7 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sendButton = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.chatTextBox = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pulseTextBox = new System.Windows.Forms.TextBox();
             this.actualPowerTextBox = new System.Windows.Forms.TextBox();
@@ -118,7 +118,7 @@
             // 
             this.splitContainer3.Panel1.Controls.Add(this.pictureBox1);
             this.splitContainer3.Panel1.Controls.Add(this.sendButton);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox7);
+            this.splitContainer3.Panel1.Controls.Add(this.chatTextBox);
             this.splitContainer3.Panel1.Controls.Add(this.chart1);
             this.splitContainer3.Panel1.Controls.Add(this.pulseTextBox);
             this.splitContainer3.Panel1.Controls.Add(this.actualPowerTextBox);
@@ -155,13 +155,13 @@
             this.sendButton.Text = "Send";
             this.sendButton.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // chatTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(223, 222);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(314, 65);
-            this.textBox7.TabIndex = 18;
+            this.chatTextBox.Location = new System.Drawing.Point(223, 222);
+            this.chatTextBox.Multiline = true;
+            this.chatTextBox.Name = "chatTextBox";
+            this.chatTextBox.Size = new System.Drawing.Size(314, 65);
+            this.chatTextBox.TabIndex = 18;
             // 
             // chart1
             // 
@@ -369,7 +369,7 @@
         private System.Windows.Forms.TextBox RPMTextbox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button sendButton;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox chatTextBox;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

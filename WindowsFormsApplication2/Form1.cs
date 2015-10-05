@@ -14,8 +14,6 @@ namespace WindowsFormsApplication2
 {
     public partial class Form1 : Form
     {
-        public delegate TextBox returnTextBox();
-        public returnTextBox returnBox;
         private TcpClient client;
         private NetworkStream stream;
         private Connection connection;
@@ -25,8 +23,8 @@ namespace WindowsFormsApplication2
             InitializeComponent();
             this.client = client;
             this.stream = stream;
-            returnBox = new returnTextBox(ReturnRPM);
             connection = new Connection(this);
+            chatTextBox.Select();
             Thread t = new Thread(() => connection.Run());
             t.Start();
         }
@@ -34,6 +32,20 @@ namespace WindowsFormsApplication2
         public TextBox ReturnRPM()
         {
             return RPMTextbox;
+        }
+
+        public TextBox returnActualPowerTextBox()
+        {
+            return actualPowerTextBox;
+        }
+
+        private void RpmTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                string s = RPMTextbox.Text;
+                actualPowerTextBox.Text = "test";
+            }
         }
     }
 }
