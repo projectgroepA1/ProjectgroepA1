@@ -17,6 +17,7 @@ namespace WindowsFormsApplication2
         private TcpClient client;
         private NetworkStream stream;
         private Connection connection;
+        private bool firstTime;
 
         public Form1(TcpClient client, NetworkStream stream)
         {
@@ -28,6 +29,7 @@ namespace WindowsFormsApplication2
             this.KeyPreview = true;
             Thread t = new Thread(() => connection.Run());
             t.Start();
+            firstTime = true;
         }
 
         public TextBox ReturnRPM()
@@ -48,6 +50,22 @@ namespace WindowsFormsApplication2
                 e.Handled = true;
                 actualPowerTextBox.Text = "test";
             }
+        }
+
+        private void sendButton_Click(object sender, EventArgs e)
+        {
+            string chatText = chatInputTextBox.Text;
+            string currentText = chatTextBox.Text;
+            if (firstTime)
+            {
+                chatTextBox.Text = chatText;
+                firstTime = false;
+            }
+            else
+            {
+                chatTextBox.Text = currentText + Environment.NewLine + chatText;
+            }
+            chatInputTextBox.Text = "";
         }
     }
 }
