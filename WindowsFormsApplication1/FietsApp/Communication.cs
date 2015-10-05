@@ -3,48 +3,53 @@ using System.IO.Ports;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace FietsApp
+namespace ClientApp
 {
-    class Communication
+    public class Communication
     {
         private SerialPort port;
-        
+        public string[] parts { get; set; }
+        private string[] oldParts = { "0", "0", "0", "0", "0", "0", "0", "0" };
 
         public Communication(string com)
         {
             port = new SerialPort(com, 9600, Parity.None, 8, StopBits.One);
-            Console.WriteLine("Incoming data");
-            Console.WriteLine("");
-            Console.WriteLine("Insert 'HELP' to see commands");
-            Console.WriteLine("");
-            //port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
-            try {
-                port.Open();
-                //port.WriteLine("ST");
-                //System.Windows.Forms.Application.Run();
-            }catch(Exception ex)
+            port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
+
+            port.Open();
+
+            Thread thread = new Thread(new ThreadStart(dataAsker));
+            thread.Start();
+        }
+
+        private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (port.ReadLine() == "")
             {
-                Console.WriteLine("");
-                Console.WriteLine("There is no connection");
-                Console.WriteLine("");
+                parts = oldParts;
+            }
+            else
+            {
+                string whole = port.ReadLine();
+                parts = whole.Split('\t');
+                //oldParts = parts;
+            }
+            foreach (string kappa in parts)
+            {
+                Console.WriteLine("recieved string: " + kappa);
+            }
+            //Console.WriteLine("recieved string:" + parts);
+            //Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
+            //" Time: " + parts[6] + " actual power: " + parts[7]);
+        }
+
+        private void dataAsker()
+        {
+            while (true)
+            {
+                port.WriteLine("ST");
+                Thread.Sleep(1000);
             }
         }
-
-        //private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        //{
-        //    if (Console.ReadLine() == "ST")
-        //    {
-        //        string whole = port.ReadLine();
-        //        string[] parts = whole.Split('\t');
-        //        Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
-        //        " Time: " + parts[6] + " actual power: " + parts[7]);
-        //    }
-        //}
-
-        public SerialPort GetPort()
-        {
-            return port;
-        }
-
     }
 }
