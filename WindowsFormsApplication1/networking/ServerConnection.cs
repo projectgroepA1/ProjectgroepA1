@@ -58,5 +58,10 @@ namespace ClientApp.networking
         {
 
         }
+
+        public void disconnectResponse(bool disconnectOk)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

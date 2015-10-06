@@ -16,13 +16,13 @@ namespace ClientApp
     public partial class Client : Form
     {
         private Communication reader;
-
+        
         private ServerConnection serverConnection;
 
         public Client(ServerConnection serverConnection)
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.serverConnection = serverConnection;
 
             //start the reader
@@ -72,6 +72,8 @@ namespace ClientApp
 
                     this.serverConnection.WritePacket(measurement);
 
+                    
+
                     Console.WriteLine("reader size: " + reader.parts.Length);
                     {
                         MethodInvoker mi1 = delegate () { this.pulse.Text = reader.parts[0]; };
@@ -90,6 +92,10 @@ namespace ClientApp
                         this.Invoke(mi7);
                         MethodInvoker mi8 = delegate () { this.actualpower.Text = reader.parts[7]; };
                         this.Invoke(mi8);
+                        //Add point to chart
+                        this.chart1.Series["Pulse (bpm)"].Points.AddXY(this.time,this.pulse);
+                        this.chart1.Series["Power (Watt)"].Points.AddXY(this.time, this.power);
+
                         Thread.Sleep(1000);
                     }
                 }
@@ -120,5 +126,6 @@ namespace ClientApp
         {
             
         }
+        
     }
 }

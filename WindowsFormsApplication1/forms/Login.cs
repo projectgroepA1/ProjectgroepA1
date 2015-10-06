@@ -19,7 +19,7 @@ namespace ClientApp.forms
         public Login()
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             //start connection
             this.serverConnection = new ServerConnection();
         }

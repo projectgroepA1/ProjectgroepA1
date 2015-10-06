@@ -13,11 +13,7 @@ namespace Server
     {
         private int sessionID;
         private List<Measurement> measurements;
-<<<<<<< HEAD
         private string dir;
-=======
-
->>>>>>> Client-Jeroen-
 
         public DataStorage()
         {
