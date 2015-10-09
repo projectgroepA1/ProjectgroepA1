@@ -15,20 +15,11 @@ namespace WindowsFormsApplication2
     {
         private TcpClient client;
         private NetworkStream stream;
-        private Login login;
-
-        public Form1(TcpClient client, Login login)
+        public Form1(TcpClient client, NetworkStream stream)
         {
             InitializeComponent();
             this.client = client;
-            //this.stream = client.GetStream();
-            this.login = login;
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            login.Show();
-            login.ClearBoxes();
+            this.stream = stream;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Server
         {
             IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
             IP = ipHostInfo.AddressList[0];
-            TcpListener listener = new TcpListener(IP,port);
+            TcpListener listener = new TcpListener(port);
             listener.Start();
 
             while (true)
