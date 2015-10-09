@@ -31,7 +31,7 @@ namespace WindowsFormsApplication2
  /*           Packet loginPacket = new PacketLogin() { username ="test", password = "Johan" };
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, loginPacket);*/
-            new Form1(client, this).Show();
+            new Form1(client, stream,this).Show();
             this.Hide();
         }
 

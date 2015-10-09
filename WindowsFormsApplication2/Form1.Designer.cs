@@ -36,9 +36,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.chatInputTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.sendButton = new System.Windows.Forms.Button();
+            this.chatTextBox = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pulseTextBox = new System.Windows.Forms.TextBox();
             this.actualPowerTextBox = new System.Windows.Forms.TextBox();
@@ -121,9 +122,10 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.chatInputTextBox);
             this.splitContainer3.Panel1.Controls.Add(this.pictureBox1);
-            this.splitContainer3.Panel1.Controls.Add(this.button1);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox7);
+            this.splitContainer3.Panel1.Controls.Add(this.sendButton);
+            this.splitContainer3.Panel1.Controls.Add(this.chatTextBox);
             this.splitContainer3.Panel1.Controls.Add(this.chart1);
             this.splitContainer3.Panel1.Controls.Add(this.pulseTextBox);
             this.splitContainer3.Panel1.Controls.Add(this.actualPowerTextBox);
@@ -143,34 +145,45 @@
             this.splitContainer3.SplitterWidth = 5;
             this.splitContainer3.TabIndex = 0;
             // 
+            // chatInputTextBox
+            // 
+            this.chatInputTextBox.Location = new System.Drawing.Point(297, 327);
+            this.chatInputTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chatInputTextBox.Name = "chatInputTextBox";
+            this.chatInputTextBox.Size = new System.Drawing.Size(417, 22);
+            this.chatInputTextBox.TabIndex = 21;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(161, 309);
+            this.pictureBox1.Location = new System.Drawing.Point(77, 309);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(96, 80);
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // sendButton
             // 
-            this.button1.Location = new System.Drawing.Point(457, 361);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
+            this.sendButton.Location = new System.Drawing.Point(640, 372);
+            this.sendButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(100, 28);
+            this.sendButton.TabIndex = 19;
+            this.sendButton.Text = "Send";
+            this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
-            // textBox7
+            // chatTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(297, 273);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(417, 79);
-            this.textBox7.TabIndex = 18;
+            this.chatTextBox.Location = new System.Drawing.Point(297, 240);
+            this.chatTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chatTextBox.Multiline = true;
+            this.chatTextBox.Name = "chatTextBox";
+            this.chatTextBox.ReadOnly = true;
+            this.chatTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.chatTextBox.Size = new System.Drawing.Size(417, 79);
+            this.chatTextBox.TabIndex = 18;
             // 
             // chart1
             // 
@@ -178,7 +191,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(297, 62);
+            this.chart1.Location = new System.Drawing.Point(297, 28);
             this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
@@ -396,9 +409,10 @@
         private System.Windows.Forms.TextBox timeTextbox;
         private System.Windows.Forms.TextBox RPMTextbox;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button sendButton;
+        private System.Windows.Forms.TextBox chatTextBox;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TextBox chatInputTextBox;
     }
 }
 
