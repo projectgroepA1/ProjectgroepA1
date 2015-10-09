@@ -19,7 +19,7 @@ namespace WindowsFormsApplication2
         private Connection connection;
         private bool firstTime;
         private Login login;
-        private Thread t;
+        private Thread thread;
 
         public Form1(TcpClient client, NetworkStream stream,Login login)
         {
@@ -29,8 +29,8 @@ namespace WindowsFormsApplication2
             connection = new Connection(this);
             chatInputTextBox.Select();
             this.KeyPreview = true;
-            t = new Thread(() => connection.Run());
-            t.Start();
+            thread = new Thread(() => connection.Run());
+            thread.Start();
             firstTime = true;
             this.login = login;
         }
@@ -52,14 +52,15 @@ namespace WindowsFormsApplication2
                 SelectNextControl(ActiveControl, true, true, true, true);
                 e.Handled = true;
                 actualPowerTextBox.Text = "test";
+                chatInputTextBox.Select();
             }
             if (e.KeyCode == Keys.Enter && chatInputTextBox.Focused)
             {
                 SelectNextControl(ActiveControl, true, true, true, true);
                 e.Handled = true;
                 sendButton.PerformClick();
+                chatInputTextBox.Select();
             }
-            chatInputTextBox.Select();
         }
 
         private void sendButton_Click(object sender, EventArgs e)
@@ -80,7 +81,7 @@ namespace WindowsFormsApplication2
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            t.Abort();
+            thread.Abort();
             login.Show();
             login.ClearBoxes();
         }

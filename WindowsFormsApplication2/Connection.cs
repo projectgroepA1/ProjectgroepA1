@@ -27,7 +27,11 @@ namespace WindowsFormsApplication2
             { 
                 form.Invoke((Action)(() =>
                 {
-                    if (!form.ReturnRPM().Focused && running)
+                    if (form.ReturnRPM().Focused)
+                    {
+                        form.ReturnRPM().Select();
+                    }
+                    else
                     {
                         form.ReturnRPM().Text = r.Next(1, 50).ToString();
                     }
