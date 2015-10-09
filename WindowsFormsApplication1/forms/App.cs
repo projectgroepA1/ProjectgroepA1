@@ -109,6 +109,11 @@ namespace ClientApp
             if (e.KeyCode == Keys.Enter)
             {
                 textBox7.AppendText(this.textBox8.Text + Environment.NewLine);
+
+                //send packet to the server
+                PacketChat chat = new PacketChat(this.textBox8.Text + Environment.NewLine);
+                this.serverConnection.WritePacket(chat);
+
                 textBox7.TextAlign = HorizontalAlignment.Right;
                 textBox8.Clear(); 
             }
@@ -126,7 +131,18 @@ namespace ClientApp
 
         public void appendTextToChat(string message)
         {
-            this.textBox7.Text += message;
+            if (InvokeRequired)
+            {
+                MethodInvoker method = new MethodInvoker(delegate
+                {
+                    this.textBox7.Text += message;
+                });
+                this.Invoke(method);
+            }
+            else
+            {
+                this.textBox7.Text += message;
+            }
         }
     }
 }
