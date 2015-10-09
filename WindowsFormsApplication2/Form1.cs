@@ -20,19 +20,23 @@ namespace WindowsFormsApplication2
         private bool firstTime;
         private Login login;
         private Thread thread;
+        private List<DataPanels> panels;
+        private DataPanels panel;
 
         public Form1(TcpClient client, NetworkStream stream,Login login)
         {
             InitializeComponent();
             this.client = client;
             this.stream = stream;
+            this.login = login;
             connection = new Connection(this);
+            panels = new List<DataPanels>();
             chatInputTextBox.Select();
             this.KeyPreview = true;
             thread = new Thread(() => connection.Run());
             thread.Start();
             firstTime = true;
-            this.login = login;
+            panel = new DataPanels();
         }
 
         public TextBox ReturnRPM()
@@ -70,6 +74,11 @@ namespace WindowsFormsApplication2
                     chatTextBox.Text += Environment.NewLine + chatText;
                 }
                 chatInputTextBox.Text = "";
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                splitContainer2.Controls.Add(panel);
+                panel.Dock = DockStyle.Fill;
             }
         }
 
