@@ -14,16 +14,13 @@ namespace ClientApp.networking
 {
     public class ServerConnection: ClientInterface
     {
-        private static string HOSTNAME = "127.0.0.1";
-        private static int PORT = 1967;
-
         private NetworkStream stream;
 
         public Client client { get; set; }
 
         public ServerConnection():base()
         {
-            TcpClient client = new TcpClient(HOSTNAME, PORT);
+            TcpClient client = new TcpClient(Info.GetIp().ToString(),Info.Port);
             this.stream = client.GetStream();
         }
 
