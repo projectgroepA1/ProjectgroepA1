@@ -15,8 +15,10 @@ namespace NetLib
         private string energy { get; set; }
         private string AP { get; set; }
         private string pulse { get; set; }
+        private string speed { get; set; }
+        private string distance { get; set; }
 
-        public Measurement(string RPM, string time, string power, string energy, string AP, string pulse)
+        public Measurement(string RPM, string time, string power, string energy, string AP, string pulse,string speed,string distance)
         {
             this.RPM = RPM;
             this.time = time;
@@ -24,6 +26,8 @@ namespace NetLib
             this.energy = energy;
             this.AP = AP;
             this.pulse = pulse;
+            this.speed = speed;
+            this.distance = distance;
         }
 
     }

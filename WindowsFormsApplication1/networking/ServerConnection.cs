@@ -12,7 +12,7 @@ using NetLib;
 
 namespace ClientApp.networking
 {
-    public class ServerConnection:ClientInterface
+    public class ServerConnection: ClientInterface
     {
         private static string HOSTNAME = "127.0.0.1";
         private static int PORT = 1967;
@@ -59,6 +59,11 @@ namespace ClientApp.networking
         public void recieveResponse(bool recieveOk)
         {
 
+        }
+
+        public void disconnectResponse(bool disconnectOk)
+        {
+            
         }
 
         public void receivePacketChat(PacketChat chat)

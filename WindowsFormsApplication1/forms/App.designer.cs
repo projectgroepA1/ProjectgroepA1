@@ -1,16 +1,10 @@
-<<<<<<< HEAD:WindowsFormsApplication1/Form1.Designer.cs
-﻿using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
-{
-    partial class Form1 : Form
-=======
-﻿using System.Collections.Generic;
+﻿using System.Windows.Forms;
 
 namespace ClientApp
 {
-    partial class Client
->>>>>>> Client-Jeroen-:WindowsFormsApplication1/forms/App.designer.cs
+    partial class Client : Form
+
     {
         /// <summary>
         /// Required designer variable.

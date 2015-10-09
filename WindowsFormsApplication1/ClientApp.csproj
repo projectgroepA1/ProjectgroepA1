@@ -100,11 +100,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NetLib\NetLib.csproj">
-<<<<<<< HEAD
+
       <Project>{e51a1eed-2886-43a9-88e5-39aeffd2e0ff}</Project>
-=======
+
       <Project>{E51A1EED-2886-43A9-88E5-39AEFFD2E0FF}</Project>
->>>>>>> Client-Jeroen-
+
       <Name>NetLib</Name>
     </ProjectReference>
   </ItemGroup>
