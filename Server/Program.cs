@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
+using System.Runtime.InteropServices;
 using NetLib;
 
 namespace Server
@@ -12,7 +13,9 @@ namespace Server
 
         private static void Main(string[] args)
         {
-            new Program();
+            //new Program();
+            DataStorage ds = new DataStorage();
+            Console.ReadLine();
         }
 
         private List<ServerClient> clients = new List<ServerClient>();

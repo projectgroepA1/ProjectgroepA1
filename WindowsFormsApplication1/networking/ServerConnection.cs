@@ -60,6 +60,7 @@ namespace ClientApp.networking
 
         public void disconnectResponse(bool disconnectOk)
         {
+<<<<<<< HEAD
             
         }
 
@@ -67,6 +68,9 @@ namespace ClientApp.networking
         {
             //append text to the App form
             this.client.appendTextToChat(chat.messageText);
+=======
+            throw new NotImplementedException();
+>>>>>>> Server
         }
     }
 }

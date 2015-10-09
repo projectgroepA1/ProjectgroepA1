@@ -16,13 +16,13 @@ namespace ClientApp
     public partial class Client : Form
     {
         private Communication reader;
-
+        
         private ServerConnection serverConnection;
 
         public Client(ServerConnection serverConnection)
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.serverConnection = serverConnection;
 
             this.serverConnection.client = this;
@@ -69,6 +69,7 @@ namespace ClientApp
         {
             while (true)
             {
+<<<<<<< HEAD
                 PacketMeasurement pm = new PacketMeasurement("1","2","3","4","5","6","7","8");
                 serverConnection.WritePacket(pm);
                 Thread.Sleep(1000);
@@ -99,6 +100,41 @@ namespace ClientApp
                 //        Thread.Sleep(1000);
                 //    }
                 //}
+=======
+                if (reader.parts != null && reader.parts.Length > 7)
+                {
+                    PacketMeasurement measurement = new PacketMeasurement(int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), reader.parts[0], reader.parts[0], int.Parse(reader.parts[0]), reader.parts[0], int.Parse(reader.parts[0]));
+
+                    this.serverConnection.WritePacket(measurement);
+
+                    
+
+                    Console.WriteLine("reader size: " + reader.parts.Length);
+                    {
+                        MethodInvoker mi1 = delegate () { this.pulse.Text = reader.parts[0]; };
+                        this.Invoke(mi1);
+                        MethodInvoker mi2 = delegate () { this.rpm.Text = reader.parts[1]; };
+                        this.Invoke(mi2);
+                        MethodInvoker mi3 = delegate () { this.speed.Text = reader.parts[2]; };
+                        this.Invoke(mi3);
+                        MethodInvoker mi4 = delegate () { this.distance.Text = reader.parts[3]; };
+                        this.Invoke(mi4);
+                        MethodInvoker mi5 = delegate () { this.power.Text = reader.parts[4]; };
+                        this.Invoke(mi5);
+                        MethodInvoker mi6 = delegate () { this.energy.Text = reader.parts[5]; };
+                        this.Invoke(mi6);
+                        MethodInvoker mi7 = delegate () { this.time.Text = reader.parts[6]; };
+                        this.Invoke(mi7);
+                        MethodInvoker mi8 = delegate () { this.actualpower.Text = reader.parts[7]; };
+                        this.Invoke(mi8);
+                        //Add point to chart
+                        this.chart1.Series["Pulse (bpm)"].Points.AddXY(this.time,this.pulse);
+                        this.chart1.Series["Power (Watt)"].Points.AddXY(this.time, this.power);
+
+                        Thread.Sleep(1000);
+                    }
+                }
+>>>>>>> Server
             }
         }
 
@@ -126,10 +162,14 @@ namespace ClientApp
         {
             
         }
+<<<<<<< HEAD
 
         public void appendTextToChat(string message)
         {
             this.textBox7.Text += message;
         }
+=======
+        
+>>>>>>> Server
     }
 }
