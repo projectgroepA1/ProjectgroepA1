@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NetLib;
 
 namespace WindowsFormsApplication2
 {
@@ -20,6 +21,7 @@ namespace WindowsFormsApplication2
         private bool firstTime;
         private Login login;
         private Thread t;
+        private Measurement measurement;
 
         public Form1(TcpClient client, NetworkStream stream,Login login)
         {
@@ -83,6 +85,26 @@ namespace WindowsFormsApplication2
             t.Abort();
             login.Show();
             login.ClearBoxes();
+        }
+
+        private void pulseTextBox_TextChanged(object sender, EventArgs e)
+        {
+            measurement.pulse = pulseTextBox.Text;
+        }
+
+        private void textDistance_TextChanged(object sender, EventArgs e)
+        {
+            measurement.distance = textDistance.Text;
+        }
+
+        private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

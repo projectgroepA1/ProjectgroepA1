@@ -128,5 +128,10 @@ namespace ClientApp
         {
             this.textBox7.Text += message;
         }
+
+        private void Client_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
