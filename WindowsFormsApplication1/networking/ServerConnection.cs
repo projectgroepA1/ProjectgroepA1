@@ -19,6 +19,8 @@ namespace ClientApp.networking
 
         private NetworkStream stream;
 
+        public Client client { get; set; }
+
         public ServerConnection():base()
         {
             TcpClient client = new TcpClient(HOSTNAME, PORT);
@@ -57,6 +59,12 @@ namespace ClientApp.networking
         public void recieveResponse(bool recieveOk)
         {
 
+        }
+
+        public void receivePacketChat(PacketChat chat)
+        {
+            //append text to the App form
+            this.client.appendTextToChat(chat.messageText);
         }
     }
 }

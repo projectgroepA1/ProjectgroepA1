@@ -25,6 +25,9 @@ namespace ClientApp
 
             this.serverConnection = serverConnection;
 
+            this.serverConnection.client = this;
+
+
             //start the reader
             this.reader = new Communication("COM2");
 
@@ -119,6 +122,11 @@ namespace ClientApp
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        public void appendTextToChat(string message)
+        {
+            this.textBox7.Text += message;
         }
     }
 }
