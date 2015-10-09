@@ -33,6 +33,27 @@ namespace WindowsFormsApplication2
             t.Start();
             firstTime = true;
             this.login = login;
+
+            Thread thread = new Thread(new ThreadStart(UpdateBox));
+            thread.Start();
+
+        }
+
+        private void UpdateBox()
+        {
+
+            while (true)
+            {
+                MethodInvoker mi1 = delegate () 
+                {
+
+                    this.chart1.Series["RPM"].Points.AddXY(Double.Parse(this.timeTextbox.Text), this.RPMTextbox);
+
+                };
+                this.Invoke(mi1);
+                Thread.Sleep(1000);
+            }
+
         }
 
         public TextBox ReturnRPM()
