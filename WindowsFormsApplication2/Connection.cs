@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -26,13 +27,12 @@ namespace WindowsFormsApplication2
             { 
                 form.Invoke((Action)(() =>
                 {
-                    if (!form.ReturnRPM().Focused)
+                    if (!form.ReturnRPM().Focused && running)
                     {
                         form.ReturnRPM().Text = r.Next(1, 50).ToString();
                     }
                 }));
             }
         }
-
     }
 }

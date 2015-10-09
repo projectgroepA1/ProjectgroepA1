@@ -18,8 +18,10 @@ namespace WindowsFormsApplication2
         private NetworkStream stream;
         private Connection connection;
         private bool firstTime;
+        private Login login;
+        private Thread t;
 
-        public Form1(TcpClient client, NetworkStream stream)
+        public Form1(TcpClient client, NetworkStream stream,Login login)
         {
             InitializeComponent();
             this.client = client;
@@ -27,9 +29,10 @@ namespace WindowsFormsApplication2
             connection = new Connection(this);
             chatInputTextBox.Select();
             this.KeyPreview = true;
-            Thread t = new Thread(() => connection.Run());
+            t = new Thread(() => connection.Run());
             t.Start();
             firstTime = true;
+            this.login = login;
         }
 
         public TextBox ReturnRPM()
@@ -73,6 +76,13 @@ namespace WindowsFormsApplication2
                 chatTextBox.Text = currentText + Environment.NewLine + chatText;
             }
             chatInputTextBox.Text = "";
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            t.Abort();
+            login.Show();
+            login.ClearBoxes();
         }
     }
 }
