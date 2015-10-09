@@ -66,15 +66,14 @@ namespace WindowsFormsApplication2
         private void sendButton_Click(object sender, EventArgs e)
         {
             string chatText = chatInputTextBox.Text;
-            string currentText = chatTextBox.Text;
-            if (firstTime)
+            if (firstTime && !(chatText.Length <= 0))
             {
                 chatTextBox.Text = chatText;
                 firstTime = false;
             }
-            else if (!(chatText.Length == 0))
+            else if (!(chatText.Length <= 0))
             {
-                chatTextBox.Text = currentText + Environment.NewLine + chatText;
+                chatTextBox.Text += Environment.NewLine + chatText;
             }
             chatInputTextBox.Text = "";
         }
