@@ -58,24 +58,19 @@ namespace WindowsFormsApplication2
             {
                 SelectNextControl(ActiveControl, true, true, true, true);
                 e.Handled = true;
-                sendButton.PerformClick();
                 chatInputTextBox.Select();
+                string chatText = chatInputTextBox.Text;
+                if (firstTime && !(chatText.Length <= 0))
+                {
+                    chatTextBox.Text = chatText;
+                    firstTime = false;
+                }
+                else if (!(chatText.Length <= 0))
+                {
+                    chatTextBox.Text += Environment.NewLine + chatText;
+                }
+                chatInputTextBox.Text = "";
             }
-        }
-
-        private void sendButton_Click(object sender, EventArgs e)
-        {
-            string chatText = chatInputTextBox.Text;
-            if (firstTime && !(chatText.Length <= 0))
-            {
-                chatTextBox.Text = chatText;
-                firstTime = false;
-            }
-            else if (!(chatText.Length <= 0))
-            {
-                chatTextBox.Text += Environment.NewLine + chatText;
-            }
-            chatInputTextBox.Text = "";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

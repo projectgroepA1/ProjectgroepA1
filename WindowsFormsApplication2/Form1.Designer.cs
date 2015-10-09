@@ -38,7 +38,6 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.chatInputTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.sendButton = new System.Windows.Forms.Button();
             this.chatTextBox = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pulseTextBox = new System.Windows.Forms.TextBox();
@@ -119,7 +118,6 @@
             // 
             this.splitContainer3.Panel1.Controls.Add(this.chatInputTextBox);
             this.splitContainer3.Panel1.Controls.Add(this.pictureBox1);
-            this.splitContainer3.Panel1.Controls.Add(this.sendButton);
             this.splitContainer3.Panel1.Controls.Add(this.chatTextBox);
             this.splitContainer3.Panel1.Controls.Add(this.chart1);
             this.splitContainer3.Panel1.Controls.Add(this.pulseTextBox);
@@ -154,16 +152,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(72, 65);
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
-            // 
-            // sendButton
-            // 
-            this.sendButton.Location = new System.Drawing.Point(329, 292);
-            this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(75, 23);
-            this.sendButton.TabIndex = 19;
-            this.sendButton.Text = "Send";
-            this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // chatTextBox
             // 
@@ -381,7 +369,6 @@
         private System.Windows.Forms.TextBox timeTextbox;
         private System.Windows.Forms.TextBox RPMTextbox;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.TextBox chatTextBox;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TextBox chatInputTextBox;
