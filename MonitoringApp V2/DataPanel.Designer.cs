@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataPanel));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.RPMLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.powerLabel = new System.Windows.Forms.Label();
@@ -170,23 +170,23 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
-            this.chart1.Location = new System.Drawing.Point(228, 26);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(205, 26);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(314, 166);
             this.chart1.TabIndex = 29;
             this.chart1.Text = "chart1";
             // 
             // chatTextBox
             // 
-            this.chatTextBox.Location = new System.Drawing.Point(228, 211);
+            this.chatTextBox.Location = new System.Drawing.Point(205, 211);
             this.chatTextBox.Multiline = true;
             this.chatTextBox.Name = "chatTextBox";
             this.chatTextBox.ReadOnly = true;
@@ -196,15 +196,13 @@
             // 
             // chatInputTextBox
             // 
-            this.chatInputTextBox.Location = new System.Drawing.Point(228, 282);
+            this.chatInputTextBox.Location = new System.Drawing.Point(205, 282);
             this.chatInputTextBox.Name = "chatInputTextBox";
             this.chatInputTextBox.Size = new System.Drawing.Size(314, 20);
             this.chatInputTextBox.TabIndex = 31;
             // 
             // DataPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chatInputTextBox);
             this.Controls.Add(this.chatTextBox);
             this.Controls.Add(this.chart1);
@@ -222,7 +220,7 @@
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.RPMLabel);
             this.Name = "DataPanel";
-            this.Size = new System.Drawing.Size(572, 333);
+            this.Size = new System.Drawing.Size(539, 324);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
