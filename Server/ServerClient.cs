@@ -15,11 +15,13 @@ namespace Server
         public NetworkStream stream { get; set; }
         public TcpClient tcpClient { get; set; }
         private Program server;
+        private DataStorage storage;
 
         private string username;
 
         public ServerClient(TcpClient tcpClient, Program server)
         {
+            this.storage = new DataStorage();
             this.server = server;
             this.tcpClient = tcpClient;
             stream = tcpClient.GetStream();
@@ -30,25 +32,56 @@ namespace Server
                 {
                     Packet packet = (Packet)formatter.Deserialize(stream);
                     packet.handleServerSide(this);
+                    Console.WriteLine("packet received");
                 }
             }).Start();
         }
-
 
         public void login(string username, string password)
         {
             this.username = username;
             if (username == "admin" && password == "12345")
             {
-                sendPacket(new PacketLoginResponse() { loginOk = true });
+                sendPacket(new PacketLoginResponse() {loginOk = true});
+            }
+            else
+            {
+                sendPacket(new PacketLoginResponse() {loginOk = false});
             }
 
+        }
+
+        public void sendMeasurement(Measurement measurement)
+        {
+            if (measurement != null)
+            {
+                sendPacket(new PacketMeasurementResponse() { recieveOk = true });
+                storage.AddMeasurement(measurement);
+            }
+            else
+            {
+                Console.WriteLine("No measurement recieved/measurement recieve error");
+            }
         }
 
         public void sendPacket(Packet packet)
         {
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, packet);
+        }
+
+        public void disconnect(bool disconnect)
+        {
+            if (disconnect)
+            {
+                storage.SaveFile();
+                sendPacket(new PacketDisconnectResponse() { disconnectOk = true });
+            }
+        }
+
+        public void receiveChatPacket(PacketChat chat)
+        {
+            
         }
     }
 }
