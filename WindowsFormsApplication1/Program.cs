@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApplication1.WindowsFormsApplication1;
+using ClientApp.forms;
 
-namespace WindowsFormsApplication1
+
+namespace ClientApp
 {
     static class Program
     {
@@ -17,7 +19,8 @@ namespace WindowsFormsApplication1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Client());
+            //Communication reader = new Communication("COM2");
+            Application.Run(new Login());
         }
     }
 }

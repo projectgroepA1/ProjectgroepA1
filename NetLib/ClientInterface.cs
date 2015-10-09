@@ -11,6 +11,12 @@ namespace NetLib
 
         void loginResponse(bool loginOk);
         void recieveResponse(bool recieveOk);
+<<<<<<< HEAD
         void disconnectResponse(bool disconnectOk);
+=======
+
+       void receivePacketChat(PacketChat chat);
+
+>>>>>>> Client-Jeroen-
     }
 }

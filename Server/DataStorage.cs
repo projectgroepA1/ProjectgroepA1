@@ -12,7 +12,7 @@ namespace Server
     {
         private int sessionID;
         private List<Measurement> measurements;
-        
+
 
         public DataStorage()
         {

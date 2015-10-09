@@ -32,17 +32,21 @@ namespace Server
                 {
                     Packet packet = (Packet)formatter.Deserialize(stream);
                     packet.handleServerSide(this);
+                    Console.WriteLine("packet received");
                 }
             }).Start();
         }
-
 
         public void login(string username, string password)
         {
             this.username = username;
             if (username == "admin" && password == "12345")
             {
-                sendPacket(new PacketLoginResponse() { loginOk = true });
+                sendPacket(new PacketLoginResponse() {loginOk = true});
+            }
+            else
+            {
+                sendPacket(new PacketLoginResponse() {loginOk = false});
             }
 
         }
