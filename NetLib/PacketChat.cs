@@ -24,7 +24,7 @@ namespace NetLib
 
         public override void handleClientSide(ClientInterface clientInterface)
         {
-
+            clientInterface.receivePacketChat(this);
         }
     }
 }
