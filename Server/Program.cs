@@ -1,30 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
+using System.Runtime.InteropServices;
 using NetLib;
 
 namespace Server
 {
     class Program
     {
-        public IPAddress IP { get; set; }
-        public static readonly int port = 1967;
         public DataStorage storage;
 
         private static void Main(string[] args)
         {
-            new Program();
+            //new Program();
+            DataStorage ds = new DataStorage();
+            Console.ReadLine();
         }
 
         private List<ServerClient> clients = new List<ServerClient>();
 
         Program()
         {
-            IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
-            IP = ipHostInfo.AddressList[0];
-            TcpListener listener = new TcpListener(port);
+            IPAddress ip = Info.GetIp();
+            TcpListener listener = new TcpListener(ip,Info.Port);
             listener.Start();
 
+            Console.WriteLine("Server started: {0}",DateTime.Now);
+            Console.WriteLine("Server ip: {0}", ip);
+            Console.WriteLine("Server port: {0}",Info.Port);
             while (true)
             {
                 TcpClient newClient = listener.AcceptTcpClient();

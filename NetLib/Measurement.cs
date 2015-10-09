@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetLib
 {
+    [Serializable]
     public class Measurement
     {
         protected string RPM { get; set; }

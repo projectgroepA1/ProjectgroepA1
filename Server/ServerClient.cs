@@ -19,22 +19,25 @@ namespace Server
 
         private string username;
 
+
+        public Thread ClientThread { get; }
         public ServerClient(TcpClient tcpClient, Program server)
         {
             this.storage = new DataStorage();
             this.server = server;
             this.tcpClient = tcpClient;
             stream = tcpClient.GetStream();
-            new Thread(() =>
+            ClientThread = new Thread(() =>
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 while (tcpClient.Connected)
                 {
-                    Packet packet = (Packet)formatter.Deserialize(stream);
+                    Packet packet = (Packet) formatter.Deserialize(stream);
                     packet.handleServerSide(this);
-                    Console.WriteLine("packet received");
+                    Console.WriteLine("packet received from {0}",username);
                 }
-            }).Start();
+            });
+            ClientThread.Start();
         }
 
         public void login(string username, string password)
@@ -53,6 +56,7 @@ namespace Server
 
         public void sendMeasurement(Measurement measurement)
         {
+            Console.WriteLine("Measurement packet from {0}",username);
             if (measurement != null)
             {
                 sendPacket(new PacketMeasurementResponse() { recieveOk = true });

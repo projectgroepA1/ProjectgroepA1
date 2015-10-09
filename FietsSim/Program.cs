@@ -42,7 +42,6 @@ namespace FietsSim
             SerialPort sp = (SerialPort)sender;
             string indata = sp.ReadExisting();
             Console.Write("Data Received: " + indata);
-            string enter = "\u0013";
             bool a = (indata == "ST\n");
 
             if (a)
