@@ -14,7 +14,7 @@ namespace Server
     {
         private readonly DataStorage _storage;
         private string _username;
-
+        
         public Client(TcpClient tcpClient, Program server) : base(tcpClient,server)
         {
             this._storage = new DataStorage();
@@ -46,6 +46,9 @@ namespace Server
             {
                 sendPacket(new PacketMeasurementResponse() { recieveOk = true });
                 _storage.AddMeasurement(measurement);
+                Console.WriteLine(_server.Monitor.GetName());
+                if (_server.Monitor != null)
+                    _server.Monitor.sendMeasurement(measurement);
             }
             else
             {
@@ -59,6 +62,9 @@ namespace Server
             {
                 _storage.SaveFile();
                 sendPacket(new PacketDisconnectResponse() { disconnectOk = true });
+                TcpClient.Close();
+                ClientThread.Abort();
+                Console.WriteLine("Client closed: {0}",_username);
             }
         }
 

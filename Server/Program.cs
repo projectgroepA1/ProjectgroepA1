@@ -19,13 +19,13 @@ namespace Server
 
         private List<Client> clients = new List<Client>();
 
+        private Monitor _monitor;
+        public Monitor Monitor { get { return _monitor; } }
         Program()
         {
             IPAddress ip = Info.GetIp();
             TcpListener listener = new TcpListener(ip,Info.Port);
             listener.Start();
-
-            Monitor monitor = null;
 
             Console.WriteLine("Server started: {0}",DateTime.Now);
             Console.WriteLine("Server ip: {0}", ip);
@@ -35,18 +35,19 @@ namespace Server
                 TcpClient newClient = listener.AcceptTcpClient();
                 if (!IsMonitor(newClient))
                 {
+                    Console.WriteLine("is client");
                     clients.Add(new Client(newClient, this));
                 }
-                else if (monitor != null)
+                else if (_monitor != null)
                 {
-                    if (!monitor.TcpClient.Connected)
+                    if (!_monitor.TcpClient.Connected)
                     {
-                        monitor = new Monitor(newClient,this);
+                        _monitor = new Monitor(newClient,this,clients);
                     }
                 }
                 else
                 {
-                    monitor = new Monitor(newClient,this);
+                    _monitor = new Monitor(newClient,this,clients);
                 }
             }
         }
@@ -55,6 +56,7 @@ namespace Server
         {
             BinaryFormatter formatter = new BinaryFormatter();
             Packet packet = (Packet)formatter.Deserialize(client.GetStream());
+            //Console.WriteLine(packet.ToString());
             return packet is PacketMonitor;
         }
         

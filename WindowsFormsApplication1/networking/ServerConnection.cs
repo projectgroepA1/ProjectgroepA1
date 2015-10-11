@@ -14,25 +14,23 @@ namespace ClientApp.networking
 {
     public class ServerConnection: ClientInterface
     {
-        private NetworkStream stream;
-
+        private readonly TcpClient _client;
         public Client client { get; set; }
 
         public ServerConnection():base()
         {
-            TcpClient client = new TcpClient(Info.GetIp().ToString(),Info.Port);
-            this.stream = client.GetStream();
+            _client = new TcpClient(Info.GetIp().ToString(),Info.Port);
         }
 
         public void WritePacket(Packet packet)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(this.stream, packet);
+            formatter.Serialize(this._client.GetStream(), packet);
         }
 
         public Packet ReadPacket()
         {
-            Packet packet = (Packet)new BinaryFormatter().Deserialize(this.stream);
+            Packet packet = (Packet)new BinaryFormatter().Deserialize(this._client.GetStream());
             return packet;
         }
 
@@ -60,8 +58,11 @@ namespace ClientApp.networking
 
         public void disconnectResponse(bool disconnectOk)
         {
-
-            
+            if (disconnectOk)
+            {
+                client.Thread.Abort();
+                _client.Close();
+            }
         }
 
         public void receivePacketChat(PacketChat chat)

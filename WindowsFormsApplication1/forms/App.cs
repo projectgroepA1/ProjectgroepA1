@@ -18,6 +18,7 @@ namespace ClientApp
         private Communication reader;
         
         private ServerConnection serverConnection;
+        public Thread Thread { get; }
 
         public Client(ServerConnection serverConnection)
         {
@@ -31,8 +32,8 @@ namespace ClientApp
             //start the reader
             //this.reader = new Communication("COM2");
 
-            Thread thread = new Thread(new ThreadStart(UpdateBox));
-            thread.Start();
+            Thread = new Thread(new ThreadStart(UpdateBox));
+            Thread.Start();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -70,7 +71,7 @@ namespace ClientApp
             Random r = new Random();
             while (true)
             {
-                PacketMeasurement pm = new PacketMeasurement(r.Next(100),r.Next(100),r.Next(50),r.Next(100)+"",r.Next(100)+"",r.Next(50),r.Next(100)+"",r.Next(100));
+                PacketMeasurement pm = new PacketMeasurement(r.Next(100)+"",r.Next(100)+"",r.Next(50)+"",r.Next(100)+"",r.Next(100)+"",r.Next(50)+"",r.Next(100)+"",r.Next(100)+"");
                 serverConnection.WritePacket(pm);
                 Thread.Sleep(1000);
                 //if (reader.parts != null && reader.parts.Length > 7)
@@ -133,5 +134,9 @@ namespace ClientApp
             this.textBox7.Text += message;
         }
 
+        private void Client_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            serverConnection.WritePacket(new PacketDisconnect() {disconnected = true});
+        }
     }
 }

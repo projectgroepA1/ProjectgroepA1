@@ -26,11 +26,15 @@ namespace ClientApp.forms
 
         private void login_button_Click(object sender, EventArgs e)
         {
+            //send default packet, that shows this is not an monitor
+            Packet packet = new Packet();
+            this.serverConnection.WritePacket(packet);
+
             PacketLogin loginPacket = new PacketLogin() {username = username.Text, password = password.Text};
             this.serverConnection.WritePacket(loginPacket);
 
-            Packet packet = this.serverConnection.ReadPacket();
-            PacketLoginResponse login = packet as PacketLoginResponse;
+            Packet _packet = this.serverConnection.ReadPacket();
+            PacketLoginResponse login = _packet as PacketLoginResponse;
 
             if (login != null)
             {

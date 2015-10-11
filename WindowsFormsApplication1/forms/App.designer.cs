@@ -66,9 +66,10 @@ namespace ClientApp
             this.label1.BackColor = System.Drawing.Color.Gainsboro;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 31);
+            this.label1.Size = new System.Drawing.Size(105, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Client";
             // 
@@ -76,9 +77,10 @@ namespace ClientApp
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(10, 102);
+            this.label3.Location = new System.Drawing.Point(13, 126);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 17);
+            this.label3.Size = new System.Drawing.Size(46, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "RPM";
             // 
@@ -86,9 +88,10 @@ namespace ClientApp
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(10, 286);
+            this.label2.Location = new System.Drawing.Point(13, 352);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 17);
+            this.label2.Size = new System.Drawing.Size(46, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Time";
             // 
@@ -96,9 +99,10 @@ namespace ClientApp
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(10, 215);
+            this.label4.Location = new System.Drawing.Point(13, 265);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Power";
             // 
@@ -106,9 +110,10 @@ namespace ClientApp
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(10, 254);
+            this.label5.Location = new System.Drawing.Point(13, 313);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.Size = new System.Drawing.Size(61, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Energy";
             // 
@@ -116,9 +121,10 @@ namespace ClientApp
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label6.Location = new System.Drawing.Point(10, 322);
+            this.label6.Location = new System.Drawing.Point(13, 396);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 17);
+            this.label6.Size = new System.Drawing.Size(108, 20);
             this.label6.TabIndex = 5;
             this.label6.Text = "Actual Power";
             // 
@@ -126,78 +132,87 @@ namespace ClientApp
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label7.Location = new System.Drawing.Point(10, 63);
+            this.label7.Location = new System.Drawing.Point(13, 78);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 17);
+            this.label7.Size = new System.Drawing.Size(51, 20);
             this.label7.TabIndex = 6;
             this.label7.Text = "Pulse";
             // 
             // pulse
             // 
-            this.pulse.Location = new System.Drawing.Point(102, 62);
+            this.pulse.Location = new System.Drawing.Point(136, 76);
+            this.pulse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pulse.Name = "pulse";
             this.pulse.ReadOnly = true;
-            this.pulse.Size = new System.Drawing.Size(100, 20);
+            this.pulse.Size = new System.Drawing.Size(132, 22);
             this.pulse.TabIndex = 7;
             // 
             // rpm
             // 
-            this.rpm.Location = new System.Drawing.Point(102, 101);
+            this.rpm.Location = new System.Drawing.Point(136, 124);
+            this.rpm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rpm.Name = "rpm";
             this.rpm.ReadOnly = true;
-            this.rpm.Size = new System.Drawing.Size(100, 20);
+            this.rpm.Size = new System.Drawing.Size(132, 22);
             this.rpm.TabIndex = 8;
             // 
             // speed
             // 
-            this.speed.Location = new System.Drawing.Point(102, 139);
+            this.speed.Location = new System.Drawing.Point(136, 171);
+            this.speed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.speed.Name = "speed";
             this.speed.ReadOnly = true;
-            this.speed.Size = new System.Drawing.Size(100, 20);
+            this.speed.Size = new System.Drawing.Size(132, 22);
             this.speed.TabIndex = 9;
             // 
             // distance
             // 
-            this.distance.Location = new System.Drawing.Point(102, 176);
+            this.distance.Location = new System.Drawing.Point(136, 217);
+            this.distance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.distance.Name = "distance";
             this.distance.ReadOnly = true;
-            this.distance.Size = new System.Drawing.Size(100, 20);
+            this.distance.Size = new System.Drawing.Size(132, 22);
             this.distance.TabIndex = 10;
             // 
             // power
             // 
-            this.power.Location = new System.Drawing.Point(102, 214);
+            this.power.Location = new System.Drawing.Point(136, 263);
+            this.power.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.power.Name = "power";
             this.power.ReadOnly = true;
-            this.power.Size = new System.Drawing.Size(100, 20);
+            this.power.Size = new System.Drawing.Size(132, 22);
             this.power.TabIndex = 11;
             // 
             // energy
             // 
-            this.energy.Location = new System.Drawing.Point(102, 253);
+            this.energy.Location = new System.Drawing.Point(136, 311);
+            this.energy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.energy.Name = "energy";
             this.energy.ReadOnly = true;
-            this.energy.Size = new System.Drawing.Size(100, 20);
+            this.energy.Size = new System.Drawing.Size(132, 22);
             this.energy.TabIndex = 12;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(7, 367);
+            this.label8.Location = new System.Drawing.Point(9, 452);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(352, 25);
+            this.label8.Size = new System.Drawing.Size(443, 31);
             this.label8.TabIndex = 14;
             this.label8.Text = "Comments from Medical Supervisor";
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(11, 395);
+            this.textBox7.Location = new System.Drawing.Point(15, 486);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox7.Size = new System.Drawing.Size(308, 70);
+            this.textBox7.Size = new System.Drawing.Size(409, 85);
             this.textBox7.TabIndex = 15;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
@@ -206,9 +221,10 @@ namespace ClientApp
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(350, 391);
+            this.button1.Location = new System.Drawing.Point(467, 481);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(246, 86);
+            this.button1.Size = new System.Drawing.Size(328, 106);
             this.button1.TabIndex = 16;
             this.button1.Text = "Request Help";
             this.button1.UseVisualStyleBackColor = false;
@@ -220,7 +236,8 @@ namespace ClientApp
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(232, 54);
+            this.chart1.Location = new System.Drawing.Point(309, 66);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -228,64 +245,62 @@ namespace ClientApp
             series1.Name = "Pulse";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(363, 300);
+            this.chart1.Size = new System.Drawing.Size(484, 369);
             this.chart1.TabIndex = 17;
             this.chart1.Text = "chart1";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 180);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(12, 222);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(49, 13);
+            this.label9.Size = new System.Drawing.Size(63, 17);
             this.label9.TabIndex = 19;
             this.label9.Text = "Distance";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 141);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(12, 174);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.Size = new System.Drawing.Size(49, 17);
             this.label10.TabIndex = 20;
             this.label10.Text = "Speed";
             // 
             // time
             // 
-            this.time.Location = new System.Drawing.Point(102, 287);
-            this.time.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.time.Location = new System.Drawing.Point(136, 353);
+            this.time.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.time.Name = "time";
             this.time.ReadOnly = true;
-            this.time.Size = new System.Drawing.Size(100, 20);
+            this.time.Size = new System.Drawing.Size(132, 22);
             this.time.TabIndex = 21;
             // 
             // actualpower
             // 
-            this.actualpower.Location = new System.Drawing.Point(102, 322);
-            this.actualpower.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.actualpower.Location = new System.Drawing.Point(136, 396);
+            this.actualpower.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.actualpower.Name = "actualpower";
             this.actualpower.ReadOnly = true;
-            this.actualpower.Size = new System.Drawing.Size(100, 20);
+            this.actualpower.Size = new System.Drawing.Size(132, 22);
             this.actualpower.TabIndex = 22;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(11, 469);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox8.Location = new System.Drawing.Point(15, 577);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(308, 20);
+            this.textBox8.Size = new System.Drawing.Size(409, 22);
             this.textBox8.TabIndex = 18;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             this.textBox8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox8_KeyDown);
             // 
             // Client
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(603, 498);
+            this.ClientSize = new System.Drawing.Size(804, 613);
             this.Controls.Add(this.actualpower);
             this.Controls.Add(this.time);
             this.Controls.Add(this.label10);
@@ -308,8 +323,10 @@ namespace ClientApp
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Client";
             this.Text = "Client";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Client_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

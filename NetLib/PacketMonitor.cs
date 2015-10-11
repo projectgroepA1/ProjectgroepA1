@@ -9,5 +9,9 @@ namespace NetLib
     [Serializable]
     public class PacketMonitor : Packet
     {
+        public override string ToString()
+        {
+            return "Monitor!";
+        }
     }
 }

@@ -36,10 +36,11 @@ namespace Server
 
         public void ThreadClient()
         {
+            Console.WriteLine("{0}\tStarted{1}",GetName(),"");
             while (TcpClient.Connected)
             {
                 Packet packet = (Packet)formatter.Deserialize(Stream);
-               packet.handleServerSide(this);
+                packet.handleServerSide(this);
                 Console.WriteLine("packet received from {0}",GetName());
             }
         }
