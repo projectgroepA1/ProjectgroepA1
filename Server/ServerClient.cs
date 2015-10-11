@@ -10,82 +10,63 @@ using NetLib;
 
 namespace Server
 {
-    class ServerClient : ServerInterface
+    abstract class ServerClient : ServerInterface
     {
-        public NetworkStream stream { get; set; }
-        public TcpClient tcpClient { get; set; }
-        private Program server;
-        private DataStorage storage;
+        public TcpClient TcpClient { get; set; }
+        public NetworkStream Stream { get; set; }
 
-        private string username;
-
-
-        public Thread ClientThread { get; }
-        public ServerClient(TcpClient tcpClient, Program server)
+        private Thread _clientThread;
+        public Thread ClientThread
         {
-            this.storage = new DataStorage();
-            this.server = server;
-            this.tcpClient = tcpClient;
-            stream = tcpClient.GetStream();
-            ClientThread = new Thread(() =>
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                while (tcpClient.Connected)
-                {
-                    Packet packet = (Packet) formatter.Deserialize(stream);
-                    packet.handleServerSide(this);
-                    Console.WriteLine("packet received from {0}",username);
-                }
-            });
-            ClientThread.Start();
+            get { return _clientThread; }
         }
 
-        public void login(string username, string password)
-        {
-            this.username = username;
-            if (username == "admin" && password == "12345")
-            {
-                sendPacket(new PacketLoginResponse() {loginOk = true});
-            }
-            else
-            {
-                sendPacket(new PacketLoginResponse() {loginOk = false});
-            }
+        protected Program _server;
+        protected BinaryFormatter formatter;
 
+        public ServerClient(TcpClient client, Program server)
+        {
+            this.TcpClient = client;
+            this.Stream = client.GetStream();
+            this._server = server;
+            formatter = new BinaryFormatter();
+            Console.WriteLine("Connected: {0}\tHashCode: {1}",GetName(),GetHashCode());
+            ThreadStart();
         }
 
-        public void sendMeasurement(Measurement measurement)
+        public void ThreadClient()
         {
-            Console.WriteLine("Measurement packet from {0}",username);
-            if (measurement != null)
+            while (TcpClient.Connected)
             {
-                sendPacket(new PacketMeasurementResponse() { recieveOk = true });
-                storage.AddMeasurement(measurement);
-            }
-            else
-            {
-                Console.WriteLine("No measurement recieved/measurement recieve error");
+                Packet packet = (Packet)formatter.Deserialize(Stream);
+               packet.handleServerSide(this);
+                Console.WriteLine("packet received from {0}",GetName());
             }
         }
+
+        public abstract string GetName();
+
+        private void ThreadStart()
+        {
+            _clientThread = new Thread(new ThreadStart(ThreadClient));
+            _clientThread.Start();
+        }
+
+        public abstract void login(string username, string password);
+
+        public abstract void sendMeasurement(Measurement measurement);
 
         public void sendPacket(Packet packet)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(stream, packet);
+            formatter.Serialize(Stream, packet);
         }
 
-        public void disconnect(bool disconnect)
-        {
-            if (disconnect)
-            {
-                storage.SaveFile();
-                sendPacket(new PacketDisconnectResponse() { disconnectOk = true });
-            }
-        }
+        public abstract void disconnect(bool disconnect);
 
-        public void receiveChatPacket(PacketChat chat)
-        {
-            
-        }
+
+
+        public abstract void receiveChatPacket(PacketChat chat);
+
+
     }
 }

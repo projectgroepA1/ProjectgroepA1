@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NetLib
 {
     [Serializable]
-    class PacketDisconnect : Packet
+    public class PacketDisconnect : Packet
     {
         public bool disconnected { get; set; }
 

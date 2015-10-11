@@ -17,22 +17,14 @@ namespace NetLib
         public int energy { get; }
         public string time { get; }
         public int actualPower { get; }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> Server
         Measurement measurement;
         
         public PacketMeasurement(string RPM, string time, string power, string energy, string AP, string pulse,string speed, string distance)
         {
             this.measurement = new Measurement(RPM, time, power, energy, AP, pulse,speed,distance);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> Server
         public PacketMeasurement(int pulse, int rpm, int speed, string distance, string requestPower, int energy, string time, int actualPower)
         {
             this.pulse = pulse;
@@ -44,10 +36,6 @@ namespace NetLib
             this.time = time;
             this.actualPower = actualPower;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> Server
 
         public override void handleServerSide(ServerInterface serverInterface)
         {
