@@ -46,9 +46,11 @@ namespace Server
             {
                 sendPacket(new PacketMeasurementResponse() { recieveOk = true });
                 _storage.AddMeasurement(measurement);
-                Console.WriteLine(_server.Monitor.GetName());
                 if (_server.Monitor != null)
+                {
+                    Console.WriteLine(_server.Monitor.GetName());
                     _server.Monitor.sendMeasurement(measurement);
+                }
             }
             else
             {

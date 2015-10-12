@@ -30,12 +30,18 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM3");
+            this.reader = new Communication("COM2");
             this.serverConnection.client = this;
             
             //Start gui updater
             Thread thread = new Thread(new ThreadStart(UpdateGui));
             thread.Start();
+
+
+            //test receive message
+            PacketChat chat = new PacketChat("testmessage");
+            this.serverConnection.recievePacketChat(chat);
+
         }
 
         private void UpdateGui()
@@ -136,7 +142,7 @@ namespace ClientApp
             {
                 MethodInvoker method = new MethodInvoker(delegate
                 {
-                    this.Chatbox.Text += message;
+                    this.Chatbox.Text += message + Environment.NewLine;
                 });
                 this.Invoke(method);
             }
