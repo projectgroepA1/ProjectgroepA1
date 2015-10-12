@@ -220,3 +220,5 @@ obj
 bin
 *.cache
 *.sln
+Server/ResourceMapMeasurements/000001.mes
+*.cache

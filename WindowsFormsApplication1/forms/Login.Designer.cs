@@ -36,7 +36,7 @@
             // username
             // 
             this.username.Location = new System.Drawing.Point(28, 35);
-            this.username.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.username.Margin = new System.Windows.Forms.Padding(2);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(155, 20);
             this.username.TabIndex = 0;
@@ -44,7 +44,7 @@
             // password
             // 
             this.password.Location = new System.Drawing.Point(28, 68);
-            this.password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.password.Margin = new System.Windows.Forms.Padding(2);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(155, 20);
             this.password.TabIndex = 1;
@@ -52,11 +52,11 @@
             // login_button
             // 
             this.login_button.Location = new System.Drawing.Point(28, 103);
-            this.login_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.login_button.Margin = new System.Windows.Forms.Padding(2);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(153, 21);
             this.login_button.TabIndex = 2;
-            this.login_button.Text = "login";
+            this.login_button.Text = "Login";
             this.login_button.UseVisualStyleBackColor = true;
             this.login_button.Click += new System.EventHandler(this.login_button_Click);
             // 
@@ -68,9 +68,9 @@
             this.Controls.Add(this.login_button);
             this.Controls.Add(this.password);
             this.Controls.Add(this.username);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login";
-            this.Text = "Login";
+            this.Text = "Client";
             this.ResumeLayout(false);
             this.PerformLayout();
 

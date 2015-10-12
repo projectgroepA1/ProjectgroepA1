@@ -35,8 +35,28 @@ namespace WindowsFormsApplication2
             this.KeyPreview = true;
             thread = new Thread(() => connection.Run());
             thread.Start();
+
             firstTime = true;
             panel = new DataPanels();
+
+
+        }
+
+        private void UpdateBox()
+        {
+
+            //while (true)
+            //{
+            //    MethodInvoker mi1 = delegate () 
+            //    {
+
+            //        this.chart1.Series["RPM"].Points.AddXY(Double.Parse(this.timeTextbox.Text), this.RPMTextbox);
+
+            //    };
+            //    this.Invoke(mi1);
+            //    Thread.Sleep(1000);
+            //}
+
         }
 
         public TextBox ReturnRPM()
@@ -86,7 +106,7 @@ namespace WindowsFormsApplication2
         {
             thread.Abort();
             login.Show();
-            //login.ClearBoxes();
+            login.ClearBoxes();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -19,7 +19,6 @@ namespace ClientApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Communication reader = new Communication("COM2");
             Application.Run(new Login());
         }
     }
