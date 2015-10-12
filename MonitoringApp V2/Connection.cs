@@ -63,7 +63,7 @@ namespace WindowsFormsApplication2
                     (Exception)
                     {
                         MessageBox.Show("No connection to the server");
-                        form.thread.Abort();
+                        form.closeApplicaton();
                     }
                 }));
             }
