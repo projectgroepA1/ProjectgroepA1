@@ -15,23 +15,14 @@ namespace MonitoringApp_V2
 {
     public partial class DataPanel : Panel
     {
-        private TcpClient client;
-        private NetworkStream stream;
-        private Connection connection;
         private bool firstTime;
-        private Thread thread;
         private Form1 form;
 
-        public DataPanel(TcpClient client, NetworkStream stream, Form1 form)
+        public DataPanel(Form1 form)
         {
             InitializeComponent();
-            this.client = client;
-            this.stream = stream;
             this.form = form;
-            connection = new Connection(this);
             chatInputTextBox.Select();
-            thread = new Thread(() => connection.Run());
-            thread.Start();
             firstTime = true;
         }
 
@@ -45,12 +36,7 @@ namespace MonitoringApp_V2
             return actualPowerTextBox;
         }
 
-        public void StopThread()
-        {
-            thread.Abort();
-        }
-
-        protected override void OnKeyDown(KeyEventArgs e)
+ /*       protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && RPMTextbox.Focused)
             {
@@ -74,6 +60,6 @@ namespace MonitoringApp_V2
                 }
                 chatInputTextBox.Text = "";
             }
-        }
+        }*/
     }
 }

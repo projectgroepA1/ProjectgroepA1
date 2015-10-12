@@ -13,11 +13,11 @@ namespace WindowsFormsApplication2
     class Connection
     {
         private bool running;
-        private DataPanel dataPanel;
+        private Form1 form;
 
-        public Connection(DataPanel dataPanel)
+        public Connection(Form1 form)
         {
-            this.dataPanel = dataPanel;
+            this.form = form;
             running = true;
         }
 
@@ -26,11 +26,14 @@ namespace WindowsFormsApplication2
             Random r = new Random();
             while (running)
             { 
-                dataPanel.Invoke((Action)(() =>
+                form.Invoke((Action)(() =>
                 {
-                    if (!dataPanel.ReturnRPM().Focused)
+                    foreach (DataPanel p in form.panels)
                     {
-                        dataPanel.ReturnRPM().Text = r.Next(1, 50).ToString();
+                        if (!p.ReturnRPM().Focused)
+                        {
+                            p.ReturnRPM().Text = r.Next(1, 50).ToString();
+                        }
                     }
                 }));
             }
