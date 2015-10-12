@@ -84,5 +84,11 @@ namespace MonitoringApp_V2
             login.Show();
             login.ClearBoxes();
         }
+
+        public void closeApplicaton()
+        {
+            thread.Abort();
+            Thread.CurrentThread.Abort();
+        }
     }
 }

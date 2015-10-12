@@ -35,7 +35,7 @@ namespace WindowsFormsApplication2
                 {
                     try
                     {
-                        PacketMeasurement pack = (PacketMeasurement) formatter.Deserialize(form.stream);
+                        //PacketMeasurement pack = (PacketMeasurement) formatter.Deserialize(form.stream);
                         foreach (DataPanel p in form.panels)
                         {
                             if (!p.ReturnRPM().Focused)
@@ -47,23 +47,23 @@ namespace WindowsFormsApplication2
                             p.ReturnEnergyTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();
- /*                           if (!p.ReturnRPM().Focused)
+/*                            if (!p.ReturnRPM().Focused)
                             {
                                 p.ReturnRPM().Text = pack.RPM.ToString();
                             }
                             p.ReturnTimeTextBox().Text = pack.time;
-                            p.returnPowerTextBox().Text = pack.requestPower;
-                            p.returnEnergyTextBox().Text = pack.energy.ToString();
-                            p.returnActualPowerTextBox().Text = pack.actualPower.ToString();
-                            p.returnPulseTextBox().Text = pack.pulse.ToString();
-                            Thread.Sleep(1000);*/
+                            p.ReturnPowerTextBox().Text = pack.requestPower;
+                            p.ReturnEnergyTextBox().Text = pack.energy.ToString();
+                            p.ReturnActualPowerTextBox().Text = pack.actualPower.ToString();
+                            p.ReturnPulseTextBox().Text = pack.pulse.ToString();*/
+                           // Thread.Sleep(1000);
                         }
                     }
                     catch
                     (Exception)
                     {
-                        MessageBox.Show("No connection to the server");
-                        form.thread.Abort();
+                        //MessageBox.Show("No connection to the server");
+                        //form.closeApplicaton();
                     }
                 }));
             }
