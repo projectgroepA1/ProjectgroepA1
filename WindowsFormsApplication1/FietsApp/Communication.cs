@@ -22,6 +22,11 @@ namespace ClientApp
             thread.Start();
         }
 
+        public void sendCommand(string command)
+        {
+            this.port.WriteLine(command);
+        }
+
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (port.ReadLine() == "")
