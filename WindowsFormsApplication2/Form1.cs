@@ -86,7 +86,7 @@ namespace WindowsFormsApplication2
         {
             thread.Abort();
             login.Show();
-            login.ClearBoxes();
+            //login.ClearBoxes();
         }
 
         private void Form1_Load(object sender, EventArgs e)

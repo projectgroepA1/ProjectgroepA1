@@ -25,60 +25,80 @@ namespace MonitoringApp_V2
             chatInputTextBox.Select();
             firstTime = true;
         }
-        /*       protected override void OnKeyDown(KeyEventArgs e)
-               {
-                   if (e.KeyCode == Keys.Enter && RPMTextbox.Focused)
-                   {
-                       e.Handled = true;
-                       actualPowerTextBox.Text = "test";
-                       chatInputTextBox.Select();
-                   }
-                   if (e.KeyCode == Keys.Enter && chatInputTextBox.Focused)
-                   {
-                       e.Handled = true;
-                       chatInputTextBox.Select();
-                       string chatText = chatInputTextBox.Text;
-                       if (firstTime && !(chatText.Length <= 0))
-                       {
-                           chatTextBox.Text = chatText;
-                           firstTime = false;
-                       }
-                       else if (!(chatText.Length <= 0))
-                       {
-                           chatTextBox.Text += Environment.NewLine + chatText;
-                       }
-                       chatInputTextBox.Text = "";
-                   }
-               }*/
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && RPMTextbox.Focused)
+            {
+                e.Handled = true;
+                actualPowerTextBox.Text = "test";
+                chatInputTextBox.Select();
+            }
+            if (e.KeyCode == Keys.Enter && chatInputTextBox.Focused)
+            {
+                e.Handled = true;
+                chatInputTextBox.Select();
+                string chatText = chatInputTextBox.Text;
+                if (firstTime && !(chatText.Length <= 0))
+                {
+                    chatTextBox.Text = chatText;
+                    firstTime = false;
+                }
+                else if (!(chatText.Length <= 0))
+                {
+                    chatTextBox.Text += Environment.NewLine + chatText;
+                }
+                chatInputTextBox.Text = "";
+            }
+        }
 
         public TextBox ReturnRPM()
         {
             return RPMTextbox;
         }
 
-        public TextBox returnTimeTextBox()
+        public TextBox ReturnTimeTextBox()
         {
             return timeTextbox;
         }
 
-        public TextBox returnPowerTextBox()
+        public TextBox ReturnPowerTextBox()
         {
             return powerTextBox;
         }
 
-        public TextBox returnEnergyTextBox()
+        public TextBox ReturnEnergyTextBox()
         {
             return energyTextBox;
         }
 
-        public TextBox returnActualPowerTextBox()
+        public TextBox ReturnActualPowerTextBox()
         {
             return actualPowerTextBox;
         }
 
-        public TextBox returnPulseTextBox()
+        public TextBox ReturnPulseTextBox()
         {
             return pulseTextBox;
+        }
+
+        public TextBox ReturnChatInputTextBox()
+        {
+            return chatInputTextBox;
+        }
+
+        public TextBox ReturnChatTextBox()
+        {
+            return chatTextBox;
+        }
+
+        public bool ReturnFirstTime()
+        {
+            return firstTime;
+        }
+
+        public void changeFirstTime(bool first)
+        {
+            firstTime = first;
         }
     }
 }

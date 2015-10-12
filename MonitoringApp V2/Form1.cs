@@ -16,7 +16,7 @@ namespace MonitoringApp_V2
     public partial class Form1 : Form
     {
         private TcpClient client;
-        private NetworkStream stream;
+        public NetworkStream stream { get; }
         private Login login;
         public List<DataPanel> panels { get; }
         private Thread thread;
@@ -32,6 +32,38 @@ namespace MonitoringApp_V2
             connection = new Connection(this);
             thread = new Thread(() => connection.Run());
             thread.Start();
+            KeyPreview = true;
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            foreach (DataPanel panel in panels)
+            {
+                if (e.KeyCode == Keys.Enter && panel.ReturnRPM().Focused)
+                {
+                    SelectNextControl(ActiveControl, true, true, true, true);
+                    e.Handled = true;
+                    panel.ReturnActualPowerTextBox().Text = "test";
+                    panel.ReturnChatInputTextBox().Select();
+                }
+                if (e.KeyCode == Keys.Enter && panel.ReturnChatInputTextBox().Focused)
+                {
+                    SelectNextControl(ActiveControl, true, true, true, true);
+                    e.Handled = true;
+                    panel.ReturnChatInputTextBox().Select();
+                    string chatText = panel.ReturnChatInputTextBox().Text;
+                    if (panel.ReturnFirstTime() && !(chatText.Length <= 0))
+                    {
+                        panel.ReturnChatTextBox().Text = chatText;
+                        panel.changeFirstTime(false);
+                    }
+                    else if (!(chatText.Length <= 0))
+                    {
+                        panel.ReturnChatTextBox().Text += Environment.NewLine + chatText;
+                    }
+                    panel.ReturnChatInputTextBox().Text = "";
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
