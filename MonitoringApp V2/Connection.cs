@@ -12,7 +12,7 @@ namespace WindowsFormsApplication2
 {
     class Connection
     {
-        private bool running;
+        public bool running { get; set; }
         private Form1 form;
 
         public Connection(Form1 form)
@@ -34,8 +34,14 @@ namespace WindowsFormsApplication2
                         {
                             p.ReturnRPM().Text = r.Next(1, 50).ToString();
                         }
+                        p.returnTimeTextBox().Text = r.Next(1, 50).ToString();
+                        p.returnPowerTextBox().Text = r.Next(1, 50).ToString();
+                        p.returnEnergyTextBox().Text = r.Next(1, 50).ToString();
+                        p.returnActualPowerTextBox().Text = r.Next(1, 50).ToString();
+                        p.returnPulseTextBox().Text = r.Next(1, 50).ToString();
                     }
                 }));
+                Thread.Sleep(1000);
             }
         }
     }
