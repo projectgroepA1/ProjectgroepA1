@@ -56,7 +56,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "New Client";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -68,7 +68,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.MainPanel);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Docter App";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MainPanel.ResumeLayout(false);
