@@ -35,5 +35,25 @@ namespace WindowsFormsApplication2
                 }));
             }
         }
+
+        public void loginResponse(bool loginOk)
+        {
+            
+        }
+
+        public void recieveResponse(bool recieveOk)
+        {
+            
+        }
+
+        public void disconnectResponse(bool disconnectOk)
+        {
+            
+        }
+
+        public void receivePacketChat(PacketChat chat)
+        {
+            
+        }
     }
 }
