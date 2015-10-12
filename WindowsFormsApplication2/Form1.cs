@@ -15,17 +15,15 @@ namespace WindowsFormsApplication2
     public partial class Form1 : Form
     {
         private TcpClient client;
-        private NetworkStream stream;
         private Connection connection;
         private bool firstTime;
         private Login login;
         private Thread t;
 
-        public Form1(TcpClient client, NetworkStream stream,Login login)
+        public Form1(TcpClient client,Login login)
         {
             InitializeComponent();
             this.client = client;
-            this.stream = stream;
             connection = new Connection(this);
             chatInputTextBox.Select();
             this.KeyPreview = true;
@@ -103,7 +101,7 @@ namespace WindowsFormsApplication2
         {
             t.Abort();
             login.Show();
-            login.ClearBoxes();
+            login.Init();
         }
     }
 }

@@ -6,10 +6,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using NetLib;
 
 namespace WindowsFormsApplication2
 {
-    class Connection
+    class Connection : ClientInterface
     {
         private bool running;
         private Form1 form;

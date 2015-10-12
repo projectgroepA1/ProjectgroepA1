@@ -16,27 +16,30 @@ namespace WindowsFormsApplication2
     public partial class Login : Form
     {
         private TcpClient client;
-        private NetworkStream stream;
         private string username;
         private string password;
         public Login()
         {
             InitializeComponent();
-/*            client = new TcpClient("127.0.0.1", 1000);
-            stream = client.GetStream();*/
         }
     
         private void loginButton_Click(object sender, EventArgs e)
         {
- /*           Packet loginPacket = new PacketLogin() { username ="test", password = "Johan" };
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(stream, loginPacket);*/
-            new Form1(client, stream,this).Show();
+            client = new TcpClient(Info.GetIp().ToString(), Info.Port);
+            username = userNameTextBox.Text;
+            password = passwordTextBox.Text;
+
+            new BinaryFormatter().Serialize(client.GetStream(),new PacketMonitor());
+
+            new Form1(client,this).Show();
             this.Hide();
         }
 
-        public void ClearBoxes()
+        public void Init()
         {
+            new BinaryFormatter().Serialize(client.GetStream(), new PacketDisconnect() {disconnected = true});
+            client.Close();  
+            client = null;
             userNameTextBox.Clear();
             passwordTextBox.Clear();
         }

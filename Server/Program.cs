@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using NetLib;
 
 namespace Server
 {
     class Program
     {
-        public IPAddress IP { get; set; }
-        public static readonly int port = 1967;
         public DataStorage storage;
 
         private static void Main(string[] args)
@@ -16,26 +17,52 @@ namespace Server
             new Program();
         }
 
-        private List<ServerClient> clients = new List<ServerClient>();
+        private List<Client> clients = new List<Client>();
 
+        private Monitor _monitor;
+        public Monitor Monitor { get { return _monitor; } }
         Program()
         {
-            IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
-            IP = ipHostInfo.AddressList[0];
-            TcpListener listener = new TcpListener(port);
+            IPAddress ip = Info.GetIp();
+            TcpListener listener = new TcpListener(ip,Info.Port);
             listener.Start();
 
+            Console.WriteLine("Server started: {0}",DateTime.Now);
+            Console.WriteLine("Server ip: {0}", ip);
+            Console.WriteLine("Server port: {0}",Info.Port);
             while (true)
             {
                 TcpClient newClient = listener.AcceptTcpClient();
-                clients.Add(new ServerClient(newClient, this));
+                if (!IsMonitor(newClient))
+                {
+                    Console.WriteLine("is client");
+                    clients.Add(new Client(newClient, this));
+                }
+                else if (_monitor != null)
+                {
+                    if (!_monitor.TcpClient.Connected)
+                    {
+                        _monitor = new Monitor(newClient,this,clients);
+                    }
+                }
+                else
+                {
+                    _monitor = new Monitor(newClient,this,clients);
+                }
             }
         }
 
-
+        private bool IsMonitor(TcpClient client)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            Packet packet = (Packet)formatter.Deserialize(client.GetStream());
+            //Console.WriteLine(packet.ToString());
+            return packet is PacketMonitor;
+        }
+        
         public void broadCast(Packet packet)
         {
-            foreach (ServerClient serverClient in clients)
+            foreach (Client serverClient in clients)
                 serverClient.sendPacket(packet);
         }
 
