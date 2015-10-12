@@ -103,5 +103,10 @@ namespace WindowsFormsApplication2
             login.Show();
             login.Init();
         }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

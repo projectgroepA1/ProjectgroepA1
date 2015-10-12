@@ -1,5 +1,5 @@
 
-﻿using System.Windows.Forms;
+using System.Windows.Forms;
 
 namespace ClientApp
 {
@@ -57,15 +57,12 @@ namespace ClientApp
             this.label8 = new System.Windows.Forms.Label();
             this.Chatbox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Grafiek = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Sendbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.TextBox();
             this.actualpower = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grafiek)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,7 +127,6 @@ namespace ClientApp
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label6.Location = new System.Drawing.Point(13, 396);
             this.label6.Location = new System.Drawing.Point(13, 397);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
@@ -152,7 +148,6 @@ namespace ClientApp
             // pulse
             // 
             this.pulse.Location = new System.Drawing.Point(136, 76);
-            this.pulse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pulse.Margin = new System.Windows.Forms.Padding(4);
             this.pulse.Name = "pulse";
             this.pulse.ReadOnly = true;
@@ -162,7 +157,6 @@ namespace ClientApp
             // rpm
             // 
             this.rpm.Location = new System.Drawing.Point(136, 124);
-            this.rpm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rpm.Margin = new System.Windows.Forms.Padding(4);
             this.rpm.Name = "rpm";
             this.rpm.ReadOnly = true;
@@ -172,7 +166,6 @@ namespace ClientApp
             // speed
             // 
             this.speed.Location = new System.Drawing.Point(136, 171);
-            this.speed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.speed.Margin = new System.Windows.Forms.Padding(4);
             this.speed.Name = "speed";
             this.speed.ReadOnly = true;
@@ -182,7 +175,6 @@ namespace ClientApp
             // distance
             // 
             this.distance.Location = new System.Drawing.Point(136, 217);
-            this.distance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.distance.Margin = new System.Windows.Forms.Padding(4);
             this.distance.Name = "distance";
             this.distance.ReadOnly = true;
@@ -192,7 +184,6 @@ namespace ClientApp
             // power
             // 
             this.power.Location = new System.Drawing.Point(136, 263);
-            this.power.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.power.Margin = new System.Windows.Forms.Padding(4);
             this.power.Name = "power";
             this.power.ReadOnly = true;
@@ -202,7 +193,6 @@ namespace ClientApp
             // energy
             // 
             this.energy.Location = new System.Drawing.Point(136, 311);
-            this.energy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.energy.Margin = new System.Windows.Forms.Padding(4);
             this.energy.Name = "energy";
             this.energy.ReadOnly = true;
@@ -213,8 +203,6 @@ namespace ClientApp
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(9, 452);
-
             this.label8.Location = new System.Drawing.Point(9, 451);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
@@ -224,7 +212,6 @@ namespace ClientApp
             // 
             // Chatbox
             // 
-            
             this.Chatbox.Location = new System.Drawing.Point(15, 486);
             this.Chatbox.Margin = new System.Windows.Forms.Padding(4);
             this.Chatbox.Multiline = true;
@@ -239,8 +226,6 @@ namespace ClientApp
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(467, 481);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Location = new System.Drawing.Point(466, 481);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
@@ -254,19 +239,6 @@ namespace ClientApp
             chartArea1.Name = "ChartArea1";
             this.Grafiek.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(309, 66);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Pulse";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(484, 369);
-            this.chart1.TabIndex = 17;
-            this.chart1.Text = "chart1";
             this.Grafiek.Legends.Add(legend1);
             this.Grafiek.Location = new System.Drawing.Point(310, 66);
             this.Grafiek.Margin = new System.Windows.Forms.Padding(4);
@@ -340,7 +312,6 @@ namespace ClientApp
             // time
             // 
             this.time.Location = new System.Drawing.Point(136, 353);
-            this.time.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.time.Name = "time";
             this.time.ReadOnly = true;
             this.time.Size = new System.Drawing.Size(132, 22);
@@ -348,22 +319,11 @@ namespace ClientApp
             // 
             // actualpower
             // 
-            this.actualpower.Location = new System.Drawing.Point(136, 396);
-            this.actualpower.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.actualpower.Location = new System.Drawing.Point(136, 397);
             this.actualpower.Name = "actualpower";
             this.actualpower.ReadOnly = true;
             this.actualpower.Size = new System.Drawing.Size(132, 22);
             this.actualpower.TabIndex = 22;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(15, 577);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(409, 22);
-            this.textBox8.TabIndex = 18;
-            this.textBox8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox8_KeyDown);
             // 
             // Client
             // 
@@ -393,11 +353,6 @@ namespace ClientApp
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Client";
-            this.Text = "Client";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Client_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Client";
             this.Text = "Client";
@@ -425,14 +380,12 @@ namespace ClientApp
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox Chatbox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart Grafiek;
         private System.Windows.Forms.TextBox Sendbox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox time;
         private System.Windows.Forms.TextBox actualpower;
-        private System.Windows.Forms.TextBox textBox8;
     }
 }
 
