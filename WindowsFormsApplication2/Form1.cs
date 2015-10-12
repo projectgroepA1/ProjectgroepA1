@@ -1,10 +1,12 @@
-﻿using System;
+﻿using NetLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,6 +37,12 @@ namespace WindowsFormsApplication2
             Thread thread = new Thread(new ThreadStart(UpdateBox));
             thread.Start();
 
+        }
+
+        public void WritePacket(Packet packet)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(this.client.GetStream(), packet);
         }
 
         private void UpdateBox()
@@ -83,18 +91,31 @@ namespace WindowsFormsApplication2
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-            string chatText = chatInputTextBox.Text;
-            string currentText = chatTextBox.Text;
-            if (firstTime)
+                chatInputTextBox.AppendText(this.chatInputTextBox.Text + Environment.NewLine);
+
+                //send packet to the server
+                PacketChat chat = new PacketChat(this.chatInputTextBox.Text + Environment.NewLine);
+                WritePacket(chat);
+                Console.WriteLine("Sent message");
+                chatTextBox.TextAlign = HorizontalAlignment.Right;
+                chatInputTextBox.Clear();
+        }
+        
+
+        public void appendTextToChat(string message)
+        {
+            if (InvokeRequired)
             {
-                chatTextBox.Text = chatText;
-                firstTime = false;
+                MethodInvoker method = new MethodInvoker(delegate
+                {
+                    this.chatTextBox.Text += message;
+                });
+                this.Invoke(method);
             }
-            else if (!(chatText.Length == 0))
+            else
             {
-                chatTextBox.Text = currentText + Environment.NewLine + chatText;
+                this.chatTextBox.Text += message;
             }
-            chatInputTextBox.Text = "";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

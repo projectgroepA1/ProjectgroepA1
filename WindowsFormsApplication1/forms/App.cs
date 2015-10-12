@@ -30,7 +30,7 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM2");
+            this.reader = new Communication("COM3");
             this.serverConnection.client = this;
             
             //Start gui updater
@@ -124,7 +124,7 @@ namespace ClientApp
                 //send packet to the server
                 PacketChat chat = new PacketChat(this.Sendbox.Text + Environment.NewLine);
                 this.serverConnection.WritePacket(chat);
-
+                Console.WriteLine("Sent message");
                 Chatbox.TextAlign = HorizontalAlignment.Right;
                 Sendbox.Clear();
             }
