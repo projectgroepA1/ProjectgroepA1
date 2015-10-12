@@ -40,17 +40,17 @@ namespace WindowsFormsApplication2
         private void UpdateBox()
         {
 
-            while (true)
-            {
-                MethodInvoker mi1 = delegate () 
-                {
+            //while (true)
+            //{
+            //    MethodInvoker mi1 = delegate () 
+            //    {
 
-                    this.chart1.Series["RPM"].Points.AddXY(Double.Parse(this.timeTextbox.Text), this.RPMTextbox);
+            //        this.chart1.Series["RPM"].Points.AddXY(Double.Parse(this.timeTextbox.Text), this.RPMTextbox);
 
-                };
-                this.Invoke(mi1);
-                Thread.Sleep(1000);
-            }
+            //    };
+            //    this.Invoke(mi1);
+            //    Thread.Sleep(1000);
+            //}
 
         }
 

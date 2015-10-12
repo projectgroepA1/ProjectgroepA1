@@ -23,17 +23,17 @@ namespace WindowsFormsApplication2
 
         public void Run()
         {
-            Random r = new Random();
-            while (running)
-            { 
-                form.Invoke((Action)(() =>
-                {
-                    if (!form.ReturnRPM().Focused && running)
-                    {
-                        form.ReturnRPM().Text = r.Next(1, 50).ToString();
-                    }
-                }));
-            }
+            //Random r = new Random();
+            //while (running)
+            //{ 
+            //    form.Invoke((Action)(() =>
+            //    {
+            //        if (!form.ReturnRPM().Focused && running)
+            //        {
+            //            form.ReturnRPM().Text = r.Next(1, 50).ToString();
+            //        }
+            //    }));
+            //}
         }
 
         public void loginResponse(bool loginOk)
@@ -54,6 +54,16 @@ namespace WindowsFormsApplication2
         public void receivePacketChat(PacketChat chat)
         {
             
+        }
+
+        public void recievePacketChat(PacketChat chat)
+        {
+            
+        }
+
+        public void recievePacketBicycleCommand(PacketBicycleCommand command)
+        {
+            throw new NotImplementedException();
         }
     }
 }

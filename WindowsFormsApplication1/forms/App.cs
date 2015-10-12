@@ -17,13 +17,9 @@ namespace ClientApp
 {
     public partial class Client : Form
     {
-<<<<<<< HEAD
-        private Communication reader;
-        
-=======
-        public Communication reader { get; }
 
->>>>>>> refs/remotes/origin/ClientBranch
+        public Communication reader;
+        
         private ServerConnection serverConnection;
         public Thread Thread { get; }
 
@@ -32,20 +28,15 @@ namespace ClientApp
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.serverConnection = serverConnection;
-
+            this.reader = new Communication("COM3");
             this.serverConnection.client = this;
 
 
             //start the reader
-            //this.reader = new Communication("COM2");
-
-<<<<<<< HEAD
-            Thread = new Thread(new ThreadStart(UpdateBox));
-            Thread.Start();
-=======
+            
+            
             Thread thread = new Thread(new ThreadStart(UpdateGui));
             thread.Start();
->>>>>>> refs/remotes/origin/ClientBranch
         }
 
         private void UpdateGui()
@@ -53,38 +44,36 @@ namespace ClientApp
             Random r = new Random();
             while (true)
             {
-<<<<<<< HEAD
                 PacketMeasurement pm = new PacketMeasurement(r.Next(100)+"",r.Next(100)+"",r.Next(50)+"",r.Next(100)+"",r.Next(100)+"",r.Next(50)+"",r.Next(100)+"",r.Next(100)+"");
                 serverConnection.WritePacket(pm);
                 Thread.Sleep(1000);
-                //if (reader.parts != null && reader.parts.Length > 7)
-                //{
-                //    PacketMeasurement measurement = new PacketMeasurement(int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), reader.parts[0], reader.parts[0], int.Parse(reader.parts[0]), reader.parts[0], int.Parse(reader.parts[0]));
+                if (reader.parts != null && reader.parts.Length > 7)
+                {
+                    PacketMeasurement measurement = new PacketMeasurement(int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), reader.parts[0], reader.parts[0], int.Parse(reader.parts[0]), reader.parts[0], int.Parse(reader.parts[0]));
 
-                //    this.serverConnection.WritePacket(measurement);
+                    this.serverConnection.WritePacket(measurement);
 
-                //    Console.WriteLine("reader size: " + reader.parts.Length);
-                //    {
-                //        MethodInvoker mi1 = delegate () { this.pulse.Text = reader.parts[0]; };
-                //        this.Invoke(mi1);
-                //        MethodInvoker mi2 = delegate () { this.rpm.Text = reader.parts[1]; };
-                //        this.Invoke(mi2);
-                //        MethodInvoker mi3 = delegate () { this.speed.Text = reader.parts[2]; };
-                //        this.Invoke(mi3);
-                //        MethodInvoker mi4 = delegate () { this.distance.Text = reader.parts[3]; };
-                //        this.Invoke(mi4);
-                //        MethodInvoker mi5 = delegate () { this.power.Text = reader.parts[4]; };
-                //        this.Invoke(mi5);
-                //        MethodInvoker mi6 = delegate () { this.energy.Text = reader.parts[5]; };
-                //        this.Invoke(mi6);
-                //        MethodInvoker mi7 = delegate () { this.time.Text = reader.parts[6]; };
-                //        this.Invoke(mi7);
-                //        MethodInvoker mi8 = delegate () { this.actualpower.Text = reader.parts[7]; };
-                //        this.Invoke(mi8);
-                //        Thread.Sleep(1000);
-                //    }
-                //}
-=======
+                    Console.WriteLine("reader size: " + reader.parts.Length);
+                    {
+                        MethodInvoker mi1 = delegate () { this.pulse.Text = reader.parts[0]; };
+                        this.Invoke(mi1);
+                        MethodInvoker mi2 = delegate () { this.rpm.Text = reader.parts[1]; };
+                        this.Invoke(mi2);
+                        MethodInvoker mi3 = delegate () { this.speed.Text = reader.parts[2]; };
+                        this.Invoke(mi3);
+                        MethodInvoker mi4 = delegate () { this.distance.Text = reader.parts[3]; };
+                        this.Invoke(mi4);
+                        MethodInvoker mi5 = delegate () { this.power.Text = reader.parts[4]; };
+                        this.Invoke(mi5);
+                        MethodInvoker mi6 = delegate () { this.energy.Text = reader.parts[5]; };
+                        this.Invoke(mi6);
+                        MethodInvoker mi7 = delegate () { this.time.Text = reader.parts[6]; };
+                        this.Invoke(mi7);
+                        MethodInvoker mi8 = delegate () { this.actualpower.Text = reader.parts[7]; };
+                        this.Invoke(mi8);
+                        Thread.Sleep(1000);
+                    }
+                }
                 if (reader.parts != null && reader.parts.Length > 7)
                 {
                     //Create and send measurement packet
@@ -151,7 +140,6 @@ namespace ClientApp
                     //Wait 1 second
                     Thread.Sleep(1000);
                 }
->>>>>>> refs/remotes/origin/ClientBranch
             }
         }
 

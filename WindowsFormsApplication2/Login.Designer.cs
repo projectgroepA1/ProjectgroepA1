@@ -88,7 +88,7 @@
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.usernameLabel);
             this.Name = "Login";
-            this.Text = "Login";
+            this.Text = "Monitoring";
             this.ResumeLayout(false);
             this.PerformLayout();
 
