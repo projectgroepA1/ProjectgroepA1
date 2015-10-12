@@ -6,10 +6,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using NetLib;
 
 namespace WindowsFormsApplication2
 {
-    class Connection
+    class Connection : ClientInterface
     {
         private bool running;
         private Form1 form;
@@ -33,6 +34,26 @@ namespace WindowsFormsApplication2
                     }
                 }));
             }
+        }
+
+        public void loginResponse(bool loginOk)
+        {
+            
+        }
+
+        public void recieveResponse(bool recieveOk)
+        {
+            
+        }
+
+        public void disconnectResponse(bool disconnectOk)
+        {
+            
+        }
+
+        public void receivePacketChat(PacketChat chat)
+        {
+            
         }
     }
 }
