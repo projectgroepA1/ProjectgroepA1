@@ -25,10 +25,50 @@ namespace MonitoringApp_V2
             chatInputTextBox.Select();
             firstTime = true;
         }
+        /*       protected override void OnKeyDown(KeyEventArgs e)
+               {
+                   if (e.KeyCode == Keys.Enter && RPMTextbox.Focused)
+                   {
+                       e.Handled = true;
+                       actualPowerTextBox.Text = "test";
+                       chatInputTextBox.Select();
+                   }
+                   if (e.KeyCode == Keys.Enter && chatInputTextBox.Focused)
+                   {
+                       e.Handled = true;
+                       chatInputTextBox.Select();
+                       string chatText = chatInputTextBox.Text;
+                       if (firstTime && !(chatText.Length <= 0))
+                       {
+                           chatTextBox.Text = chatText;
+                           firstTime = false;
+                       }
+                       else if (!(chatText.Length <= 0))
+                       {
+                           chatTextBox.Text += Environment.NewLine + chatText;
+                       }
+                       chatInputTextBox.Text = "";
+                   }
+               }*/
 
         public TextBox ReturnRPM()
         {
             return RPMTextbox;
+        }
+
+        public TextBox returnTimeTextBox()
+        {
+            return timeTextbox;
+        }
+
+        public TextBox returnPowerTextBox()
+        {
+            return powerTextBox;
+        }
+
+        public TextBox returnEnergyTextBox()
+        {
+            return energyTextBox;
         }
 
         public TextBox returnActualPowerTextBox()
@@ -36,30 +76,9 @@ namespace MonitoringApp_V2
             return actualPowerTextBox;
         }
 
- /*       protected override void OnKeyDown(KeyEventArgs e)
+        public TextBox returnPulseTextBox()
         {
-            if (e.KeyCode == Keys.Enter && RPMTextbox.Focused)
-            {
-                e.Handled = true;
-                actualPowerTextBox.Text = "test";
-                chatInputTextBox.Select();
-            }
-            if (e.KeyCode == Keys.Enter && chatInputTextBox.Focused)
-            {
-                e.Handled = true;
-                chatInputTextBox.Select();
-                string chatText = chatInputTextBox.Text;
-                if (firstTime && !(chatText.Length <= 0))
-                {
-                    chatTextBox.Text = chatText;
-                    firstTime = false;
-                }
-                else if (!(chatText.Length <= 0))
-                {
-                    chatTextBox.Text += Environment.NewLine + chatText;
-                }
-                chatInputTextBox.Text = "";
-            }
-        }*/
+            return pulseTextBox;
+        }
     }
 }

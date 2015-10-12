@@ -41,7 +41,7 @@ namespace MonitoringApp_V2
             flowLayoutPanel.Controls.Add(panel);
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
         {
             thread.Abort();
             login.Show();
