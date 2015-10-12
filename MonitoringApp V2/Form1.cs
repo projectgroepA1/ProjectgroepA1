@@ -19,7 +19,7 @@ namespace MonitoringApp_V2
         public NetworkStream stream { get; }
         private Login login;
         public List<DataPanel> panels { get; }
-        private Thread thread;
+        public Thread thread { get; }
         private Connection connection;
 
         public Form1(TcpClient client, NetworkStream stream, Login login)
