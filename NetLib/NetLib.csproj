@@ -43,6 +43,7 @@
     <Compile Include="Measurement.cs" />
     <Compile Include="Packet.cs" />
     <Compile Include="ClientInterface.cs" />
+    <Compile Include="PacketBicycleCommand.cs" />
     <Compile Include="PacketChat.cs" />
     <Compile Include="PacketDisconnect.cs" />
     <Compile Include="PacketDisconnectResponse.cs" />

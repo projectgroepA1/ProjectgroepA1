@@ -15,7 +15,7 @@ namespace ClientApp
 {
     public partial class Client : Form
     {
-        private Communication reader;
+        public Communication reader { get; }
 
         private ServerConnection serverConnection;
 

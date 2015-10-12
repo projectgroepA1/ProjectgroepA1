@@ -66,10 +66,15 @@ namespace ClientApp.networking
             
         }
 
-        public void receivePacketChat(PacketChat chat)
+        public void recievePacketChat(PacketChat chat)
         {
             //append text to the App form
             this.client.appendTextToChat(chat.messageText);
+        }
+
+        public void recievePacketBicycleCommand(PacketBicycleCommand command)
+        {
+            this.client.reader.sendCommand(command.command);
         }
     }
 }
