@@ -8,7 +8,6 @@ namespace ClientApp
 {
     public partial class Client : Form
     {
-
         public Communication reader;
 
         private ServerConnection serverConnection;
@@ -116,13 +115,12 @@ namespace ClientApp
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Chatbox.AppendText(this.Sendbox.Text + Environment.NewLine);
+                Chatbox.AppendText("[you] " + this.Sendbox.Text + Environment.NewLine);
 
                 //send packet to the server
                 PacketChat chat = new PacketChat(this.Sendbox.Text + Environment.NewLine);
                 this.serverConnection.WritePacket(chat);
                 Console.WriteLine("Sent message");
-                Chatbox.TextAlign = HorizontalAlignment.Right;
                 Sendbox.Clear();
             }
         }

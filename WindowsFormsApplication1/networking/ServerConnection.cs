@@ -62,7 +62,7 @@ namespace ClientApp.networking
         public void recievePacketChat(PacketChat chat)
         {
             //append text to the App form
-            this.client.appendTextToChat(chat.messageText);
+            this.client.appendTextToChat("[dokter] " + chat.messageText + Environment.NewLine);
         }
 
         public void recievePacketBicycleCommand(PacketBicycleCommand command)
