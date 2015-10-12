@@ -21,14 +21,14 @@ namespace ClientApp
 
         private ServerConnection serverConnection;
 
-        OrderedDictionary pulseList = new OrderedDictionary();
-        Dictionary<int, int> rpmList = new Dictionary<int, int>();
-        Dictionary<int, int> speedList = new Dictionary<int, int>();
-        Dictionary<int, int> distanceList = new Dictionary<int, int>();
-        Dictionary<int, int> powerList = new Dictionary<int, int>();
-        Dictionary<int, int> energyList = new Dictionary<int, int>();
-        Dictionary<int, int> timeList = new Dictionary<int, int>();
-        Dictionary<int, int> actualpowerList = new Dictionary<int, int>();
+        private OrderedDictionary pulseList = new OrderedDictionary();
+        private Dictionary<int, int> rpmList = new Dictionary<int, int>();
+        private Dictionary<int, int> speedList = new Dictionary<int, int>();
+        private Dictionary<int, int> distanceList = new Dictionary<int, int>();
+        private Dictionary<int, int> powerList = new Dictionary<int, int>();
+        private Dictionary<int, int> energyList = new Dictionary<int, int>();
+        private Dictionary<int, int> timeList = new Dictionary<int, int>();
+        private Dictionary<int, int> actualpowerList = new Dictionary<int, int>();
 
         public Client(ServerConnection serverConnection)
         {
@@ -40,40 +40,10 @@ namespace ClientApp
 
 
             //start the reader
-            this.reader = new Communication("COM3");
+            this.reader = new Communication("COM2");
 
             Thread thread = new Thread(new ThreadStart(UpdateGui));
             thread.Start();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void UpdateGui()
@@ -150,11 +120,6 @@ namespace ClientApp
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox8_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -168,16 +133,6 @@ namespace ClientApp
                 Chatbox.TextAlign = HorizontalAlignment.Right;
                 Sendbox.Clear();
             }
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         public void appendTextToChat(string message)
