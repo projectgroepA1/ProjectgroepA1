@@ -21,15 +21,6 @@ namespace ClientApp
 
         private ServerConnection serverConnection;
 
-        private OrderedDictionary pulseList = new OrderedDictionary();
-        private Dictionary<int, int> rpmList = new Dictionary<int, int>();
-        private Dictionary<int, int> speedList = new Dictionary<int, int>();
-        private Dictionary<int, int> distanceList = new Dictionary<int, int>();
-        private Dictionary<int, int> powerList = new Dictionary<int, int>();
-        private Dictionary<int, int> energyList = new Dictionary<int, int>();
-        private Dictionary<int, int> timeList = new Dictionary<int, int>();
-        private Dictionary<int, int> actualpowerList = new Dictionary<int, int>();
-
         public Client(ServerConnection serverConnection)
         {
             InitializeComponent();
@@ -92,29 +83,28 @@ namespace ClientApp
                     int I_distance = Int32.Parse(_distance);
                     int I_power = Int32.Parse(_power);
                     int I_energy = Int32.Parse(_energy);
-                    int I_time = Int32.Parse(_time);
+                    TimeSpan ts = TimeSpan.Parse(_time);
+                    int I_sec = ts.Seconds;
+                    int I_min = ts.Minutes;
                     int I_actualPower = Int32.Parse(_actualPower);
 
-                    //Filling dictionary's
-                    pulseList.Add(I_time, I_pulse);
-                    rpmList.Add(I_time, I_rpm);
-                    speedList.Add(I_time, I_speed);
-                    distanceList.Add(I_time, I_distance);
-                    powerList.Add(I_time, I_power);
-                    energyList.Add(I_time, I_energy);
-                    timeList.Add(I_time, I_time);
-                    actualpowerList.Add(I_time, I_actualPower);
-
                     //Adding coördinates to chart
-                    this.Grafiek.Series["Pulse"].Points.AddXY(I_time, I_pulse);
-                    this.Grafiek.Series["Rpm"].Points.AddXY(I_time, I_rpm);
-                    this.Grafiek.Series["Speed"].Points.AddXY(I_time, I_speed);
-                    this.Grafiek.Series["Distance"].Points.AddXY(I_time, I_distance);
-                    this.Grafiek.Series["Power"].Points.AddXY(I_time, I_power);
-                    this.Grafiek.Series["Energy"].Points.AddXY(I_time, I_energy);
-                    this.Grafiek.Series["Time"].Points.AddXY(I_time, I_time);
-                    this.Grafiek.Series["Actual_Power"].Points.AddXY(I_time, I_actualPower);
+                    MethodInvoker miP = delegate () { this.Grafiek.Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
+                    this.Invoke(miP);
+                    MethodInvoker miR = delegate () { this.Grafiek.Series["Rpm"].Points.AddXY(I_sec, I_rpm); };
+                    this.Invoke(miR);
+                    MethodInvoker miS = delegate () { this.Grafiek.Series["Speed"].Points.AddXY(I_sec, I_speed); };
+                    this.Invoke(miS);
+                    MethodInvoker miD = delegate () { this.Grafiek.Series["Distance"].Points.AddXY(I_sec, I_distance); };
+                    this.Invoke(miD);
+                    MethodInvoker miPo = delegate () { this.Grafiek.Series["Power"].Points.AddXY(I_sec, I_power); };
+                    this.Invoke(miPo);
+                    MethodInvoker miE = delegate () { this.Grafiek.Series["Energy"].Points.AddXY(I_sec, I_energy); };
+                    this.Invoke(miE);
+                    MethodInvoker miAP = delegate () { this.Grafiek.Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
+                    this.Invoke(miAP);
 
+                    //Wait 1 second
                     Thread.Sleep(1000);
                 }
             }
