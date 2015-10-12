@@ -44,10 +44,6 @@ namespace ClientApp
             {
                 if (reader.parts != null && reader.parts.Length > 7)
                 {
-                    //Create and send measurement packet
-                    PacketMeasurement measurement = new PacketMeasurement(int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), int.Parse(reader.parts[0]), reader.parts[0], reader.parts[0], int.Parse(reader.parts[0]), reader.parts[0], int.Parse(reader.parts[0]));
-                    this.serverConnection.WritePacket(measurement);
-
                     Console.WriteLine("reader size: " + reader.parts.Length);
                     //read all parts
                     string _pulse = reader.parts[0];
@@ -84,10 +80,18 @@ namespace ClientApp
                     int I_distance = Int32.Parse(_distance);
                     int I_power = Int32.Parse(_power);
                     int I_energy = Int32.Parse(_energy);
+                    int I_actualPower = Int32.Parse(_actualPower);
+
+                    //time
                     TimeSpan ts = TimeSpan.Parse(_time);
                     int I_sec = ts.Seconds;
                     int I_min = ts.Minutes;
-                    int I_actualPower = Int32.Parse(_actualPower);
+
+                    int totalTime = I_min*60 + I_sec;
+
+                    //Create and send measurement packet
+                    PacketMeasurement measurement = new PacketMeasurement(_pulse, _rpm, _speed, _distance, _power, _energy, _time, _actualPower);
+                    this.serverConnection.WritePacket(measurement);
 
                     //Adding coördinates to chart
                     MethodInvoker miP = delegate () { this.Grafiek.Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
