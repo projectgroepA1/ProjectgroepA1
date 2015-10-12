@@ -36,6 +36,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.chatInputTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.chatTextBox = new System.Windows.Forms.TextBox();
@@ -137,6 +138,14 @@
             this.splitContainer3.SplitterDistance = 327;
             this.splitContainer3.TabIndex = 0;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(63, 266);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
             // chatInputTextBox
             // 
             this.chatInputTextBox.Location = new System.Drawing.Point(223, 266);
@@ -178,6 +187,7 @@
             this.chart1.Size = new System.Drawing.Size(314, 166);
             this.chart1.TabIndex = 17;
             this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // pulseTextBox
             // 
