@@ -1,10 +1,12 @@
-﻿using System;
+﻿using NetLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,6 +42,12 @@ namespace WindowsFormsApplication2
             panel = new DataPanels();
 
 
+        }
+
+        public void WritePacket(Packet packet)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(this.client.GetStream(), packet);
         }
 
         private void UpdateBox()
@@ -95,10 +103,42 @@ namespace WindowsFormsApplication2
                 }
                 chatInputTextBox.Text = "";
             }
+
             if (e.KeyCode == Keys.Escape)
             {
                 splitContainer2.Controls.Add(panel);
                 panel.Dock = DockStyle.Fill;
+
+            chatInputTextBox.Select();
+        }
+
+        private void sendButton_Click(object sender, EventArgs e)
+        {
+                chatInputTextBox.AppendText(this.chatInputTextBox.Text + Environment.NewLine);
+
+                //send packet to the server
+                PacketChat chat = new PacketChat(this.chatInputTextBox.Text + Environment.NewLine);
+                WritePacket(chat);
+                Console.WriteLine("Sent message");
+                chatTextBox.TextAlign = HorizontalAlignment.Right;
+                chatInputTextBox.Clear();
+        }
+        
+
+        public void appendTextToChat(string message)
+        {
+            if (InvokeRequired)
+            {
+                MethodInvoker method = new MethodInvoker(delegate
+                {
+                    this.chatTextBox.Text += message;
+                });
+                this.Invoke(method);
+            }
+            else
+            {
+                this.chatTextBox.Text += message;
+
             }
         }
 
