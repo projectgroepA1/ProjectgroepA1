@@ -71,6 +71,13 @@ namespace MonitoringApp_V2
             DataPanel panel = new DataPanel(this);
             panels.Add(panel);
             flowLayoutPanel.Controls.Add(panel);
+            foreach (Panel aantalPanel in panels)
+            {
+                if (panels.Count >= 4)
+                {
+                    button1.Dispose();
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
