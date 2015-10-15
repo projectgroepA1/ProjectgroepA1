@@ -17,25 +17,30 @@ namespace WindowsFormsApplication2
     public partial class Form1 : Form
     {
         private TcpClient client;
+        private NetworkStream stream;
         private Connection connection;
         private bool firstTime;
         private Login login;
-        private Thread t;
+        private Thread thread;
+        private List<DataPanels> panels;
+        private DataPanels panel;
 
-        public Form1(TcpClient client,Login login)
+        public Form1(TcpClient client, NetworkStream stream,Login login)
         {
             InitializeComponent();
             this.client = client;
+            this.stream = stream;
+            this.login = login;
             connection = new Connection(this);
+            panels = new List<DataPanels>();
             chatInputTextBox.Select();
             this.KeyPreview = true;
-            t = new Thread(() => connection.Run());
-            t.Start();
-            firstTime = true;
-            this.login = login;
-
-            Thread thread = new Thread(new ThreadStart(UpdateBox));
+            thread = new Thread(() => connection.Run());
             thread.Start();
+
+            firstTime = true;
+            panel = new DataPanels();
+
 
         }
 
@@ -79,13 +84,26 @@ namespace WindowsFormsApplication2
                 SelectNextControl(ActiveControl, true, true, true, true);
                 e.Handled = true;
                 actualPowerTextBox.Text = "test";
+                chatInputTextBox.Select();
             }
             if (e.KeyCode == Keys.Enter && chatInputTextBox.Focused)
             {
                 SelectNextControl(ActiveControl, true, true, true, true);
                 e.Handled = true;
-                sendButton.PerformClick();
+                chatInputTextBox.Select();
+                string chatText = chatInputTextBox.Text;
+                if (firstTime && !(chatText.Length <= 0))
+                {
+                    chatTextBox.Text = chatText;
+                    firstTime = false;
+                }
+                else if (!(chatText.Length <= 0))
+                {
+                    chatTextBox.Text += Environment.NewLine + chatText;
+                }
+                chatInputTextBox.Text = "";
             }
+<<<<<<< HEAD
             chatInputTextBox.Select();
         }
 
@@ -115,14 +133,25 @@ namespace WindowsFormsApplication2
             else
             {
                 this.chatTextBox.Text += message;
+=======
+            if (e.KeyCode == Keys.Escape)
+            {
+                splitContainer2.Controls.Add(panel);
+                panel.Dock = DockStyle.Fill;
+>>>>>>> refs/remotes/origin/GUI
             }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            t.Abort();
+            thread.Abort();
             login.Show();
-            login.Init();
+            login.ClearBoxes();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void chart1_Click(object sender, EventArgs e)

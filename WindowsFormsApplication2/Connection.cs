@@ -23,6 +23,18 @@ namespace WindowsFormsApplication2
 
         public void Run()
         {
+            Random r = new Random();
+            while (running)
+            { 
+                form.Invoke((Action)(() =>
+                {
+                    if (!form.ReturnRPM().Focused)
+                    {
+                        form.ReturnRPM().Text = r.Next(1, 50).ToString();
+                    }
+                }));
+            }
+
             //Random r = new Random();
             //while (running)
             //{ 
