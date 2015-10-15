@@ -28,6 +28,7 @@ namespace WindowsFormsApplication2
         public Form1(TcpClient client, NetworkStream stream,Login login)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.client = client;
             this.stream = stream;
             this.login = login;
@@ -103,7 +104,7 @@ namespace WindowsFormsApplication2
                 }
                 chatInputTextBox.Text = "";
             }
-<<<<<<< HEAD
+
             chatInputTextBox.Select();
         }
 
@@ -133,12 +134,12 @@ namespace WindowsFormsApplication2
             else
             {
                 this.chatTextBox.Text += message;
-=======
+
             if (e.KeyCode == Keys.Escape)
             {
                 splitContainer2.Controls.Add(panel);
                 panel.Dock = DockStyle.Fill;
->>>>>>> refs/remotes/origin/GUI
+
             }
         }
 

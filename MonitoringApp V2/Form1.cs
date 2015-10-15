@@ -25,6 +25,7 @@ namespace MonitoringApp_V2
         public Form1(TcpClient client, NetworkStream stream, Login login)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.client = client;
             this.stream = stream;
             this.login = login;

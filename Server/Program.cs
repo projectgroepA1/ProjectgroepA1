@@ -15,6 +15,7 @@ namespace Server
         private static void Main(string[] args)
         {
             new Program();
+            Console.Title = "Server";
         }
 
         private List<Client> clients = new List<Client>();

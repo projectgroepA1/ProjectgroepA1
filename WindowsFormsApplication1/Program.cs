@@ -16,6 +16,7 @@ namespace ClientApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
+            Console.Title = "Client Console";
         }
     }
 }
