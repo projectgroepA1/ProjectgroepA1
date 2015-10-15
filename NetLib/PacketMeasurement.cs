@@ -9,14 +9,14 @@ namespace NetLib
     [Serializable]
     public class PacketMeasurement : Packet
     {
-        public int pulse { get; }
-        public int RPM { get; }
-        public int speed { get; }
-        public string distance { get; }
-        public string requestPower { get; }
-        public int energy { get; }
-        public string time { get; }
-        public int actualPower { get; }
+        //public int pulse { get; }
+        //public int RPM { get; }
+        //public int speed { get; }
+        //public string distance { get; }
+        //public string requestPower { get; }
+        //public int energy { get; }
+        //public string time { get; }
+        //public int actualPower { get; }
 
         Measurement measurement;
         

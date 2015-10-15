@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientApp.networking;
 using NetLib;
@@ -17,7 +8,6 @@ namespace ClientApp
 {
     public partial class Client : Form
     {
-
         public Communication reader;
 
         private ServerConnection serverConnection;
@@ -30,12 +20,18 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM3");
+            this.reader = new Communication("COM2");
             this.serverConnection.client = this;
             
             //Start gui updater
             Thread thread = new Thread(new ThreadStart(UpdateGui));
             thread.Start();
+
+
+            //test receive message
+            PacketChat chat = new PacketChat("testmessage");
+            this.serverConnection.recievePacketChat(chat);
+
         }
 
         private void UpdateGui()
@@ -119,13 +115,12 @@ namespace ClientApp
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Chatbox.AppendText(this.Sendbox.Text + Environment.NewLine);
+                Chatbox.AppendText("[you] " + this.Sendbox.Text + Environment.NewLine);
 
                 //send packet to the server
                 PacketChat chat = new PacketChat(this.Sendbox.Text + Environment.NewLine);
                 this.serverConnection.WritePacket(chat);
                 Console.WriteLine("Sent message");
-                Chatbox.TextAlign = HorizontalAlignment.Right;
                 Sendbox.Clear();
             }
         }
@@ -136,7 +131,7 @@ namespace ClientApp
             {
                 MethodInvoker method = new MethodInvoker(delegate
                 {
-                    this.Chatbox.Text += message;
+                    this.Chatbox.Text += message + Environment.NewLine;
                 });
                 this.Invoke(method);
             }
@@ -145,7 +140,6 @@ namespace ClientApp
                 this.Chatbox.Text += message;
             }
         }
-
         private void Client_FormClosing(object sender, FormClosingEventArgs e)
         {
             serverConnection.WritePacket(new PacketDisconnect() { disconnected = true });

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32.SafeHandles;
 
 namespace FietsSim
 {
@@ -49,7 +51,15 @@ namespace FietsSim
                 Console.WriteLine("indata is ST just received this");
                 sp.WriteLine(portWrite());
             }
-
+            else
+            {
+                //command like set the mode etc
+                if (indata == "RS\n")
+                {
+                    //reset the bicycle
+                }
+           
+            }
         }
 
 
@@ -79,6 +89,11 @@ namespace FietsSim
             totalString += actualpower + '\t';
 
             return totalString;
+        }
+
+        public static void SendReset(SerialPort sp)
+        {
+            sp.WriteLine("ST");
         }
 
         private static int RandomValue(int min, int max, int current)

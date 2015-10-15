@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO.Ports;
-using System.Windows.Forms;
 using System.Threading;
 
 namespace ClientApp
@@ -17,8 +16,6 @@ namespace ClientApp
             port.Open();
 
             port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
-
-            
 
             Thread thread = new Thread(new ThreadStart(dataAsker));
             thread.Start();
