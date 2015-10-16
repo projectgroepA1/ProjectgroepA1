@@ -48,15 +48,15 @@ namespace WindowsFormsApplication2
                             p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();*/
 
-                                                        if (!p.ReturnRPM().Focused)
-                                                        {
-                                                            p.ReturnRPM().Text = pack.RPM.ToString();
-                                                        }
-                                                        p.ReturnTimeTextBox().Text = pack.time;
-                                                        p.ReturnPowerTextBox().Text = pack.requestPower;
-                                                        p.ReturnEnergyTextBox().Text = pack.energy.ToString();
-                                                        p.ReturnActualPowerTextBox().Text = pack.actualPower.ToString();
-                                                        p.ReturnPulseTextBox().Text = pack.pulse.ToString();
+                            if (!p.ReturnRPM().Focused)
+                            {
+                                p.ReturnRPM().Text = pack.RPM.ToString();
+                            }
+                            p.ReturnTimeTextBox().Text = pack.time;
+                            p.ReturnPowerTextBox().Text = pack.requestPower;
+                            p.ReturnEnergyTextBox().Text = pack.energy.ToString();
+                            p.ReturnActualPowerTextBox().Text = pack.actualPower.ToString();
+                            p.ReturnPulseTextBox().Text = pack.pulse.ToString();
 
                             string _pulse = pack.pulse.ToString();
                             string _rpm = pack.RPM.ToString();
