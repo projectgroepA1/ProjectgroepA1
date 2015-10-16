@@ -14,7 +14,7 @@ using WindowsFormsApplication2;
 
 namespace MonitoringApp_V2
 {
-    public partial class DataPanel : Panel
+    public partial class DataPanel : UserControl
     {
         private bool firstTime;
         private Form1 form;
