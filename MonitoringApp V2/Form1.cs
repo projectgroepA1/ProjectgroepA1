@@ -41,20 +41,7 @@ namespace MonitoringApp_V2
         {
             foreach (Client client in clients)
             {
-                if (e.KeyCode == Keys.Enter && client.Panel.ReturnRPM().Focused)
-                {
-                    SelectNextControl(ActiveControl, true, true, true, true);
-                    e.Handled = true;
-                    client.Panel.ReturnChatInputTextBox().Select();
-                }
-                if (e.KeyCode == Keys.Enter && client.Panel.ReturnDistanceTextBox().Focused)
-                {
-                    SelectNextControl(ActiveControl, true, true, true, true);
-                    e.Handled = true;
-                    client.Panel.ReturnChatInputTextBox().Select();
-                }
-
-                if (e.KeyCode == Keys.Enter && client.Panel.ReturnTimeTextBox().Focused)
+                if (e.KeyCode == Keys.Enter && client.Panel.ReturnActualPowerTextBox().Focused)
                 {
                     SelectNextControl(ActiveControl, true, true, true, true);
                     e.Handled = true;
@@ -104,7 +91,7 @@ namespace MonitoringApp_V2
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -128,6 +115,12 @@ namespace MonitoringApp_V2
         private void flowLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        public void sendSession(string actualPower, string time, string distance)
+        {
+            //new session packet
+            MessageBox.Show("test");
         }
     }
 }
