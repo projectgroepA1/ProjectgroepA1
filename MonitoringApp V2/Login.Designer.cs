@@ -64,9 +64,9 @@
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(74, 97);
             this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
             this.passwordTextBox.TabIndex = 3;
-            this.passwordTextBox.PasswordChar = '*';
             // 
             // loginButton
             // 
@@ -90,6 +90,7 @@
             this.Controls.Add(this.usernameLabel);
             this.Name = "Login";
             this.Text = "Medical Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

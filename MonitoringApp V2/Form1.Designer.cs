@@ -31,6 +31,7 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,11 +62,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Delete
+            // 
+            this.Delete.Location = new System.Drawing.Point(1230, 85);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(75, 23);
+            this.Delete.TabIndex = 2;
+            this.Delete.Text = "Delete Client";
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1379, 670);
+            this.Controls.Add(this.Delete);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.MainPanel);
             this.Name = "Form1";
@@ -82,6 +94,7 @@
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Delete;
     }
 }
 

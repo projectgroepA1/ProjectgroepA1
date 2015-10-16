@@ -81,6 +81,14 @@ namespace MonitoringApp_V2
             }
         }
 
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            foreach (Panel aantalPanel in panels)
+            {
+                
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 

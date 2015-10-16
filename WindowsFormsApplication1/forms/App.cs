@@ -144,5 +144,10 @@ namespace ClientApp
         {
             serverConnection.WritePacket(new PacketDisconnect() { disconnected = true });
         }
+
+        private void Client_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

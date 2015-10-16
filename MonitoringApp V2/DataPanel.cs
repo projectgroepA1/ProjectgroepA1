@@ -81,5 +81,10 @@ namespace MonitoringApp_V2
         {
             return chart1;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

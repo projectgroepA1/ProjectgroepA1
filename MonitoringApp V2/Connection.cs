@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -17,6 +18,7 @@ namespace WindowsFormsApplication2
         public bool running { get; set; }
         private Form1 form;
         private BinaryFormatter formatter;
+        private String username;
 
 
         public Connection(Form1 form)
@@ -48,10 +50,25 @@ namespace WindowsFormsApplication2
                             p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();*/
 
+                            //change rpm
                             if (!p.ReturnRPM().Focused)
                             {
                                 p.ReturnRPM().Text = pack.RPM.ToString();
                             }
+                            
+                            //change time
+                            if (!p.ReturnTimeTextBox().Focused)
+                            {
+                                p.ReturnTimeTextBox().Text = pack.time.ToString();
+                            }
+
+                            //change distance
+                            if (!p.dis().Focused)
+                            {
+                                p.ReturnRPM().Text = pack.RPM.ToString();
+                            }
+
+
                             p.ReturnTimeTextBox().Text = pack.time;
                             p.ReturnPowerTextBox().Text = pack.requestPower;
                             p.ReturnEnergyTextBox().Text = pack.energy.ToString();

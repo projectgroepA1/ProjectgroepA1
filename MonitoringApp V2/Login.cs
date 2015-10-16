@@ -67,5 +67,10 @@ namespace WindowsFormsApplication2
             userNameTextBox.Clear();
             passwordTextBox.Clear();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
