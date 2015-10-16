@@ -97,5 +97,10 @@ namespace MonitoringApp_V2
             thread.Abort();
             Thread.CurrentThread.Abort();
         }
+
+        private void flowLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
