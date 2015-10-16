@@ -38,7 +38,7 @@ namespace WindowsFormsApplication2
                         PacketMeasurement pack = (PacketMeasurement)formatter.Deserialize(form.stream);
                         foreach (DataPanel p in form.panels)
                         {
-                            if (!p.ReturnRPM().Focused)
+/*                            if (!p.ReturnRPM().Focused)
                             {
                                 p.ReturnRPM().Text = r.Next(1, 50).ToString();
                             }
@@ -46,9 +46,9 @@ namespace WindowsFormsApplication2
                             p.ReturnPowerTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnEnergyTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
-                            p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();
+                            p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();*/
 
-                            /*                            if (!p.ReturnRPM().Focused)
+                                                        if (!p.ReturnRPM().Focused)
                                                         {
                                                             p.ReturnRPM().Text = pack.RPM.ToString();
                                                         }
@@ -56,7 +56,7 @@ namespace WindowsFormsApplication2
                                                         p.ReturnPowerTextBox().Text = pack.requestPower;
                                                         p.ReturnEnergyTextBox().Text = pack.energy.ToString();
                                                         p.ReturnActualPowerTextBox().Text = pack.actualPower.ToString();
-                                                        p.ReturnPulseTextBox().Text = pack.pulse.ToString();*/
+                                                        p.ReturnPulseTextBox().Text = pack.pulse.ToString();
 
                             string _pulse = pack.pulse.ToString();
                             string _rpm = pack.RPM.ToString();
@@ -110,4 +110,3 @@ namespace WindowsFormsApplication2
     }
 }
 
-}
