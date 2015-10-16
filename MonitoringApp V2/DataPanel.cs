@@ -17,7 +17,7 @@ namespace MonitoringApp_V2
     public partial class DataPanel : UserControl
     {
         private bool firstTime;
-        private Form1 form;
+        public Form1 form { get; }
 
         public DataPanel(Form1 form)
         {
@@ -100,6 +100,11 @@ namespace MonitoringApp_V2
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void newSessionButton_Click(object sender, EventArgs e)
+        {
+            new NewSession(this).Show();
         }
     }
 }
