@@ -18,13 +18,15 @@ namespace MonitoringApp_V2
     {
         private bool firstTime;
         public Form1 form { get; }
+        private Connection connection ;
 
-        public DataPanel(Form1 form)
+        public DataPanel(Form1 form,Connection connection)
         {
             InitializeComponent();
             this.form = form;
             chatInputTextBox.Select();
             firstTime = true;
+            this.connection= connection;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -132,7 +134,7 @@ namespace MonitoringApp_V2
 
         private void newSessionButton_Click(object sender, EventArgs e)
         {
-            new NewSession(this).Show();
+            new NewSession(this,connection).Show();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

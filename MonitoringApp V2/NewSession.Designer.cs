@@ -29,40 +29,44 @@
         private void InitializeComponent()
         {
             this.timeTextBox = new System.Windows.Forms.TextBox();
-            this.actualPowerTextBox = new System.Windows.Forms.TextBox();
+            this.PowerTextBox = new System.Windows.Forms.TextBox();
             this.distanceTextBox = new System.Windows.Forms.TextBox();
             this.sendButton = new System.Windows.Forms.Button();
             this.timeLabel = new System.Windows.Forms.Label();
-            this.actualPowerLabel = new System.Windows.Forms.Label();
+            this.PowerLabel = new System.Windows.Forms.Label();
             this.distanceLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timeTextBox
             // 
-            this.timeTextBox.Location = new System.Drawing.Point(78, 62);
+            this.timeTextBox.Location = new System.Drawing.Point(104, 76);
+            this.timeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.timeTextBox.Name = "timeTextBox";
-            this.timeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.timeTextBox.Size = new System.Drawing.Size(132, 22);
             this.timeTextBox.TabIndex = 0;
             // 
-            // actualPowerTextBox
+            // PowerTextBox
             // 
-            this.actualPowerTextBox.Location = new System.Drawing.Point(78, 110);
-            this.actualPowerTextBox.Name = "actualPowerTextBox";
-            this.actualPowerTextBox.Size = new System.Drawing.Size(100, 20);
-            this.actualPowerTextBox.TabIndex = 1;
+            this.PowerTextBox.Location = new System.Drawing.Point(104, 135);
+            this.PowerTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PowerTextBox.Name = "PowerTextBox";
+            this.PowerTextBox.Size = new System.Drawing.Size(132, 22);
+            this.PowerTextBox.TabIndex = 1;
             // 
             // distanceTextBox
             // 
-            this.distanceTextBox.Location = new System.Drawing.Point(78, 159);
+            this.distanceTextBox.Location = new System.Drawing.Point(104, 196);
+            this.distanceTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.distanceTextBox.Name = "distanceTextBox";
-            this.distanceTextBox.Size = new System.Drawing.Size(100, 20);
+            this.distanceTextBox.Size = new System.Drawing.Size(132, 22);
             this.distanceTextBox.TabIndex = 2;
             // 
             // sendButton
             // 
-            this.sendButton.Location = new System.Drawing.Point(88, 199);
+            this.sendButton.Location = new System.Drawing.Point(117, 245);
+            this.sendButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(75, 23);
+            this.sendButton.Size = new System.Drawing.Size(100, 28);
             this.sendButton.TabIndex = 3;
             this.sendButton.Text = "Send";
             this.sendButton.UseVisualStyleBackColor = true;
@@ -71,42 +75,46 @@
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(113, 46);
+            this.timeLabel.Location = new System.Drawing.Point(151, 57);
+            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(30, 13);
+            this.timeLabel.Size = new System.Drawing.Size(39, 17);
             this.timeLabel.TabIndex = 4;
             this.timeLabel.Text = "Time";
             // 
-            // actualPowerLabel
+            // PowerLabel
             // 
-            this.actualPowerLabel.AutoSize = true;
-            this.actualPowerLabel.Location = new System.Drawing.Point(93, 94);
-            this.actualPowerLabel.Name = "actualPowerLabel";
-            this.actualPowerLabel.Size = new System.Drawing.Size(70, 13);
-            this.actualPowerLabel.TabIndex = 5;
-            this.actualPowerLabel.Text = "Actual Power";
+            this.PowerLabel.AutoSize = true;
+            this.PowerLabel.Location = new System.Drawing.Point(143, 114);
+            this.PowerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PowerLabel.Name = "PowerLabel";
+            this.PowerLabel.Size = new System.Drawing.Size(47, 17);
+            this.PowerLabel.TabIndex = 5;
+            this.PowerLabel.Text = "Power";
             // 
             // distanceLabel
             // 
             this.distanceLabel.AutoSize = true;
-            this.distanceLabel.Location = new System.Drawing.Point(104, 143);
+            this.distanceLabel.Location = new System.Drawing.Point(139, 176);
+            this.distanceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.distanceLabel.Name = "distanceLabel";
-            this.distanceLabel.Size = new System.Drawing.Size(49, 13);
+            this.distanceLabel.Size = new System.Drawing.Size(63, 17);
             this.distanceLabel.TabIndex = 6;
             this.distanceLabel.Text = "Distance";
             // 
             // NewSession
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 263);
+            this.ClientSize = new System.Drawing.Size(368, 324);
             this.Controls.Add(this.distanceLabel);
-            this.Controls.Add(this.actualPowerLabel);
+            this.Controls.Add(this.PowerLabel);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.sendButton);
             this.Controls.Add(this.distanceTextBox);
-            this.Controls.Add(this.actualPowerTextBox);
+            this.Controls.Add(this.PowerTextBox);
             this.Controls.Add(this.timeTextBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "NewSession";
             this.Text = "New Session";
             this.ResumeLayout(false);
@@ -117,11 +125,11 @@
         #endregion
 
         private System.Windows.Forms.TextBox timeTextBox;
-        private System.Windows.Forms.TextBox actualPowerTextBox;
+        private System.Windows.Forms.TextBox PowerTextBox;
         private System.Windows.Forms.TextBox distanceTextBox;
         private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.Label actualPowerLabel;
+        private System.Windows.Forms.Label PowerLabel;
         private System.Windows.Forms.Label distanceLabel;
     }
 }

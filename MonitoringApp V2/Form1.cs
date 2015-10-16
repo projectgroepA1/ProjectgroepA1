@@ -39,7 +39,7 @@ namespace MonitoringApp_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataPanel panel = new DataPanel(this);
+            DataPanel panel = new DataPanel(this,connection);
             Client client = new Client("test", 123, panel);
             clients.Add(client);
             Invoke((Action)(() =>
@@ -84,12 +84,6 @@ namespace MonitoringApp_V2
         private void flowLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        public void sendSession(string actualPower, string time, string distance)
-        {
-            //new session packet
-            MessageBox.Show("test");
         }
     }
 }

@@ -12,7 +12,7 @@ using NetLib;
 
 namespace WindowsFormsApplication2
 {
-    class Connection : MonitorInterface
+    public class Connection : MonitorInterface
     {
         public bool running { get; set; }
         private Form1 form;
@@ -29,7 +29,7 @@ namespace WindowsFormsApplication2
         public void receiveNewClient(PacketNewClient newClient)
         {
             //MessageBox.Show("Yeah new client");
-            DataPanel panel = new DataPanel(form);
+            DataPanel panel = new DataPanel(form,this);
             Client client = new Client(newClient.usename, newClient.counter, panel);
             form.clients.Add(client);
             form.AddPanel(panel);
@@ -143,6 +143,11 @@ namespace WindowsFormsApplication2
                     form.closeApplicaton();
                 }
             }));
+        }
+
+        public void writePacket(Packet packet)
+        {
+            //Insert body here
         }
 
         public void Run()
