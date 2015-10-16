@@ -224,3 +224,5 @@ Server/ResourceMapMeasurements/000001.mes
 *.cache
 WindowsFormsApplication2/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.cache
+MonitoringApp V2/MonitoringApp V2.csproj
+*.csproj

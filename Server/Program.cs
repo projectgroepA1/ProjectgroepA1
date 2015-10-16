@@ -93,7 +93,11 @@ namespace Server
                 if(serverClient.identifier.Id == destination)
                 {
                     serverClient.sendPacket(packet);
+<<<<<<< HEAD
                     break;
+=======
+                    Console.WriteLine("Message sent to packet {0}", serverClient.id);
+>>>>>>> 762bc2ef404d01e811d0655260e40e3c4083ffe4
                 }
             }
         }
@@ -101,6 +105,7 @@ namespace Server
         public void sendPackToMonitor(Packet packet)
         {
             _monitor.sendPacket(packet);
+            Console.WriteLine("Packet sent to monitor");
         }
 
     }

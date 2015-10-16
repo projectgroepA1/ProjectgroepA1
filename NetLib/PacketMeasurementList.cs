@@ -8,11 +8,11 @@ namespace NetLib
 {
     public class PacketMeasurementList : Packet
     {
-        public List<Measurement> measurement { set; get; }
+        public List<Measurement> measurements { set; get; }
 
         public PacketMeasurementList(List<Measurement> list)
         {
-            this.measurement = list;
+            this.measurements = list;
         }
 
         public override void handleServerSide(ServerInterface serverInterface)

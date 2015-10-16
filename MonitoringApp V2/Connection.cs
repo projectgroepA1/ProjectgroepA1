@@ -29,13 +29,10 @@ namespace WindowsFormsApplication2
         public void receiveNewClient(PacketNewClient newClient)
         {
             //MessageBox.Show("Yeah new client");
-<<<<<<< HEAD
-            DataPanel panel = new DataPanel(form);
-            Client client = new Client(newClient.Identifier, panel);
-=======
+
             DataPanel panel = new DataPanel(form,this);
-            Client client = new Client(newClient.usename, newClient.counter, panel);
->>>>>>> e56402462b4bc8da01286f6fac9b3c7b2d274b41
+            Client client = new Client(newClient.Identifier, panel);
+
             form.clients.Add(client);
             form.AddPanel(panel);
         }
