@@ -28,13 +28,23 @@ namespace Server
             if (disconnect)
             {
                 this.TcpClient.Close();
+                
                 //Console.WriteLine("Monitor closed: {0}",GetHashCode());
             }
         }
 
         public override void login(string username, string password)
         {
-            
+
+            if (username == "arjen" && password == "mourik")
+            {
+                sendPacket(new PacketLoginResponse() {loginOk = true});
+            }
+            else
+            {
+                sendPacket(new PacketLoginResponse() {loginOk = false});
+                _server.ResetMonitor();
+            }
         }
 
         public override void receiveChatPacket(PacketChat chat)
