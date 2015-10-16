@@ -27,26 +27,26 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-/*            try
+            try
             {
-                client = new TcpClient("192.168.56.1", 1967);
+                client = new TcpClient(Info.GetIp().ToString(), Info.Port);
                 stream = client.GetStream();
             }
             catch (Exception)
             {
                 MessageBox.Show("No connection with the server");
                 Thread.CurrentThread.Abort();
-            }*/
+            }
         }
     
         private void loginButton_Click(object sender, EventArgs e)
         {
-/*            Packet loginPacket = new PacketLogin() { username = userNameTextBox.Text, password = passwordTextBox.Text};
+            Packet loginPacket = new PacketLogin() { username = userNameTextBox.Text, password = passwordTextBox.Text};
             formatter = new BinaryFormatter();
             formatter.Serialize(stream, loginPacket);
             PacketLoginResponse response = (PacketLoginResponse)formatter.Deserialize(stream);
-            loginResponse(response.loginOk);*/
-            loginResponse(true);
+            loginResponse(response.loginOk);
+            //loginResponse(true);
         }
 
         public void loginResponse(bool loginOk)
