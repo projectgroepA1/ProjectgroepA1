@@ -77,5 +77,15 @@ namespace Server
             _server.Monitor.sendPacket(new PacketNewClient() {usename = username,counter = counter});
         }
 
+        public override void getMeasurements(string name)
+        {
+            _storage.LoadFile(name);
+            sendMeasurementList();
+        }
+
+        public override void sendMeasurementList()
+        {
+             sendPacket(new PacketMeasurementList(_storage.measurementsList));
+        }
     }
 }

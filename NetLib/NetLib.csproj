@@ -43,6 +43,7 @@
     <Compile Include="Info.cs" />
     <Compile Include="Measurement.cs" />
     <Compile Include="MonitorInterface.cs" />
+    <Compile Include="PacketMeasurementList.cs" />
     <Compile Include="PacketMonitor.cs" />
     <Compile Include="Packet.cs" />
     <Compile Include="ClientInterface.cs" />

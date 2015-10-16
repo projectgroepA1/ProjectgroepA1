@@ -13,7 +13,7 @@ namespace Server
     class DataStorage
     {
         private int sessionID;
-        private List<Measurement> measurementsList;
+        public List<Measurement> measurementsList { get; }
         private string dir;
 
         public DataStorage()
@@ -107,6 +107,9 @@ namespace Server
             }
             Console.WriteLine("De file is geupload!");
         }
+
+        
+
 
     }
 }

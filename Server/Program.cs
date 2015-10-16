@@ -41,7 +41,14 @@ namespace Server
 
                     Client client = new Client(newClient, this,counter);
                     clients.Add(client);
-                    Monitor.sendNewClient(client._username,counter);
+                    try {
+                        Monitor.sendNewClient(client._username, counter);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("No Monitor");
+                        Application.Exit();
+                    }
 
                 }
                 else if (_monitor != null)

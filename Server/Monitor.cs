@@ -14,8 +14,11 @@ namespace Server
     {
         private List<Client> _clients;
 
+        private readonly DataStorage _storage;
+
         public Monitor(TcpClient client, Program server, List<Client> clients) : base(client, server)
         {
+            this._storage = new DataStorage();
             this._clients = clients;
         }
 
@@ -55,6 +58,17 @@ namespace Server
         public override void sendNewClient(string username, int counter)
         {
             sendPacket(new PacketNewClient() {usename = username, counter = counter});
+        }
+
+        public override void getMeasurements(string name)
+        {
+            _storage.LoadFile(name);
+            sendMeasurementList();
+        }
+
+        public override void sendMeasurementList()
+        {
+            sendPacket(new PacketMeasurementList(_storage.measurementsList));
         }
     }
 }

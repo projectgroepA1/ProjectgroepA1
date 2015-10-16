@@ -84,5 +84,9 @@ namespace Server
         }
 
         public abstract void sendNewClient(string username, int hashcode);
+
+        public abstract void getMeasurements(string fileName);
+
+        public abstract void sendMeasurementList();
     }
 }
