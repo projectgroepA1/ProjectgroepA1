@@ -19,6 +19,7 @@ namespace WindowsFormsApplication2
     {
         private TcpClient client;
         private NetworkStream stream;
+        private BinaryFormatter formatter;
         private string username;
         private string password;
 
@@ -27,7 +28,7 @@ namespace WindowsFormsApplication2
             InitializeComponent();
 /*            try
             {
-                client = new TcpClient("127.0.0.1", 1000);
+                client = new TcpClient("192.168.56.1", 1967);
                 stream = client.GetStream();
             }
             catch (Exception)
@@ -39,11 +40,25 @@ namespace WindowsFormsApplication2
     
         private void loginButton_Click(object sender, EventArgs e)
         {
-/*            Packet loginPacket = new PacketLogin() { username ="test", password = "Johan" };
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(stream, loginPacket);*/
-            new Form1(client, stream, this).Show();
-            this.Hide();
+/*            Packet loginPacket = new PacketLogin() { username = userNameTextBox.Text, password = passwordTextBox.Text};
+            formatter = new BinaryFormatter();
+            formatter.Serialize(stream, loginPacket);
+            PacketLoginResponse response = (PacketLoginResponse)formatter.Deserialize(stream);
+            loginResponse(response.loginOk);*/
+            loginResponse(true);
+        }
+
+        public void loginResponse(bool loginOk)
+        {
+            if (loginOk)
+            {
+                new Form1(client, stream, this).Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("The username or password is wrong");
+            }
         }
 
         public void ClearBoxes()
