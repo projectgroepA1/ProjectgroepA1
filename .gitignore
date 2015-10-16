@@ -222,3 +222,5 @@ bin
 *.sln
 Server/ResourceMapMeasurements/000001.mes
 *.cache
+WindowsFormsApplication2/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.cache

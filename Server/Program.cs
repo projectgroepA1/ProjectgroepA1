@@ -15,6 +15,7 @@ namespace Server
         private static void Main(string[] args)
         {
             new Program();
+            Console.Title = "Server";
         }
 
         private List<Client> clients = new List<Client>();
@@ -67,6 +68,18 @@ namespace Server
         }
 
 
+        //This Packet can be sent to one specific client.
+        public void sendPacketToClient(Packet packet, string clientName, int hashCode)
+        {
+            foreach (Client serverClient in clients) {
+                int code = serverClient.GetHashCode();
+                string name = serverClient.GetName();
+                    if(code == hashCode && name == clientName)
+                    {
+                    serverClient.sendPacket(packet);
+                    }
+            }
+        }
 
 
     }
