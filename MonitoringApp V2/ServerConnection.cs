@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
@@ -63,12 +64,30 @@ namespace ClientApp.networking
         public void recievePacketChat(PacketChat chat)
         {
             //append text to the App form
-            this.client.appendTextToChat("[dokter] " + chat.messageText + Environment.NewLine);
+            //this.client.appendTextToChat("[dokter] " + chat.messageText + Environment.NewLine);
+
+            List<Client> clients = this.client.clients;
+
+            foreach (Client client in clients)
+            {
+                if (client.Identifier.Id == chat.destinationID)
+                {
+                    client.Panel.changeChatBoxText("[dokter] " + chat.messageText + Environment.NewLine);
+                }
+            }
+
+
         }
 
         public void recievePacketBicycleCommand(PacketBicycleCommand command)
         {
-            this.client.reader.sendCommand(command.command);
+            //N.V.T in de monitor
+            //this.client.sendCommand(command.command);
+        }
+
+        public void recievePacketSession(PacketSession ps)
+        {
+            throw new NotImplementedException();
         }
     }
 }

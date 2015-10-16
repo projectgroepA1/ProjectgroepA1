@@ -26,20 +26,17 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-<<<<<<< HEAD
             //this.reader = new Communication("COM3");
-=======
             //this.reader = new Communication("COM2");
->>>>>>> 762bc2ef404d01e811d0655260e40e3c4083ffe4
 
             this.serverConnection.client = this;
             
             //Start gui updater
             Thread thread = new Thread(new ThreadStart(UpdateGui));
             thread.Start();
-            fromServer.Start();
 
             fromServer = new Thread(new ThreadStart(PacketsFromServer));
+            fromServer.Start();
 
             //test receive message
             //PacketChat chat = new PacketChat("testmessage", "";
@@ -140,7 +137,7 @@ namespace ClientApp
             }
         }
 
-        public void InsertTime(string actuelPower, string distance,string _time)
+        public void InsertTime(string _time)
         {
             MethodInvoker mi7 = delegate () { this.time.Text = _time; };
             this.Invoke(mi7);
