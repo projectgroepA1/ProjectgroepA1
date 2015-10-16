@@ -51,7 +51,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="DataPanel.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DataPanel.Designer.cs">
       <DependentUpon>DataPanel.cs</DependentUpon>

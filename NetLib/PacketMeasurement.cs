@@ -19,23 +19,13 @@ namespace NetLib
         public int actualPower { get; }
 
         Measurement measurement;
-        
-        public PacketMeasurement(string pulse, string rpm, string speed, string distance, string requestpower, string energy,string time, string actualPower)
+
+        public PacketMeasurement(string pulse, string rpm, string speed, string distance, string requestpower, string energy, string time, string actualPower)
         {
-            this.measurement = new Measurement(rpm, time, requestpower, energy, actualPower, pulse,speed,distance);
+            this.measurement = new Measurement(rpm, time, requestpower, energy, actualPower, pulse, speed, distance);
         }
 
-        public PacketMeasurement(int pulse, int rpm, int speed, string distance, string requestPower, int energy, string time, int actualPower)
-        {
-            this.pulse = pulse;
-            this.RPM = rpm;
-            this.speed = speed;
-            this.distance = distance;
-            this.requestPower = requestPower;
-            this.energy = energy;
-            this.time = time;
-            this.actualPower = actualPower;
-        }
+        
 
         public override void handleServerSide(ServerInterface serverInterface)
         {
