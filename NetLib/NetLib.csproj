@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Identifier.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="Measurement.cs" />
     <Compile Include="MonitorInterface.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="PacketMonitorMeasurement.cs" />
     <Compile Include="PacketMonitorResponse.cs" />
     <Compile Include="PacketNewClient.cs" />
+    <Compile Include="PacketSession.cs" />
     <Compile Include="ServerInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

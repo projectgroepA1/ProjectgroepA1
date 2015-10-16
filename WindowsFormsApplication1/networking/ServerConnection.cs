@@ -56,7 +56,7 @@ namespace ClientApp.networking
         {
             if (disconnectOk)
             {
-                client.Thread.Abort();
+                client.fromServer.Abort();
                 _client.Close();
             }
         }
@@ -70,6 +70,11 @@ namespace ClientApp.networking
         public void recievePacketBicycleCommand(PacketBicycleCommand command)
         {
             this.client.reader.sendCommand(command.command);
+        }
+
+        public void recievePacketSession(PacketSession ps)
+        {
+            client.InsertActuelPDistanceTime(ps.ActualPower,ps.Distance,ps.Time);
         }
     }
 }

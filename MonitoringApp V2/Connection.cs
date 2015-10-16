@@ -30,29 +30,26 @@ namespace WindowsFormsApplication2
         {
             //MessageBox.Show("Yeah new client");
             DataPanel panel = new DataPanel(form);
-            Client client = new Client(newClient.usename, newClient.counter, panel);
+            Client client = new Client(newClient.Identifier, panel);
             form.clients.Add(client);
             form.AddPanel(panel);
         }
 
         public void receiveMeasurement(PacketMonitorMeasurement m)
         {
-            Console.WriteLine("Measurement receiced: {0}", m.username + "\t" + m.Id);
-            bool name = false;
-            bool id = false;
-
+            Console.WriteLine("Measurement receiced: {0}", m.identifier.Username + "\t" + m.identifier.Id);
+            
             form.Invoke((Action)(() =>
             {
                 try
                 {
                     foreach (Client c in form.clients)
                     {
-                        Console.WriteLine("Naam: {0}  id: {1}", c.Naam, c.Id);
-                        name = c.Naam == m.username;
-                        id = c.Id == m.Id;
-                        Console.WriteLine("Naam: {0}  id: {1}", name, id);
+                        Console.WriteLine("Naam: {0}  id: {1}", c.Identifier.Username, c.Identifier.Id);
+                        ;
+                        Console.WriteLine("Naam: {0}  id: {1}", c.Identifier.Equals(m.identifier));
                        
-                        if (c.Naam == m.username && c.Id == m.Id)
+                        if (c.Identifier.Equals(m.identifier))
                         {
                             //    if (!p.ReturnRPM().Focused)
                             //    {

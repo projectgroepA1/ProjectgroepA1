@@ -13,7 +13,7 @@ namespace ClientApp
         public int id { get; }
 
         private ServerConnection serverConnection;
-        public Thread Thread { get; }
+        public Thread fromServer { get; }
 
         public string hostName { get; }
 
@@ -26,19 +26,29 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM3");
+            //this.reader = new Communication("COM3");
 
             this.serverConnection.client = this;
             
             //Start gui updater
             Thread thread = new Thread(new ThreadStart(UpdateGui));
             thread.Start();
+            fromServer.Start();
 
+            fromServer = new Thread(new ThreadStart(PacketsFromServer));
 
             //test receive message
             //PacketChat chat = new PacketChat("testmessage", "";
             //this.serverConnection.recievePacketChat(chat);
 
+        }
+
+        private void PacketsFromServer()
+        {
+            while (true)
+            {
+                serverConnection.ReadPacket().handleClientSide(serverConnection);
+            }
         }
 
         private void UpdateGui()
@@ -78,8 +88,7 @@ namespace ClientApp
                         this.Invoke(mi5);
                         MethodInvoker mi6 = delegate() { this.energy.Text = _energy; };
                         this.Invoke(mi6);
-                        MethodInvoker mi7 = delegate() { this.time.Text = _time; };
-                        this.Invoke(mi7);
+                        InsertTime(_time);
                         MethodInvoker mi8 = delegate() { this.actualpower.Text = _actualPower; };
                         this.Invoke(mi8);
 
@@ -127,6 +136,12 @@ namespace ClientApp
                     }
                 }
             }
+        }
+
+        public void InsertTime(string actuelPower, string distance,string _time)
+        {
+            MethodInvoker mi7 = delegate () { this.time.Text = _time; };
+            this.Invoke(mi7);
         }
 
         private void textBox8_KeyDown(object sender, KeyEventArgs e)

@@ -9,13 +9,11 @@ namespace NetLib
     [Serializable]
     public class PacketMonitorMeasurement : PacketMeasurement
     {
-        public string username { get; }
-        public int Id { get; }
-        public PacketMonitorMeasurement(PacketMeasurement pack,string username, int id)
+        public Identifier identifier { get; }
+        public PacketMonitorMeasurement(PacketMeasurement pack,Identifier id)
             : base(pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse)
         {
-            this.username = username;
-            this.Id = id;
+            identifier = id;
         }
 
         public override void handleMonitorSide(MonitorInterface monitorInterface)

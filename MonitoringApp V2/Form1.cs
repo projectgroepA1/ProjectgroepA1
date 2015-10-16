@@ -40,7 +40,7 @@ namespace MonitoringApp_V2
         private void button1_Click(object sender, EventArgs e)
         {
             DataPanel panel = new DataPanel(this);
-            Client client = new Client("test", 123, panel);
+            Client client = new Client(new Identifier("test", 123), panel);
             clients.Add(client);
             Invoke((Action)(() =>
             {

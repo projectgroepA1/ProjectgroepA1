@@ -30,22 +30,20 @@ namespace Server
             this.Stream = client.GetStream();
             this._server = server;
             formatter = new BinaryFormatter();
-            Console.WriteLine("Connected: {0}\tHashCode: {1}",GetName(),GetHashCode());
+            //Console.WriteLine("Connected: {0}\tHashCode: ", GetHashCode());
             ThreadStart();
         }
 
         public void ThreadClient()
         {
-            Console.WriteLine("{0}\tStarted{1}",GetName(),"");
+            Console.WriteLine("{0}\tStarted{1}",GetHashCode(),"");
             while (TcpClient.Connected)
             {
                 Packet packet = (Packet)formatter.Deserialize(Stream);
                 packet.handleServerSide(this);
-                Console.WriteLine("packet received from {0}",GetName());
+                Console.WriteLine("packet received from: {0}",GetHashCode());
             }
         }
-
-        public abstract string GetName();
 
         private void ThreadStart()
         {
@@ -83,10 +81,15 @@ namespace Server
            _clientThread.Abort(); 
         }
 
-        public abstract void sendNewClient(string username, int hashcode);
+        public abstract void sendNewClient(Identifier identifier);
 
         public abstract void getMeasurements(string fileName);
 
         public abstract void sendMeasurementList();
+
+        public virtual void receivePacketSession(PacketSession ps)
+        {
+            
+        }
     }
 }

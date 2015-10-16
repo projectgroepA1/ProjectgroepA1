@@ -20,8 +20,6 @@ namespace WindowsFormsApplication2
         private TcpClient client;
         private NetworkStream stream;
         private BinaryFormatter formatter;
-        private string username;
-        private string password;
 
         public Login()
         {

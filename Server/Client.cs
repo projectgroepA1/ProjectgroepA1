@@ -13,28 +13,22 @@ namespace Server
     class Client : ServerClient
     {
         private readonly DataStorage _storage;
-        public  string _username { get; set; }
-        public int id { get; }
+        public Identifier identifier; 
 
         
         public Client(TcpClient tcpClient, Program server, int number) : base(tcpClient,server)
         {
             this._storage = new DataStorage();
-            this.id = number;
-        }
-
-        public override string GetName()
-        {
-            return "Client: " + _username;
+            identifier = new Identifier("",number);
         }
 
         public override void login(string username, string password)
         {
-            _username = username;
+            identifier.Username = username;
             if (username == "admin" && password == "12345")
             {
-                sendPacket(new PacketLoginResponse() {loginOk = true, number = this.id});
-                _server.Monitor.sendNewClient(_username, id);
+                sendPacket(new PacketLoginResponse() {loginOk = true, number = this.identifier.Id});
+                _server.Monitor.sendNewClient(identifier);
             }
             else
             {
@@ -45,14 +39,14 @@ namespace Server
 
         public override void sendMeasurement(PacketMeasurement pack)
         {
-            Console.WriteLine("Measurement packet from {0}",GetName());
+            Console.WriteLine("Measurement packet from: {0}",identifier.ToString());
             if (pack.measurement != null)
             {
                 sendPacket(new PacketMeasurementResponse() { recieveOk = true });
                 _storage.AddMeasurement(pack.measurement);
                 if (_server.Monitor != null)
                 {
-                    _server.Monitor.sendMeasurement(new PacketMonitorMeasurement(pack,_username,id));;
+                    _server.Monitor.sendMeasurement(new PacketMonitorMeasurement(pack,identifier));;
                 }
             }
             else
@@ -69,13 +63,13 @@ namespace Server
                 sendPacket(new PacketDisconnectResponse() { disconnectOk = true });
                 TcpClient.Close();
                 ClientThread.Abort();
-                Console.WriteLine("Client closed: {0}",_username);
+                Console.WriteLine("Client closed: {0}",identifier.Username);
             }
         }
         
-        public override void sendNewClient(string username, int counter)
+        public override void sendNewClient(Identifier identifier)
         {
-            _server.Monitor.sendPacket(new PacketNewClient() {usename = username,counter = counter});
+            _server.Monitor.sendPacket(new PacketNewClient() {Identifier = identifier});
         }
 
         public override void getMeasurements(string name)

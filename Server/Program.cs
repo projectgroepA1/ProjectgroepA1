@@ -42,7 +42,7 @@ namespace Server
                     Client client = new Client(newClient, this,counter);
                     clients.Add(client);
                     try {
-                        Monitor.sendNewClient(client._username, counter);
+                        Monitor.sendNewClient(client.identifier);
                     }
                     catch (Exception e)
                     {
@@ -90,9 +90,10 @@ namespace Server
         public void sendPacketToClient(Packet packet, int destination)
         {
             foreach (Client serverClient in clients) {
-                if(serverClient.id == destination)
+                if(serverClient.identifier.Id == destination)
                 {
                     serverClient.sendPacket(packet);
+                    break;
                 }
             }
         }

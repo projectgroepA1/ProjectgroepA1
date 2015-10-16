@@ -14,5 +14,6 @@ namespace NetLib
         void disconnectResponse(bool disconnectOk);
         void recievePacketChat(PacketChat chat);
         void recievePacketBicycleCommand(PacketBicycleCommand command);
+       void recievePacketSession(PacketSession ps);
     }
 }

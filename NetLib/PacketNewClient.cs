@@ -9,8 +9,7 @@ namespace NetLib
     [Serializable]
     public class PacketNewClient : Packet
     {
-        public string usename { get; set; }
-        public int counter { get; set; }
+       public Identifier Identifier { get; set; }
 
         public override void handleMonitorSide(MonitorInterface monitorInterface)
         {

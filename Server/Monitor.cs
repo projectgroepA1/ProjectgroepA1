@@ -21,11 +21,7 @@ namespace Server
             this._storage = new DataStorage();
             this._clients = clients;
         }
-
-        public override string GetName()
-        {
-            return "Monitor";
-        }
+        
 
         public override void disconnect(bool disconnect)
         {
@@ -55,9 +51,9 @@ namespace Server
             sendPacket(pack);
         }
 
-        public override void sendNewClient(string username, int counter)
+        public override void sendNewClient(Identifier id)
         {
-            sendPacket(new PacketNewClient() {usename = username, counter = counter});
+            sendPacket(new PacketNewClient() {Identifier = id});
         }
 
         public override void getMeasurements(string name)
@@ -69,6 +65,11 @@ namespace Server
         public override void sendMeasurementList()
         {
             sendPacket(new PacketMeasurementList(_storage.measurementsList));
+        }
+
+        public override void receivePacketSession(PacketSession ps)
+        {
+            _server.sendPacketToClient(ps,ps.Identifier.Id);
         }
     }
 }

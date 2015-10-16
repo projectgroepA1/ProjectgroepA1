@@ -17,7 +17,7 @@ namespace NetLib
 
         public override void handleServerSide(ServerInterface serverInterface)
         {
-            serverInterface.sendMeasurementList(this);
+            serverInterface.sendMeasurementList();
         }
     }
 }
