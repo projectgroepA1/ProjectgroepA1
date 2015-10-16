@@ -33,28 +33,31 @@ namespace MonitoringApp_V2
         {
             if (keyData == Keys.Enter && ReturnActualPowerTextBox().Focused)
             {
-               // SelectNextControl(ActiveControl, true, true, true, true);
                 ReturnChatInputTextBox().Select();
                 RPMTextbox.Text = "text";
             }
             if (keyData == Keys.Enter && ReturnChatInputTextBox().Focused)
             {
-                //SelectNextControl(ActiveControl, true, true, true, true);
-                ReturnChatInputTextBox().Select();
-                string chatText = ReturnChatInputTextBox().Text;
-                if (ReturnFirstTime() && !(chatText.Length <= 0))
-                {
-                    ReturnChatTextBox().Text = chatText;
-                    changeFirstTime(false);
-                }
-                else if (!(chatText.Length <= 0))
-                {
-                    ReturnChatTextBox().Text += Environment.NewLine + chatText;
-                }
-               ReturnChatInputTextBox().Text = "";
+               ReturnChatInputTextBox().Select();
+               string chatText = ReturnChatInputTextBox().Text;
+               changeChatBoxText(chatText);
                return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public void changeChatBoxText(string chatText)
+        {
+            if (ReturnFirstTime() && !(chatText.Length <= 0))
+            {
+                ReturnChatTextBox().Text = chatText;
+                changeFirstTime(false);
+            }
+            else if (!(chatText.Length <= 0))
+            {
+                ReturnChatTextBox().Text += Environment.NewLine + chatText;
+            }
+            ReturnChatInputTextBox().Text = "";
         }
 
         public TextBox ReturnRPM()
