@@ -35,7 +35,7 @@ namespace WindowsFormsApplication2
             {
                 form.Invoke((Action)(() =>
                 {
-                    try
+                    /*try
                     {
                         PacketMeasurement pack = (PacketMeasurement)formatter.Deserialize(form.stream);
                         foreach (DataPanel p in form.panels)
@@ -48,7 +48,7 @@ namespace WindowsFormsApplication2
                             p.ReturnPowerTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnEnergyTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
-                            p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();*/
+                            p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();#1#
 
                             //change rpm
                             if (!p.ReturnRPM().Focused)
@@ -63,10 +63,10 @@ namespace WindowsFormsApplication2
                             }
 
                             //change distance
-                            if (!p.dis().Focused)
+/*                            if (!p.dis().Focused)
                             {
                                 p.ReturnRPM().Text = pack.RPM.ToString();
-                            }
+                            }#1#
 
 
                             p.ReturnTimeTextBox().Text = pack.time;
@@ -120,7 +120,7 @@ namespace WindowsFormsApplication2
                     {
                         //MessageBox.Show("No connection to the server");
                         //form.closeApplicaton();
-                    }
+                    }*/
                 }));
             }
         }

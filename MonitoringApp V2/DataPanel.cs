@@ -82,7 +82,22 @@ namespace MonitoringApp_V2
             return chart1;
         }
 
+        public TextBox ReturnDistanceTextBox()
+        {
+            return distanceTextBox;
+        }
+
+        public Label ReturnUserNameLabel()
+        {
+            return userLabel;
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
