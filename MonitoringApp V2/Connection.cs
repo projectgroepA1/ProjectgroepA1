@@ -37,12 +37,21 @@ namespace WindowsFormsApplication2
 
         public void receiveMeasurement(PacketMonitorMeasurement m)
         {
+            Console.WriteLine("Measurement receiced: {0}", m.username + "\t" + m.Id);
+            bool name = false;
+            bool id = false;
+
             form.Invoke((Action)(() =>
             {
                 try
                 {
                     foreach (Client c in form.clients)
                     {
+                        Console.WriteLine("Naam: {0}  id: {1}", c.Naam, c.Id);
+                        name = c.Naam == m.username;
+                        id = c.Id == m.Id;
+                        Console.WriteLine("Naam: {0}  id: {1}", name, id);
+                       
                         if (c.Naam == m.username && c.Id == m.Id)
                         {
                             //    if (!p.ReturnRPM().Focused)
@@ -75,10 +84,10 @@ namespace WindowsFormsApplication2
 
 
 
-                            //        if (!p.ReturnRPM().Focused)
-                            //        {
-                            //            p.ReturnRPM().Text = pack.RPM.ToString();
-                            //        }
+                            if (!c.Panel.ReturnRPM().Focused)
+                            {
+                                c.Panel.ReturnRPM().Text = m.measurement.RPM;
+                            }
                             c.Panel.ReturnTimeTextBox().Text = m.measurement.time;
                             c.Panel.ReturnPowerTextBox().Text = m.measurement.power;
                             c.Panel.ReturnEnergyTextBox().Text = m.measurement.energy;
@@ -123,8 +132,8 @@ namespace WindowsFormsApplication2
                             //        MethodInvoker miAP = delegate () { p.returnChart().Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
                             //        p.Invoke(miAP);
                             //        Thread.Sleep(1000);
+                            break;
                         }
-                        break;
                     }
                 }
                 catch

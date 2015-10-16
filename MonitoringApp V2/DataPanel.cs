@@ -17,7 +17,7 @@ namespace MonitoringApp_V2
     public partial class DataPanel : UserControl
     {
         private bool firstTime;
-        private Form1 form;
+        public Form1 form { get; }
 
         public DataPanel(Form1 form)
         {
@@ -25,6 +25,34 @@ namespace MonitoringApp_V2
             this.form = form;
             chatInputTextBox.Select();
             firstTime = true;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter && ReturnActualPowerTextBox().Focused)
+            {
+               // SelectNextControl(ActiveControl, true, true, true, true);
+                ReturnChatInputTextBox().Select();
+                RPMTextbox.Text = "text";
+            }
+            if (keyData == Keys.Enter && ReturnChatInputTextBox().Focused)
+            {
+                //SelectNextControl(ActiveControl, true, true, true, true);
+                ReturnChatInputTextBox().Select();
+                string chatText = ReturnChatInputTextBox().Text;
+                if (ReturnFirstTime() && !(chatText.Length <= 0))
+                {
+                    ReturnChatTextBox().Text = chatText;
+                    changeFirstTime(false);
+                }
+                else if (!(chatText.Length <= 0))
+                {
+                    ReturnChatTextBox().Text += Environment.NewLine + chatText;
+                }
+               ReturnChatInputTextBox().Text = "";
+               return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         public TextBox ReturnRPM()
@@ -100,6 +128,16 @@ namespace MonitoringApp_V2
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void newSessionButton_Click(object sender, EventArgs e)
+        {
+            new NewSession(this).Show();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
         }
     }
 }
