@@ -56,7 +56,6 @@ namespace ClientApp
             this.energy = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Chatbox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.Grafiek = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Sendbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -203,7 +202,7 @@ namespace ClientApp
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(9, 451);
+            this.label8.Location = new System.Drawing.Point(159, 439);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(443, 31);
@@ -212,27 +211,14 @@ namespace ClientApp
             // 
             // Chatbox
             // 
-            this.Chatbox.Location = new System.Drawing.Point(15, 486);
+            this.Chatbox.Location = new System.Drawing.Point(85, 474);
             this.Chatbox.Margin = new System.Windows.Forms.Padding(4);
             this.Chatbox.Multiline = true;
             this.Chatbox.Name = "Chatbox";
             this.Chatbox.ReadOnly = true;
             this.Chatbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Chatbox.Size = new System.Drawing.Size(409, 85);
+            this.Chatbox.Size = new System.Drawing.Size(628, 97);
             this.Chatbox.TabIndex = 15;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(466, 481);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(328, 106);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Request Help";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // Grafiek
             // 
@@ -284,28 +270,30 @@ namespace ClientApp
             // 
             // Sendbox
             // 
-            this.Sendbox.Location = new System.Drawing.Point(15, 577);
+            this.Sendbox.Location = new System.Drawing.Point(85, 577);
             this.Sendbox.Margin = new System.Windows.Forms.Padding(2);
             this.Sendbox.Name = "Sendbox";
-            this.Sendbox.Size = new System.Drawing.Size(409, 22);
+            this.Sendbox.Size = new System.Drawing.Size(628, 22);
             this.Sendbox.TabIndex = 18;
             this.Sendbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox8_KeyDown);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label9.Location = new System.Drawing.Point(12, 222);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 17);
+            this.label9.Size = new System.Drawing.Size(76, 20);
             this.label9.TabIndex = 19;
             this.label9.Text = "Distance";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label10.Location = new System.Drawing.Point(12, 174);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 17);
+            this.label10.Size = new System.Drawing.Size(56, 20);
             this.label10.TabIndex = 20;
             this.label10.Text = "Speed";
             // 
@@ -337,7 +325,6 @@ namespace ClientApp
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Sendbox);
             this.Controls.Add(this.Grafiek);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Chatbox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.energy);
@@ -379,7 +366,6 @@ namespace ClientApp
         private System.Windows.Forms.TextBox energy;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox Chatbox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart Grafiek;
         private System.Windows.Forms.TextBox Sendbox;
         private System.Windows.Forms.Label label9;
