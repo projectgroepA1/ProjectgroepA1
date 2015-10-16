@@ -41,5 +41,10 @@ namespace NetLib
         {
             serverInterface.sendMeasurement(this.measurement);
         }
+
+        public override void handleMonitorSide(MonitorInterface monitorInterface)
+        {
+            monitorInterface.receiveMeasurement(this);
+        }
     }
 }

@@ -73,13 +73,9 @@ namespace MonitoringApp_V2
             
         }
 
-        public void NewClient(PacketNewClient newClient)
+        public void AddPanel(DataPanel panel)
         {
-            MessageBox.Show("Yeah new client");
-            DataPanel panel = new DataPanel(this);
-            Client client = new Client(newClient.usename, newClient.counter,panel);
-            clients.Add(client);
-            Invoke((Action) (() =>
+            Invoke((Action)(() =>
             {
                 flowLayoutPanel.Controls.Add(panel);
             }
