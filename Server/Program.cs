@@ -41,8 +41,6 @@ namespace Server
 
                     Client client = new Client(newClient, this,counter);
                     clients.Add(client);
-                    Monitor.sendNewClient(client._username,counter);
-
                 }
                 else if (_monitor != null)
                 {

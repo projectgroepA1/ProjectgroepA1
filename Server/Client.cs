@@ -30,10 +30,11 @@ namespace Server
 
         public override void login(string username, string password)
         {
-            this._username = username;
+            _username = username;
             if (username == "admin" && password == "12345")
             {
                 sendPacket(new PacketLoginResponse() {loginOk = true, number = this.id});
+                _server.Monitor.sendNewClient(_username, id);
             }
             else
             {
