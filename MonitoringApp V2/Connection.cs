@@ -28,6 +28,7 @@ namespace WindowsFormsApplication2
 
         public void receiveNewClient(PacketNewClient newClient)
         {
+            MessageBox.Show("Nieuwe client :)");
             form.NewClient(newClient);
         }
 

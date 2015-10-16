@@ -73,9 +73,9 @@ namespace Server
             }
         }
         
-        public override void sendNewClient(string username, int hashcode)
+        public override void sendNewClient(string username, int counter)
         {
-            _server.Monitor.sendPacket(new PacketNewClient() {usename = username,hashcode = hashcode});
+            _server.Monitor.sendPacket(new PacketNewClient() {usename = username,counter = counter});
         }
 
     }

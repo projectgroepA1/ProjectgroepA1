@@ -33,7 +33,7 @@ namespace MonitoringApp_V2
             clients = new List<Client>();
             connection = new Connection(this);
             thread = new Thread(() => connection.Run());
-            //thread.Start();
+            thread.Start();
             KeyPreview = true;
         }
 
@@ -77,7 +77,7 @@ namespace MonitoringApp_V2
         {
             MessageBox.Show("Yeah new client");
             DataPanel panel = new DataPanel(this);
-            Client client = new Client(newClient.usename, newClient.hashcode,panel);
+            Client client = new Client(newClient.usename, newClient.counter,panel);
             clients.Add(client);
             flowLayoutPanel.Controls.Add(panel);
         }
