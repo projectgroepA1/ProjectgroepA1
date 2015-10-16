@@ -18,41 +18,46 @@ namespace MonitoringApp_V2
     {
         private bool firstTime;
         public Form1 form { get; }
+        private Connection connection ;
 
-        public DataPanel(Form1 form)
+        public DataPanel(Form1 form,Connection connection)
         {
             InitializeComponent();
             this.form = form;
             chatInputTextBox.Select();
             firstTime = true;
+            this.connection= connection;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter && ReturnActualPowerTextBox().Focused)
             {
-               // SelectNextControl(ActiveControl, true, true, true, true);
                 ReturnChatInputTextBox().Select();
                 RPMTextbox.Text = "text";
             }
             if (keyData == Keys.Enter && ReturnChatInputTextBox().Focused)
             {
-                //SelectNextControl(ActiveControl, true, true, true, true);
-                ReturnChatInputTextBox().Select();
-                string chatText = ReturnChatInputTextBox().Text;
-                if (ReturnFirstTime() && !(chatText.Length <= 0))
-                {
-                    ReturnChatTextBox().Text = chatText;
-                    changeFirstTime(false);
-                }
-                else if (!(chatText.Length <= 0))
-                {
-                    ReturnChatTextBox().Text += Environment.NewLine + chatText;
-                }
-               ReturnChatInputTextBox().Text = "";
+               ReturnChatInputTextBox().Select();
+               string chatText = ReturnChatInputTextBox().Text;
+               changeChatBoxText(chatText);
                return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public void changeChatBoxText(string chatText)
+        {
+            if (ReturnFirstTime() && !(chatText.Length <= 0))
+            {
+                ReturnChatTextBox().Text = chatText;
+                changeFirstTime(false);
+            }
+            else if (!(chatText.Length <= 0))
+            {
+                ReturnChatTextBox().Text += Environment.NewLine + chatText;
+            }
+            ReturnChatInputTextBox().Text = "";
         }
 
         public TextBox ReturnRPM()
@@ -132,12 +137,17 @@ namespace MonitoringApp_V2
 
         private void newSessionButton_Click(object sender, EventArgs e)
         {
-            new NewSession(this).Show();
+            new NewSession(this,connection).Show();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             this.Parent.Controls.Remove(this);
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

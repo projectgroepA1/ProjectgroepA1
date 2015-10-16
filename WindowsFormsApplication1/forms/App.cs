@@ -120,15 +120,13 @@ namespace ClientApp
                         this.Invoke(miR);
                         MethodInvoker miS = delegate() { this.Grafiek.Series["Speed"].Points.AddXY(I_sec, I_speed); };
                         this.Invoke(miS);
-                        MethodInvoker miD =
-                            delegate() { this.Grafiek.Series["Distance"].Points.AddXY(I_sec, I_distance); };
+                        MethodInvoker miD = delegate() { this.Grafiek.Series["Distance"].Points.AddXY(I_sec, I_distance); };
                         this.Invoke(miD);
                         MethodInvoker miPo = delegate() { this.Grafiek.Series["Power"].Points.AddXY(I_sec, I_power); };
                         this.Invoke(miPo);
                         MethodInvoker miE = delegate() { this.Grafiek.Series["Energy"].Points.AddXY(I_sec, I_energy); };
                         this.Invoke(miE);
-                        MethodInvoker miAP =
-                            delegate() { this.Grafiek.Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
+                        MethodInvoker miAP = delegate() { this.Grafiek.Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
                         this.Invoke(miAP);
 
                         //Wait 1 second

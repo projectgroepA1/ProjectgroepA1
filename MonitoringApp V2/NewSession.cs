@@ -7,24 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication2;
+using NetLib;
 
 namespace MonitoringApp_V2
 {
     public partial class NewSession : Form
     {
         private DataPanel panel;
+        private Connection connection;
 
-        public NewSession(DataPanel panel)
+        public NewSession(DataPanel panel,Connection connection)
         {
             InitializeComponent();
             this.panel = panel;
+            this.connection = connection;
         }
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-            panel.form.sendSession(actualPowerTextBox.Text, timeTextBox.Text, distanceTextBox.Text);
+            //creating packets
+            PacketBicycleCommand PD = new PacketBicycleCommand($"PD {this.distanceTextBox.Text}");
+            connection.writePacket(PD);
+            PacketBicycleCommand PT = new PacketBicycleCommand($"PT {this.timeTextBox.Text}");
+            connection.writePacket(PT);
+            PacketBicycleCommand PW = new PacketBicycleCommand($"PW {this.PowerTextBox.Text}");
+            connection.writePacket(PW);
+
             this.Hide();
-            actualPowerTextBox.Clear();
+            PowerTextBox.Clear();
             timeTextBox.Clear();
             distanceTextBox.Clear();
         }
