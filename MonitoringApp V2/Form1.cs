@@ -39,14 +39,14 @@ namespace MonitoringApp_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataPanel panel = new DataPanel(this,connection);
-            Client client = new Client("test", 123, panel);
-            clients.Add(client);
-            Invoke((Action)(() =>
-            {
-                flowLayoutPanel.Controls.Add(panel);
-            }
-                ));
+            //DataPanel panel = new DataPanel(this,connection);
+            //Client client = new Client("test", 123, panel);
+            //clients.Add(client);
+            //Invoke((Action)(() =>
+            //{
+            //    flowLayoutPanel.Controls.Add(panel);
+            //}
+            //    ));
         }
 
         public void AddPanel(DataPanel panel)
@@ -79,6 +79,23 @@ namespace MonitoringApp_V2
         {
             thread.Abort();
             Thread.CurrentThread.Abort();
+        }
+
+        public void appendTextToChat(string message)
+        {
+            Console.WriteLine("{0} + {1}", message, Environment.NewLine);
+            //if (InvokeRequired)
+            //{
+            //    MethodInvoker method = new MethodInvoker(delegate
+            //    {
+            //        this.Chatbox.Text += message + Environment.NewLine;
+            //    });
+            //    this.Invoke(method);
+            //}
+            //else
+            //{
+            //    this.Chatbox.Text += message;
+            //}
         }
 
         private void flowLayoutPanel_Paint(object sender, PaintEventArgs e)

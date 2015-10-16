@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7741DF92-2F5D-4355-B8E5-838043256D78}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ClientApp</RootNamespace>
     <AssemblyName>ClientApp</AssemblyName>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -100,11 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NetLib\NetLib.csproj">
-
       <Project>{e51a1eed-2886-43a9-88e5-39aeffd2e0ff}</Project>
-
       <Project>{E51A1EED-2886-43A9-88E5-39AEFFD2E0FF}</Project>
-
       <Name>NetLib</Name>
     </ProjectReference>
   </ItemGroup>

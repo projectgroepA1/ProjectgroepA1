@@ -19,6 +19,7 @@ namespace MonitoringApp_V2
         private bool firstTime;
         public Form1 form { get; }
         private Connection connection ;
+       
 
         public DataPanel(Form1 form,Connection connection)
         {
@@ -149,5 +150,7 @@ namespace MonitoringApp_V2
         {
 
         }
+
+        
     }
 }

@@ -26,7 +26,7 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM3");
+            //this.reader = new Communication("COM2");
 
             this.serverConnection.client = this;
             

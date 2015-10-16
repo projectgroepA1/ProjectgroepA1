@@ -13,7 +13,7 @@ namespace ClientApp
         public Communication(string com)
         {
             port = new SerialPort(com, 9600, Parity.None, 8, StopBits.One);
-            port.Open();
+             port.Open();
 
             port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
 
