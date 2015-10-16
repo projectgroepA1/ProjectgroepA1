@@ -79,7 +79,11 @@ namespace MonitoringApp_V2
             DataPanel panel = new DataPanel(this);
             Client client = new Client(newClient.usename, newClient.counter,panel);
             clients.Add(client);
-            flowLayoutPanel.Controls.Add(panel);
+            Invoke((Action) (() =>
+            {
+                flowLayoutPanel.Controls.Add(panel);
+            }
+                ));
         }
 
         private void Delete_Click(object sender, EventArgs e)
