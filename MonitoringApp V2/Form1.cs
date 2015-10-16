@@ -45,9 +45,22 @@ namespace MonitoringApp_V2
                 {
                     SelectNextControl(ActiveControl, true, true, true, true);
                     e.Handled = true;
-                    client.Panel.ReturnActualPowerTextBox().Text = "test";
                     client.Panel.ReturnChatInputTextBox().Select();
                 }
+                if (e.KeyCode == Keys.Enter && client.Panel.ReturnDistanceTextBox().Focused)
+                {
+                    SelectNextControl(ActiveControl, true, true, true, true);
+                    e.Handled = true;
+                    client.Panel.ReturnChatInputTextBox().Select();
+                }
+
+                if (e.KeyCode == Keys.Enter && client.Panel.ReturnTimeTextBox().Focused)
+                {
+                    SelectNextControl(ActiveControl, true, true, true, true);
+                    e.Handled = true;
+                    client.Panel.ReturnChatInputTextBox().Select();
+                }
+
                 if (e.KeyCode == Keys.Enter && client.Panel.ReturnChatInputTextBox().Focused)
                 {
                     SelectNextControl(ActiveControl, true, true, true, true);
@@ -70,7 +83,14 @@ namespace MonitoringApp_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            DataPanel panel = new DataPanel(this);
+            Client client = new Client("test", 123, panel);
+            clients.Add(client);
+            Invoke((Action)(() =>
+            {
+                flowLayoutPanel.Controls.Add(panel);
+            }
+                ));
         }
 
         public void NewClient(PacketNewClient newClient)
