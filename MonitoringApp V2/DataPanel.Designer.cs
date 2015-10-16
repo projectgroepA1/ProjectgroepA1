@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataPanel));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -37,7 +36,6 @@
             this.powerLabel = new System.Windows.Forms.Label();
             this.energyLabel = new System.Windows.Forms.Label();
             this.pulseLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RPMTextbox = new System.Windows.Forms.TextBox();
             this.timeTextbox = new System.Windows.Forms.TextBox();
             this.powerTextBox = new System.Windows.Forms.TextBox();
@@ -53,7 +51,7 @@
             this.distanceLabel = new System.Windows.Forms.Label();
             this.distanceTextBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.newSessionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +59,7 @@
             // 
             this.RPMLabel.AutoSize = true;
             this.RPMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.RPMLabel.Location = new System.Drawing.Point(22, 90);
+            this.RPMLabel.Location = new System.Drawing.Point(22, 105);
             this.RPMLabel.Name = "RPMLabel";
             this.RPMLabel.Size = new System.Drawing.Size(38, 17);
             this.RPMLabel.TabIndex = 7;
@@ -71,7 +69,7 @@
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.timeLabel.Location = new System.Drawing.Point(22, 116);
+            this.timeLabel.Location = new System.Drawing.Point(22, 135);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(39, 17);
             this.timeLabel.TabIndex = 8;
@@ -81,7 +79,7 @@
             // 
             this.powerLabel.AutoSize = true;
             this.powerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.powerLabel.Location = new System.Drawing.Point(22, 142);
+            this.powerLabel.Location = new System.Drawing.Point(22, 167);
             this.powerLabel.Name = "powerLabel";
             this.powerLabel.Size = new System.Drawing.Size(47, 17);
             this.powerLabel.TabIndex = 9;
@@ -91,7 +89,7 @@
             // 
             this.energyLabel.AutoSize = true;
             this.energyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.energyLabel.Location = new System.Drawing.Point(22, 168);
+            this.energyLabel.Location = new System.Drawing.Point(22, 197);
             this.energyLabel.Name = "energyLabel";
             this.energyLabel.Size = new System.Drawing.Size(53, 17);
             this.energyLabel.TabIndex = 10;
@@ -101,31 +99,23 @@
             // 
             this.pulseLabel.AutoSize = true;
             this.pulseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.pulseLabel.Location = new System.Drawing.Point(22, 220);
+            this.pulseLabel.Location = new System.Drawing.Point(22, 261);
             this.pulseLabel.Name = "pulseLabel";
             this.pulseLabel.Size = new System.Drawing.Size(43, 17);
             this.pulseLabel.TabIndex = 11;
             this.pulseLabel.Text = "Pulse";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 256);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(72, 65);
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
-            // 
             // RPMTextbox
             // 
-            this.RPMTextbox.Location = new System.Drawing.Point(113, 90);
+            this.RPMTextbox.Location = new System.Drawing.Point(113, 102);
             this.RPMTextbox.Name = "RPMTextbox";
+            this.RPMTextbox.ReadOnly = true;
             this.RPMTextbox.Size = new System.Drawing.Size(63, 20);
             this.RPMTextbox.TabIndex = 22;
             // 
             // timeTextbox
             // 
-            this.timeTextbox.Location = new System.Drawing.Point(113, 116);
+            this.timeTextbox.Location = new System.Drawing.Point(113, 132);
             this.timeTextbox.Name = "timeTextbox";
             this.timeTextbox.ReadOnly = true;
             this.timeTextbox.Size = new System.Drawing.Size(63, 20);
@@ -133,7 +123,7 @@
             // 
             // powerTextBox
             // 
-            this.powerTextBox.Location = new System.Drawing.Point(113, 142);
+            this.powerTextBox.Location = new System.Drawing.Point(113, 164);
             this.powerTextBox.Name = "powerTextBox";
             this.powerTextBox.ReadOnly = true;
             this.powerTextBox.Size = new System.Drawing.Size(63, 20);
@@ -141,7 +131,7 @@
             // 
             // energyTextBox
             // 
-            this.energyTextBox.Location = new System.Drawing.Point(113, 168);
+            this.energyTextBox.Location = new System.Drawing.Point(113, 194);
             this.energyTextBox.Name = "energyTextBox";
             this.energyTextBox.ReadOnly = true;
             this.energyTextBox.Size = new System.Drawing.Size(63, 20);
@@ -149,9 +139,8 @@
             // 
             // actualPowerTextBox
             // 
-            this.actualPowerTextBox.Location = new System.Drawing.Point(113, 194);
+            this.actualPowerTextBox.Location = new System.Drawing.Point(113, 226);
             this.actualPowerTextBox.Name = "actualPowerTextBox";
-            this.actualPowerTextBox.ReadOnly = true;
             this.actualPowerTextBox.Size = new System.Drawing.Size(63, 20);
             this.actualPowerTextBox.TabIndex = 26;
             // 
@@ -159,7 +148,7 @@
             // 
             this.actualPowerLabel.AutoSize = true;
             this.actualPowerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.actualPowerLabel.Location = new System.Drawing.Point(22, 194);
+            this.actualPowerLabel.Location = new System.Drawing.Point(22, 229);
             this.actualPowerLabel.Name = "actualPowerLabel";
             this.actualPowerLabel.Size = new System.Drawing.Size(90, 17);
             this.actualPowerLabel.TabIndex = 27;
@@ -167,7 +156,7 @@
             // 
             // pulseTextBox
             // 
-            this.pulseTextBox.Location = new System.Drawing.Point(113, 220);
+            this.pulseTextBox.Location = new System.Drawing.Point(113, 258);
             this.pulseTextBox.Name = "pulseTextBox";
             this.pulseTextBox.ReadOnly = true;
             this.pulseTextBox.Size = new System.Drawing.Size(63, 20);
@@ -179,31 +168,31 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(205, 26);
+            this.chart1.Location = new System.Drawing.Point(246, 26);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(314, 166);
+            this.chart1.Size = new System.Drawing.Size(362, 252);
             this.chart1.TabIndex = 29;
             this.chart1.Text = "chart1";
             // 
             // chatTextBox
             // 
-            this.chatTextBox.Location = new System.Drawing.Point(205, 211);
+            this.chatTextBox.Location = new System.Drawing.Point(246, 284);
             this.chatTextBox.Multiline = true;
             this.chatTextBox.Name = "chatTextBox";
             this.chatTextBox.ReadOnly = true;
             this.chatTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.chatTextBox.Size = new System.Drawing.Size(314, 65);
+            this.chatTextBox.Size = new System.Drawing.Size(362, 65);
             this.chatTextBox.TabIndex = 30;
             // 
             // chatInputTextBox
             // 
-            this.chatInputTextBox.Location = new System.Drawing.Point(205, 282);
+            this.chatInputTextBox.Location = new System.Drawing.Point(246, 355);
             this.chatInputTextBox.Name = "chatInputTextBox";
-            this.chatInputTextBox.Size = new System.Drawing.Size(314, 20);
+            this.chatInputTextBox.Size = new System.Drawing.Size(362, 20);
             this.chatInputTextBox.TabIndex = 31;
             // 
             // Distance
@@ -219,7 +208,7 @@
             // 
             this.userLabel.AutoSize = true;
             this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.userLabel.Location = new System.Drawing.Point(23, 26);
+            this.userLabel.Location = new System.Drawing.Point(22, 37);
             this.userLabel.Name = "userLabel";
             this.userLabel.Size = new System.Drawing.Size(38, 17);
             this.userLabel.TabIndex = 32;
@@ -229,7 +218,7 @@
             // 
             this.distanceLabel.AutoSize = true;
             this.distanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.distanceLabel.Location = new System.Drawing.Point(22, 64);
+            this.distanceLabel.Location = new System.Drawing.Point(22, 77);
             this.distanceLabel.Name = "distanceLabel";
             this.distanceLabel.Size = new System.Drawing.Size(63, 17);
             this.distanceLabel.TabIndex = 33;
@@ -237,22 +226,33 @@
             // 
             // distanceTextBox
             // 
-            this.distanceTextBox.Location = new System.Drawing.Point(113, 64);
+            this.distanceTextBox.Location = new System.Drawing.Point(113, 74);
             this.distanceTextBox.Name = "distanceTextBox";
+            this.distanceTextBox.ReadOnly = true;
             this.distanceTextBox.Size = new System.Drawing.Size(63, 20);
             this.distanceTextBox.TabIndex = 34;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(101, 279);
+            this.deleteButton.Location = new System.Drawing.Point(25, 352);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.Size = new System.Drawing.Size(198, 23);
             this.deleteButton.TabIndex = 35;
             this.deleteButton.Text = "Delete Client";
             this.deleteButton.UseVisualStyleBackColor = true;
             // 
+            // newSessionButton
+            // 
+            this.newSessionButton.Location = new System.Drawing.Point(25, 312);
+            this.newSessionButton.Name = "newSessionButton";
+            this.newSessionButton.Size = new System.Drawing.Size(198, 23);
+            this.newSessionButton.TabIndex = 36;
+            this.newSessionButton.Text = "New Session";
+            this.newSessionButton.UseVisualStyleBackColor = true;
+            // 
             // DataPanel
             // 
+            this.Controls.Add(this.newSessionButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.distanceTextBox);
             this.Controls.Add(this.distanceLabel);
@@ -267,15 +267,13 @@
             this.Controls.Add(this.powerTextBox);
             this.Controls.Add(this.timeTextbox);
             this.Controls.Add(this.RPMTextbox);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pulseLabel);
             this.Controls.Add(this.energyLabel);
             this.Controls.Add(this.powerLabel);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.RPMLabel);
             this.Name = "DataPanel";
-            this.Size = new System.Drawing.Size(539, 324);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Size = new System.Drawing.Size(628, 395);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -289,7 +287,6 @@
         private System.Windows.Forms.Label powerLabel;
         private System.Windows.Forms.Label energyLabel;
         private System.Windows.Forms.Label pulseLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox RPMTextbox;
         private System.Windows.Forms.TextBox timeTextbox;
         private System.Windows.Forms.TextBox powerTextBox;
@@ -305,5 +302,6 @@
         private System.Windows.Forms.Label distanceLabel;
         private System.Windows.Forms.TextBox distanceTextBox;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button newSessionButton;
     }
 }

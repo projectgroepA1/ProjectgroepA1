@@ -75,10 +75,10 @@ namespace WindowsFormsApplication2
 
 
 
-                            //        if (!p.ReturnRPM().Focused)
-                            //        {
-                            //            p.ReturnRPM().Text = pack.RPM.ToString();
-                            //        }
+                            if (!c.Panel.ReturnRPM().Focused)
+                            {
+                                c.Panel.ReturnRPM().Text = m.measurement.RPM;
+                            }
                             c.Panel.ReturnTimeTextBox().Text = m.measurement.time;
                             c.Panel.ReturnPowerTextBox().Text = m.measurement.power;
                             c.Panel.ReturnEnergyTextBox().Text = m.measurement.energy;
