@@ -27,6 +27,10 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+    
+        private void loginButton_Click(object sender, EventArgs e)
+        {
             try
             {
                 client = new TcpClient(Info.GetIp().ToString(), Info.Port);
@@ -37,12 +41,11 @@ namespace WindowsFormsApplication2
                 MessageBox.Show("No connection with the server");
                 Thread.CurrentThread.Abort();
             }
-        }
-    
-        private void loginButton_Click(object sender, EventArgs e)
-        {
-            Packet loginPacket = new PacketLogin() { username = userNameTextBox.Text, password = passwordTextBox.Text};
             formatter = new BinaryFormatter();
+            Packet monitor = new PacketMonitor();
+            formatter.Serialize(stream,monitor);
+
+            Packet loginPacket = new PacketLogin() { username = userNameTextBox.Text, password = passwordTextBox.Text};
             formatter.Serialize(stream, loginPacket);
             PacketLoginResponse response = (PacketLoginResponse)formatter.Deserialize(stream);
             loginResponse(response.loginOk);
@@ -58,6 +61,8 @@ namespace WindowsFormsApplication2
             }
             else
             {
+                client.Close();
+                stream.Close();
                 MessageBox.Show("The username or password is wrong");
             }
         }

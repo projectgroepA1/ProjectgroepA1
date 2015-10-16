@@ -64,10 +64,14 @@ namespace Server
 
         public abstract void disconnect(bool disconnect);
 
-
-
         public abstract void receiveChatPacket(PacketChat chat);
 
+        public void Close()
+        {
+            TcpClient.Close();
+           _clientThread.Abort(); 
+        }
 
+        public abstract void sendNewClient(string username, int hashcode);
     }
 }
