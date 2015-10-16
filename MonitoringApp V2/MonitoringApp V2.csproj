@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="DataPanel.cs">
       <SubType>Component</SubType>
@@ -105,6 +106,9 @@
       <Project>{e51a1eed-2886-43a9-88e5-39aeffd2e0ff}</Project>
       <Name>NetLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -54,6 +54,12 @@ namespace Server
             }
         }
 
+        public void ResetMonitor()
+        {
+            _monitor.Close();
+            _monitor = null;
+        }
+
         private bool IsMonitor(TcpClient client)
         {
             BinaryFormatter formatter = new BinaryFormatter();

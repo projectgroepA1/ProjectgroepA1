@@ -72,6 +72,21 @@ namespace MonitoringApp_V2
             DataPanel panel = new DataPanel(this);
             panels.Add(panel);
             flowLayoutPanel.Controls.Add(panel);
+            foreach (Panel aantalPanel in panels)
+            {
+                if (panels.Count >= 4)
+                {
+                    button1.Dispose();
+                }
+            }
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            foreach (Panel aantalPanel in panels)
+            {
+                
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -84,6 +99,17 @@ namespace MonitoringApp_V2
             thread.Abort();
             login.Show();
             login.ClearBoxes();
+        }
+
+        public void closeApplicaton()
+        {
+            thread.Abort();
+            Thread.CurrentThread.Abort();
+        }
+
+        private void flowLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

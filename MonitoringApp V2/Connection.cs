@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -17,6 +18,7 @@ namespace WindowsFormsApplication2
         public bool running { get; set; }
         private Form1 form;
         private BinaryFormatter formatter;
+        private String username;
 
 
         public Connection(Form1 form)
@@ -30,15 +32,15 @@ namespace WindowsFormsApplication2
         {
             Random r = new Random();
             while (running)
-            { 
+            {
                 form.Invoke((Action)(() =>
                 {
-                    try
+                    /*try
                     {
-                        PacketMeasurement pack = (PacketMeasurement) formatter.Deserialize(form.stream);
+                        PacketMeasurement pack = (PacketMeasurement)formatter.Deserialize(form.stream);
                         foreach (DataPanel p in form.panels)
                         {
-                            if (!p.ReturnRPM().Focused)
+/*                            if (!p.ReturnRPM().Focused)
                             {
                                 p.ReturnRPM().Text = r.Next(1, 50).ToString();
                             }
@@ -46,27 +48,82 @@ namespace WindowsFormsApplication2
                             p.ReturnPowerTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnEnergyTextBox().Text = r.Next(1, 50).ToString();
                             p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
-                            p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();
- /*                           if (!p.ReturnRPM().Focused)
+                            p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();#1#
+
+                            //change rpm
+                            if (!p.ReturnRPM().Focused)
                             {
                                 p.ReturnRPM().Text = pack.RPM.ToString();
                             }
+                            
+                            //change time
+                            if (!p.ReturnTimeTextBox().Focused)
+                            {
+                                p.ReturnTimeTextBox().Text = pack.time.ToString();
+                            }
+
+                            //change distance
+/*                            if (!p.dis().Focused)
+                            {
+                                p.ReturnRPM().Text = pack.RPM.ToString();
+                            }#1#
+
+
                             p.ReturnTimeTextBox().Text = pack.time;
-                            p.returnPowerTextBox().Text = pack.requestPower;
-                            p.returnEnergyTextBox().Text = pack.energy.ToString();
-                            p.returnActualPowerTextBox().Text = pack.actualPower.ToString();
-                            p.returnPulseTextBox().Text = pack.pulse.ToString();
-                            Thread.Sleep(1000);*/
+                            p.ReturnPowerTextBox().Text = pack.requestPower;
+                            p.ReturnEnergyTextBox().Text = pack.energy.ToString();
+                            p.ReturnActualPowerTextBox().Text = pack.actualPower.ToString();
+                            p.ReturnPulseTextBox().Text = pack.pulse.ToString();
+
+                            string _pulse = pack.pulse.ToString();
+                            string _rpm = pack.RPM.ToString();
+                            string _speed = pack.speed.ToString();
+                            string _distance = pack.distance.ToString();
+                            string _power = pack.requestPower.ToString();
+                            string _energy = pack.energy.ToString();
+                            string _time = pack.time.ToString();
+                            string _actualPower = pack.actualPower.ToString();
+
+
+                            //Parse all strings to int
+                            int I_pulse = Int32.Parse(_pulse);
+                            int I_rpm = Int32.Parse(_rpm);
+                            int I_speed = Int32.Parse(_speed);
+                            int I_distance = Int32.Parse(_distance);
+                            int I_power = Int32.Parse(_power);
+                            int I_energy = Int32.Parse(_energy);
+                            TimeSpan ts = TimeSpan.Parse(_time);
+                            int I_sec = ts.Seconds;
+                            int I_min = ts.Minutes;
+                            int I_actualPower = Int32.Parse(_actualPower);
+
+                            //Adding coördinates to chart
+                            MethodInvoker miP = delegate () { p.returnChart().Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
+                            p.Invoke(miP);
+                            MethodInvoker miR = delegate () { p.returnChart().Series["Rpm"].Points.AddXY(I_sec, I_rpm); };
+                            p.Invoke(miR);
+                            MethodInvoker miS = delegate () { p.returnChart().Series["Speed"].Points.AddXY(I_sec, I_speed); };
+                            p.Invoke(miS);
+                            MethodInvoker miD = delegate () { p.returnChart().Series["Distance"].Points.AddXY(I_sec, I_distance); };
+                            p.Invoke(miD);
+                            MethodInvoker miPo = delegate () { p.returnChart().Series["Power"].Points.AddXY(I_sec, I_power); };
+                            p.Invoke(miPo);
+                            MethodInvoker miE = delegate () { p.returnChart().Series["Energy"].Points.AddXY(I_sec, I_energy); };
+                            p.Invoke(miE);
+                            MethodInvoker miAP = delegate () { p.returnChart().Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
+                            p.Invoke(miAP);
+                            Thread.Sleep(1000);
                         }
                     }
                     catch
                     (Exception)
                     {
-                        MessageBox.Show("No connection to the server");
-                        form.thread.Abort();
-                    }
+                        //MessageBox.Show("No connection to the server");
+                        //form.closeApplicaton();
+                    }*/
                 }));
             }
         }
     }
 }
+

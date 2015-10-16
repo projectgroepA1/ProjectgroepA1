@@ -19,6 +19,7 @@ namespace WindowsFormsApplication2
     {
         private TcpClient client;
         private NetworkStream stream;
+        private BinaryFormatter formatter;
         private string username;
         private string password;
 
@@ -26,31 +27,55 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-/*            try
+        }
+    
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            try
             {
-                client = new TcpClient("127.0.0.1", 1000);
+                client = new TcpClient(Info.GetIp().ToString(), Info.Port);
                 stream = client.GetStream();
             }
             catch (Exception)
             {
                 MessageBox.Show("No connection with the server");
                 Thread.CurrentThread.Abort();
-            }*/
+            }
+            formatter = new BinaryFormatter();
+            Packet monitor = new PacketMonitor();
+            formatter.Serialize(stream,monitor);
+
+            Packet loginPacket = new PacketLogin() { username = userNameTextBox.Text, password = passwordTextBox.Text};
+            formatter.Serialize(stream, loginPacket);
+            PacketLoginResponse response = (PacketLoginResponse)formatter.Deserialize(stream);
+            loginResponse(response.loginOk);
+            //loginResponse(true);
         }
-    
-        private void loginButton_Click(object sender, EventArgs e)
+
+        public void loginResponse(bool loginOk)
         {
-/*            Packet loginPacket = new PacketLogin() { username ="test", password = "Johan" };
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(stream, loginPacket);*/
-            new Form1(client, stream, this).Show();
-            this.Hide();
+            if (loginOk)
+            {
+                new Form1(client, stream, this).Show();
+                this.Hide();
+            }
+            else
+            {
+                client.Close();
+                stream.Close();
+                MessageBox.Show("The username or password is wrong");
+            }
         }
 
         public void ClearBoxes()
         {
             userNameTextBox.Clear();
             passwordTextBox.Clear();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

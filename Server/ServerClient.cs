@@ -64,6 +64,7 @@ namespace Server
 
         public abstract void disconnect(bool disconnect);
 
+<<<<<<< HEAD
 
 
         public void receiveChatPacket(PacketChat chat)
@@ -77,7 +78,16 @@ namespace Server
 
             }
         }
+=======
+        public abstract void receiveChatPacket(PacketChat chat);
+>>>>>>> origin/master
 
+        public void Close()
+        {
+            TcpClient.Close();
+           _clientThread.Abort(); 
+        }
 
+        public abstract void sendNewClient(string username, int hashcode);
     }
 }
