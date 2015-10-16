@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataPanel));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.RPMLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.powerLabel = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@
             this.userLabel = new System.Windows.Forms.Label();
             this.distanceLabel = new System.Windows.Forms.Label();
             this.distanceTextBox = new System.Windows.Forms.TextBox();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -174,16 +175,16 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(205, 26);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(314, 166);
             this.chart1.TabIndex = 29;
             this.chart1.Text = "chart1";
@@ -241,8 +242,18 @@
             this.distanceTextBox.Size = new System.Drawing.Size(63, 20);
             this.distanceTextBox.TabIndex = 34;
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(101, 279);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 35;
+            this.deleteButton.Text = "Delete Client";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            // 
             // DataPanel
             // 
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.distanceTextBox);
             this.Controls.Add(this.distanceLabel);
             this.Controls.Add(this.userLabel);
@@ -293,5 +304,6 @@
         private System.Windows.Forms.Label userLabel;
         private System.Windows.Forms.Label distanceLabel;
         private System.Windows.Forms.TextBox distanceTextBox;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
