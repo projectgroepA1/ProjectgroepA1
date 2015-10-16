@@ -7,7 +7,7 @@ namespace NetLib
     public interface ServerInterface
     {
         void login(string username, string password);
-        void sendMeasurement(Measurement measurement);
+        void sendMeasurement(PacketMeasurement measurement);
         void disconnect(bool disconnect);
         void receiveChatPacket(PacketChat packetChat);
         void sendNewClient(string username, int hashcodeClient);

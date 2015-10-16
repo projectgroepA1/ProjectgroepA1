@@ -10,14 +10,14 @@ namespace NetLib
     public class Measurement
     {
 
-        private string RPM { get; set; }
-        private string time { get; set; }
-        private string power { get; set; }
-        private string energy { get; set; }
-        private string AP { get; set; }
-        private string pulse { get; set; }
-        private string speed { get; set; }
-        private string distance { get; set; }
+        public string RPM { get;  }
+        public string time { get;  }
+        public string power { get;  }
+        public string energy { get;  }
+        public string AP { get;  }
+        public string pulse { get;  }
+        public string speed { get;  }
+        public string distance { get;  }
 
         public Measurement(string RPM, string time, string power, string energy, string AP, string pulse,string speed,string distance)
         {

@@ -9,6 +9,6 @@ namespace NetLib
     public interface MonitorInterface
     {
         void receiveNewClient(PacketNewClient newClient);
-        void receiveMeasurement(PacketMeasurement measurement);
+        void receiveMeasurement(PacketMonitorMeasurement measurement);
     }
 }

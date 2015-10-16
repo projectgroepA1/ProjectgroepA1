@@ -47,9 +47,9 @@ namespace Server
             }
         }
 
-        public override void sendMeasurement(Measurement measurement)
+        public override void sendMeasurement(PacketMeasurement pack)
         {
-            formatter.Serialize(Stream,measurement);
+            sendPacket(pack);
         }
 
         public override void sendNewClient(string username, int counter)

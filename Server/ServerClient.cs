@@ -55,7 +55,7 @@ namespace Server
 
         public abstract void login(string username, string password);
 
-        public abstract void sendMeasurement(Measurement measurement);
+        public abstract void sendMeasurement(PacketMeasurement measurement);
 
         public void sendPacket(Packet packet)
         {

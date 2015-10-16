@@ -42,17 +42,16 @@ namespace Server
 
         }
 
-        public override void sendMeasurement(Measurement measurement)
+        public override void sendMeasurement(PacketMeasurement pack)
         {
             Console.WriteLine("Measurement packet from {0}",GetName());
-            if (measurement != null)
+            if (pack.measurement != null)
             {
                 sendPacket(new PacketMeasurementResponse() { recieveOk = true });
-                _storage.AddMeasurement(measurement);
+                _storage.AddMeasurement(pack.measurement);
                 if (_server.Monitor != null)
                 {
-                    Console.WriteLine(_server.Monitor.GetName());
-                    _server.Monitor.sendMeasurement(measurement);
+                    _server.Monitor.sendMeasurement(new PacketMonitorMeasurement(pack,_username,id));;
                 }
             }
             else

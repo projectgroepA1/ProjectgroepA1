@@ -54,6 +54,7 @@
     <Compile Include="PacketLoginResponse.cs" />
     <Compile Include="PacketMeasurement.cs" />
     <Compile Include="PacketMeasurementResponse.cs" />
+    <Compile Include="PacketMonitorMeasurement.cs" />
     <Compile Include="PacketMonitorResponse.cs" />
     <Compile Include="PacketNewClient.cs" />
     <Compile Include="ServerInterface.cs" />

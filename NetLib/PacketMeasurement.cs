@@ -9,42 +9,16 @@ namespace NetLib
     [Serializable]
     public class PacketMeasurement : Packet
     {
-        public int pulse { get; }
-        public int RPM { get; }
-        public int speed { get; }
-        public string distance { get; }
-        public string requestPower { get; }
-        public int energy { get; }
-        public string time { get; }
-        public int actualPower { get; }
+        public Measurement measurement { get; }
 
-        Measurement measurement;
-        
-        public PacketMeasurement(string pulse, string rpm, string speed, string distance, string requestpower, string energy,string time, string actualPower)
+        public PacketMeasurement(string pulse, string rpm, string speed, string distance, string requestpower, string energy, string time, string actualPower)
         {
-            this.measurement = new Measurement(rpm, time, requestpower, energy, actualPower, pulse,speed,distance);
-        }
-
-        public PacketMeasurement(int pulse, int rpm, int speed, string distance, string requestPower, int energy, string time, int actualPower)
-        {
-            this.pulse = pulse;
-            this.RPM = rpm;
-            this.speed = speed;
-            this.distance = distance;
-            this.requestPower = requestPower;
-            this.energy = energy;
-            this.time = time;
-            this.actualPower = actualPower;
+            measurement = new Measurement(rpm, time, requestpower, energy, actualPower, pulse, speed, distance);
         }
 
         public override void handleServerSide(ServerInterface serverInterface)
         {
-            serverInterface.sendMeasurement(this.measurement);
-        }
-
-        public override void handleMonitorSide(MonitorInterface monitorInterface)
-        {
-            monitorInterface.receiveMeasurement(this);
+            serverInterface.sendMeasurement(this);
         }
     }
 }

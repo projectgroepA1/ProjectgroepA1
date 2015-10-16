@@ -43,8 +43,13 @@ namespace ClientApp
 
         private void UpdateGui()
         {
+            Random r = new Random();
             while (true)
             {
+                PacketMeasurement pack = new PacketMeasurement(""+r.Next(100), "" + r.Next(100), "" + r.Next(100), "" + r.Next(100), "" + r.Next(100), "" + r.Next(100), "" + r.Next(100), "" + r.Next(100));
+                serverConnection.WritePacket(pack);
+                Thread.Sleep(1000);
+
                 if (reader != null)
                 {
                     if (reader.parts != null && reader.parts.Length > 7)

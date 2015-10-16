@@ -3,12 +3,12 @@
     public class Client
     {
         public string Naam { get;}
-        public int Hashcode { get; }
+        public int Id {get; }
         public DataPanel Panel { get; }
         public Client(string naam, int hashcode, DataPanel panel)
         {
             Naam = naam;
-            Hashcode = hashcode;
+            Id = hashcode;
             Panel = panel;
         }
     }
