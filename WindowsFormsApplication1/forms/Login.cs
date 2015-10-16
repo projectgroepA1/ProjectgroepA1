@@ -13,15 +13,13 @@ namespace ClientApp.forms
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            //start connection
-            this.serverConnection = new ServerConnection();
+            
         }
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            //send default packet, that shows this is not an monitor
-            Packet packet = new Packet();
-            this.serverConnection.WritePacket(packet);
+            //start connection
+            this.serverConnection = new ServerConnection();
 
             PacketLogin loginPacket = new PacketLogin() {username = username.Text, password = password.Text};
             this.serverConnection.WritePacket(loginPacket);

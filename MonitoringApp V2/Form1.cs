@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication2;
+using NetLib;
 
 namespace MonitoringApp_V2
 {
@@ -18,7 +19,7 @@ namespace MonitoringApp_V2
         private TcpClient client;
         public NetworkStream stream { get; }
         private Login login;
-        public List<DataPanel> panels { get; }
+        public List<Client> clients { get; }
         public Thread thread { get; }
         private Connection connection;
 
@@ -29,64 +30,61 @@ namespace MonitoringApp_V2
             this.client = client;
             this.stream = stream;
             this.login = login;
-            panels = new List<DataPanel>();
+            clients = new List<Client>();
             connection = new Connection(this);
             thread = new Thread(() => connection.Run());
-            thread.Start();
+            //thread.Start();
             KeyPreview = true;
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            foreach (DataPanel panel in panels)
+            foreach (Client client in clients)
             {
-                if (e.KeyCode == Keys.Enter && panel.ReturnRPM().Focused)
+                if (e.KeyCode == Keys.Enter && client.Panel.ReturnRPM().Focused)
                 {
                     SelectNextControl(ActiveControl, true, true, true, true);
                     e.Handled = true;
-                    panel.ReturnActualPowerTextBox().Text = "test";
-                    panel.ReturnChatInputTextBox().Select();
+                    client.Panel.ReturnActualPowerTextBox().Text = "test";
+                    client.Panel.ReturnChatInputTextBox().Select();
                 }
-                if (e.KeyCode == Keys.Enter && panel.ReturnChatInputTextBox().Focused)
+                if (e.KeyCode == Keys.Enter && client.Panel.ReturnChatInputTextBox().Focused)
                 {
                     SelectNextControl(ActiveControl, true, true, true, true);
                     e.Handled = true;
-                    panel.ReturnChatInputTextBox().Select();
-                    string chatText = panel.ReturnChatInputTextBox().Text;
-                    if (panel.ReturnFirstTime() && !(chatText.Length <= 0))
+                    client.Panel.ReturnChatInputTextBox().Select();
+                    string chatText = client.Panel.ReturnChatInputTextBox().Text;
+                    if (client.Panel.ReturnFirstTime() && !(chatText.Length <= 0))
                     {
-                        panel.ReturnChatTextBox().Text = chatText;
-                        panel.changeFirstTime(false);
+                        client.Panel.ReturnChatTextBox().Text = chatText;
+                        client.Panel.changeFirstTime(false);
                     }
                     else if (!(chatText.Length <= 0))
                     {
-                        panel.ReturnChatTextBox().Text += Environment.NewLine + chatText;
+                        client.Panel.ReturnChatTextBox().Text += Environment.NewLine + chatText;
                     }
-                    panel.ReturnChatInputTextBox().Text = "";
+                    client.Panel.ReturnChatInputTextBox().Text = "";
                 }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        public void NewClient(PacketNewClient newClient)
+        {
+            MessageBox.Show("Yeah new client");
             DataPanel panel = new DataPanel(this);
-            panels.Add(panel);
+            Client client = new Client(newClient.usename, newClient.hashcode,panel);
+            clients.Add(client);
             flowLayoutPanel.Controls.Add(panel);
-            foreach (Panel aantalPanel in panels)
-            {
-                if (panels.Count >= 4)
-                {
-                    button1.Dispose();
-                }
-            }
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            foreach (Panel aantalPanel in panels)
-            {
-                
-            }
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -96,7 +94,7 @@ namespace MonitoringApp_V2
 
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
         {
-            thread.Abort();
+            closeApplicaton();
             login.Show();
             login.ClearBoxes();
         }

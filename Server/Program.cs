@@ -5,7 +5,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using NetLib;
-
+using System.Windows.Forms;
 namespace Server
 {
     class Program
@@ -37,7 +37,9 @@ namespace Server
                 if (!IsMonitor(newClient))
                 {
                     Console.WriteLine("is client");
-                    clients.Add(new Client(newClient, this));
+                    Client client = new Client(newClient, this);
+                    clients.Add(client);
+                    Monitor.sendNewClient(client._username,client.GetHashCode());
                 }
                 else if (_monitor != null)
                 {

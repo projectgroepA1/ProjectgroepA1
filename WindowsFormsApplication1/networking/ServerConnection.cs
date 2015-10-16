@@ -14,6 +14,8 @@ namespace ClientApp.networking
         public ServerConnection():base()
         {
             _client = new TcpClient(Info.GetIp().ToString(),Info.Port);
+            //send default packet, that shows this is not an monitor
+            WritePacket(new Packet());
         }
 
         public void WritePacket(Packet packet)

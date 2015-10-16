@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NetLib;
+using System.Windows.Forms;
 
 namespace Server
 {
@@ -35,8 +36,7 @@ namespace Server
 
         public override void login(string username, string password)
         {
-
-            if (username == "arjen" && password == "mourik")
+           if (username == "arjen" && password == "mourik")
             {
                 sendPacket(new PacketLoginResponse() {loginOk = true});
             }
@@ -55,6 +55,11 @@ namespace Server
         public override void sendMeasurement(Measurement measurement)
         {
             formatter.Serialize(Stream,measurement);
+        }
+
+        public override void sendNewClient(string username, int hashcode)
+        {
+            
         }
     }
 }

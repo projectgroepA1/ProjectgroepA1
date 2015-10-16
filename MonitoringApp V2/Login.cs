@@ -33,6 +33,7 @@ namespace WindowsFormsApplication2
         {
             try
             {
+                //MessageBox.Show("check1");
                 client = new TcpClient(Info.GetIp().ToString(), Info.Port);
                 stream = client.GetStream();
             }
@@ -41,12 +42,15 @@ namespace WindowsFormsApplication2
                 MessageBox.Show("No connection with the server");
                 Thread.CurrentThread.Abort();
             }
+            //MessageBox.Show("check2");
             formatter = new BinaryFormatter();
-            Packet monitor = new PacketMonitor();
-            formatter.Serialize(stream,monitor);
+            formatter.Serialize(stream, new PacketMonitor());
 
-            Packet loginPacket = new PacketLogin() { username = userNameTextBox.Text, password = passwordTextBox.Text};
+            //MessageBox.Show("check3");
+            Packet loginPacket = new PacketLogin() { username = userNameTextBox.Text, password = passwordTextBox.Text };
             formatter.Serialize(stream, loginPacket);
+
+           //MessageBox.Show("check4");
             PacketLoginResponse response = (PacketLoginResponse)formatter.Deserialize(stream);
             loginResponse(response.loginOk);
             //loginResponse(true);
@@ -63,7 +67,7 @@ namespace WindowsFormsApplication2
             {
                 client.Close();
                 stream.Close();
-                MessageBox.Show("The username or password is wrong");
+                //MessageBox.Show("The username or password is wrong");
             }
         }
 

@@ -4,12 +4,12 @@
     {
         public string Naam { get;}
         public int Hashcode { get; }
-        private DataPanel panel;
+        public DataPanel Panel { get; }
         public Client(string naam, int hashcode, DataPanel panel)
         {
             Naam = naam;
             Hashcode = hashcode;
-            this.panel = panel;
+            Panel = panel;
         }
     }
 }

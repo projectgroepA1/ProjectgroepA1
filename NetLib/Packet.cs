@@ -14,5 +14,7 @@ namespace NetLib
         { }
         public virtual void handleServerSide(ServerInterface serverInterface)
         { }
+        public virtual void handleMonitorSide(MonitorInterface monitorInterface)
+        { }
     }
 }

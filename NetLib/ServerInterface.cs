@@ -10,5 +10,6 @@ namespace NetLib
         void sendMeasurement(Measurement measurement);
         void disconnect(bool disconnect);
         void receiveChatPacket(PacketChat packetChat);
+        void sendNewClient(string username, int hashcodeClient);
     }
 }

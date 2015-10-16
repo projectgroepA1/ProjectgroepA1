@@ -13,7 +13,7 @@ namespace Server
     class Client : ServerClient
     {
         private readonly DataStorage _storage;
-        private string _username;
+        public string _username { get; set; }
         
         public Client(TcpClient tcpClient, Program server) : base(tcpClient,server)
         {
@@ -73,6 +73,11 @@ namespace Server
         public override void receiveChatPacket(PacketChat chat)
         {
             
+        }
+
+        public override void sendNewClient(string username, int hashcode)
+        {
+            _server.Monitor.sendPacket(new PacketNewClient() {usename = username,hashcode = hashcode});
         }
     }
 }

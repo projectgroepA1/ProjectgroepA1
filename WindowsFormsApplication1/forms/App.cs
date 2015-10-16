@@ -20,7 +20,7 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM2");
+            //this.reader = new Communication("COM2");
             this.serverConnection.client = this;
             
             //Start gui updater
@@ -38,75 +38,81 @@ namespace ClientApp
         {
             while (true)
             {
-                if (reader.parts != null && reader.parts.Length > 7)
+                if (reader != null)
                 {
-                    Console.WriteLine("reader size: " + reader.parts.Length);
-                    //read all parts
-                    string _pulse = reader.parts[0];
-                    string _rpm = reader.parts[1];
-                    string _speed = reader.parts[2];
-                    string _distance = reader.parts[3];
-                    string _power = reader.parts[4];
-                    string _energy = reader.parts[5];
-                    string _time = reader.parts[6];
-                    string _actualPower = reader.parts[7];
+                    if (reader.parts != null && reader.parts.Length > 7)
+                    {
+                        Console.WriteLine("reader size: " + reader.parts.Length);
+                        //read all parts
+                        string _pulse = reader.parts[0];
+                        string _rpm = reader.parts[1];
+                        string _speed = reader.parts[2];
+                        string _distance = reader.parts[3];
+                        string _power = reader.parts[4];
+                        string _energy = reader.parts[5];
+                        string _time = reader.parts[6];
+                        string _actualPower = reader.parts[7];
 
-                    //Update textboxes
-                    MethodInvoker mi1 = delegate () { this.pulse.Text = _pulse; };
-                    this.Invoke(mi1);
-                    MethodInvoker mi2 = delegate () { this.rpm.Text = _rpm; };
-                    this.Invoke(mi2);
-                    MethodInvoker mi3 = delegate () { this.speed.Text = _speed; };
-                    this.Invoke(mi3);
-                    MethodInvoker mi4 = delegate () { this.distance.Text = _distance; };
-                    this.Invoke(mi4);
-                    MethodInvoker mi5 = delegate () { this.power.Text = _power; };
-                    this.Invoke(mi5);
-                    MethodInvoker mi6 = delegate () { this.energy.Text = _energy; };
-                    this.Invoke(mi6);
-                    MethodInvoker mi7 = delegate () { this.time.Text = _time; };
-                    this.Invoke(mi7);
-                    MethodInvoker mi8 = delegate () { this.actualpower.Text = _actualPower; };
-                    this.Invoke(mi8);
+                        //Update textboxes
+                        MethodInvoker mi1 = delegate() { this.pulse.Text = _pulse; };
+                        this.Invoke(mi1);
+                        MethodInvoker mi2 = delegate() { this.rpm.Text = _rpm; };
+                        this.Invoke(mi2);
+                        MethodInvoker mi3 = delegate() { this.speed.Text = _speed; };
+                        this.Invoke(mi3);
+                        MethodInvoker mi4 = delegate() { this.distance.Text = _distance; };
+                        this.Invoke(mi4);
+                        MethodInvoker mi5 = delegate() { this.power.Text = _power; };
+                        this.Invoke(mi5);
+                        MethodInvoker mi6 = delegate() { this.energy.Text = _energy; };
+                        this.Invoke(mi6);
+                        MethodInvoker mi7 = delegate() { this.time.Text = _time; };
+                        this.Invoke(mi7);
+                        MethodInvoker mi8 = delegate() { this.actualpower.Text = _actualPower; };
+                        this.Invoke(mi8);
 
-                    //Parse all strings to int
-                    int I_pulse = Int32.Parse(_pulse);
-                    int I_rpm = Int32.Parse(_rpm);
-                    int I_speed = Int32.Parse(_speed);
-                    int I_distance = Int32.Parse(_distance);
-                    int I_power = Int32.Parse(_power);
-                    int I_energy = Int32.Parse(_energy);
-                    int I_actualPower = Int32.Parse(_actualPower);
+                        //Parse all strings to int
+                        int I_pulse = Int32.Parse(_pulse);
+                        int I_rpm = Int32.Parse(_rpm);
+                        int I_speed = Int32.Parse(_speed);
+                        int I_distance = Int32.Parse(_distance);
+                        int I_power = Int32.Parse(_power);
+                        int I_energy = Int32.Parse(_energy);
+                        int I_actualPower = Int32.Parse(_actualPower);
 
-                    //time
-                    TimeSpan ts = TimeSpan.Parse(_time);
-                    int I_sec = ts.Seconds;
-                    int I_min = ts.Minutes;
+                        //time
+                        TimeSpan ts = TimeSpan.Parse(_time);
+                        int I_sec = ts.Seconds;
+                        int I_min = ts.Minutes;
 
-                    int totalTime = I_min*60 + I_sec;
+                        int totalTime = I_min*60 + I_sec;
 
-                    //Create and send measurement packet
-                    PacketMeasurement measurement = new PacketMeasurement(_pulse, _rpm, _speed, _distance, _power, _energy, _time, _actualPower);
-                    this.serverConnection.WritePacket(measurement);
+                        //Create and send measurement packet
+                        PacketMeasurement measurement = new PacketMeasurement(_pulse, _rpm, _speed, _distance, _power,
+                            _energy, _time, _actualPower);
+                        this.serverConnection.WritePacket(measurement);
 
-                    //Adding coördinates to chart
-                    MethodInvoker miP = delegate () { this.Grafiek.Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
-                    this.Invoke(miP);
-                    MethodInvoker miR = delegate () { this.Grafiek.Series["Rpm"].Points.AddXY(I_sec, I_rpm); };
-                    this.Invoke(miR);
-                    MethodInvoker miS = delegate () { this.Grafiek.Series["Speed"].Points.AddXY(I_sec, I_speed); };
-                    this.Invoke(miS);
-                    MethodInvoker miD = delegate () { this.Grafiek.Series["Distance"].Points.AddXY(I_sec, I_distance); };
-                    this.Invoke(miD);
-                    MethodInvoker miPo = delegate () { this.Grafiek.Series["Power"].Points.AddXY(I_sec, I_power); };
-                    this.Invoke(miPo);
-                    MethodInvoker miE = delegate () { this.Grafiek.Series["Energy"].Points.AddXY(I_sec, I_energy); };
-                    this.Invoke(miE);
-                    MethodInvoker miAP = delegate () { this.Grafiek.Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
-                    this.Invoke(miAP);
+                        //Adding coördinates to chart
+                        MethodInvoker miP = delegate() { this.Grafiek.Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
+                        this.Invoke(miP);
+                        MethodInvoker miR = delegate() { this.Grafiek.Series["Rpm"].Points.AddXY(I_sec, I_rpm); };
+                        this.Invoke(miR);
+                        MethodInvoker miS = delegate() { this.Grafiek.Series["Speed"].Points.AddXY(I_sec, I_speed); };
+                        this.Invoke(miS);
+                        MethodInvoker miD =
+                            delegate() { this.Grafiek.Series["Distance"].Points.AddXY(I_sec, I_distance); };
+                        this.Invoke(miD);
+                        MethodInvoker miPo = delegate() { this.Grafiek.Series["Power"].Points.AddXY(I_sec, I_power); };
+                        this.Invoke(miPo);
+                        MethodInvoker miE = delegate() { this.Grafiek.Series["Energy"].Points.AddXY(I_sec, I_energy); };
+                        this.Invoke(miE);
+                        MethodInvoker miAP =
+                            delegate() { this.Grafiek.Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
+                        this.Invoke(miAP);
 
-                    //Wait 1 second
-                    Thread.Sleep(1000);
+                        //Wait 1 second
+                        Thread.Sleep(1000);
+                    }
                 }
             }
         }
