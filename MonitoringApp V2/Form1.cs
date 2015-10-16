@@ -91,7 +91,7 @@ namespace MonitoringApp_V2
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -120,6 +120,7 @@ namespace MonitoringApp_V2
         public void sendSession(string actualPower, string time, string distance)
         {
             //new session packet
+            MessageBox.Show("test");
         }
     }
 }

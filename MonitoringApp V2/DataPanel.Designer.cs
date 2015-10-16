@@ -240,6 +240,7 @@
             this.deleteButton.TabIndex = 35;
             this.deleteButton.Text = "Delete Client";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // newSessionButton
             // 
@@ -253,6 +254,7 @@
             // 
             // DataPanel
             // 
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.Controls.Add(this.newSessionButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.distanceTextBox);

@@ -106,5 +106,10 @@ namespace MonitoringApp_V2
         {
             new NewSession(this).Show();
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+        }
     }
 }

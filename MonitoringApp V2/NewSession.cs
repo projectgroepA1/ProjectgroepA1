@@ -23,6 +23,10 @@ namespace MonitoringApp_V2
         private void sendButton_Click(object sender, EventArgs e)
         {
             panel.form.sendSession(actualPowerTextBox.Text, timeTextBox.Text, distanceTextBox.Text);
+            this.Hide();
+            actualPowerTextBox.Clear();
+            timeTextBox.Clear();
+            distanceTextBox.Clear();
         }
     }
 }
