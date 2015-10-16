@@ -33,9 +33,9 @@ namespace ClientApp.forms
             {
                 if (login.loginOk)
                 {
-                    Console.WriteLine("good login");
                     this.Hide();
-                    new Client(this.serverConnection).Show();
+                    new Client(this.serverConnection, username.Text, login.number).Show();
+                    Console.WriteLine("good login");
                 }
                 else
                 {

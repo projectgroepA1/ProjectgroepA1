@@ -66,7 +66,17 @@ namespace Server
 
 
 
-        public abstract void receiveChatPacket(PacketChat chat);
+        public void receiveChatPacket(PacketChat chat)
+        {
+            if(chat.destination == "monitor")
+            {
+                _server.sendPackToMonitor(chat);
+            }
+            else
+            {
+
+            }
+        }
 
 
     }

@@ -14,10 +14,12 @@ namespace Server
     {
         private readonly DataStorage _storage;
         private string _username;
+        public int id { get; }
         
-        public Client(TcpClient tcpClient, Program server) : base(tcpClient,server)
+        public Client(TcpClient tcpClient, Program server, int number) : base(tcpClient,server)
         {
             this._storage = new DataStorage();
+            this.id = number;
         }
 
         public override string GetName()
@@ -30,11 +32,11 @@ namespace Server
             this._username = username;
             if (username == "admin" && password == "12345")
             {
-                sendPacket(new PacketLoginResponse() {loginOk = true});
+                sendPacket(new PacketLoginResponse() {loginOk = true, number = this.id});
             }
             else
             {
-                sendPacket(new PacketLoginResponse() {loginOk = false});
+                sendPacket(new PacketLoginResponse() {loginOk = false, number = 0 });
             }
 
         }
@@ -68,11 +70,6 @@ namespace Server
                 ClientThread.Abort();
                 Console.WriteLine("Client closed: {0}",_username);
             }
-        }
-
-        public override void receiveChatPacket(PacketChat chat)
-        {
-            
         }
     }
 }

@@ -10,17 +10,23 @@ namespace ClientApp
     {
         public Communication reader;
 
+        public int id { get; }
+
         private ServerConnection serverConnection;
         public Thread Thread { get; }
 
-        public Client(ServerConnection serverConnection)
+        public string hostName { get; }
+
+        public Client(ServerConnection serverConnection, string hostName, int id)
         {
             InitializeComponent();
+            this.id = id;
+            this.hostName = hostName;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM2");
+            this.reader = new Communication("COM3");
             this.serverConnection.client = this;
             
             //Start gui updater
@@ -29,8 +35,8 @@ namespace ClientApp
 
 
             //test receive message
-            PacketChat chat = new PacketChat("testmessage");
-            this.serverConnection.recievePacketChat(chat);
+            //PacketChat chat = new PacketChat("testmessage", "";
+            //this.serverConnection.recievePacketChat(chat);
 
         }
 
@@ -118,7 +124,7 @@ namespace ClientApp
                 Chatbox.AppendText("[you] " + this.Sendbox.Text + Environment.NewLine);
 
                 //send packet to the server
-                PacketChat chat = new PacketChat(this.Sendbox.Text + Environment.NewLine);
+                PacketChat chat = new PacketChat(this.Sendbox.Text + Environment.NewLine, hostName, "monitor", id);
                 this.serverConnection.WritePacket(chat);
                 Console.WriteLine("Sent message");
                 Sendbox.Clear();
