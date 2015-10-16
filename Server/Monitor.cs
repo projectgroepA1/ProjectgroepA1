@@ -47,11 +47,6 @@ namespace Server
             }
         }
 
-        public override void receiveChatPacket(PacketChat chat)
-        {
-           
-        }
-
         public override void sendMeasurement(Measurement measurement)
         {
             formatter.Serialize(Stream,measurement);

@@ -27,7 +27,7 @@ namespace Server
             IPAddress ip = Info.GetIp();
             TcpListener listener = new TcpListener(ip,Info.Port);
             listener.Start();
-
+            int counter = 0;
             Console.WriteLine("Server started: {0}",DateTime.Now);
             Console.WriteLine("Server ip: {0}", ip);
             Console.WriteLine("Server port: {0}",Info.Port);
@@ -36,10 +36,15 @@ namespace Server
                 TcpClient newClient = listener.AcceptTcpClient();
                 if (!IsMonitor(newClient))
                 {
+                    counter++;
                     Console.WriteLine("is client");
+<<<<<<< HEAD
                     Client client = new Client(newClient, this);
                     clients.Add(client);
                     Monitor.sendNewClient(client._username,client.GetHashCode());
+=======
+                    clients.Add(new Client(newClient, this, counter));
+>>>>>>> 9f07fb75a3290eab7f0b51439c9ed6d47d31c5a0
                 }
                 else if (_monitor != null)
                 {
@@ -77,18 +82,20 @@ namespace Server
 
 
         //This Packet can be sent to one specific client.
-        public void sendPacketToClient(Packet packet, string clientName, int hashCode)
+        public void sendPacketToClient(Packet packet, int destination)
         {
             foreach (Client serverClient in clients) {
-                int code = serverClient.GetHashCode();
-                string name = serverClient.GetName();
-                    if(code == hashCode && name == clientName)
-                    {
+                if(serverClient.id == destination)
+                {
                     serverClient.sendPacket(packet);
-                    }
+                }
             }
         }
 
+        public void sendPackToMonitor(Packet packet)
+        {
+            _monitor.sendPacket(packet);
+        }
 
     }
 }

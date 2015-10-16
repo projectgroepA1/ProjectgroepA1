@@ -10,10 +10,18 @@ namespace NetLib
     public class PacketChat:Packet
     {
         public string messageText { get; }
+
+        public string hostName { get; }
+        public string destination { get; }
+
+        public int destinationID { get; }
        
-        public PacketChat(string message)
+        public PacketChat(string message, string host, string destination, int id)
         {
             this.messageText = message;
+            this.hostName = host;
+            this.destination = destination;
+            this.destinationID = id;
         }
 
         public override void handleServerSide(ServerInterface serverInterface)

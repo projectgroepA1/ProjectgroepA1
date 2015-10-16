@@ -40,8 +40,9 @@ namespace WindowsFormsApplication2
                 packet.handleMonitorSide(this);
                 form.Invoke((Action)(() =>
                 {
-                    try
+                    /*try
                     {
+<<<<<<< HEAD
                         //PacketMeasurement pack = (PacketMeasurement)formatter.Deserialize(form.stream);
                         
                         //    foreach (DataPanel p in form.panels)
@@ -55,6 +56,39 @@ namespace WindowsFormsApplication2
                         //                                        p.ReturnEnergyTextBox().Text = r.Next(1, 50).ToString();
                         //                                        p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
                         //                                        p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();*/
+=======
+                        PacketMeasurement pack = (PacketMeasurement)formatter.Deserialize(form.stream);
+                        foreach (DataPanel p in form.panels)
+                        {
+/*                            if (!p.ReturnRPM().Focused)
+                            {
+                                p.ReturnRPM().Text = r.Next(1, 50).ToString();
+                            }
+                            p.ReturnTimeTextBox().Text = r.Next(1, 50).ToString();
+                            p.ReturnPowerTextBox().Text = r.Next(1, 50).ToString();
+                            p.ReturnEnergyTextBox().Text = r.Next(1, 50).ToString();
+                            p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
+                            p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();#1#
+
+                            //change rpm
+                            if (!p.ReturnRPM().Focused)
+                            {
+                                p.ReturnRPM().Text = pack.RPM.ToString();
+                            }
+                            
+                            //change time
+                            if (!p.ReturnTimeTextBox().Focused)
+                            {
+                                p.ReturnTimeTextBox().Text = pack.time.ToString();
+                            }
+
+                            //change distance
+/*                            if (!p.dis().Focused)
+                            {
+                                p.ReturnRPM().Text = pack.RPM.ToString();
+                            }#1#
+
+>>>>>>> 9f07fb75a3290eab7f0b51439c9ed6d47d31c5a0
 
                         //        if (!p.ReturnRPM().Focused)
                         //        {
@@ -111,7 +145,7 @@ namespace WindowsFormsApplication2
                     {
                         //MessageBox.Show("No connection to the server");
                         //form.closeApplicaton();
-                    }
+                    }*/
                 }));
             }
         }
