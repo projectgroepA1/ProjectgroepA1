@@ -50,6 +50,8 @@
             this.password.Size = new System.Drawing.Size(306, 31);
             this.password.TabIndex = 1;
             this.password.Text = "12345";
+            this.password.PasswordChar = '*';
+
             // 
             // login_button
             // 
