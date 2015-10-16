@@ -26,6 +26,7 @@ namespace WindowsFormsApplication2
         public Login()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 /*            try
             {
                 client = new TcpClient("192.168.56.1", 1967);
