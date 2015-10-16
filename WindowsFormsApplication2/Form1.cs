@@ -9,8 +9,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+<<<<<<< HEAD
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+=======
+>>>>>>> parent of a92cdd6... tcp geadd
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +23,7 @@ namespace WindowsFormsApplication2
 {
     public partial class Form1 : Form
     {
+<<<<<<< HEAD
         private TcpClient client;
         private NetworkStream stream;
         private Connection connection;
@@ -161,6 +165,11 @@ namespace WindowsFormsApplication2
         private void chart1_Click(object sender, EventArgs e)
         {
 
+=======
+        public Form1()
+        {
+            InitializeComponent();
+>>>>>>> parent of a92cdd6... tcp geadd
         }
     }
 }

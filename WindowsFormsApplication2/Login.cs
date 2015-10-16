@@ -4,17 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NetLib;
 
 namespace WindowsFormsApplication2
 {
     public partial class Login : Form
     {
+<<<<<<< HEAD
         private TcpClient client;
         private string username;
         private string password;
@@ -22,10 +20,36 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+=======
+        public Login()
+        {
+            InitializeComponent();
+>>>>>>> parent of a92cdd6... tcp geadd
         }
-    
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void loginButton_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             client = new TcpClient(Info.GetIp().ToString(), Info.Port);
             username = userNameTextBox.Text;
             password = passwordTextBox.Text;
@@ -33,6 +57,9 @@ namespace WindowsFormsApplication2
             new BinaryFormatter().Serialize(client.GetStream(),new PacketMonitor());
 
             new Form1(client,this).Show();
+=======
+            new Form1().Show();
+>>>>>>> parent of a92cdd6... tcp geadd
             this.Hide();
         }
 
