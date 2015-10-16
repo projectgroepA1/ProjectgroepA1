@@ -27,6 +27,34 @@ namespace MonitoringApp_V2
             firstTime = true;
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter && ReturnActualPowerTextBox().Focused)
+            {
+               // SelectNextControl(ActiveControl, true, true, true, true);
+                ReturnChatInputTextBox().Select();
+                RPMTextbox.Text = "text";
+            }
+            if (keyData == Keys.Enter && ReturnChatInputTextBox().Focused)
+            {
+                //SelectNextControl(ActiveControl, true, true, true, true);
+                ReturnChatInputTextBox().Select();
+                string chatText = ReturnChatInputTextBox().Text;
+                if (ReturnFirstTime() && !(chatText.Length <= 0))
+                {
+                    ReturnChatTextBox().Text = chatText;
+                    changeFirstTime(false);
+                }
+                else if (!(chatText.Length <= 0))
+                {
+                    ReturnChatTextBox().Text += Environment.NewLine + chatText;
+                }
+               ReturnChatInputTextBox().Text = "";
+               return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         public TextBox ReturnRPM()
         {
             return RPMTextbox;

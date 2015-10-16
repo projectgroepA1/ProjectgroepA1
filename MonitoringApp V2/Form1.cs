@@ -37,37 +37,6 @@ namespace MonitoringApp_V2
             KeyPreview = true;
         }
 
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            foreach (Client client in clients)
-            {
-                if (e.KeyCode == Keys.Enter && client.Panel.ReturnActualPowerTextBox().Focused)
-                {
-                    SelectNextControl(ActiveControl, true, true, true, true);
-                    e.Handled = true;
-                    client.Panel.ReturnChatInputTextBox().Select();
-                }
-
-                if (e.KeyCode == Keys.Enter && client.Panel.ReturnChatInputTextBox().Focused)
-                {
-                    SelectNextControl(ActiveControl, true, true, true, true);
-                    e.Handled = true;
-                    client.Panel.ReturnChatInputTextBox().Select();
-                    string chatText = client.Panel.ReturnChatInputTextBox().Text;
-                    if (client.Panel.ReturnFirstTime() && !(chatText.Length <= 0))
-                    {
-                        client.Panel.ReturnChatTextBox().Text = chatText;
-                        client.Panel.changeFirstTime(false);
-                    }
-                    else if (!(chatText.Length <= 0))
-                    {
-                        client.Panel.ReturnChatTextBox().Text += Environment.NewLine + chatText;
-                    }
-                    client.Panel.ReturnChatInputTextBox().Text = "";
-                }
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             DataPanel panel = new DataPanel(this);
