@@ -95,44 +95,44 @@ namespace WindowsFormsApplication2
                             c.Panel.ReturnActualPowerTextBox().Text = m.measurement.AP;
                             c.Panel.ReturnPulseTextBox().Text = m.measurement.pulse;
 
-                            //        string _pulse = pack.pulse.ToString();
-                            //        string _rpm = pack.RPM.ToString();
-                            //        string _speed = pack.speed.ToString();
-                            //        string _distance = pack.distance.ToString();
-                            //        string _power = pack.requestPower.ToString();
-                            //        string _energy = pack.energy.ToString();
-                            //        string _time = pack.time.ToString();
-                            //        string _actualPower = pack.actualPower.ToString();
+                            string _pulse = m.measurement.pulse;
+                            string _rpm = m.measurement.RPM;
+                            string _speed = m.measurement.speed;
+                            string _distance = m.measurement.distance;
+                            string _power = m.measurement.power;
+                            string _energy = m.measurement.energy;
+                            string _time = m.measurement.time;
+                            string _actualPower = m.measurement.AP;
 
 
-                            //            //Parse all strings to int
-                            //            int I_pulse = Int32.Parse(_pulse);
-                            //        int I_rpm = Int32.Parse(_rpm);
-                            //        int I_speed = Int32.Parse(_speed);
-                            //        int I_distance = Int32.Parse(_distance);
-                            //        int I_power = Int32.Parse(_power);
-                            //        int I_energy = Int32.Parse(_energy);
-                            //        TimeSpan ts = TimeSpan.Parse(_time);
-                            //        int I_sec = ts.Seconds;
-                            //        int I_min = ts.Minutes;
-                            //        int I_actualPower = Int32.Parse(_actualPower);
+                            //Parse all strings to int
+                            int I_pulse = Int32.Parse(_pulse);
+                            int I_rpm = Int32.Parse(_rpm);
+                            int I_speed = Int32.Parse(_speed);
+                            int I_distance = Int32.Parse(_distance);
+                            int I_power = Int32.Parse(_power);
+                            int I_energy = Int32.Parse(_energy);
+                            TimeSpan ts = TimeSpan.Parse(_time);
+                            int I_sec = ts.Seconds;
+                            int I_min = ts.Minutes;
+                            int I_actualPower = Int32.Parse(_actualPower);
 
-                            //            //Adding coördinates to chart
-                            //            MethodInvoker miP = delegate () { p.returnChart().Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
-                            //        p.Invoke(miP);
-                            //        MethodInvoker miR = delegate () { p.returnChart().Series["Rpm"].Points.AddXY(I_sec, I_rpm); };
-                            //        p.Invoke(miR);
-                            //        MethodInvoker miS = delegate () { p.returnChart().Series["Speed"].Points.AddXY(I_sec, I_speed); };
-                            //        p.Invoke(miS);
-                            //        MethodInvoker miD = delegate () { p.returnChart().Series["Distance"].Points.AddXY(I_sec, I_distance); };
-                            //        p.Invoke(miD);
-                            //        MethodInvoker miPo = delegate () { p.returnChart().Series["Power"].Points.AddXY(I_sec, I_power); };
-                            //        p.Invoke(miPo);
-                            //        MethodInvoker miE = delegate () { p.returnChart().Series["Energy"].Points.AddXY(I_sec, I_energy); };
-                            //        p.Invoke(miE);
-                            //        MethodInvoker miAP = delegate () { p.returnChart().Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
-                            //        p.Invoke(miAP);
-                            //        Thread.Sleep(1000);
+                            //Adding coördinates to chart
+                            MethodInvoker miP = delegate () { c.Panel.returnChart().Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
+                            c.Panel.Invoke(miP);
+                            MethodInvoker miR = delegate () { c.Panel.returnChart().Series["RPM"].Points.AddXY(I_sec, I_rpm); };
+                            c.Panel.Invoke(miR);
+                            MethodInvoker miS = delegate () { c.Panel.returnChart().Series["Speed"].Points.AddXY(I_sec, I_speed); };
+                            c.Panel.Invoke(miS);
+                            MethodInvoker miD = delegate () { c.Panel.returnChart().Series["Distance"].Points.AddXY(I_sec, I_distance); };
+                            c.Panel.Invoke(miD);
+                            MethodInvoker miPo = delegate () { c.Panel.returnChart().Series["Power"].Points.AddXY(I_sec, I_power); };
+                            c.Panel.Invoke(miPo);
+                            MethodInvoker miE = delegate () { c.Panel.returnChart().Series["Energy"].Points.AddXY(I_sec, I_energy); };
+                            c.Panel.Invoke(miE);
+                            MethodInvoker miAP = delegate () { c.Panel.returnChart().Series["Actual Power"].Points.AddXY(I_sec, I_actualPower); };
+                            c.Panel.Invoke(miAP);
+                            
                             break;
                         }
                     }

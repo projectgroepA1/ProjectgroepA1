@@ -144,5 +144,10 @@ namespace MonitoringApp_V2
         {
             this.Parent.Controls.Remove(this);
         }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
