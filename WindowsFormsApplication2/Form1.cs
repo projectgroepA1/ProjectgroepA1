@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/GUI
 ﻿using NetLib;
 using System;
 using System.Collections.Generic;
@@ -161,6 +164,7 @@ namespace WindowsFormsApplication2
         }
     }
 }
+<<<<<<< HEAD
 =======
 ﻿//using NetLib;
 //using System;
@@ -326,3 +330,5 @@ namespace WindowsFormsApplication2
 //    }
 //}
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> origin/GUI

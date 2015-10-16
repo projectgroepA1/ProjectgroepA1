@@ -1,28 +1,31 @@
-﻿//namespace WindowsFormsApplication2
-//{
-//    partial class Form1
-//    {
-//        /// <summary>
-//        /// Required designer variable.
-//        /// </summary>
-//        private System.ComponentModel.IContainer components = null;
+﻿namespace WindowsFormsApplication2
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-//        /// <summary>
-//        /// Clean up any resources being used.
-//        /// </summary>
-//        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-//        protected override void Dispose(bool disposing)
-//        {
-//            if (disposing && (components != null))
-//            {
-//                components.Dispose();
-//            }
-//            base.Dispose(disposing);
-//        }
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-//        #region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/GUI
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -347,6 +350,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             this.ResumeLayout(false);
+<<<<<<< HEAD
 =======
 //        /// <summary>
 //        /// Required method for Designer support - do not modify
@@ -682,34 +686,36 @@
 //            this.splitContainer4.ResumeLayout(false);
 //            this.ResumeLayout(false);
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> origin/GUI
 
-//        }
+        }
 
-//        #endregion
+        #endregion
 
-//        private System.Windows.Forms.SplitContainer splitContainer1;
-//        private System.Windows.Forms.SplitContainer splitContainer2;
-//        private System.Windows.Forms.SplitContainer splitContainer3;
-//        private System.Windows.Forms.Label label2;
-//        private System.Windows.Forms.SplitContainer splitContainer4;
-//        private System.Windows.Forms.ListView listView1;
-//        private System.Windows.Forms.ColumnHeader columnHeader1;
-//        private System.Windows.Forms.Label timeLabel;
-//        private System.Windows.Forms.Label RPMLabel;
-//        private System.Windows.Forms.Label powerLabel;
-//        private System.Windows.Forms.Label energyLabel;
-//        private System.Windows.Forms.Label actualPowerLabel;
-//        private System.Windows.Forms.Label pulseLabel;
-//        private System.Windows.Forms.TextBox pulseTextBox;
-//        private System.Windows.Forms.TextBox actualPowerTextBox;
-//        private System.Windows.Forms.TextBox energyTextBox;
-//        private System.Windows.Forms.TextBox powerTextBox;
-//        private System.Windows.Forms.TextBox timeTextbox;
-//        private System.Windows.Forms.TextBox RPMTextbox;
-//        private System.Windows.Forms.PictureBox pictureBox1;
-//        private System.Windows.Forms.TextBox chatTextBox;
-//        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-//        private System.Windows.Forms.TextBox chatInputTextBox;
-//    }
-//}
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label RPMLabel;
+        private System.Windows.Forms.Label powerLabel;
+        private System.Windows.Forms.Label energyLabel;
+        private System.Windows.Forms.Label actualPowerLabel;
+        private System.Windows.Forms.Label pulseLabel;
+        private System.Windows.Forms.TextBox pulseTextBox;
+        private System.Windows.Forms.TextBox actualPowerTextBox;
+        private System.Windows.Forms.TextBox energyTextBox;
+        private System.Windows.Forms.TextBox powerTextBox;
+        private System.Windows.Forms.TextBox timeTextbox;
+        private System.Windows.Forms.TextBox RPMTextbox;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox chatTextBox;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TextBox chatInputTextBox;
+    }
+}
 
