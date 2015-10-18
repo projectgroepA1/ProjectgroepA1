@@ -33,5 +33,10 @@ namespace NetLib
         {
             clientInterface.recievePacketChat(this);
         }
+
+        public override void handleMonitorSide(MonitorInterface monitorInterface)
+        {
+            monitorInterface.recieveChat(this);
+        }
     }
 }

@@ -37,6 +37,13 @@ namespace WindowsFormsApplication2
             form.AddPanel(panel);
         }
 
+        public void recieveChat(PacketChat pack)
+        {
+            Console.WriteLine("Recieved Chat Packet");
+
+            form.showMessage(pack.destinationID, pack.messageText);
+        }
+
 
         public void receiveMeasurement(PacketMonitorMeasurement m)
         {

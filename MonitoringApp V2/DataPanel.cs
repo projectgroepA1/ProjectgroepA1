@@ -49,16 +49,12 @@ namespace MonitoringApp_V2
 
         public void changeChatBoxText(string chatText)
         {
-            if (ReturnFirstTime() && !(chatText.Length <= 0))
-            {
-                ReturnChatTextBox().Text = chatText;
-                changeFirstTime(false);
-            }
-            else if (!(chatText.Length <= 0))
-            {
-                ReturnChatTextBox().Text += Environment.NewLine + chatText;
-            }
-            ReturnChatInputTextBox().Text = "";
+            chatTextBox.AppendText("[client] " + chatText + Environment.NewLine);
+        }
+
+        public TextBox ReturnChatBoxText()
+        {
+            return chatTextBox;
         }
 
         public TextBox ReturnRPM()

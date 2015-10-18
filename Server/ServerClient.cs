@@ -39,8 +39,11 @@ namespace Server
             Console.WriteLine("{0}\tStarted{1}",GetHashCode(),"");
             while (TcpClient.Connected)
             {
+                 
                 Packet packet = (Packet)formatter.Deserialize(Stream);
+                Console.WriteLine("Succesfully Deserialized stream");
                 packet.handleServerSide(this);
+                Console.WriteLine("Succesfully handled Serverside");
                 Console.WriteLine("packet received from: {0}",GetHashCode());
                 //Console.WriteLine("packet received from {0}", packet.GetName());
 
