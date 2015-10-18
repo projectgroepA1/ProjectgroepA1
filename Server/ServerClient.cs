@@ -41,16 +41,12 @@ namespace Server
             {
                 Packet packet = (Packet)formatter.Deserialize(Stream);
                 packet.handleServerSide(this);
-<<<<<<< HEAD
                 Console.WriteLine("packet received from: {0}",GetHashCode());
-=======
-                Console.WriteLine("packet received from {0}",GetName());
                 if(packet is PacketChat)
                 {
                     PacketChat chatPacket = (PacketChat)packet;
                     Console.WriteLine("Hostname: {0}, destination: {1}, destinationID: {2}", chatPacket.hostName, chatPacket.destination, chatPacket.destinationID);
                 }
->>>>>>> 762bc2ef404d01e811d0655260e40e3c4083ffe4
             }
         }
 

@@ -93,11 +93,7 @@ namespace Server
                 if(serverClient.identifier.Id == destination)
                 {
                     serverClient.sendPacket(packet);
-<<<<<<< HEAD
                     break;
-=======
-                    Console.WriteLine("Message sent to packet {0}", serverClient.id);
->>>>>>> 762bc2ef404d01e811d0655260e40e3c4083ffe4
                 }
             }
         }
