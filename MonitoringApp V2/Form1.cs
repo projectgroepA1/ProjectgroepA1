@@ -59,6 +59,17 @@ namespace MonitoringApp_V2
                 ));
         }
 
+        public void showMessage(int clientID, string message)
+        {
+            foreach(Client client in clients)
+            {
+                if(clientID == client.Identifier.Id)
+                {
+                    client.Panel.changeChatBoxText(message);
+                }
+            }
+        }
+
         private void Delete_Click(object sender, EventArgs e)
         {
 

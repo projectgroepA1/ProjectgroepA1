@@ -79,7 +79,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerConnection.cs" />
     <EmbeddedResource Include="DataPanel.resx">
       <DependentUpon>DataPanel.cs</DependentUpon>
     </EmbeddedResource>

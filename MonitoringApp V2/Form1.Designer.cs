@@ -83,7 +83,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.MainPanel);
             this.Name = "Form1";
-            this.Text = "Docter App";
+            this.Text = "Doctor App";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MainPanel.ResumeLayout(false);
