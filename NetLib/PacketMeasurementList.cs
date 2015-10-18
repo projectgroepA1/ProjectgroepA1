@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetLib
 {
+    [Serializable]
     public class PacketMeasurementList : Packet
     {
         public List<Measurement> measurements { set; get; }

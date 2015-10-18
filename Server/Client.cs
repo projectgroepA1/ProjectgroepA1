@@ -39,7 +39,7 @@ namespace Server
 
         public override void sendMeasurement(PacketMeasurement pack)
         {
-            Console.WriteLine("Measurement packet from: {0}",identifier.ToString());
+            Console.WriteLine("Measurement packet from: {0}",pack.ToString());
             if (pack.measurement != null)
             {
                 sendPacket(new PacketMeasurementResponse() { recieveOk = true });

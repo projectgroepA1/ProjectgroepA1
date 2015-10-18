@@ -22,14 +22,14 @@ namespace FietsSim
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
-            SerialPort port = new SerialPort("COM2");
-            port.Open();
+            //SerialPort port = new SerialPort("COM3");
+            //port.Open();
 
             //string txt = portWrite();
             //port.WriteLine(txt);
 
             //receive handler
-            port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            //port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             while (true)
             {
