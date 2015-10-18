@@ -28,7 +28,7 @@ namespace WindowsFormsApplication2
 
         public void receiveNewClient(PacketNewClient newClient)
         {
-            MessageBox.Show("Yeah new client: "+newClient.GetHashCode());
+            //MessageBox.Show("Yeah new client: "+newClient.GetHashCode());
 
             DataPanel panel = new DataPanel(form,this);
             Client client = new Client(newClient.Identifier, panel);
@@ -46,7 +46,7 @@ namespace WindowsFormsApplication2
             {
                 try
                 {
-                    Console.WriteLine("Amount of cliens: "+form.clients.Count);
+                    //Console.WriteLine("Amount of cliens: "+form.clients);
                     foreach (Client c in form.clients)
                     {
                         Console.WriteLine("Naam: {0}  id: {1}", c.Identifier.Username, c.Identifier.Id);
@@ -140,7 +140,7 @@ namespace WindowsFormsApplication2
                 catch
                 (Exception e)
                 {
-                    Console.WriteLine(e.StackTrace);
+                    Console.WriteLine(e.Message);
                     //MessageBox.Show("No connection to the server");
                     //form.closeApplicaton();
                 }
