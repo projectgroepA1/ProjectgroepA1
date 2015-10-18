@@ -41,14 +41,14 @@ namespace Server
 
                     Client client = new Client(newClient, this,counter);
                     clients.Add(client);
-                    try {
-                        Monitor.sendNewClient(client.identifier);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("No Monitor");
-                        Application.Exit();
-                    }
+                    //try {
+                    //    Monitor.sendNewClient(client.identifier);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Console.WriteLine("No Monitor");
+                    //    Application.Exit();
+                    //}
 
                 }
                 else if (_monitor != null)
@@ -94,6 +94,7 @@ namespace Server
                 {
                     serverClient.sendPacket(packet);
                     Console.WriteLine("Message sent to packet {0}", serverClient.identifier.Id);
+
                     break;
                 }
             }

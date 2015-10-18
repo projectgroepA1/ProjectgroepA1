@@ -45,8 +45,8 @@ namespace Server
                 packet.handleServerSide(this);
                 Console.WriteLine("Succesfully handled Serverside");
                 Console.WriteLine("packet received from: {0}",GetHashCode());
-
                 //Console.WriteLine("packet received from {0}", packet.GetName());
+
                 if(packet is PacketChat)
                 {
                     PacketChat chatPacket = (PacketChat)packet;
