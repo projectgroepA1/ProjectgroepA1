@@ -38,7 +38,7 @@ namespace ClientApp.networking
                 Console.WriteLine("log in");
 
                 //
-                Application.Run(new Client(this, client.hostName, client.id));
+                //Application.Run(new Client(this, client.hostName, client.id));
             }
             else
             {

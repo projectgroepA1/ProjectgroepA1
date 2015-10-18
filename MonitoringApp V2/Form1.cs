@@ -16,7 +16,7 @@ namespace MonitoringApp_V2
 {
     public partial class Form1 : Form
     {
-        private TcpClient client;
+        public TcpClient Client { get; }
         public NetworkStream stream { get; }
         private Login login;
         public List<Client> clients { get; }
@@ -27,7 +27,7 @@ namespace MonitoringApp_V2
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.client = client;
+            this.Client = client;
             this.stream = stream;
             this.login = login;
             clients = new List<Client>();

@@ -28,7 +28,7 @@ namespace WindowsFormsApplication2
 
         public void receiveNewClient(PacketNewClient newClient)
         {
-            //MessageBox.Show("Yeah new client");
+            MessageBox.Show("Yeah new client: "+newClient.GetHashCode());
 
             DataPanel panel = new DataPanel(form,this);
             Client client = new Client(newClient.Identifier, panel);
@@ -46,11 +46,12 @@ namespace WindowsFormsApplication2
             {
                 try
                 {
+                    Console.WriteLine("Amount of cliens: "+form.clients.Count);
                     foreach (Client c in form.clients)
                     {
                         Console.WriteLine("Naam: {0}  id: {1}", c.Identifier.Username, c.Identifier.Id);
                         ;
-                        Console.WriteLine("Naam: {0}  id: {1}", c.Identifier.Equals(m.identifier));
+                        Console.WriteLine("Same? {0}", c.Identifier.Equals(m.identifier));
                        
                         if (c.Identifier.Equals(m.identifier))
                         {
@@ -137,10 +138,11 @@ namespace WindowsFormsApplication2
                     }
                 }
                 catch
-                (Exception)
+                (Exception e)
                 {
+                    Console.WriteLine(e.StackTrace);
                     //MessageBox.Show("No connection to the server");
-                    form.closeApplicaton();
+                    //form.closeApplicaton();
                 }
             }));
         }
@@ -155,7 +157,7 @@ namespace WindowsFormsApplication2
             Random r = new Random();
             while (running)
             {
-                Packet packet = (Packet)formatter.Deserialize(form.stream);
+                Packet packet = (Packet)formatter.Deserialize(form.Client.GetStream());
                 packet.handleMonitorSide(this);
             }
         }

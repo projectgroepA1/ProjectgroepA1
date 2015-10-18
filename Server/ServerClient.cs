@@ -42,11 +42,8 @@ namespace Server
                 Packet packet = (Packet)formatter.Deserialize(Stream);
                 packet.handleServerSide(this);
                 Console.WriteLine("packet received from: {0}",GetHashCode());
-<<<<<<< HEAD
-=======
-
                 //Console.WriteLine("packet received from {0}", packet.GetName());
->>>>>>> 9fe239a73ef27728ef806a61065128e0397d1aeb
+
                 if(packet is PacketChat)
                 {
                     PacketChat chatPacket = (PacketChat)packet;
