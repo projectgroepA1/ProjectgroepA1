@@ -42,6 +42,11 @@ namespace Server
                 Packet packet = (Packet)formatter.Deserialize(Stream);
                 packet.handleServerSide(this);
                 Console.WriteLine("packet received from: {0}",GetHashCode());
+<<<<<<< HEAD
+=======
+
+                //Console.WriteLine("packet received from {0}", packet.GetName());
+>>>>>>> 9fe239a73ef27728ef806a61065128e0397d1aeb
                 if(packet is PacketChat)
                 {
                     PacketChat chatPacket = (PacketChat)packet;
@@ -94,15 +99,14 @@ namespace Server
 
         public abstract void sendMeasurementList();
 
-<<<<<<< HEAD
         public virtual void receivePacketSession(PacketSession ps)
         {
-            
-=======
+
+        }
+
         public void sendMeasurementList(PacketMeasurementList mes)
         {
-            throw new NotImplementedException();
->>>>>>> 762bc2ef404d01e811d0655260e40e3c4083ffe4
+
         }
     }
 }

@@ -74,7 +74,8 @@ namespace ClientApp.networking
 
         public void recievePacketSession(PacketSession ps)
         {
-            client.InsertActuelPDistanceTime(ps.ActualPower,ps.Distance,ps.Time);
+            //client.InsertActuelPDistanceTime(ps.ActualPower,ps.Distance,ps.Time);
+            client.InsertTime(ps.Time);
         }
     }
 }
