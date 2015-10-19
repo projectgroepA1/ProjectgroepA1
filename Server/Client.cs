@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NetLib;
+using System.Windows.Forms;
 
 namespace Server
 {
@@ -28,7 +29,14 @@ namespace Server
             if (username == "admin" && password == "12345")
             {
                 sendPacket(new PacketLoginResponse() {loginOk = true, number = this.identifier.Id});
-                _server.Monitor.sendNewClient(identifier);
+                if (_server.Monitor != null)
+                {
+                    _server.Monitor.sendNewClient(identifier);
+                }
+                else
+                {
+                    MessageBox.Show("You have to open the monitor first");
+                }
             }
             else
             {

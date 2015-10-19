@@ -39,7 +39,7 @@ namespace MonitoringApp_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataPanel panel = new DataPanel(this,connection);
+            DataPanel panel = new DataPanel(this,connection, new Identifier("test", 123));
             Client client = new Client(new Identifier("test", 123), panel);
 
             clients.Add(client);

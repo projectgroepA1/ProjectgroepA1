@@ -30,7 +30,7 @@ namespace WindowsFormsApplication2
         {
             //MessageBox.Show("Yeah new client: "+newClient.GetHashCode());
 
-            DataPanel panel = new DataPanel(form,this);
+            DataPanel panel = new DataPanel(form,this, newClient.Identifier);
             Client client = new Client(newClient.Identifier, panel);
 
             form.clients.Add(client);
@@ -41,7 +41,20 @@ namespace WindowsFormsApplication2
         {
             Console.WriteLine("Recieved Chat Packet");
 
-            form.showMessage(pack.destinationID, pack.messageText);
+            form.Invoke((Action)(() =>
+            {
+                try
+                {
+                form.showMessage(pack.destinationID, pack.messageText);
+                }
+                catch
+                (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    //MessageBox.Show("No connection to the server");
+                    //form.closeApplicaton();
+                }
+            }));
         }
 
 
@@ -156,7 +169,8 @@ namespace WindowsFormsApplication2
 
         public void writePacket(Packet packet)
         {
-            //Insert body here
+            formatter = new BinaryFormatter();
+            formatter.Serialize(this.form.Client.GetStream(), packet);
         }
 
         public void Run()

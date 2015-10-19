@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using WindowsFormsApplication2;
+using NetLib;
 
 namespace MonitoringApp_V2
 {
@@ -19,15 +20,17 @@ namespace MonitoringApp_V2
         private bool firstTime;
         public Form1 form { get; }
         private Connection connection ;
+        private Identifier id;
        
 
-        public DataPanel(Form1 form,Connection connection)
+        public DataPanel(Form1 form,Connection connection, Identifier id)
         {
             InitializeComponent();
             this.form = form;
             chatInputTextBox.Select();
             firstTime = true;
             this.connection= connection;
+            this.id = id;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -41,7 +44,10 @@ namespace MonitoringApp_V2
             {
                ReturnChatInputTextBox().Select();
                string chatText = ReturnChatInputTextBox().Text;
-               changeChatBoxText(chatText);
+               changeChatBoxTextSelf(chatText);
+               PacketChat chat = new PacketChat(chatText, id.Username, "client", id.Id);
+                connection.writePacket(chat);
+               chatInputTextBox.Clear();
                return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -50,6 +56,11 @@ namespace MonitoringApp_V2
         public void changeChatBoxText(string chatText)
         {
             chatTextBox.AppendText("[client] " + chatText + Environment.NewLine);
+        }
+
+        public void changeChatBoxTextSelf(string chatText)
+        {
+            chatTextBox.AppendText("[doctor] " + chatText + Environment.NewLine);
         }
 
         public TextBox ReturnChatBoxText()
