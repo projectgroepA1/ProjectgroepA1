@@ -55,7 +55,7 @@ namespace MonitoringApp_V2
 
         public void changeChatBoxText(string chatText)
         {
-            chatTextBox.AppendText("[client] " + chatText + Environment.NewLine);
+            chatTextBox.AppendText("[client] " + chatText);
         }
 
         public void changeChatBoxTextSelf(string chatText)
