@@ -148,6 +148,7 @@
             // 
             this.actualPowerTextBox.Location = new System.Drawing.Point(113, 226);
             this.actualPowerTextBox.Name = "actualPowerTextBox";
+            this.actualPowerTextBox.ReadOnly = true;
             this.actualPowerTextBox.Size = new System.Drawing.Size(63, 20);
             this.actualPowerTextBox.TabIndex = 26;
             // 
