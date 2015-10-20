@@ -11,7 +11,7 @@ namespace NetLib
     {
         public Identifier identifier { get; }
         public PacketMonitorMeasurement(PacketMeasurement pack,Identifier id)
-            : base(pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse, pack.measurement.pulse)
+            : base(pack.measurement.pulse, pack.measurement.RPM, pack.measurement.speed, pack.measurement.distance, pack.measurement.power, pack.measurement.energy, pack.measurement.time, pack.measurement.AP)
         {
             identifier = id;
         }
