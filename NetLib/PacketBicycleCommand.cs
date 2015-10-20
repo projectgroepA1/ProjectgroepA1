@@ -1,5 +1,8 @@
-﻿namespace NetLib
+﻿using System;
+
+namespace NetLib
 {
+    [Serializable]
     public class PacketBicycleCommand : Packet
     {
         public string command { get; }
