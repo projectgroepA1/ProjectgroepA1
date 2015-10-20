@@ -41,10 +41,8 @@ namespace Server
             {
                  
                 Packet packet = (Packet)formatter.Deserialize(Stream);
-                Console.WriteLine("Succesfully Deserialized stream");
                 packet.handleServerSide(this);
-                Console.WriteLine("Succesfully handled Serverside");
-                Console.WriteLine("packet received from: {0}",GetHashCode());
+                Console.WriteLine("Packet received from: {0}",GetHashCode());
                 //Console.WriteLine("packet received from {0}", packet.GetName());
 
                 if(packet is PacketChat)

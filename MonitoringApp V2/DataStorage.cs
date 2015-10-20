@@ -27,7 +27,7 @@ namespace Server
         /*
             return the path of the resource map;
         */
-        private string MakeResourceMap()
+        public string MakeResourceMap()
         {
             string mapPath = Directory.GetCurrentDirectory();
             string mapName = "ResourceMapMeasurements";
@@ -62,15 +62,15 @@ namespace Server
             return mapPath + "\\";
         }
 
+        public string GetDir()
+        {
+            return dir;
+        }
+
         public void AddMeasurement(Measurement measurement)
         {
             //Adds a serializable measurement to the List
             measurementsList.Add(measurement);
-        }
-
-        public string GetDir()
-        {
-            return dir;
         }
 
         public void SaveFile()

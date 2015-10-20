@@ -50,15 +50,15 @@ namespace WindowsFormsApplication2
 
            //MessageBox.Show("check4");
             PacketLoginResponse response = (PacketLoginResponse)formatter.Deserialize(stream);
-            loginResponse(response.loginOk);
+            loginResponse(response.loginOk, response.dir);
             //loginResponse(true);
         }
 
-        public void loginResponse(bool loginOk)
+        public void loginResponse(bool loginOk, string dir)
         {
             if (loginOk)
             {
-                new Form1(client, stream, this).Show();
+                new Form1(client, stream, this,dir).Show();
                 this.Hide();
             }
             else

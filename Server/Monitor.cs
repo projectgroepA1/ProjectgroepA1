@@ -16,9 +16,9 @@ namespace Server
 
         private readonly DataStorage _storage;
 
-        public Monitor(TcpClient client, Program server, List<Client> clients) : base(client, server)
+        public Monitor(TcpClient client, Program server, List<Client> clients, DataStorage storage) : base(client, server)
         {
-            this._storage = new DataStorage();
+            this._storage = storage;
             this._clients = clients;
         }
         
@@ -37,7 +37,7 @@ namespace Server
         {
            if (username == "arjen" && password == "mourik")
             {
-                sendPacket(new PacketLoginResponse() {loginOk = true});
+                sendPacket(new PacketLoginResponse() {loginOk = true, dir = _storage.GetDir()});
             }
             else
             {
@@ -69,7 +69,7 @@ namespace Server
 
         public override void receivePacketSession(PacketSession ps)
         {
-            _server.sendPacketToClient(ps,ps.Identifier.Id);
+            _server.sendPacketToClient(ps, ps.Identifier.Id);
         }
     }
 }

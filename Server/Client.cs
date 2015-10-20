@@ -17,9 +17,9 @@ namespace Server
         public Identifier identifier; 
 
         
-        public Client(TcpClient tcpClient, Program server, int number) : base(tcpClient,server)
+        public Client(TcpClient tcpClient, Program server, int number, DataStorage storage) : base(tcpClient,server)
         {
-            this._storage = new DataStorage();
+            this._storage = storage;
             identifier = new Identifier("",number);
         }
 

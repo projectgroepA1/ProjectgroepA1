@@ -26,6 +26,7 @@ namespace Server
         {
             IPAddress ip = Info.GetIp();
             TcpListener listener = new TcpListener(ip,Info.Port);
+            storage = new DataStorage();
             listener.Start();
             int counter = 0;
             Console.WriteLine("Server started: {0}",DateTime.Now);
@@ -39,7 +40,7 @@ namespace Server
                     counter++;
                     Console.WriteLine("is client");
 
-                    Client client = new Client(newClient, this,counter);
+                    Client client = new Client(newClient, this,counter,storage);
                     clients.Add(client);
                     //try {
                     //    Monitor.sendNewClient(client.identifier);
@@ -55,12 +56,12 @@ namespace Server
                 {
                     if (!_monitor.TcpClient.Connected)
                     {
-                        _monitor = new Monitor(newClient,this,clients);
+                        _monitor = new Monitor(newClient,this,clients, storage);
                     }
                 }
                 else
                 {
-                    _monitor = new Monitor(newClient,this,clients);
+                    _monitor = new Monitor(newClient,this,clients, storage);
                 }
             }
         }
