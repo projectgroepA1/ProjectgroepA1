@@ -75,36 +75,6 @@ namespace WindowsFormsApplication2
                        
                         if (c.Identifier.Equals(m.identifier))
                         {
-                            //    if (!p.ReturnRPM().Focused)
-                            //    {
-                            //        p.ReturnRPM().Text = r.Next(1, 50).ToString();
-                            //    }
-                            //    p.ReturnTimeTextBox().Text = r.Next(1, 50).ToString();
-                            //    p.ReturnPowerTextBox().Text = r.Next(1, 50).ToString();
-                            //    p.ReturnEnergyTextBox().Text = r.Next(1, 50).ToString();
-                            //    p.ReturnActualPowerTextBox().Text = r.Next(1, 50).ToString();
-                            //    p.ReturnPulseTextBox().Text = r.Next(1, 50).ToString();#1#
-
-                            //    //change rpm
-                            //    if (!p.ReturnRPM().Focused)
-                            //    {
-                            //        p.ReturnRPM().Text = pack.RPM.ToString();
-                            //    }
-
-                            //    //change time
-                            //    if (!p.ReturnTimeTextBox().Focused)
-                            //    {
-                            //        p.ReturnTimeTextBox().Text = pack.time.ToString();
-                            //    }
-
-                            //    //change distance
-                            //    if (!p.dis().Focused)
-                            //    {
-                            //        p.ReturnRPM().Text = pack.RPM.ToString();
-                            //    }
-
-
-
                             if (!c.Panel.ReturnRPM().Focused)
                             {
                                 c.Panel.ReturnRPM().Text = m.measurement.RPM;
@@ -114,6 +84,7 @@ namespace WindowsFormsApplication2
                             c.Panel.ReturnEnergyTextBox().Text = m.measurement.energy;
                             c.Panel.ReturnActualPowerTextBox().Text = m.measurement.AP;
                             c.Panel.ReturnPulseTextBox().Text = m.measurement.pulse;
+                            c.Panel.ReturnDistanceTextBox().Text = m.measurement.distance;
 
                             string _pulse = m.measurement.pulse;
                             string _rpm = m.measurement.RPM;
