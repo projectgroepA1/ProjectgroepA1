@@ -17,6 +17,8 @@ namespace ClientApp
 
         public string hostName { get; }
 
+        private bool clearGraph = false;
+
         public Client(ServerConnection serverConnection, string hostName, int id)
         {
             InitializeComponent();
@@ -107,6 +109,16 @@ namespace ClientApp
                         _energy, _time, _actualPower);
                     this.serverConnection.WritePacket(measurement);
 
+                    if (clearGraph)
+                    {
+                        foreach (var series in this.Grafiek.Series)
+                        {
+                            MethodInvoker clear = delegate () { series.Points.Clear(); ; };
+                            this.Invoke(clear);
+                        }
+                        clearGraph = false;
+                    }
+
                     //Adding coördinates to chart
                     MethodInvoker miP = delegate () { this.Grafiek.Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
                     this.Invoke(miP);
@@ -122,6 +134,15 @@ namespace ClientApp
                     this.Invoke(miE);
                     MethodInvoker miAP = delegate () { this.Grafiek.Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
                     this.Invoke(miAP);
+
+                    if (I_distance == 0 || totalTime == 0)
+                    {   
+                        //Message to client
+                        Chatbox.AppendText("SESSION ENDED" + Environment.NewLine);
+                        //Message to doctor
+                        PacketChat chat = new PacketChat("SESSION ENDED" + Environment.NewLine, hostName, "monitor", id);
+                        this.serverConnection.WritePacket(chat);
+                    }
 
                     //Wait 1 second
                     Thread.Sleep(1000);
@@ -151,6 +172,10 @@ namespace ClientApp
 
         public void appendTextToChat(string message)
         {
+            if (message == "[doctor] "+ "SESSION STARTED")
+            {
+                clearGraph = true;
+            }
             if (InvokeRequired)
             {
                 MethodInvoker method = new MethodInvoker(delegate
