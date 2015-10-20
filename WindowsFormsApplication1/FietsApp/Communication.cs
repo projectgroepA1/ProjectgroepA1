@@ -28,7 +28,7 @@ namespace ClientApp
 
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            if (port.ReadLine() == "")
+            if (port.ReadLine() == "" || port.IsOpen != true)
             {
                 parts = oldParts;
             }
