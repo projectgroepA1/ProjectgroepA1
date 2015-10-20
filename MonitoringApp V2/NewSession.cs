@@ -27,11 +27,11 @@ namespace MonitoringApp_V2
         private void sendButton_Click(object sender, EventArgs e)
         {
             //creating packets
-            PacketBicycleCommand PD = new PacketBicycleCommand($"PD {this.distanceTextBox.Text}");
+            PacketBicycleCommand PD = new PacketBicycleCommand($"PD {this.distanceTextBox.Text}",panel.id.Id);
             connection.writePacket(PD);
-            PacketBicycleCommand PT = new PacketBicycleCommand($"PT {this.timeTextBox.Text}");
+            PacketBicycleCommand PT = new PacketBicycleCommand($"PT {this.timeTextBox.Text}", panel.id.Id);
             connection.writePacket(PT);
-            PacketBicycleCommand PW = new PacketBicycleCommand($"PW {this.PowerTextBox.Text}");
+            PacketBicycleCommand PW = new PacketBicycleCommand($"PW {this.PowerTextBox.Text}", panel.id.Id);
             connection.writePacket(PW);
 
             this.Hide();

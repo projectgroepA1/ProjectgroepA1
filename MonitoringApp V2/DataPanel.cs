@@ -19,17 +19,16 @@ namespace MonitoringApp_V2
     {
         private bool firstTime;
         public Form1 form { get; }
-        private Connection connection ;
-        private Identifier id;
-       
+        private Connection connection;
+        public Identifier id { get; }
 
-        public DataPanel(Form1 form,Connection connection, Identifier id)
+        public DataPanel(Form1 form, Connection connection, Identifier id)
         {
             InitializeComponent();
             this.form = form;
             chatInputTextBox.Select();
             firstTime = true;
-            this.connection= connection;
+            this.connection = connection;
             this.id = id;
         }
 
@@ -42,13 +41,13 @@ namespace MonitoringApp_V2
             }
             if (keyData == Keys.Enter && ReturnChatInputTextBox().Focused)
             {
-               ReturnChatInputTextBox().Select();
-               string chatText = ReturnChatInputTextBox().Text;
-               changeChatBoxTextSelf(chatText);
-               PacketChat chat = new PacketChat(chatText, id.Username, "client", id.Id);
+                ReturnChatInputTextBox().Select();
+                string chatText = ReturnChatInputTextBox().Text;
+                changeChatBoxTextSelf(chatText);
+                PacketChat chat = new PacketChat(chatText, id.Username, "client", id.Id);
                 connection.writePacket(chat);
-               chatInputTextBox.Clear();
-               return true;
+                chatInputTextBox.Clear();
+                return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -145,7 +144,7 @@ namespace MonitoringApp_V2
 
         private void newSessionButton_Click(object sender, EventArgs e)
         {
-            new NewSession(this,connection).Show();
+            new NewSession(this, connection).Show();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -158,6 +157,6 @@ namespace MonitoringApp_V2
 
         }
 
-        
+
     }
 }

@@ -102,6 +102,12 @@ namespace Server
 
         }
 
+        public void receivePacketBicycleCommand(PacketBicycleCommand packetBicycleCommand)
+        {
+            _server.sendPacketToClient(packetBicycleCommand, packetBicycleCommand.destinationID);
+            Console.WriteLine("Sent Command Pack to client");
+        }
+
         public void sendMeasurementList(PacketMeasurementList mes)
         {
 
