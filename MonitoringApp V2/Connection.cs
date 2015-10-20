@@ -30,7 +30,7 @@ namespace WindowsFormsApplication2
         {
             //MessageBox.Show("Yeah new client: "+newClient.GetHashCode());
 
-            DataPanel panel = new DataPanel(form,this, newClient.Identifier);
+            DataPanel panel = new DataPanel(form, this, newClient.Identifier);
             Client client = new Client(newClient.Identifier, panel);
 
             form.clients.Add(client);
@@ -45,7 +45,7 @@ namespace WindowsFormsApplication2
             {
                 try
                 {
-                form.showMessage(pack.destinationID, pack.messageText);
+                    form.showMessage(pack.destinationID, pack.messageText);
                 }
                 catch
                 (Exception e)
@@ -61,7 +61,7 @@ namespace WindowsFormsApplication2
         public void receiveMeasurement(PacketMonitorMeasurement m)
         {
             Console.WriteLine("Measurement receiced: {0}", m.identifier.Username + "\t" + m.identifier.Id);
-            
+
             form.Invoke((Action)(() =>
             {
                 try
@@ -72,7 +72,7 @@ namespace WindowsFormsApplication2
                         Console.WriteLine("Naam: {0}  id: {1}", c.Identifier.Username, c.Identifier.Id);
                         ;
                         Console.WriteLine("Same? {0}", c.Identifier.Equals(m.identifier));
-                       
+
                         if (c.Identifier.Equals(m.identifier))
                         {
                             if (!c.Panel.ReturnRPM().Focused)
@@ -85,6 +85,7 @@ namespace WindowsFormsApplication2
                             c.Panel.ReturnActualPowerTextBox().Text = m.measurement.AP;
                             c.Panel.ReturnPulseTextBox().Text = m.measurement.pulse;
                             c.Panel.ReturnDistanceTextBox().Text = m.measurement.distance;
+                            c.Panel.ReturnSpeedTextBox().Text = m.measurement.speed;
 
                             string _pulse = m.measurement.pulse;
                             string _rpm = m.measurement.RPM;
@@ -123,7 +124,7 @@ namespace WindowsFormsApplication2
                             c.Panel.Invoke(miE);
                             MethodInvoker miAP = delegate () { c.Panel.returnChart().Series["Actual Power"].Points.AddXY(I_sec, I_actualPower); };
                             c.Panel.Invoke(miAP);
-                            
+
                             break;
                         }
                     }

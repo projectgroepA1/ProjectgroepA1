@@ -157,6 +157,9 @@ namespace MonitoringApp_V2
 
         }
 
-
+        public TextBox ReturnSpeedTextBox()
+        {
+           return speedTextBox; 
+        }
     }
 }
