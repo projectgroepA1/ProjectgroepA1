@@ -112,5 +112,12 @@ namespace Server
         {
 
         }
+
+        public void recieveLoadFile(PacketLoadfile lf)
+        {
+            List<Measurement> list = _server.storage.LoadFile(lf.fileName);
+            _server.sendPackToMonitor(new PacketMeasurementList(list));
+            Console.WriteLine("Sent package to monitor");
+        }
     }
 }

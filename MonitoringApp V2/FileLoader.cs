@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,14 +23,14 @@ namespace MonitoringApp_V2
             this.form = form;
             this.connection = connection;
         }
-
+        
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter && ReturnTextBox().Focused)
             {
                 ReturnTextBox().Select();
                 string chatText = ReturnTextBox().Text;
-                //connection.writePacket(new PacketLoadfile(chatText));
+                connection.writePacket(new PacketLoadfile(chatText));
                 textBox.Clear();
                 this.Hide();
                 return true;

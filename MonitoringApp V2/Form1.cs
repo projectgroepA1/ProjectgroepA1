@@ -94,6 +94,7 @@ namespace MonitoringApp_V2
         {
             thread.Abort();
             Thread.CurrentThread.Abort();
+            Application.Exit();
         }
 
         private void flowLayoutPanel_Paint(object sender, PaintEventArgs e)
@@ -103,17 +104,23 @@ namespace MonitoringApp_V2
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            new FileLoader(this, connection).Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Form2().Show();
+        }
+
+        public void LoadMeasurements(List<Measurement> mes)
+        {
             DataPanel panel = new DataPanel(this, connection, new Identifier("test", 123));
-
-            //vul hier local path in
-            string path = dir + "000001.mes";
-            List<Measurement> measurements = new List<Measurement>();
-            using (Stream stream = File.Open(path, FileMode.Open))
-            {
-                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-                measurements = ((List<Measurement>)binaryFormatter.Deserialize(stream));
-            }
+            List<Measurement> measurements = mes;
 
             Invoke((Action)(() =>
             {
@@ -161,16 +168,6 @@ namespace MonitoringApp_V2
                 }
             }
                 ));
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Form2().Show();
         }
     }
 }

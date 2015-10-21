@@ -154,6 +154,11 @@ namespace WindowsFormsApplication2
                 packet.handleMonitorSide(this);
             }
         }
+
+        public void recieveMeasurementList(PacketMeasurementList measurementList)
+        {
+            form.LoadMeasurements(measurementList.measurements);
+        }
     }
 }
 

@@ -92,28 +92,23 @@ namespace Server
             Console.WriteLine(filePath);
         }
 
-        public void LoadFile(string filename)
+        public List<Measurement> LoadFile(string filename)
         {
-            string path = Path.Combine(dir,filename);
-
-            if (File.Exists(path))
-            {
-                Console.WriteLine("bestand bestaat");
-            }
-            else
-            {
-                Console.WriteLine("bestaand niet gevonden");
-            }
+            string name = filename + ".mes";
+            string path = Path.Combine(dir, name);
+            Console.WriteLine(path);
+            path.Replace("/", "//");
+            List<Measurement> measurements = new List<Measurement>();
             using (Stream stream = File.Open(path, FileMode.Open))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-                List<Measurement> measurements = ((List < Measurement >) binaryFormatter.Deserialize(stream));
+                measurements = ((List<Measurement>)binaryFormatter.Deserialize(stream));
+                stream.Close();
             }
-            Console.WriteLine("De file is geupload!");
+            return measurements;
         }
 
-        
+
 
 
     }

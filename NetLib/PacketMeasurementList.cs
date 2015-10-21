@@ -20,5 +20,10 @@ namespace NetLib
         {
             serverInterface.sendMeasurementList();
         }
+
+        public override void handleMonitorSide(MonitorInterface monitorInterface)
+        {
+            monitorInterface.recieveMeasurementList(this);
+        }
     }
 }

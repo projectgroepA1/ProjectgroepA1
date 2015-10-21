@@ -10,7 +10,7 @@ namespace NetLib
     {
         void receiveNewClient(PacketNewClient newClient);
         void receiveMeasurement(PacketMonitorMeasurement measurement);
-
+        void recieveMeasurementList(PacketMeasurementList measurementList);
         void recieveChat(PacketChat pack);
     }
 }

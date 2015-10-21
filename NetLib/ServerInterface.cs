@@ -13,6 +13,7 @@ namespace NetLib
         void sendNewClient(Identifier identifier);
         void sendMeasurementList();
         void receivePacketSession(PacketSession ps);
+        void recieveLoadFile(PacketLoadfile lf);
         void receivePacketBicycleCommand(PacketBicycleCommand packetBicycleCommand);
     }
 }
