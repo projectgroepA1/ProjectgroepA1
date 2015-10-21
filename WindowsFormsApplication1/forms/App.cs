@@ -28,7 +28,7 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM3");
+            this.reader = new Communication("COM4");
 
 
             this.serverConnection.client = this;
@@ -136,12 +136,15 @@ namespace ClientApp
                     this.Invoke(miAP);
 
                     if (I_distance == 0 || totalTime == 0)
-                    {   
+                    {
                         //Message to client
-                        Chatbox.AppendText("SESSION ENDED" + Environment.NewLine);
+                        MethodInvoker miC = delegate () { Chatbox.AppendText("SESSION ENDED" + Environment.NewLine); };
+                        this.Invoke(miC);
+                       
                         //Message to doctor
                         PacketChat chat = new PacketChat("SESSION ENDED" + Environment.NewLine, hostName, "monitor", id);
-                        this.serverConnection.WritePacket(chat);
+                        MethodInvoker miCS = delegate () { this.serverConnection.WritePacket(chat);};
+                        this.Invoke(miCS);
                     }
 
                     //Wait 1 second
