@@ -137,11 +137,6 @@ namespace MonitoringApp_V2
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void newSessionButton_Click(object sender, EventArgs e)
         {
             new NewSession(this, connection).Show();
@@ -160,6 +155,15 @@ namespace MonitoringApp_V2
         public TextBox ReturnSpeedTextBox()
         {
            return speedTextBox; 
+        }
+
+        private void userLabel_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void ClientName_Click(object sender, EventArgs e)
+        {
+            this.ClientName.Text = id.Username;
         }
     }
 }

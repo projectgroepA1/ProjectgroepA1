@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Net;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using NetLib;
 
@@ -10,23 +14,27 @@ namespace ClientApp.networking
     {
         private readonly TcpClient _client;
         public Client client { get; set; }
-
+        NetworkStream netStream;
+        private string host = Info.GetIp().ToString();
+        SslStream ssl;
         public ServerConnection():base()
         {
             _client = new TcpClient(Info.GetIp().ToString(),Info.Port);
             //send default packet, that shows this is not an monitor
             WritePacket(new Packet());
+            this.netStream = this._client.GetStream();
+            ssl = new SslStream(netStream, false);
         }
 
         public void WritePacket(Packet packet)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(this._client.GetStream(), packet);
+            formatter.Serialize(_client.GetStream(), packet);
         }
 
         public Packet ReadPacket()
         {
-            Packet packet = (Packet)new BinaryFormatter().Deserialize(this._client.GetStream());
+            Packet packet = (Packet)new BinaryFormatter().Deserialize(netStream);
             return packet;
         }
 
@@ -58,6 +66,8 @@ namespace ClientApp.networking
             {
                 client.fromServer.Abort();
                 _client.Close();
+                ssl.Close();
+                netStream.Close();
             }
         }
 
@@ -76,6 +86,17 @@ namespace ClientApp.networking
         {
             //client.InsertActuelPDistanceTime(ps.ActualPower,ps.Distance,ps.Time);
             client.InsertTime(ps.Time);
+        }
+
+        public static bool ValidateCert(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // Uncomment this lines to disallow untrusted certificates.
+            //if (sslPolicyErrors == SslPolicyErrors.None)
+            //    return true;
+            //else
+            //    return false;
+
+            return true; // Allow untrusted certificates.
         }
     }
 }

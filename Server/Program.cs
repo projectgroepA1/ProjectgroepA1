@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Net.Sockets;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using NetLib;
 using System.Windows.Forms;
+using System.Security.Cryptography.X509Certificates;
+
 namespace Server
 {
     class Program
     {
         public DataStorage storage;
-
+        private static string path = @"C:\Users\Malek\Documents\WorkspaceVisualStudio\ProjectgroepA1\Ti2.1-cert.pfx";
+        public X509Certificate2 cert = new X509Certificate2(path, "MSsediqima");
         private static void Main(string[] args)
         {
             new Program();

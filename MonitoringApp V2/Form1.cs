@@ -40,19 +40,6 @@ namespace MonitoringApp_V2
             KeyPreview = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DataPanel panel = new DataPanel(this,connection, new Identifier("test", 123));
-            Client client = new Client(new Identifier("test", 123), panel);
-
-            clients.Add(client);
-            Invoke((Action)(() =>
-            {
-                flowLayoutPanel.Controls.Add(panel);
-            }
-                ));
-        }
-
         public void AddPanel(DataPanel panel)
         {
             Invoke((Action)(() =>
@@ -71,11 +58,6 @@ namespace MonitoringApp_V2
                     client.Panel.changeChatBoxText(message);
                 }
             }
-        }
-
-        private void Delete_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -168,6 +150,11 @@ namespace MonitoringApp_V2
                 }
             }
                 ));
+        }
+
+        private void newClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new NewClient().Show();
         }
     }
 }

@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Security;
 using System.Net.Sockets;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,6 +18,7 @@ namespace Server
     {
         public TcpClient TcpClient { get; set; }
         public NetworkStream Stream { get; set; }
+        public SslStream ssl;
 
         private Thread _clientThread;
         public Thread ClientThread
@@ -27,10 +32,22 @@ namespace Server
         public ServerClient(TcpClient client, Program server)
         {
             this.TcpClient = client;
+            Stream = new NetworkStream();
             this.Stream = client.GetStream();
+            ssl = new SslStream(Stream,false);
             this._server = server;
-            formatter = new BinaryFormatter();
-            //Console.WriteLine("Connected: {0}\tHashCode: ", GetHashCode());
+
+            try
+            {
+                ssl.AuthenticateAsServer(server.cert, false, SslProtocols.Tls, true);
+                formatter = new BinaryFormatter();
+                //Console.WriteLine("Connected: {0}\tHashCode: ", GetHashCode());
+            }
+            catch (IOException exception)
+            {
+
+                Console.WriteLine("lees het niet" + exception);
+            }
             ThreadStart();
         }
 
@@ -39,7 +56,7 @@ namespace Server
             Console.WriteLine("{0}\tStarted{1}",GetHashCode(),"");
             while (TcpClient.Connected)
             {
-                 
+
                 Packet packet = (Packet)formatter.Deserialize(Stream);
                 packet.handleServerSide(this);
                 Console.WriteLine("Packet received from: {0}",GetHashCode());

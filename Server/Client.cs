@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,9 +16,8 @@ namespace Server
     class Client : ServerClient
     {
         private readonly DataStorage _storage;
-        public Identifier identifier; 
+        public Identifier identifier;
 
-        
         public Client(TcpClient tcpClient, Program server, int number, DataStorage storage) : base(tcpClient,server)
         {
             this._storage = storage;
