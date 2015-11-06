@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -7,6 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NetLib;
+using NetLib.sessionpackets;
+using NetLib.sessionpackets.sessions_data;
 
 namespace Server
 {
@@ -36,16 +39,16 @@ namespace Server
 
         public void ThreadClient()
         {
-            Console.WriteLine("{0}\tStarted{1}",GetHashCode(),"");
+            Console.WriteLine("{0}\tStarted{1}", GetHashCode(), "");
             while (TcpClient.Connected)
             {
-                 
+
                 Packet packet = (Packet)formatter.Deserialize(Stream);
                 packet.handleServerSide(this);
-                Console.WriteLine("Packet received from: {0}",GetHashCode());
+                Console.WriteLine("Packet received from: {0}", GetHashCode());
                 //Console.WriteLine("packet received from {0}", packet.GetName());
 
-                if(packet is PacketChat)
+                if (packet is PacketChat)
                 {
                     PacketChat chatPacket = (PacketChat)packet;
                     Console.WriteLine("Hostname: {0}, destination: {1}, destinationID: {2}", chatPacket.hostName, chatPacket.destination, chatPacket.destinationID);
@@ -73,7 +76,7 @@ namespace Server
 
         public void receiveChatPacket(PacketChat chat)
         {
-            if(chat.destination == "monitor")
+            if (chat.destination == "monitor")
             {
                 _server.sendPackToMonitor(chat);
                 Console.WriteLine("Sent Pack to monitor");
@@ -88,7 +91,7 @@ namespace Server
         public void Close()
         {
             TcpClient.Close();
-           _clientThread.Abort(); 
+            _clientThread.Abort();
         }
 
         public abstract void sendNewClient(Identifier identifier);
@@ -108,6 +111,18 @@ namespace Server
             Console.WriteLine("Sent Command Pack to client");
         }
 
+        public void recievePacketHistory(List<Tuple<int, int, int, int, int, int, int>> list, string username)
+        {
+            Session session = new Session(list, username);
+
+            //write file
+            var file = File.Open(AppDomain.CurrentDomain.BaseDirectory + username + DataStorage.GetUniqueNumber() + ".session", FileMode.Create);
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(file, session);
+            file.Close();
+        }
+
         public void sendMeasurementList(PacketMeasurementList mes)
         {
 
@@ -118,6 +133,51 @@ namespace Server
             List<Measurement> list = _server.storage.LoadFile(lf.fileName);
             _server.sendPackToMonitor(new PacketMeasurementList(list));
             Console.WriteLine("Sent package to monitor");
+        }
+
+        public void receivePacketRequestSessions(PacketRequestSessions sessionsPacket)
+        {
+            List<Session> sessions = new List<Session>();
+
+            //loop through the files in de dir (CHECKED)
+            string[] files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory);
+            Console.WriteLine(files);
+
+            int id = 0;
+
+            foreach (string file in files)
+            {
+                if (file.Contains(".session") && (file.Contains(sessionsPacket.username) || sessionsPacket.username == "monitor"))
+                {
+                    //file belongs to the user
+                    var fil2e = File.Open(file, FileMode.Open);
+
+                    //read the data
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    Session session = (Session)formatter.Deserialize(fil2e);
+
+                    //get id from the filename
+                    session.ID = id;
+                    id++;
+
+                    //add sessions to the list
+                    sessions.Add(session);
+
+                    //close
+                    fil2e.Close();
+                }
+            }
+
+            PacketSessions packetSessions = new PacketSessions(sessions);
+
+            if (sessionsPacket.username == "monitor")
+            {
+                _server.sendPackToMonitor(packetSessions);
+            }
+            else
+            {
+                _server.sendPacketToClient(packetSessions, sessionsPacket.id);
+            }
         }
     }
 }

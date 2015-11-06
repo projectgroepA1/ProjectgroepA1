@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using ClientApp.forms;
 using ClientApp.networking;
 using NetLib;
 
@@ -12,12 +14,15 @@ namespace ClientApp
 
         public int id { get; }
 
-        private ServerConnection serverConnection;
+        public ServerConnection serverConnection { get; }
+
         public Thread fromServer { get; }
 
         public string hostName { get; }
 
-        private bool clearGraph = false;
+        private bool updateGui_Flag = false;
+
+        private List<Tuple<int, int, int, int, int, int, int>> Values;
 
         public Client(ServerConnection serverConnection, string hostName, int id)
         {
@@ -28,22 +33,14 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM4");
-
+            this.reader = new Communication("COM3");
 
             this.serverConnection.client = this;
-
-            //Start gui updater
-            Thread thread = new Thread(new ThreadStart(UpdateGui));
-            thread.Start();
 
             fromServer = new Thread(new ThreadStart(PacketsFromServer));
             fromServer.Start();
 
-            //test receive message
-            //PacketChat chat = new PacketChat("testmessage", "";
-            //this.serverConnection.recievePacketChat(chat);
-
+            Values = new List<Tuple<int, int, int, int, int, int, int>>();
         }
 
         private void PacketsFromServer()
@@ -56,9 +53,9 @@ namespace ClientApp
 
         private void UpdateGui()
         {
-            while (true)
+            while (updateGui_Flag)
             {
-                if (reader.parts != null && reader.parts.Length > 7)
+                if (reader.parts[7] != null)
                 {
                     Console.WriteLine("reader size: " + reader.parts.Length);
                     //read all parts
@@ -97,27 +94,17 @@ namespace ClientApp
                     int I_energy = Int32.Parse(_energy);
                     int I_actualPower = Int32.Parse(_actualPower);
 
+                    //Fill Values tuple list
+                    Values.Add(new Tuple<int, int, int, int, int, int, int>(I_pulse, I_rpm, I_speed, I_distance, I_power, I_energy, I_actualPower));
+
                     //time
                     TimeSpan ts = TimeSpan.Parse(_time);
                     int I_sec = ts.Seconds;
-                    int I_min = ts.Minutes;
-
-                    int totalTime = I_min * 60 + I_sec;
 
                     //Create and send measurement packet
                     PacketMeasurement measurement = new PacketMeasurement(_pulse, _rpm, _speed, _distance, _power,
                         _energy, _time, _actualPower);
                     this.serverConnection.WritePacket(measurement);
-
-                    if (clearGraph)
-                    {
-                        foreach (var series in this.Grafiek.Series)
-                        {
-                            MethodInvoker clear = delegate () { series.Points.Clear(); ; };
-                            this.Invoke(clear);
-                        }
-                        clearGraph = false;
-                    }
 
                     //Adding coördinates to chart
                     MethodInvoker miP = delegate () { this.Grafiek.Series["Pulse"].Points.AddXY(I_sec, I_pulse); };
@@ -134,18 +121,6 @@ namespace ClientApp
                     this.Invoke(miE);
                     MethodInvoker miAP = delegate () { this.Grafiek.Series["ActualPower"].Points.AddXY(I_sec, I_actualPower); };
                     this.Invoke(miAP);
-
-                    if (I_distance == 0 || totalTime == 0)
-                    {
-                        //Message to client
-                        MethodInvoker miC = delegate () { Chatbox.AppendText("SESSION ENDED" + Environment.NewLine); };
-                        this.Invoke(miC);
-                       
-                        //Message to doctor
-                        PacketChat chat = new PacketChat("SESSION ENDED" + Environment.NewLine, hostName, "monitor", id);
-                        MethodInvoker miCS = delegate () { this.serverConnection.WritePacket(chat);};
-                        this.Invoke(miCS);
-                    }
 
                     //Wait 1 second
                     Thread.Sleep(1000);
@@ -175,10 +150,19 @@ namespace ClientApp
 
         public void appendTextToChat(string message)
         {
-            if (message == "[doctor] "+ "SESSION STARTED")
+            //session check
+            if (message == "[doctor] " + "Session started...")
             {
-                clearGraph = true;
+                GuiStarter();
             }
+            else if (message == "[doctor] " + "Session ended...")
+            {
+                updateGui_Flag = false;
+                //Send list<tuple> of values
+                serverConnection.SendHistoryPacket(Values);
+            }
+
+            //the appendtextToChat method handler
             if (InvokeRequired)
             {
                 MethodInvoker method = new MethodInvoker(delegate
@@ -192,6 +176,7 @@ namespace ClientApp
                 this.Chatbox.Text += message;
             }
         }
+
         private void Client_FormClosing(object sender, FormClosingEventArgs e)
         {
             serverConnection.WritePacket(new PacketDisconnect() { disconnected = true });
@@ -200,6 +185,26 @@ namespace ClientApp
         private void Client_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void GuiStarter()
+        {
+
+            foreach (var series in this.Grafiek.Series)
+            {
+                MethodInvoker clear = delegate () { series.Points.Clear(); ; };
+                this.Invoke(clear);
+            }
+            updateGui_Flag = true;
+            Thread.Sleep(1000);
+            Thread thread = new Thread(new ThreadStart(UpdateGui));
+            thread.Start();
+        }
+
+        private void sessions_button_Click(object sender, EventArgs e)
+        {
+            SessionsChooser chooser = new SessionsChooser(this);
+            chooser.ShowDialog(this);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mime;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -16,12 +17,45 @@ namespace Server
         public List<Measurement> measurementsList { get; }
         private string dir;
 
+
+        public static int unique_number = 0;
+
         public DataStorage()
         {
+            LoadNumber();
+            //Console.WriteLine("unique number: " + unique_number);
+            //IncrementNumber();
+            //Console.WriteLine("unique number: " + unique_number);
+
             this.sessionID = 1;
             measurementsList = new List<Measurement>();
             dir = MakeResourceMap();
             Console.WriteLine(dir);
+        }
+
+        public static void IncrementNumber()
+        {
+            unique_number++;
+            var file = File.Open(AppDomain.CurrentDomain.BaseDirectory + "unique_number.txt", FileMode.Create);
+            StreamWriter writer = new StreamWriter(file);
+            writer.WriteLine(unique_number);
+            writer.Flush();
+            writer.Close();
+        }
+
+        public static void LoadNumber()
+        {
+            var file = File.Open(AppDomain.CurrentDomain.BaseDirectory + "unique_number.txt", FileMode.Open);
+            StreamReader reader = new StreamReader(file);
+            unique_number = int.Parse(reader.ReadLine());
+            reader.Close();
+        }
+
+        public static int GetUniqueNumber()
+        {
+            LoadNumber();
+            IncrementNumber();
+            return unique_number;
         }
 
         /*
@@ -46,13 +80,13 @@ namespace Server
 
             //make the path to the server map
             mapPath = "";
-            for (int i = 0; i < number+1; i++)
+            for (int i = 0; i < number + 1; i++)
             {
-                mapPath += split[i]+@"\";
+                mapPath += split[i] + @"\";
             }
 
             //make the path to the resource map
-            mapPath = Path.Combine(mapPath,mapName);
+            mapPath = Path.Combine(mapPath, mapName);
 
             if (!Directory.Exists(mapPath))
             {

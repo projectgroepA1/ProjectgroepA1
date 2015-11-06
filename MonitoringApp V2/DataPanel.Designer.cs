@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.RPMLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.powerLabel = new System.Windows.Forms.Label();
@@ -61,6 +61,8 @@
             this.newSessionButton = new System.Windows.Forms.Button();
             this.speedLabel = new System.Windows.Forms.Label();
             this.speedTextBox = new System.Windows.Forms.TextBox();
+            this.SessionsHistoryButton = new System.Windows.Forms.Button();
+            this.PowerFormButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +72,7 @@
             this.RPMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.RPMLabel.Location = new System.Drawing.Point(7, 104);
             this.RPMLabel.Name = "RPMLabel";
-            this.RPMLabel.Size = new System.Drawing.Size(46, 20);
+            this.RPMLabel.Size = new System.Drawing.Size(38, 17);
             this.RPMLabel.TabIndex = 7;
             this.RPMLabel.Text = "RPM";
             // 
@@ -80,7 +82,7 @@
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.timeLabel.Location = new System.Drawing.Point(7, 242);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(46, 20);
+            this.timeLabel.Size = new System.Drawing.Size(39, 17);
             this.timeLabel.TabIndex = 8;
             this.timeLabel.Text = "Time";
             // 
@@ -90,7 +92,7 @@
             this.powerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.powerLabel.Location = new System.Drawing.Point(8, 188);
             this.powerLabel.Name = "powerLabel";
-            this.powerLabel.Size = new System.Drawing.Size(56, 20);
+            this.powerLabel.Size = new System.Drawing.Size(47, 17);
             this.powerLabel.TabIndex = 9;
             this.powerLabel.Text = "Power";
             // 
@@ -100,7 +102,7 @@
             this.energyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.energyLabel.Location = new System.Drawing.Point(8, 214);
             this.energyLabel.Name = "energyLabel";
-            this.energyLabel.Size = new System.Drawing.Size(61, 20);
+            this.energyLabel.Size = new System.Drawing.Size(53, 17);
             this.energyLabel.TabIndex = 10;
             this.energyLabel.Text = "Energy";
             // 
@@ -110,7 +112,7 @@
             this.pulseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.pulseLabel.Location = new System.Drawing.Point(8, 72);
             this.pulseLabel.Name = "pulseLabel";
-            this.pulseLabel.Size = new System.Drawing.Size(51, 20);
+            this.pulseLabel.Size = new System.Drawing.Size(43, 17);
             this.pulseLabel.TabIndex = 11;
             this.pulseLabel.Text = "Pulse";
             // 
@@ -119,7 +121,7 @@
             this.RPMTextbox.Location = new System.Drawing.Point(113, 102);
             this.RPMTextbox.Name = "RPMTextbox";
             this.RPMTextbox.ReadOnly = true;
-            this.RPMTextbox.Size = new System.Drawing.Size(63, 22);
+            this.RPMTextbox.Size = new System.Drawing.Size(63, 20);
             this.RPMTextbox.TabIndex = 22;
             // 
             // timeTextbox
@@ -127,7 +129,7 @@
             this.timeTextbox.Location = new System.Drawing.Point(113, 240);
             this.timeTextbox.Name = "timeTextbox";
             this.timeTextbox.ReadOnly = true;
-            this.timeTextbox.Size = new System.Drawing.Size(63, 22);
+            this.timeTextbox.Size = new System.Drawing.Size(63, 20);
             this.timeTextbox.TabIndex = 23;
             // 
             // powerTextBox
@@ -135,7 +137,7 @@
             this.powerTextBox.Location = new System.Drawing.Point(113, 186);
             this.powerTextBox.Name = "powerTextBox";
             this.powerTextBox.ReadOnly = true;
-            this.powerTextBox.Size = new System.Drawing.Size(63, 22);
+            this.powerTextBox.Size = new System.Drawing.Size(63, 20);
             this.powerTextBox.TabIndex = 24;
             // 
             // energyTextBox
@@ -143,7 +145,7 @@
             this.energyTextBox.Location = new System.Drawing.Point(113, 214);
             this.energyTextBox.Name = "energyTextBox";
             this.energyTextBox.ReadOnly = true;
-            this.energyTextBox.Size = new System.Drawing.Size(63, 22);
+            this.energyTextBox.Size = new System.Drawing.Size(63, 20);
             this.energyTextBox.TabIndex = 25;
             // 
             // actualPowerTextBox
@@ -151,7 +153,7 @@
             this.actualPowerTextBox.Location = new System.Drawing.Point(113, 268);
             this.actualPowerTextBox.Name = "actualPowerTextBox";
             this.actualPowerTextBox.ReadOnly = true;
-            this.actualPowerTextBox.Size = new System.Drawing.Size(63, 22);
+            this.actualPowerTextBox.Size = new System.Drawing.Size(63, 20);
             this.actualPowerTextBox.TabIndex = 26;
             // 
             // actualPowerLabel
@@ -160,7 +162,7 @@
             this.actualPowerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.actualPowerLabel.Location = new System.Drawing.Point(3, 270);
             this.actualPowerLabel.Name = "actualPowerLabel";
-            this.actualPowerLabel.Size = new System.Drawing.Size(108, 20);
+            this.actualPowerLabel.Size = new System.Drawing.Size(90, 17);
             this.actualPowerLabel.TabIndex = 27;
             this.actualPowerLabel.Text = "Actual Power";
             // 
@@ -169,57 +171,57 @@
             this.pulseTextBox.Location = new System.Drawing.Point(113, 70);
             this.pulseTextBox.Name = "pulseTextBox";
             this.pulseTextBox.ReadOnly = true;
-            this.pulseTextBox.Size = new System.Drawing.Size(63, 22);
+            this.pulseTextBox.Size = new System.Drawing.Size(63, 20);
             this.pulseTextBox.TabIndex = 28;
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(246, 26);
             this.chart1.Name = "chart1";
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series17.Legend = "Legend1";
-            series17.Name = "Pulse";
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series18.Legend = "Legend1";
-            series18.Name = "RPM";
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Legend = "Legend1";
-            series19.Name = "Speed";
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series20.Legend = "Legend1";
-            series20.Name = "Distance";
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series21.Legend = "Legend1";
-            series21.Name = "Power";
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series22.Legend = "Legend1";
-            series22.Name = "Energy";
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series23.Legend = "Legend1";
-            series23.Name = "Time";
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series24.Legend = "Legend1";
-            series24.Name = "Actual Power";
-            this.chart1.Series.Add(series17);
-            this.chart1.Series.Add(series18);
-            this.chart1.Series.Add(series19);
-            this.chart1.Series.Add(series20);
-            this.chart1.Series.Add(series21);
-            this.chart1.Series.Add(series22);
-            this.chart1.Series.Add(series23);
-            this.chart1.Series.Add(series24);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series9.Legend = "Legend1";
+            series9.Name = "Pulse";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.Legend = "Legend1";
+            series10.Name = "RPM";
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series11.Legend = "Legend1";
+            series11.Name = "Speed";
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series12.Legend = "Legend1";
+            series12.Name = "Distance";
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series13.Legend = "Legend1";
+            series13.Name = "Power";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series14.Legend = "Legend1";
+            series14.Name = "Energy";
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series15.Legend = "Legend1";
+            series15.Name = "Time";
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series16.Legend = "Legend1";
+            series16.Name = "Actual Power";
+            this.chart1.Series.Add(series9);
+            this.chart1.Series.Add(series10);
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
+            this.chart1.Series.Add(series13);
+            this.chart1.Series.Add(series14);
+            this.chart1.Series.Add(series15);
+            this.chart1.Series.Add(series16);
             this.chart1.Size = new System.Drawing.Size(362, 252);
             this.chart1.TabIndex = 29;
             this.chart1.Text = "chart1";
@@ -239,14 +241,14 @@
             // 
             this.chatInputTextBox.Location = new System.Drawing.Point(246, 355);
             this.chatInputTextBox.Name = "chatInputTextBox";
-            this.chatInputTextBox.Size = new System.Drawing.Size(362, 22);
+            this.chatInputTextBox.Size = new System.Drawing.Size(362, 20);
             this.chatInputTextBox.TabIndex = 31;
             // 
             // Distance
             // 
             this.Distance.Location = new System.Drawing.Point(0, 0);
             this.Distance.Name = "Distance";
-            this.Distance.Size = new System.Drawing.Size(63, 22);
+            this.Distance.Size = new System.Drawing.Size(63, 20);
             this.Distance.TabIndex = 0;
             this.Distance.Text = "Distance";
             this.Distance.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -257,7 +259,7 @@
             this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.userLabel.Location = new System.Drawing.Point(8, 26);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(45, 20);
+            this.userLabel.Size = new System.Drawing.Size(38, 17);
             this.userLabel.TabIndex = 32;
             this.userLabel.Text = "User";
             // 
@@ -267,7 +269,7 @@
             this.distanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.distanceLabel.Location = new System.Drawing.Point(8, 160);
             this.distanceLabel.Name = "distanceLabel";
-            this.distanceLabel.Size = new System.Drawing.Size(76, 20);
+            this.distanceLabel.Size = new System.Drawing.Size(63, 17);
             this.distanceLabel.TabIndex = 33;
             this.distanceLabel.Text = "Distance";
             // 
@@ -276,14 +278,14 @@
             this.distanceTextBox.Location = new System.Drawing.Point(113, 158);
             this.distanceTextBox.Name = "distanceTextBox";
             this.distanceTextBox.ReadOnly = true;
-            this.distanceTextBox.Size = new System.Drawing.Size(63, 22);
+            this.distanceTextBox.Size = new System.Drawing.Size(63, 20);
             this.distanceTextBox.TabIndex = 34;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(25, 352);
+            this.deleteButton.Location = new System.Drawing.Point(130, 342);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(198, 23);
+            this.deleteButton.Size = new System.Drawing.Size(110, 23);
             this.deleteButton.TabIndex = 35;
             this.deleteButton.Text = "Delete Client";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -291,9 +293,9 @@
             // 
             // newSessionButton
             // 
-            this.newSessionButton.Location = new System.Drawing.Point(25, 312);
+            this.newSessionButton.Location = new System.Drawing.Point(6, 312);
             this.newSessionButton.Name = "newSessionButton";
-            this.newSessionButton.Size = new System.Drawing.Size(198, 23);
+            this.newSessionButton.Size = new System.Drawing.Size(110, 24);
             this.newSessionButton.TabIndex = 36;
             this.newSessionButton.Text = "New Session";
             this.newSessionButton.UseVisualStyleBackColor = true;
@@ -305,7 +307,7 @@
             this.speedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.speedLabel.Location = new System.Drawing.Point(7, 132);
             this.speedLabel.Name = "speedLabel";
-            this.speedLabel.Size = new System.Drawing.Size(56, 20);
+            this.speedLabel.Size = new System.Drawing.Size(49, 17);
             this.speedLabel.TabIndex = 37;
             this.speedLabel.Text = "Speed";
             // 
@@ -314,12 +316,34 @@
             this.speedTextBox.Location = new System.Drawing.Point(113, 130);
             this.speedTextBox.Name = "speedTextBox";
             this.speedTextBox.ReadOnly = true;
-            this.speedTextBox.Size = new System.Drawing.Size(63, 22);
+            this.speedTextBox.Size = new System.Drawing.Size(63, 20);
             this.speedTextBox.TabIndex = 38;
+            // 
+            // SessionsHistoryButton
+            // 
+            this.SessionsHistoryButton.Location = new System.Drawing.Point(6, 342);
+            this.SessionsHistoryButton.Name = "SessionsHistoryButton";
+            this.SessionsHistoryButton.Size = new System.Drawing.Size(110, 24);
+            this.SessionsHistoryButton.TabIndex = 40;
+            this.SessionsHistoryButton.Text = "Session History";
+            this.SessionsHistoryButton.UseVisualStyleBackColor = true;
+            this.SessionsHistoryButton.Click += new System.EventHandler(this.SessionsHistoryButton_Click);
+            // 
+            // PowerFormButton
+            // 
+            this.PowerFormButton.Location = new System.Drawing.Point(130, 312);
+            this.PowerFormButton.Name = "PowerFormButton";
+            this.PowerFormButton.Size = new System.Drawing.Size(109, 24);
+            this.PowerFormButton.TabIndex = 41;
+            this.PowerFormButton.Text = "Set Power";
+            this.PowerFormButton.UseVisualStyleBackColor = true;
+            this.PowerFormButton.Click += new System.EventHandler(this.PowerFormButton_Click);
             // 
             // DataPanel
             // 
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this.PowerFormButton);
+            this.Controls.Add(this.SessionsHistoryButton);
             this.Controls.Add(this.speedTextBox);
             this.Controls.Add(this.speedLabel);
             this.Controls.Add(this.newSessionButton);
@@ -375,5 +399,7 @@
         private System.Windows.Forms.Button newSessionButton;
         private System.Windows.Forms.Label speedLabel;
         private System.Windows.Forms.TextBox speedTextBox;
+        private System.Windows.Forms.Button SessionsHistoryButton;
+        private System.Windows.Forms.Button PowerFormButton;
     }
 }

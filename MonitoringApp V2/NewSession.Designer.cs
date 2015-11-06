@@ -35,90 +35,99 @@
             this.timeLabel = new System.Windows.Forms.Label();
             this.PowerLabel = new System.Windows.Forms.Label();
             this.distanceLabel = new System.Windows.Forms.Label();
-            this.SetPower = new System.Windows.Forms.Button();
+            this.radioButton_Time = new System.Windows.Forms.RadioButton();
+            this.radioButton_Distance = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // timeTextBox
             // 
-            this.timeTextBox.Location = new System.Drawing.Point(104, 76);
-            this.timeTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.timeTextBox.Location = new System.Drawing.Point(13, 72);
             this.timeTextBox.Name = "timeTextBox";
-            this.timeTextBox.Size = new System.Drawing.Size(132, 22);
+            this.timeTextBox.Size = new System.Drawing.Size(100, 20);
             this.timeTextBox.TabIndex = 0;
             // 
             // PowerTextBox
             // 
-            this.PowerTextBox.Location = new System.Drawing.Point(104, 135);
-            this.PowerTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.PowerTextBox.Location = new System.Drawing.Point(67, 111);
             this.PowerTextBox.Name = "PowerTextBox";
-            this.PowerTextBox.Size = new System.Drawing.Size(132, 22);
+            this.PowerTextBox.Size = new System.Drawing.Size(100, 20);
             this.PowerTextBox.TabIndex = 1;
             // 
             // distanceTextBox
             // 
-            this.distanceTextBox.Location = new System.Drawing.Point(104, 196);
-            this.distanceTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.distanceTextBox.Location = new System.Drawing.Point(120, 72);
             this.distanceTextBox.Name = "distanceTextBox";
-            this.distanceTextBox.Size = new System.Drawing.Size(132, 22);
+            this.distanceTextBox.Size = new System.Drawing.Size(100, 20);
             this.distanceTextBox.TabIndex = 2;
             // 
             // sendButton
             // 
-            this.sendButton.Location = new System.Drawing.Point(117, 245);
-            this.sendButton.Margin = new System.Windows.Forms.Padding(4);
+            this.sendButton.Location = new System.Drawing.Point(77, 139);
             this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(100, 28);
+            this.sendButton.Size = new System.Drawing.Size(75, 23);
             this.sendButton.TabIndex = 3;
-            this.sendButton.Text = "Send All";
+            this.sendButton.Text = "Start";
             this.sendButton.UseVisualStyleBackColor = true;
             this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(151, 57);
-            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.timeLabel.Location = new System.Drawing.Point(46, 56);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(39, 17);
+            this.timeLabel.Size = new System.Drawing.Size(30, 13);
             this.timeLabel.TabIndex = 4;
             this.timeLabel.Text = "Time";
             // 
             // PowerLabel
             // 
             this.PowerLabel.AutoSize = true;
-            this.PowerLabel.Location = new System.Drawing.Point(143, 114);
-            this.PowerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PowerLabel.Location = new System.Drawing.Point(90, 95);
             this.PowerLabel.Name = "PowerLabel";
-            this.PowerLabel.Size = new System.Drawing.Size(47, 17);
+            this.PowerLabel.Size = new System.Drawing.Size(62, 13);
             this.PowerLabel.TabIndex = 5;
-            this.PowerLabel.Text = "Power";
+            this.PowerLabel.Text = "Start Power";
             // 
             // distanceLabel
             // 
             this.distanceLabel.AutoSize = true;
-            this.distanceLabel.Location = new System.Drawing.Point(139, 176);
-            this.distanceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.distanceLabel.Location = new System.Drawing.Point(148, 56);
             this.distanceLabel.Name = "distanceLabel";
-            this.distanceLabel.Size = new System.Drawing.Size(63, 17);
+            this.distanceLabel.Size = new System.Drawing.Size(49, 13);
             this.distanceLabel.TabIndex = 6;
             this.distanceLabel.Text = "Distance";
             // 
-            // SetPower
+            // radioButton_Time
             // 
-            this.SetPower.Location = new System.Drawing.Point(253, 134);
-            this.SetPower.Name = "SetPower";
-            this.SetPower.Size = new System.Drawing.Size(92, 23);
-            this.SetPower.TabIndex = 7;
-            this.SetPower.Text = "Set Power";
-            this.SetPower.UseVisualStyleBackColor = true;
-            this.SetPower.Click += new System.EventHandler(this.SetPower_Click);
+            this.radioButton_Time.AutoSize = true;
+            this.radioButton_Time.Location = new System.Drawing.Point(13, 25);
+            this.radioButton_Time.Name = "radioButton_Time";
+            this.radioButton_Time.Size = new System.Drawing.Size(88, 17);
+            this.radioButton_Time.TabIndex = 7;
+            this.radioButton_Time.TabStop = true;
+            this.radioButton_Time.Text = "Time Session";
+            this.radioButton_Time.UseVisualStyleBackColor = true;
+            this.radioButton_Time.CheckedChanged += new System.EventHandler(this.radioButton_Time_CheckedChanged);
+            // 
+            // radioButton_Distance
+            // 
+            this.radioButton_Distance.AutoSize = true;
+            this.radioButton_Distance.Location = new System.Drawing.Point(120, 25);
+            this.radioButton_Distance.Name = "radioButton_Distance";
+            this.radioButton_Distance.Size = new System.Drawing.Size(107, 17);
+            this.radioButton_Distance.TabIndex = 8;
+            this.radioButton_Distance.TabStop = true;
+            this.radioButton_Distance.Text = "Distance Session";
+            this.radioButton_Distance.UseVisualStyleBackColor = true;
+            this.radioButton_Distance.CheckedChanged += new System.EventHandler(this.radioButton_Distance_CheckedChanged);
             // 
             // NewSession
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 324);
-            this.Controls.Add(this.SetPower);
+            this.ClientSize = new System.Drawing.Size(227, 165);
+            this.Controls.Add(this.radioButton_Distance);
+            this.Controls.Add(this.radioButton_Time);
             this.Controls.Add(this.distanceLabel);
             this.Controls.Add(this.PowerLabel);
             this.Controls.Add(this.timeLabel);
@@ -126,7 +135,8 @@
             this.Controls.Add(this.distanceTextBox);
             this.Controls.Add(this.PowerTextBox);
             this.Controls.Add(this.timeTextBox);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MinimizeBox = false;
             this.Name = "NewSession";
             this.Text = "New Session";
             this.ResumeLayout(false);
@@ -143,6 +153,7 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label PowerLabel;
         private System.Windows.Forms.Label distanceLabel;
-        private System.Windows.Forms.Button SetPower;
+        private System.Windows.Forms.RadioButton radioButton_Time;
+        private System.Windows.Forms.RadioButton radioButton_Distance;
     }
 }

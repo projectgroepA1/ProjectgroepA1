@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using MonitoringApp_V2;
 using NetLib;
+using NetLib.sessionpackets;
+using NetLib.sessionpackets.sessions_data;
 
 namespace WindowsFormsApplication2
 {
@@ -55,6 +57,15 @@ namespace WindowsFormsApplication2
                     //form.closeApplicaton();
                 }
             }));
+        }
+
+        public static List<Session> Sessions = null;
+
+        public void recievePacketSessions(PacketSessions sessionsPacket)
+        {
+            Sessions = sessionsPacket.sessions;
+
+            Console.WriteLine("sessions added to the list!");
         }
 
 

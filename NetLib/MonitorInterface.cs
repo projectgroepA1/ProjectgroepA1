@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NetLib.sessionpackets;
 
 namespace NetLib
 {
@@ -12,5 +13,6 @@ namespace NetLib
         void receiveMeasurement(PacketMonitorMeasurement measurement);
         void recieveMeasurementList(PacketMeasurementList measurementList);
         void recieveChat(PacketChat pack);
+        void recievePacketSessions(PacketSessions sessionsPacket);
     }
 }

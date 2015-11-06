@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using NetLib.sessionpackets;
 
 namespace NetLib
 {
@@ -15,5 +17,7 @@ namespace NetLib
         void receivePacketSession(PacketSession ps);
         void recieveLoadFile(PacketLoadfile lf);
         void receivePacketBicycleCommand(PacketBicycleCommand packetBicycleCommand);
+        void recievePacketHistory(List<Tuple<int, int, int, int, int, int, int>> list, string username);
+        void receivePacketRequestSessions(PacketRequestSessions sessions);
     }
 }

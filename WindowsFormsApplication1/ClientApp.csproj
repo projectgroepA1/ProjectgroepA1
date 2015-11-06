@@ -60,11 +60,23 @@
     <Compile Include="forms\App.designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\HistoryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\HistoryView.Designer.cs">
+      <DependentUpon>HistoryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\SessionsChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\SessionsChooser.Designer.cs">
+      <DependentUpon>SessionsChooser.cs</DependentUpon>
     </Compile>
     <Compile Include="networking\ServerConnection.cs" />
     <Compile Include="Program.cs" />
@@ -72,8 +84,14 @@
     <EmbeddedResource Include="forms\App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\HistoryView.resx">
+      <DependentUpon>HistoryView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\SessionsChooser.resx">
+      <DependentUpon>SessionsChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

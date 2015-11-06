@@ -161,5 +161,15 @@ namespace MonitoringApp_V2
         {
            return speedTextBox; 
         }
+
+        private void SessionsHistoryButton_Click(object sender, EventArgs e)
+        {
+            new SessionsChooser(this, connection, form).Show();
+        }
+
+        private void PowerFormButton_Click(object sender, EventArgs e)
+        {
+            new Powerform(connection,this).Show();
+        }
     }
 }

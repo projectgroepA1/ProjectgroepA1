@@ -9,6 +9,8 @@ namespace ClientApp.forms
     {
         private ServerConnection serverConnection;
 
+        public static string UserName;
+
         public Login()
         {
             InitializeComponent();
@@ -20,6 +22,8 @@ namespace ClientApp.forms
         {
             //start connection
             this.serverConnection = new ServerConnection();
+
+            UserName = username.Text;
 
             PacketLogin loginPacket = new PacketLogin() {username = username.Text, password = password.Text};
             this.serverConnection.WritePacket(loginPacket);

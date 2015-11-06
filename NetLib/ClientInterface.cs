@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NetLib.sessionpackets;
 
 namespace NetLib
 {
-   public interface ClientInterface
+    public interface ClientInterface
     {
 
         void loginResponse(bool loginOk);
@@ -14,6 +15,7 @@ namespace NetLib
         void disconnectResponse(bool disconnectOk);
         void recievePacketChat(PacketChat chat);
         void recievePacketBicycleCommand(PacketBicycleCommand command);
-       void recievePacketSession(PacketSession ps);
+        void recievePacketSession(PacketSession ps);
+        void recievePacketSessions(PacketSessions sessionsPacket);
     }
 }
