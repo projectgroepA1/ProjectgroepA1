@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Server
         public Identifier identifier; 
 
         
-        public Client(TcpClient tcpClient, Program server, int number, DataStorage storage) : base(tcpClient,server)
+        public Client(TcpClient tcpClient, Program server, int number, DataStorage storage, X509Certificate2 certificate) : base(tcpClient,server,certificate)
         {
             this._storage = storage;
             identifier = new Identifier("",number);

@@ -12,20 +12,21 @@ using System.Windows.Forms;
 using WindowsFormsApplication2;
 using NetLib;
 using System.IO;
+using System.Net.Security;
 
 namespace MonitoringApp_V2
 {
     public partial class Form1 : Form
     {
         public TcpClient Client { get; }
-        public NetworkStream stream { get; }
+        public SslStream stream { get; }
         private Login login;
         public List<Client> clients { get; }
         public Thread thread { get; }
         private Connection connection;
         private string dir;
 
-        public Form1(TcpClient client, NetworkStream stream, Login login, string dir)
+        public Form1(TcpClient client, SslStream stream, Login login, string dir)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;

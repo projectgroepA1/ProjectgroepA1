@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,8 +18,12 @@ namespace Server
 {
     abstract class ServerClient : ServerInterface
     {
+
+
         public TcpClient TcpClient { get; set; }
-        public NetworkStream Stream { get; set; }
+        //public NetworkStream Stream { get; set; }
+        public SslStream Stream { get; set; }
+
 
         private Thread _clientThread;
         public Thread ClientThread
@@ -27,10 +34,31 @@ namespace Server
         protected Program _server;
         protected BinaryFormatter formatter;
 
-        public ServerClient(TcpClient client, Program server)
+        public ServerClient(TcpClient client, Program server, X509Certificate2 certificate)
         {
+            Stream = new SslStream(client.GetStream(), false,
+                new RemoteCertificateValidationCallback(ValidateClientCertificate), null);
+            try
+            {
+                Stream.AuthenticateAsServer(certificate, true, SslProtocols.Tls, true);
+
+            }
+            catch (AuthenticationException e)
+            {
+
+                Console.WriteLine("Exception: {0}", e.Message);
+                if (e.InnerException != null)
+                {
+                    Console.WriteLine("Inner exception: {0}", e.InnerException.Message);
+                }
+                Console.WriteLine("Authentication failed - closing the connection.");
+                Stream.Close();
+                client.Close();
+                return;
+            }
+
             this.TcpClient = client;
-            this.Stream = client.GetStream();
+            //this.Stream = client.GetStream();
             this._server = server;
             formatter = new BinaryFormatter();
             //Console.WriteLine("Connected: {0}\tHashCode: ", GetHashCode());
@@ -178,6 +206,13 @@ namespace Server
             {
                 _server.sendPacketToClient(packetSessions, sessionsPacket.id);
             }
+        }
+
+        public static bool ValidateClientCertificate(object sender, X509Certificate certificate,
+    X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // Accept all certificates
+            return true;
         }
     }
 }

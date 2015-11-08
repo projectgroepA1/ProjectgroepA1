@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +23,7 @@ namespace WindowsFormsApplication2
         private Form1 form;
         private BinaryFormatter formatter;
 
+       
 
         public Connection(Form1 form)
         {
@@ -34,7 +38,7 @@ namespace WindowsFormsApplication2
 
             DataPanel panel = new DataPanel(form, this, newClient.Identifier);
             Client client = new Client(newClient.Identifier, panel);
-
+            
             form.clients.Add(client);
             form.AddPanel(panel);
         }
@@ -153,7 +157,7 @@ namespace WindowsFormsApplication2
         public void writePacket(Packet packet)
         {
             formatter = new BinaryFormatter();
-            formatter.Serialize(this.form.Client.GetStream(), packet);
+            formatter.Serialize(form.stream, packet);
         }
 
         public void Run()
@@ -161,7 +165,7 @@ namespace WindowsFormsApplication2
             Random r = new Random();
             while (running)
             {
-                Packet packet = (Packet)formatter.Deserialize(form.Client.GetStream());
+                Packet packet = (Packet)formatter.Deserialize(form.stream);
                 packet.handleMonitorSide(this);
             }
         }

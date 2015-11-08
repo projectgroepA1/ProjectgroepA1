@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using ClientApp.forms;
 using NetLib;
@@ -12,23 +15,38 @@ namespace ClientApp.networking
 {
     public class ServerConnection : ClientInterface
     {
+        public SslStream Stream { get; set; }
+        X509CertificateCollection cCollection = new X509CertificateCollection();
+        
+        string server = "127.0.0.1";
         private readonly TcpClient _client;
         public Client client { get; set; }
         public List<Tuple<int, int, int, int, int, int, int>> HistoryList { get; set; }
         public string text { get; set; }
         private BinaryFormatter formatter;
 
+        public static bool ValidateServerCertificate(object sender, X509Certificate certificate,
+      X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // Accept all certificates
+            return true;
+        }
+
         public ServerConnection() : base()
         {
             formatter = new BinaryFormatter();
             _client = new TcpClient(Info.GetIp().ToString(), Info.Port);
+            cCollection.Add(new X509Certificate(AppDomain.CurrentDomain.BaseDirectory + "Cert.pfx", "MSsediqima"));
+            Stream = new SslStream(_client.GetStream(), false,
+        new RemoteCertificateValidationCallback(ValidateServerCertificate), null);
+            Stream.AuthenticateAsClient(server, cCollection, System.Security.Authentication.SslProtocols.Default, true);
             //send default packet, that shows this is not an monitor
             WritePacket(new Packet());
         }
 
         public void WritePacket(Packet packet)
         {
-            formatter.Serialize(this._client.GetStream(), packet);
+            formatter.Serialize(Stream, packet);
         }
 
         public void SendHistoryPacket(List<Tuple<int, int, int, int, int, int, int>> List)
@@ -39,7 +57,7 @@ namespace ClientApp.networking
 
         public Packet ReadPacket()
         {
-            Packet packet = (Packet)formatter.Deserialize(this._client.GetStream());
+            Packet packet = (Packet)formatter.Deserialize(Stream);
             return packet;
         }
 
