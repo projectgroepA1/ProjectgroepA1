@@ -1,0 +1,14 @@
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\bin\Debug\ClientApp.exe.config
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\bin\Debug\ClientApp.exe
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\bin\Debug\ClientApp.pdb
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\bin\Debug\NetLib.dll
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\bin\Debug\NetLib.pdb
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.csprojResolveAssemblyReference.cache
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.Client.resources
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.forms.Login.resources
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.Properties.Resources.resources
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.csproj.GenerateResource.Cache
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.exe
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.pdb
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.forms.HistoryView.resources
+C:\Users\Jeroen\Documents\ProjectgroepA1\WindowsFormsApplication1\obj\Debug\ClientApp.forms.SessionsChooser.resources

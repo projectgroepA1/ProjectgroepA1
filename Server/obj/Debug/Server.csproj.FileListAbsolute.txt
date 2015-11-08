@@ -1,0 +1,8 @@
+C:\Users\Jeroen\Documents\ProjectgroepA1\Server\bin\Debug\Server.exe.config
+C:\Users\Jeroen\Documents\ProjectgroepA1\Server\bin\Debug\Server.exe
+C:\Users\Jeroen\Documents\ProjectgroepA1\Server\bin\Debug\Server.pdb
+C:\Users\Jeroen\Documents\ProjectgroepA1\Server\bin\Debug\NetLib.dll
+C:\Users\Jeroen\Documents\ProjectgroepA1\Server\bin\Debug\NetLib.pdb
+C:\Users\Jeroen\Documents\ProjectgroepA1\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\Jeroen\Documents\ProjectgroepA1\Server\obj\Debug\Server.exe
+C:\Users\Jeroen\Documents\ProjectgroepA1\Server\obj\Debug\Server.pdb
