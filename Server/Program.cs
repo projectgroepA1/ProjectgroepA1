@@ -14,7 +14,7 @@ namespace Server
     class Program
     {
         public DataStorage storage;
-        private static string path = @"C:\Users\Malek\Documents\GitHub\ProjectgroepA1\Server\Ti2.1-cert.pfx";
+        private static string path = AppDomain.CurrentDomain.BaseDirectory +  "Ti2.1-cert.pfx";
         public X509Certificate2 cert = new X509Certificate2(path, "MSsediqima");
         private static void Main(string[] args)
         {
