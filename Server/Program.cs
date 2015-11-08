@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
+using System.Net.Security;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using NetLib;
 using System.Windows.Forms;
 namespace Server
@@ -11,7 +14,8 @@ namespace Server
     class Program
     {
         public DataStorage storage;
-
+        private static string path = @"C:\Users\Malek\Documents\GitHub\ProjectgroepA1\Server\Ti2.1-cert.pfx";
+        public X509Certificate2 cert = new X509Certificate2(path, "MSsediqima");
         private static void Main(string[] args)
         {
             new Program();
@@ -32,6 +36,7 @@ namespace Server
             Console.WriteLine("Server started: {0}",DateTime.Now);
             Console.WriteLine("Server ip: {0}", ip);
             Console.WriteLine("Server port: {0}",Info.Port);
+
             while (true)
             {
                 TcpClient newClient = listener.AcceptTcpClient();
@@ -39,8 +44,7 @@ namespace Server
                 {
                     counter++;
                     Console.WriteLine("is client");
-
-                    Client client = new Client(newClient, this,counter,storage);
+                    Client client = new Client(newClient, this, counter, storage);
                     clients.Add(client);
                 }
                 else if (_monitor != null)
@@ -96,6 +100,13 @@ namespace Server
         {
             _monitor.sendPacket(packet);
             Console.WriteLine("Packet sent to monitor");
+        }
+
+        public static bool ValidateClientCertificate(object sender, X509Certificate certificate,
+         X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // Accept all certificates
+            return true;
         }
 
     }

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using ClientApp.forms;
 using NetLib;
@@ -17,12 +20,21 @@ namespace ClientApp.networking
         public List<Tuple<int, int, int, int, int, int, int>> HistoryList { get; set; }
         public string text { get; set; }
         private BinaryFormatter formatter;
+         protected X509CertificateCollection collections = new X509CertificateCollection();
+         private string host = Info.GetIp().ToString();
+         private  string path = @"C:\Users\Malek\Documents\WorkspaceVisualStudio\ProjectgroepA1\Ti2.1-cert.pfx";
 
         public ServerConnection() : base()
         {
             formatter = new BinaryFormatter();
-            _client = new TcpClient(Info.GetIp().ToString(), Info.Port);
+            _client = new TcpClient(host, Info.Port);
             //send default packet, that shows this is not an monitor
+            collections.Add(new X509Certificate(path, "MSsediqima"));
+            using (SslStream ssl = new SslStream(_client.GetStream(),false,new RemoteCertificateValidationCallback(ValidateServerCertificate),null))
+            {
+                ssl.AuthenticateAsClient(host, collections,SslProtocols.Default, true);
+               
+            }
             WritePacket(new Packet());
         }
 
@@ -98,6 +110,13 @@ namespace ClientApp.networking
         {
             //client.InsertActuelPDistanceTime(ps.ActualPower,ps.Distance,ps.Time);
             client.InsertTime(ps.Time);
+        }
+
+        public static bool ValidateServerCertificate(object sender, X509Certificate certificate,
+          X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // Accept all certificates
+            return true;
         }
     }
 }

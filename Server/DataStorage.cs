@@ -45,10 +45,17 @@ namespace Server
 
         public static void LoadNumber()
         {
-            var file = File.Open(AppDomain.CurrentDomain.BaseDirectory + "unique_number.txt", FileMode.Open);
-            StreamReader reader = new StreamReader(file);
-            unique_number = int.Parse(reader.ReadLine());
-            reader.Close();
+            if (File.Exists(@"C:\Users\Malek\Documents\GitHub\ProjectgroepA1\Server\bin\Debug"))
+            {
+                var file = File.Open(AppDomain.CurrentDomain.BaseDirectory + "unique_number.txt", FileMode.Open);
+                StreamReader reader = new StreamReader(file);
+                unique_number = int.Parse(reader.ReadLine());
+                reader.Close();
+            }
+            else
+            {
+                Console.WriteLine("File bestaat niet");
+            }
         }
 
         public static int GetUniqueNumber()

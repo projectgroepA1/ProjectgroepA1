@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,7 +29,10 @@ namespace Server
 
         protected Program _server;
         protected BinaryFormatter formatter;
-
+        protected X509CertificateCollection collections = new X509CertificateCollection();
+        private string host = Info.GetIp().ToString();
+        private static string path = @"C:\Users\Malek\Documents\GitHub\ProjectgroepA1\Server\Ti2.1-cert.pfx";
+        public X509Certificate2 cert = new X509Certificate2(path, "MSsediqima");
         public ServerClient(TcpClient client, Program server)
         {
             this.TcpClient = client;
@@ -42,7 +48,6 @@ namespace Server
             Console.WriteLine("{0}\tStarted{1}", GetHashCode(), "");
             while (TcpClient.Connected)
             {
-
                 Packet packet = (Packet)formatter.Deserialize(Stream);
                 packet.handleServerSide(this);
                 Console.WriteLine("Packet received from: {0}", GetHashCode());
@@ -178,6 +183,13 @@ namespace Server
             {
                 _server.sendPacketToClient(packetSessions, sessionsPacket.id);
             }
+        }
+
+        public static bool ValidateServerCertificate(object sender, X509Certificate certificate,
+         X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // Accept all certificates
+            return true;
         }
     }
 }
