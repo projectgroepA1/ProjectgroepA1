@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -17,7 +18,7 @@ namespace Server
 
         private readonly DataStorage _storage;
 
-        public Monitor(TcpClient client, Program server, List<Client> clients, DataStorage storage, X509Certificate2 certificate) : base(client, server,certificate)
+        public Monitor(TcpClient client, Program server, List<Client> clients, DataStorage storage, SslStream sslStream) : base(client, server,sslStream)
         {
             this._storage = storage;
             this._clients = clients;

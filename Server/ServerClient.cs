@@ -10,6 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using NetLib;
 using NetLib.sessionpackets;
 using NetLib.sessionpackets.sessions_data;
@@ -34,28 +35,9 @@ namespace Server
         protected Program _server;
         protected BinaryFormatter formatter;
 
-        public ServerClient(TcpClient client, Program server, X509Certificate2 certificate)
+        public ServerClient(TcpClient client, Program server, SslStream stream)
         {
-            Stream = new SslStream(client.GetStream(), false,
-                new RemoteCertificateValidationCallback(ValidateClientCertificate), null);
-            try
-            {
-                Stream.AuthenticateAsServer(certificate, true, SslProtocols.Tls, true);
-
-            }
-            catch (AuthenticationException e)
-            {
-
-                Console.WriteLine("Exception: {0}", e.Message);
-                if (e.InnerException != null)
-                {
-                    Console.WriteLine("Inner exception: {0}", e.InnerException.Message);
-                }
-                Console.WriteLine("Authentication failed - closing the connection.");
-                Stream.Close();
-                client.Close();
-                return;
-            }
+            this.Stream = stream;
 
             this.TcpClient = client;
             //this.Stream = client.GetStream();
@@ -208,11 +190,6 @@ namespace Server
             }
         }
 
-        public static bool ValidateClientCertificate(object sender, X509Certificate certificate,
-    X509Chain chain, SslPolicyErrors sslPolicyErrors)
-        {
-            // Accept all certificates
-            return true;
-        }
+
     }
 }

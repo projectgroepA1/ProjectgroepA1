@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Sockets;
 using System.Net;
 using System.Net.Security;
@@ -14,6 +15,15 @@ namespace Server
     class Program
     {
         private static X509Certificate2 serverCertificate = null;
+        public SslStream Stream { get; set; }
+
+
+        public static bool ValidateClientCertificate(object sender, X509Certificate certificate,
+    X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            // Accept all certificates
+            return true;
+        }
 
         public DataStorage storage;
 
@@ -43,25 +53,45 @@ namespace Server
             while (true)
             {
                 TcpClient newClient = listener.AcceptTcpClient();
-              //  if (!IsMonitor(newClient))
+                Stream = new SslStream(newClient.GetStream(), false,
+                new RemoteCertificateValidationCallback(ValidateClientCertificate), null);
+                try
+                {
+                    Stream.AuthenticateAsServer(serverCertificate, true, SslProtocols.Tls, true);
+
+                }
+                catch (AuthenticationException e)
+                {
+
+                    Console.WriteLine("Exception: {0}", e.Message);
+                    if (e.InnerException != null)
+                    {
+                        Console.WriteLine("Inner exception: {0}", e.InnerException.Message);
+                    }
+                    Console.WriteLine("Authentication failed - closing the connection.");
+                    Stream.Close();
+                    newClient.Close();
+                    return;
+                }
+                if (!IsMonitor(Stream))
                 {
                     counter++;
                     Console.WriteLine("is client");
 
-                    Client client = new Client(newClient, this, counter, storage, serverCertificate);
+                    Client client = new Client(newClient, this, counter, storage, Stream);
                     clients.Add(client);
                 }
-                //else if (_monitor != null)
-                //{
-                //    if (!_monitor.TcpClient.Connected)
-                //    {
-                //        _monitor = new Monitor(newClient, this, clients, storage, serverCertificate);
-                //    }
-                //}
-                //else
-                //{
-                //    _monitor = new Monitor(newClient, this, clients, storage, serverCertificate);
-                //}
+                else if (_monitor != null)
+                {
+                    if (!_monitor.TcpClient.Connected)
+                    {
+                        _monitor = new Monitor(newClient, this, clients, storage, Stream);
+                    }
+                }
+                else
+                {
+                    _monitor = new Monitor(newClient, this, clients, storage, Stream);
+                }
             }
         }
 
@@ -71,10 +101,8 @@ namespace Server
             _monitor = null;
         }
 
-        private bool IsMonitor(TcpClient client)
+        private bool IsMonitor(SslStream Stream)
         {
-            SslStream Stream = new SslStream(client.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate), null);
-            Stream.AuthenticateAsServer(serverCertificate, true, SslProtocols.Tls, true);
             BinaryFormatter formatter = new BinaryFormatter();
             Packet packet = (Packet)formatter.Deserialize(Stream);
             //Console.WriteLine(packet.ToString());
