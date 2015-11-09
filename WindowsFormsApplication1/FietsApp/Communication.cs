@@ -42,9 +42,9 @@ namespace ClientApp
             {
                 Console.WriteLine("recieved string: " + kappa);
             }
-            Console.WriteLine("recieved string:" + parts);
-            Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
-            " Time: " + parts[6] + " actual power: " + parts[7]);
+            //Console.WriteLine("recieved string:" + parts);
+            //Console.WriteLine("Pulse: " + parts[0] + " Rpm: " + parts[1] + " speed: " + parts[2] + " Distance: " + parts[3] + " Requested Power: " + parts[4] + " Energy: " + parts[5] +
+            //" Time: " + parts[6] + " actual power: " + parts[7]);
         }
 
         private void dataAsker()

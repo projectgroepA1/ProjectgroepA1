@@ -63,6 +63,7 @@ namespace ClientApp
             this.time = new System.Windows.Forms.TextBox();
             this.actualpower = new System.Windows.Forms.TextBox();
             this.sessions_button = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Grafiek)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,7 +141,7 @@ namespace ClientApp
             // 
             // pulse
             // 
-            this.pulse.Location = new System.Drawing.Point(102, 62);
+            this.pulse.Location = new System.Drawing.Point(118, 62);
             this.pulse.Name = "pulse";
             this.pulse.ReadOnly = true;
             this.pulse.Size = new System.Drawing.Size(100, 20);
@@ -148,7 +149,7 @@ namespace ClientApp
             // 
             // rpm
             // 
-            this.rpm.Location = new System.Drawing.Point(102, 101);
+            this.rpm.Location = new System.Drawing.Point(118, 101);
             this.rpm.Name = "rpm";
             this.rpm.ReadOnly = true;
             this.rpm.Size = new System.Drawing.Size(100, 20);
@@ -156,7 +157,7 @@ namespace ClientApp
             // 
             // speed
             // 
-            this.speed.Location = new System.Drawing.Point(102, 139);
+            this.speed.Location = new System.Drawing.Point(118, 140);
             this.speed.Name = "speed";
             this.speed.ReadOnly = true;
             this.speed.Size = new System.Drawing.Size(100, 20);
@@ -164,7 +165,7 @@ namespace ClientApp
             // 
             // distance
             // 
-            this.distance.Location = new System.Drawing.Point(102, 176);
+            this.distance.Location = new System.Drawing.Point(118, 177);
             this.distance.Name = "distance";
             this.distance.ReadOnly = true;
             this.distance.Size = new System.Drawing.Size(100, 20);
@@ -172,7 +173,7 @@ namespace ClientApp
             // 
             // power
             // 
-            this.power.Location = new System.Drawing.Point(102, 214);
+            this.power.Location = new System.Drawing.Point(118, 214);
             this.power.Name = "power";
             this.power.ReadOnly = true;
             this.power.Size = new System.Drawing.Size(100, 20);
@@ -180,7 +181,7 @@ namespace ClientApp
             // 
             // energy
             // 
-            this.energy.Location = new System.Drawing.Point(102, 253);
+            this.energy.Location = new System.Drawing.Point(118, 253);
             this.energy.Name = "energy";
             this.energy.ReadOnly = true;
             this.energy.Size = new System.Drawing.Size(100, 20);
@@ -256,7 +257,7 @@ namespace ClientApp
             // Sendbox
             // 
             this.Sendbox.Location = new System.Drawing.Point(102, 471);
-            this.Sendbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Sendbox.Margin = new System.Windows.Forms.Padding(2);
             this.Sendbox.Name = "Sendbox";
             this.Sendbox.Size = new System.Drawing.Size(394, 20);
             this.Sendbox.TabIndex = 18;
@@ -286,8 +287,8 @@ namespace ClientApp
             // 
             // time
             // 
-            this.time.Location = new System.Drawing.Point(102, 287);
-            this.time.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.time.Location = new System.Drawing.Point(118, 286);
+            this.time.Margin = new System.Windows.Forms.Padding(2);
             this.time.Name = "time";
             this.time.ReadOnly = true;
             this.time.Size = new System.Drawing.Size(100, 20);
@@ -295,8 +296,8 @@ namespace ClientApp
             // 
             // actualpower
             // 
-            this.actualpower.Location = new System.Drawing.Point(102, 323);
-            this.actualpower.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.actualpower.Location = new System.Drawing.Point(118, 323);
+            this.actualpower.Margin = new System.Windows.Forms.Padding(2);
             this.actualpower.Name = "actualpower";
             this.actualpower.ReadOnly = true;
             this.actualpower.Size = new System.Drawing.Size(100, 20);
@@ -305,7 +306,7 @@ namespace ClientApp
             // sessions_button
             // 
             this.sessions_button.Location = new System.Drawing.Point(505, 14);
-            this.sessions_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sessions_button.Margin = new System.Windows.Forms.Padding(2);
             this.sessions_button.Name = "sessions_button";
             this.sessions_button.Size = new System.Drawing.Size(90, 32);
             this.sessions_button.TabIndex = 23;
@@ -313,12 +314,22 @@ namespace ClientApp
             this.sessions_button.UseVisualStyleBackColor = true;
             this.sessions_button.Click += new System.EventHandler(this.sessions_button_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(68, 184);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(44, 13);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "(x100m)";
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(603, 498);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.sessions_button);
             this.Controls.Add(this.actualpower);
             this.Controls.Add(this.time);
@@ -374,6 +385,7 @@ namespace ClientApp
         private System.Windows.Forms.TextBox time;
         private System.Windows.Forms.TextBox actualpower;
         private Button sessions_button;
+        private Label label11;
     }
 }
 

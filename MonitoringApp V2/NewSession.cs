@@ -135,15 +135,18 @@ namespace MonitoringApp_V2
             else if (radioButton_Distance.Checked)
             {
                 bool flag = true;
+                Thread.Sleep(2000);
                 while (flag)
                 {
+                    Console.WriteLine("Distance textbox" + panel.ReturnDistanceTextBox().Text);
                     int distance = int.Parse(panel.ReturnDistanceTextBox().Text);
                     if (distance == 0)
                     {
                         PacketChat end = new PacketChat("Session ended...", panel.id.Username, "client", panel.id.Id);
                         connection.writePacket(end);
-                        flag = false;   
+                        flag = false;
                     }
+                    Thread.Sleep(1000);
                 }
             }
         }

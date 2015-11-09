@@ -73,11 +73,11 @@
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(46, 56);
+            this.timeLabel.Location = new System.Drawing.Point(39, 56);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(30, 13);
+            this.timeLabel.Size = new System.Drawing.Size(62, 13);
             this.timeLabel.TabIndex = 4;
-            this.timeLabel.Text = "Time";
+            this.timeLabel.Text = "Time(mmss)";
             // 
             // PowerLabel
             // 
@@ -91,11 +91,11 @@
             // distanceLabel
             // 
             this.distanceLabel.AutoSize = true;
-            this.distanceLabel.Location = new System.Drawing.Point(148, 56);
+            this.distanceLabel.Location = new System.Drawing.Point(129, 56);
             this.distanceLabel.Name = "distanceLabel";
-            this.distanceLabel.Size = new System.Drawing.Size(49, 13);
+            this.distanceLabel.Size = new System.Drawing.Size(89, 13);
             this.distanceLabel.TabIndex = 6;
-            this.distanceLabel.Text = "Distance";
+            this.distanceLabel.Text = "Distance(x100 m)";
             // 
             // radioButton_Time
             // 
