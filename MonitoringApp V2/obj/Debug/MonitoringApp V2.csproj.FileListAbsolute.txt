@@ -17,3 +17,22 @@ C:\Users\Jeroen\Documents\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringAp
 C:\Users\Jeroen\Documents\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.HistoryView.resources
 C:\Users\Jeroen\Documents\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.SessionsChooser.resources
 C:\Users\Jeroen\Documents\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.Powerform.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\bin\Debug\MonitoringApp V2.exe.config
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp V2.exe
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp V2.pdb
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\bin\Debug\MonitoringApp V2.exe
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\bin\Debug\MonitoringApp V2.pdb
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\bin\Debug\NetLib.dll
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\bin\Debug\NetLib.pdb
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp V2.csprojResolveAssemblyReference.cache
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.DataPanel.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.FileLoader.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.Form1.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.Form2.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.HistoryView.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\WindowsFormsApplication2.Login.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.NewSession.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.Powerform.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.Properties.Resources.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp_V2.SessionsChooser.resources
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\MonitoringApp V2\obj\Debug\MonitoringApp V2.csproj.GenerateResource.Cache

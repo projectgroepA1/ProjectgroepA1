@@ -32,11 +32,26 @@ namespace MonitoringApp_V2
                 series.Points.Clear();
             }
 
+            string name = "";
+
+            if (textBox1.Text != "" || textBox1.Text != null)
+            {
+                name = textBox1.Text;
+                
+            }
+            else
+            {
+                name = "Not inserted";
+            }
+
+            this.panel.ChangeUserName(name);
+
+
             if (radioButton_Time.Checked)
             {
                 //creating packets
                 //Resetting Bike to set time and distance
-                PacketBicycleCommand RS = new PacketBicycleCommand("RS", panel.id.Id);
+                PacketBicycleCommand RS = new PacketBicycleCommand("RS", panel.id.Id, name);
                 connection.writePacket(RS);
                 //Waiting 5 secs to let bike reboot
                 Thread.Sleep(5000);
@@ -57,7 +72,7 @@ namespace MonitoringApp_V2
             {
                 //creating packets
                 //Resetting Bike to set time and distance
-                PacketBicycleCommand RS = new PacketBicycleCommand("RS", panel.id.Id);
+                PacketBicycleCommand RS = new PacketBicycleCommand("RS", panel.id.Id, name);
                 connection.writePacket(RS);
                 //Waiting 5 secs to let bike reboot
                 Thread.Sleep(5000);

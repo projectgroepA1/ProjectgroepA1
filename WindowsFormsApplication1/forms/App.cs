@@ -187,6 +187,19 @@ namespace ClientApp
 
         }
 
+        public void GiveName(string name)
+        {
+            if (InvokeRequired)
+            {
+                MethodInvoker method = new MethodInvoker(delegate
+                {
+                    this.label12.Text = name;
+                });
+                this.Invoke(method);
+            }
+           
+        }
+
         private void GuiStarter()
         {
 

@@ -3,3 +3,8 @@ C:\Users\Jeroen\Documents\ProjectgroepA1\NetLib\bin\Debug\NetLib.pdb
 C:\Users\Jeroen\Documents\ProjectgroepA1\NetLib\obj\Debug\NetLib.csprojResolveAssemblyReference.cache
 C:\Users\Jeroen\Documents\ProjectgroepA1\NetLib\obj\Debug\NetLib.dll
 C:\Users\Jeroen\Documents\ProjectgroepA1\NetLib\obj\Debug\NetLib.pdb
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\NetLib\bin\Debug\NetLib.dll
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\NetLib\bin\Debug\NetLib.pdb
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\NetLib\obj\Debug\NetLib.csprojResolveAssemblyReference.cache
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\NetLib\obj\Debug\NetLib.dll
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\NetLib\obj\Debug\NetLib.pdb

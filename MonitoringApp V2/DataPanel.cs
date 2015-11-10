@@ -52,6 +52,15 @@ namespace MonitoringApp_V2
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        public void ChangeUserName(string name)
+        {
+            Invoke((Action)(() =>
+            {
+                this.userLabel.Text = name;
+            }
+            ));
+        }
+
         public void changeChatBoxText(string chatText)
         {
             chatTextBox.AppendText("[client] " + chatText);

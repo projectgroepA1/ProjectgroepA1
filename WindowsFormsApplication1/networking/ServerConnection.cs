@@ -101,6 +101,11 @@ namespace ClientApp.networking
         public void recievePacketBicycleCommand(PacketBicycleCommand command)
         {
             this.client.reader.sendCommand(command.command);
+            if(command.name != "NopeNope")
+            {
+                this.client.GiveName(command.name);
+            }
+            
         }
 
         public static List<Session> Sessions = null;

@@ -4,3 +4,9 @@ C:\Users\Jeroen\Documents\ProjectgroepA1\FietsSim\bin\Debug\FietsSim.pdb
 C:\Users\Jeroen\Documents\ProjectgroepA1\FietsSim\obj\Debug\FietsSim.exe
 C:\Users\Jeroen\Documents\ProjectgroepA1\FietsSim\obj\Debug\FietsSim.pdb
 C:\Users\Jeroen\Documents\ProjectgroepA1\FietsSim\obj\Debug\FietsSim.csprojResolveAssemblyReference.cache
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\FietsSim\bin\Debug\FietsSim.exe.config
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\FietsSim\obj\Debug\FietsSim.exe
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\FietsSim\obj\Debug\FietsSim.pdb
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\FietsSim\bin\Debug\FietsSim.exe
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\FietsSim\bin\Debug\FietsSim.pdb
+E:\Documenten\Visual Studio 2015\Projects\ProjectgroepA1\FietsSim\obj\Debug\FietsSim.csprojResolveAssemblyReference.cache

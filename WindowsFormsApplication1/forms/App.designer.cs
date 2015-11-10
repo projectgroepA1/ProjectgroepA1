@@ -64,6 +64,7 @@ namespace ClientApp
             this.actualpower = new System.Windows.Forms.TextBox();
             this.sessions_button = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Grafiek)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +74,7 @@ namespace ClientApp
             this.label1.BackColor = System.Drawing.Color.Gainsboro;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 31);
             this.label1.TabIndex = 0;
@@ -323,12 +324,23 @@ namespace ClientApp
             this.label11.TabIndex = 24;
             this.label11.Text = "(x100m)";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(17, 33);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 17);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Patient Name";
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(603, 498);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.sessions_button);
             this.Controls.Add(this.actualpower);
@@ -386,6 +398,7 @@ namespace ClientApp
         private System.Windows.Forms.TextBox actualpower;
         private Button sessions_button;
         private Label label11;
+        private Label label12;
     }
 }
 
