@@ -36,7 +36,7 @@
             // 
             this.box.FormattingEnabled = true;
             this.box.Location = new System.Drawing.Point(6, 6);
-            this.box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.box.Margin = new System.Windows.Forms.Padding(2);
             this.box.Name = "box";
             this.box.Size = new System.Drawing.Size(189, 212);
             this.box.TabIndex = 1;
@@ -44,7 +44,7 @@
             // session_chooser
             // 
             this.session_chooser.Location = new System.Drawing.Point(199, 92);
-            this.session_chooser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.session_chooser.Margin = new System.Windows.Forms.Padding(2);
             this.session_chooser.Name = "session_chooser";
             this.session_chooser.Size = new System.Drawing.Size(66, 32);
             this.session_chooser.TabIndex = 2;
@@ -59,7 +59,7 @@
             this.ClientSize = new System.Drawing.Size(268, 231);
             this.Controls.Add(this.session_chooser);
             this.Controls.Add(this.box);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SessionsChooser";
             this.Text = "SessionsChooser";
             this.ResumeLayout(false);

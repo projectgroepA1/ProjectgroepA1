@@ -11,19 +11,13 @@ namespace ClientApp
     public partial class Client : Form
     {
         public Communication reader;
-
         public int id { get; }
-
         public ServerConnection serverConnection { get; }
-
         public Thread fromServer { get; }
-
         public string hostName { get; }
-
         private bool updateGui_Flag = false;
-
         private List<Tuple<int, int, int, int, int, int, int>> Values;
-
+        
         public Client(ServerConnection serverConnection, string hostName, int id)
         {
             InitializeComponent();
@@ -33,7 +27,7 @@ namespace ClientApp
             this.serverConnection = serverConnection;
 
             //Start serial port reader
-            this.reader = new Communication("COM4");
+            this.reader = new Communication("COM1");
 
             this.serverConnection.client = this;
 
@@ -187,25 +181,12 @@ namespace ClientApp
 
         }
 
-        public void GiveName(string name)
-        {
-            if (InvokeRequired)
-            {
-                MethodInvoker method = new MethodInvoker(delegate
-                {
-                    this.label12.Text = name;
-                });
-                this.Invoke(method);
-            }
-           
-        }
-
         private void GuiStarter()
         {
 
             foreach (var series in this.Grafiek.Series)
             {
-                MethodInvoker clear = delegate () { series.Points.Clear(); ; };
+                MethodInvoker clear = delegate () { series.Points.Clear();};
                 this.Invoke(clear);
             }
             updateGui_Flag = true;
@@ -218,6 +199,12 @@ namespace ClientApp
         {
             SessionsChooser chooser = new SessionsChooser(this);
             chooser.ShowDialog(this);
+        }
+
+        public void setName(string name)
+        {
+            MethodInvoker nameMi = delegate () { ClientName.Text = name; };
+            this.Invoke(nameMi);
         }
     }
 }

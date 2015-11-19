@@ -22,7 +22,7 @@ namespace FietsSim
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
-            SerialPort port = new SerialPort("COM5");
+            SerialPort port = new SerialPort("COM3");
             port.Open();
 
             //string txt = portWrite();

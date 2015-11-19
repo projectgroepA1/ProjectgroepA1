@@ -64,6 +64,7 @@ namespace ClientApp
             this.actualpower = new System.Windows.Forms.TextBox();
             this.sessions_button = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.ClientName = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Grafiek)).BeginInit();
             this.SuspendLayout();
@@ -84,11 +85,11 @@ namespace ClientApp
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(10, 102);
+            this.label3.Location = new System.Drawing.Point(9, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 17);
+            this.label3.Size = new System.Drawing.Size(37, 17);
             this.label3.TabIndex = 1;
-            this.label3.Text = "RPM";
+            this.label3.Text = "Rpm";
             // 
             // label2
             // 
@@ -134,7 +135,7 @@ namespace ClientApp
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label7.Location = new System.Drawing.Point(10, 63);
+            this.label7.Location = new System.Drawing.Point(9, 90);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 17);
             this.label7.TabIndex = 6;
@@ -142,7 +143,7 @@ namespace ClientApp
             // 
             // pulse
             // 
-            this.pulse.Location = new System.Drawing.Point(118, 62);
+            this.pulse.Location = new System.Drawing.Point(118, 87);
             this.pulse.Name = "pulse";
             this.pulse.ReadOnly = true;
             this.pulse.Size = new System.Drawing.Size(100, 20);
@@ -150,7 +151,7 @@ namespace ClientApp
             // 
             // rpm
             // 
-            this.rpm.Location = new System.Drawing.Point(118, 101);
+            this.rpm.Location = new System.Drawing.Point(118, 116);
             this.rpm.Name = "rpm";
             this.rpm.ReadOnly = true;
             this.rpm.Size = new System.Drawing.Size(100, 20);
@@ -158,7 +159,7 @@ namespace ClientApp
             // 
             // speed
             // 
-            this.speed.Location = new System.Drawing.Point(118, 140);
+            this.speed.Location = new System.Drawing.Point(118, 148);
             this.speed.Name = "speed";
             this.speed.ReadOnly = true;
             this.speed.Size = new System.Drawing.Size(100, 20);
@@ -166,7 +167,7 @@ namespace ClientApp
             // 
             // distance
             // 
-            this.distance.Location = new System.Drawing.Point(118, 177);
+            this.distance.Location = new System.Drawing.Point(118, 182);
             this.distance.Name = "distance";
             this.distance.ReadOnly = true;
             this.distance.Size = new System.Drawing.Size(100, 20);
@@ -174,7 +175,7 @@ namespace ClientApp
             // 
             // power
             // 
-            this.power.Location = new System.Drawing.Point(118, 214);
+            this.power.Location = new System.Drawing.Point(118, 217);
             this.power.Name = "power";
             this.power.ReadOnly = true;
             this.power.Size = new System.Drawing.Size(100, 20);
@@ -182,7 +183,7 @@ namespace ClientApp
             // 
             // energy
             // 
-            this.energy.Location = new System.Drawing.Point(118, 253);
+            this.energy.Location = new System.Drawing.Point(118, 251);
             this.energy.Name = "energy";
             this.energy.ReadOnly = true;
             this.energy.Size = new System.Drawing.Size(100, 20);
@@ -279,7 +280,7 @@ namespace ClientApp
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label10.Location = new System.Drawing.Point(9, 141);
+            this.label10.Location = new System.Drawing.Point(9, 147);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 17);
@@ -324,15 +325,24 @@ namespace ClientApp
             this.label11.TabIndex = 24;
             this.label11.Text = "(x100m)";
             // 
+            // ClientName
+            // 
+            this.ClientName.AutoSize = true;
+            this.ClientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientName.Location = new System.Drawing.Point(115, 54);
+            this.ClientName.Name = "ClientName";
+            this.ClientName.Size = new System.Drawing.Size(0, 17);
+            this.ClientName.TabIndex = 25;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(17, 33);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label12.Location = new System.Drawing.Point(9, 54);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 17);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "Patient Name";
+            this.label12.Size = new System.Drawing.Size(38, 17);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "User";
             // 
             // Client
             // 
@@ -341,6 +351,7 @@ namespace ClientApp
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(603, 498);
             this.Controls.Add(this.label12);
+            this.Controls.Add(this.ClientName);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.sessions_button);
             this.Controls.Add(this.actualpower);
@@ -398,6 +409,7 @@ namespace ClientApp
         private System.Windows.Forms.TextBox actualpower;
         private Button sessions_button;
         private Label label11;
+        private Label ClientName;
         private Label label12;
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication2;
@@ -21,11 +22,11 @@ namespace MonitoringApp_V2
         {
             //send request for the requests
             connection.writePacket(new PacketRequestSessions() { id = panel.id.Id, username = "monitor" });
-
             while (Connection.Sessions == null)
             {
-
+                
             }
+            Thread.Sleep(700);
             InitializeComponent();
             //sessies
             Connection.Sessions.ForEach(session =>

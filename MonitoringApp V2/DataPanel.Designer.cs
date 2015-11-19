@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.RPMLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.powerLabel = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.chatTextBox = new System.Windows.Forms.TextBox();
             this.chatInputTextBox = new System.Windows.Forms.TextBox();
             this.Distance = new System.Windows.Forms.TextBox();
-            this.userLabel = new System.Windows.Forms.Label();
+            this.setUserLabel = new System.Windows.Forms.Label();
             this.distanceLabel = new System.Windows.Forms.Label();
             this.distanceTextBox = new System.Windows.Forms.TextBox();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -64,6 +64,10 @@
             this.SessionsHistoryButton = new System.Windows.Forms.Button();
             this.PowerFormButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.userNameTB = new System.Windows.Forms.TextBox();
+            this.UsernameButton = new System.Windows.Forms.Button();
+            this.UserTooltip = new System.Windows.Forms.Label();
+            this.CurrentUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,52 +181,52 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(246, 26);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Pulse";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "RPM";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Speed";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Distance";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.Legend = "Legend1";
-            series5.Name = "Power";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series6.Legend = "Legend1";
-            series6.Name = "Energy";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Legend = "Legend1";
-            series7.Name = "Time";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Legend = "Legend1";
-            series8.Name = "Actual Power";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
-            this.chart1.Series.Add(series7);
-            this.chart1.Series.Add(series8);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series9.Legend = "Legend1";
+            series9.Name = "Pulse";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.Legend = "Legend1";
+            series10.Name = "RPM";
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series11.Legend = "Legend1";
+            series11.Name = "Speed";
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series12.Legend = "Legend1";
+            series12.Name = "Distance";
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series13.Legend = "Legend1";
+            series13.Name = "Power";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series14.Legend = "Legend1";
+            series14.Name = "Energy";
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series15.Legend = "Legend1";
+            series15.Name = "Time";
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series16.Legend = "Legend1";
+            series16.Name = "Actual Power";
+            this.chart1.Series.Add(series9);
+            this.chart1.Series.Add(series10);
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
+            this.chart1.Series.Add(series13);
+            this.chart1.Series.Add(series14);
+            this.chart1.Series.Add(series15);
+            this.chart1.Series.Add(series16);
             this.chart1.Size = new System.Drawing.Size(362, 252);
             this.chart1.TabIndex = 29;
             this.chart1.Text = "chart1";
@@ -254,15 +258,15 @@
             this.Distance.Text = "Distance";
             this.Distance.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // userLabel
+            // setUserLabel
             // 
-            this.userLabel.AutoSize = true;
-            this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.userLabel.Location = new System.Drawing.Point(8, 26);
-            this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(38, 17);
-            this.userLabel.TabIndex = 32;
-            this.userLabel.Text = "User";
+            this.setUserLabel.AutoSize = true;
+            this.setUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.setUserLabel.Location = new System.Drawing.Point(7, 14);
+            this.setUserLabel.Name = "setUserLabel";
+            this.setUserLabel.Size = new System.Drawing.Size(63, 17);
+            this.setUserLabel.TabIndex = 32;
+            this.setUserLabel.Text = "Set User";
             // 
             // distanceLabel
             // 
@@ -349,9 +353,49 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "(x100m)";
             // 
+            // userNameTB
+            // 
+            this.userNameTB.Location = new System.Drawing.Point(76, 15);
+            this.userNameTB.Name = "userNameTB";
+            this.userNameTB.Size = new System.Drawing.Size(91, 20);
+            this.userNameTB.TabIndex = 43;
+            // 
+            // UsernameButton
+            // 
+            this.UsernameButton.Location = new System.Drawing.Point(161, 14);
+            this.UsernameButton.Name = "UsernameButton";
+            this.UsernameButton.Size = new System.Drawing.Size(58, 21);
+            this.UsernameButton.TabIndex = 44;
+            this.UsernameButton.Text = "Send";
+            this.UsernameButton.UseVisualStyleBackColor = true;
+            this.UsernameButton.Click += new System.EventHandler(this.UsernameButton_Click);
+            // 
+            // UserTooltip
+            // 
+            this.UserTooltip.AutoSize = true;
+            this.UserTooltip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.UserTooltip.Location = new System.Drawing.Point(8, 46);
+            this.UserTooltip.Name = "UserTooltip";
+            this.UserTooltip.Size = new System.Drawing.Size(38, 17);
+            this.UserTooltip.TabIndex = 45;
+            this.UserTooltip.Text = "User";
+            // 
+            // CurrentUser
+            // 
+            this.CurrentUser.AutoSize = true;
+            this.CurrentUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.CurrentUser.Location = new System.Drawing.Point(95, 46);
+            this.CurrentUser.Name = "CurrentUser";
+            this.CurrentUser.Size = new System.Drawing.Size(0, 17);
+            this.CurrentUser.TabIndex = 46;
+            // 
             // DataPanel
             // 
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this.CurrentUser);
+            this.Controls.Add(this.UserTooltip);
+            this.Controls.Add(this.UsernameButton);
+            this.Controls.Add(this.userNameTB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PowerFormButton);
             this.Controls.Add(this.SessionsHistoryButton);
@@ -361,7 +405,7 @@
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.distanceTextBox);
             this.Controls.Add(this.distanceLabel);
-            this.Controls.Add(this.userLabel);
+            this.Controls.Add(this.setUserLabel);
             this.Controls.Add(this.chatInputTextBox);
             this.Controls.Add(this.chatTextBox);
             this.Controls.Add(this.chart1);
@@ -403,7 +447,7 @@
         private System.Windows.Forms.TextBox chatTextBox;
         private System.Windows.Forms.TextBox chatInputTextBox;
         private System.Windows.Forms.TextBox Distance;
-        private System.Windows.Forms.Label userLabel;
+        private System.Windows.Forms.Label setUserLabel;
         private System.Windows.Forms.Label distanceLabel;
         private System.Windows.Forms.TextBox distanceTextBox;
         private System.Windows.Forms.Button deleteButton;
@@ -413,5 +457,9 @@
         private System.Windows.Forms.Button SessionsHistoryButton;
         private System.Windows.Forms.Button PowerFormButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox userNameTB;
+        private System.Windows.Forms.Button UsernameButton;
+        private System.Windows.Forms.Label UserTooltip;
+        private System.Windows.Forms.Label CurrentUser;
     }
 }

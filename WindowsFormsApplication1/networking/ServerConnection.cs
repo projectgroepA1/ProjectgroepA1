@@ -17,8 +17,8 @@ namespace ClientApp.networking
     {
         public SslStream Stream { get; set; }
         X509CertificateCollection cCollection = new X509CertificateCollection();
-        
         string server = "127.0.0.1";
+
         private readonly TcpClient _client;
         public Client client { get; set; }
         public List<Tuple<int, int, int, int, int, int, int>> HistoryList { get; set; }
@@ -101,11 +101,6 @@ namespace ClientApp.networking
         public void recievePacketBicycleCommand(PacketBicycleCommand command)
         {
             this.client.reader.sendCommand(command.command);
-            if(command.name != "NopeNope")
-            {
-                this.client.GiveName(command.name);
-            }
-            
         }
 
         public static List<Session> Sessions = null;
@@ -115,6 +110,14 @@ namespace ClientApp.networking
             Sessions = sessionsPacket.sessions;
 
             Console.WriteLine("sessions added to the list!");
+        }
+
+        public void recieveNamePacket(NamePacket namePacket)
+        {
+            //set name for io etc..
+            Login.UserName = namePacket.name;
+            //set name for gui Label
+            client.setName(namePacket.name);
         }
 
         public void recievePacketSession(PacketSession ps)

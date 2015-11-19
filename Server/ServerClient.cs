@@ -19,8 +19,6 @@ namespace Server
 {
     abstract class ServerClient : ServerInterface
     {
-
-
         public TcpClient TcpClient { get; set; }
         //public NetworkStream Stream { get; set; }
         public SslStream Stream { get; set; }
@@ -118,7 +116,6 @@ namespace Server
         public void receivePacketBicycleCommand(PacketBicycleCommand packetBicycleCommand)
         {
             _server.sendPacketToClient(packetBicycleCommand, packetBicycleCommand.destinationID);
-            Console.WriteLine("Sent Command Pack to client");
         }
 
         public void recievePacketHistory(List<Tuple<int, int, int, int, int, int, int>> list, string username)
@@ -157,11 +154,12 @@ namespace Server
 
             foreach (string file in files)
             {
-                if (file.Contains(".session") && (file.Contains(sessionsPacket.username) || sessionsPacket.username == "monitor"))
+                string _file = Path.GetFileName(file);
+                Console.WriteLine(_file);
+                if (_file.EndsWith(".session") && (_file.Contains(sessionsPacket.username) || sessionsPacket.username == "monitor"))
                 {
                     //file belongs to the user
                     var fil2e = File.Open(file, FileMode.Open);
-
                     //read the data
                     BinaryFormatter formatter = new BinaryFormatter();
                     Session session = (Session)formatter.Deserialize(fil2e);
@@ -190,6 +188,9 @@ namespace Server
             }
         }
 
-
+        public void recieveNamePacket(NamePacket namePacket)
+        {
+            _server.sendPacketToClient(namePacket, namePacket.ID);
+        }
     }
 }

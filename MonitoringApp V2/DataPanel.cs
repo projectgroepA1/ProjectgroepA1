@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using WindowsFormsApplication2;
@@ -21,6 +12,7 @@ namespace MonitoringApp_V2
         public Form1 form { get; }
         private Connection connection;
         public Identifier id { get; }
+        public bool NameSetFlag;
 
         public DataPanel(Form1 form, Connection connection, Identifier id)
         {
@@ -50,15 +42,6 @@ namespace MonitoringApp_V2
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        public void ChangeUserName(string name)
-        {
-            Invoke((Action)(() =>
-            {
-                this.userLabel.Text = name;
-            }
-            ));
         }
 
         public void changeChatBoxText(string chatText)
@@ -138,7 +121,7 @@ namespace MonitoringApp_V2
 
         public Label ReturnUserNameLabel()
         {
-            return userLabel;
+            return setUserLabel;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -179,6 +162,25 @@ namespace MonitoringApp_V2
         private void PowerFormButton_Click(object sender, EventArgs e)
         {
             new Powerform(connection,this).Show();
+        }
+
+        private void UsernameButton_Click(object sender, EventArgs e)
+        {
+            if (userNameTB.Text == "")
+            {
+                MessageBox.Show("You must enter a name first!");
+            }
+            else if (userNameTB.Text == "monitor")
+            {
+                MessageBox.Show("That is not permitted!");
+            }
+            else
+            {
+                NameSetFlag = true;
+                CurrentUser.Text = userNameTB.Text;
+                userNameTB.Clear();
+                connection.writePacket(new NamePacket(CurrentUser.Text, id.Id));
+            }
         }
     }
 }

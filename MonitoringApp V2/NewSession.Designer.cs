@@ -37,8 +37,6 @@
             this.distanceLabel = new System.Windows.Forms.Label();
             this.radioButton_Time = new System.Windows.Forms.RadioButton();
             this.radioButton_Distance = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // timeTextBox
@@ -64,7 +62,7 @@
             // 
             // sendButton
             // 
-            this.sendButton.Location = new System.Drawing.Point(77, 186);
+            this.sendButton.Location = new System.Drawing.Point(77, 144);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(75, 23);
             this.sendButton.TabIndex = 3;
@@ -123,29 +121,11 @@
             this.radioButton_Distance.UseVisualStyleBackColor = true;
             this.radioButton_Distance.CheckedChanged += new System.EventHandler(this.radioButton_Distance_CheckedChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 144);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Patient Name";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(68, 160);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 10;
-            // 
             // NewSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 221);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(229, 179);
             this.Controls.Add(this.radioButton_Distance);
             this.Controls.Add(this.radioButton_Time);
             this.Controls.Add(this.distanceLabel);
@@ -175,7 +155,5 @@
         private System.Windows.Forms.Label distanceLabel;
         private System.Windows.Forms.RadioButton radioButton_Time;
         private System.Windows.Forms.RadioButton radioButton_Distance;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

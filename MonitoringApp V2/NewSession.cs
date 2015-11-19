@@ -27,73 +27,64 @@ namespace MonitoringApp_V2
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-            foreach (var series in panel.returnChart().Series)
+            if (panel.NameSetFlag)
             {
-                series.Points.Clear();
-            }
-
-            string name = "";
-
-            if (textBox1.Text != "" || textBox1.Text != null)
-            {
-                name = textBox1.Text;
-                
-            }
-            else
-            {
-                name = "Not inserted";
-            }
-
-            this.panel.ChangeUserName(name);
-
-
-            if (radioButton_Time.Checked)
-            {
-                //creating packets
-                //Resetting Bike to set time and distance
-                PacketBicycleCommand RS = new PacketBicycleCommand("RS", panel.id.Id, name);
-                connection.writePacket(RS);
-                //Waiting 5 secs to let bike reboot
-                Thread.Sleep(5000);
-                //Entering command mode to insert P- Commands
-                PacketBicycleCommand CM = new PacketBicycleCommand("CM", panel.id.Id);
-                connection.writePacket(CM);
-                //Set required Time
-                PacketBicycleCommand PT = new PacketBicycleCommand($"PT {this.timeTextBox.Text}", panel.id.Id);
-                connection.writePacket(PT);
-                //Set power level
-                PacketBicycleCommand PW = new PacketBicycleCommand($"PW {this.PowerTextBox.Text}", panel.id.Id);
-                connection.writePacket(PW);
-                //Start handling Thread
-                Thread thread = new Thread(new ThreadStart(SessionHandler));
-                thread.Start();
-            }
-            else if (radioButton_Distance.Checked)
-            {
-                //creating packets
-                //Resetting Bike to set time and distance
-                PacketBicycleCommand RS = new PacketBicycleCommand("RS", panel.id.Id, name);
-                connection.writePacket(RS);
-                //Waiting 5 secs to let bike reboot
-                Thread.Sleep(5000);
-                //Entering command mode to insert P- Commands
-                PacketBicycleCommand CM = new PacketBicycleCommand("CM", panel.id.Id);
-                connection.writePacket(CM);
-                //Set required Distance
-                PacketBicycleCommand PD = new PacketBicycleCommand($"PD {this.distanceTextBox.Text}", panel.id.Id);
-                connection.writePacket(PD);
-                //Set power level
-                PacketBicycleCommand PW = new PacketBicycleCommand($"PW {this.PowerTextBox.Text}", panel.id.Id);
-                connection.writePacket(PW);
-                //Start handling Thread
-                Thread thread = new Thread(new ThreadStart(SessionHandler));
-                thread.Start();
+                foreach (var series in panel.returnChart().Series)
+                {
+                    series.Points.Clear();
+                }
+                if (radioButton_Time.Checked)
+                {
+                    //creating packets
+                    //Resetting Bike to set time and distance
+                    PacketBicycleCommand RS = new PacketBicycleCommand("RS", panel.id.Id);
+                    connection.writePacket(RS);
+                    //Waiting 5 secs to let bike reboot
+                    Thread.Sleep(5000);
+                    //Entering command mode to insert P- Commands
+                    PacketBicycleCommand CM = new PacketBicycleCommand("CM", panel.id.Id);
+                    connection.writePacket(CM);
+                    //Set required Time
+                    PacketBicycleCommand PT = new PacketBicycleCommand($"PT {this.timeTextBox.Text}", panel.id.Id);
+                    connection.writePacket(PT);
+                    //Set power level
+                    PacketBicycleCommand PW = new PacketBicycleCommand($"PW {this.PowerTextBox.Text}", panel.id.Id);
+                    connection.writePacket(PW);
+                    //Start handling Thread
+                    Thread thread = new Thread(new ThreadStart(SessionHandler));
+                    thread.Start();
+                }
+                else if (radioButton_Distance.Checked)
+                {
+                    //creating packets
+                    //Resetting Bike to set time and distance
+                    PacketBicycleCommand RS = new PacketBicycleCommand("RS", panel.id.Id);
+                    connection.writePacket(RS);
+                    //Waiting 5 secs to let bike reboot
+                    Thread.Sleep(5000);
+                    //Entering command mode to insert P- Commands
+                    PacketBicycleCommand CM = new PacketBicycleCommand("CM", panel.id.Id);
+                    connection.writePacket(CM);
+                    //Set required Distance
+                    PacketBicycleCommand PD = new PacketBicycleCommand($"PD {this.distanceTextBox.Text}", panel.id.Id);
+                    connection.writePacket(PD);
+                    //Set power level
+                    PacketBicycleCommand PW = new PacketBicycleCommand($"PW {this.PowerTextBox.Text}", panel.id.Id);
+                    connection.writePacket(PW);
+                    //Start handling Thread
+                    Thread thread = new Thread(new ThreadStart(SessionHandler));
+                    thread.Start();
+                }
+                else
+                {
+                    MessageBox.Show("Select the session type first!");
+                }
+                Hide();
             }
             else
             {
-                MessageBox.Show("Select the session type first!");
+                MessageBox.Show("Enter a name first!");
             }
-            Hide();
         }
 
         private void radioButton_Time_CheckedChanged(object sender, EventArgs e)

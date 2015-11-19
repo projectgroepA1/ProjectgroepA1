@@ -17,5 +17,6 @@ namespace NetLib
         void recievePacketBicycleCommand(PacketBicycleCommand command);
         void recievePacketSession(PacketSession ps);
         void recievePacketSessions(PacketSessions sessionsPacket);
+        void recieveNamePacket(NamePacket namePacket);
     }
 }

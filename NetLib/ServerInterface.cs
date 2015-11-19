@@ -19,5 +19,6 @@ namespace NetLib
         void receivePacketBicycleCommand(PacketBicycleCommand packetBicycleCommand);
         void recievePacketHistory(List<Tuple<int, int, int, int, int, int, int>> list, string username);
         void receivePacketRequestSessions(PacketRequestSessions sessions);
+        void recieveNamePacket(NamePacket namePacket);
     }
 }
